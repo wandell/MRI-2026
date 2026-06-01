@@ -1,2 +1,46 @@
-_site/
-.quarto/
+# Quarto and build files
+/_book/
+/.quarto/
+/_site/
+site_libs/
+
+
+FOV-1995/*
+jekyll*/*
+
+# R specific
+.Rhistory
+.RData
+.Rproj.user/
+
+# Python specific
+__pycache__/
+*.pyc
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Editor specific
+*.sublime-workspace
+*.sublime-project
+
+# Emacs
+*~
+
+# Image editor specific
+*afphoto*
+
+# Don't upload the rendered pdf
+index.pdf
+index.log
+index.tex
+index.toc
+
+index.aux
+talks/2026-London/2026-London-Dai.pptx
+
+# Local workspace files
+local/
+FOV-2025-Quarto.code-workspace
+
