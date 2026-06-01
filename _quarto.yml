@@ -9,25 +9,37 @@ book:
   date: "06/01/2026"
   chapters:
     - index.qmd
-    - part: "Instrumentation and Signals"
+    - part: "Instrumentation"
       chapters:
-       - chapters/part-1-instrumentation.qmd
-       - chapters/chapter-01-components.qmd
+       - chapters/part1-instrumentation.qmd
+    - part: "Signals"
+      chapters:
+       - chapters/part2-signals.qmd
     - part: "Image Formation"
       chapters:
-       - chapters/part-2-image-formation.qmd
-       - chapters/kspace.qmd
-    - part: "Brains and the fMRI signal"
+       - chapters/part3-imageformation.qmd
+    - part: "Brain"
       chapters:
-       - chapters/part-3-brains.qmd
-       - chapters/appendix-mri-methods-v2.qmd
+       - chapters/part4-brain.qmd
+    - part: "Functional Signals"
+      chapters:
+       - chapters/part5-functionalsignals.qmd
+    - part: "Data Analysis"
+      chapters:
+       - chapters/part6-dataanalysis.qmd
+    - part: "Diffusion"
+      chapters:
+       - chapters/part7-diffusion.qmd
+    - part: "qMRI"
+      chapters:
+       - chapters/part8-qmri.qmd
     - part: "Applications"
       chapters:
-       - chapters/part-4-applications.qmd
-       - chapters/reading.qmd
-       - chapters/emotions.qmd
+       - chapters/part9-applications.qmd
        
-bibliography: paperpile.bib
+bibliography:
+  - paperpile.bib
+  - references.bib
 
 crossref:
   chapters: true

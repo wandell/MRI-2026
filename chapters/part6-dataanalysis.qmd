@@ -1,0 +1,9 @@
+---
+date: last-modified
+---
+
+# FMRI data Analysis {.unnumbered}
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---

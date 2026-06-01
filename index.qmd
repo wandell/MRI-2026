@@ -1,0 +1,48 @@
+![](chapters/front-isetbio-notext.png){fig-align="center" width="80%"}
+
+# Course Overview
+Magnetic resonance imaging (MRI) is a primary scientific tool for measuring living human brain structure and function. This course bridges the gap between physics and application, teaching students how to generate anatomical images (sMRI and dMRI), measure quantitative tissue properties (qMRI), and assess brain activity (fMRI).
+
+## Who Should Take This Course?
+We welcome students from engineering, neuroscience, and psychology backgrounds. The material is designed to help you transition into using MRI for your own research or to provide the technical literacy needed to critically evaluate scientific literature and collaborate effectively.
+
+## Instructional Approach
+This course is designed around active, live interaction. While we provide Panopto recordings for occasional, unavoidable absences, the core value of the course lies in our synchronous discussions of research papers and collaborative homework reviews. We expect regular attendance to ensure a high-level dialogue that benefits the entire cohort.
+
+# Topics
+
+## MR Instrumentation
+
+Magnets, coils, computers, whatever
+
+## MR Signals
+
+T1, T2, T2*
+
+## Image formation
+
+Fourier Transform (k-space), Sampling issues, Distortions
+
+Reconstruction principles; parallel imaging; multiplexing (mux).
+
+## Brain components 
+
+Cell types, Vasculature
+
+## Functional signals
+
+fMRI (not bold); visual field maps, functional specializations, other topics
+
+## Data analysis methods
+
+time series, beta-weights, other ...
+
+## Diffusion 
+
+## Quantitative MRI topics
+
+Multi-echo quantification. Correcting for coil
+
+## Applications
+
+

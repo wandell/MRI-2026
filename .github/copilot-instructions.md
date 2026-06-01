@@ -8,7 +8,7 @@ You are assisting with a Quarto book project stored in a GitHub repository. Your
 - Author writes and edits in **VSCode**.
 - Outputs: at least **HTML**, often **PDF** too. Assume cross-format compatibility matters unless told otherwise.
 - Citations: **BibTeX** is used (not CSL-only), and references are curated using bibtex-tidy and often imported from paperpile or google scholar.
-- Workspace instruction entrypoint: keep shared Copilot instructions in `.github/copilot-instructions.md`; supporting task-specific guidance lives in `.agent/workflows/`.
+- Workspace instruction entrypoint: keep shared Copilot instructions in `.github/copilot-instructions.md`; supporting task-specific guidance lives in `.github/instructions/`.
 - The course title at Stanford is **Human Neuroimaging with MRI: A Primer**.
 - The repo is intentionally incomplete; large amounts of material may be added quickly over the next few days.
 - PowerPoint teaching slides and their original image assets are **not stored in this GitHub repository**; they live in separate instructor-managed directories on local machines.
@@ -33,24 +33,46 @@ You are assisting with a Quarto book project stored in a GitHub repository. Your
 
 ## Quarto cross-references (book-scale)
 - Use Quarto’s native crossref system (commonly `@sec-*` and `@fig-*`).
-- For detailed layout instructions, including margin figures and sizing, see [.agent/workflows/layout.md](.agent/workflows/layout.md).
-- For converting image sequences into videos and looping crossfades, see [.agent/workflows/video-generation.md](.agent/workflows/video-generation.md).
+- In this draft stage, new part and chapter `.qmd` files should normally begin with a lightweight work-in-progress scaffold:
+  ```qmd
+  ---
+  date: last-modified
+  ---
+
+  # <Chapter or Part NAME> {.unnumbered}
+
+  {{< include "includes/WIP-callout.qmd" >}}
+
+  ---
+  ```
+- Sections should normally use the project’s established `@sec-*` convention rather than inventing a new cross-reference style.
 - Figure prefixes: use stable labels (`fig-...`, `tbl-...`, `eq-...`, `sec-...`).
 - When debugging refs:
   - Confirm the label exists and is unique.
   - Confirm the label is attached to the correct block.
   - Confirm the output format supports the feature (HTML vs PDF differences).
-  - Refer to [.agent/workflows/debug.md](.agent/workflows/debug.md) for clean rebuild steps.
+  - If stale intermediates are suspected, recommend a clean rebuild with specific folders (`_book/` or `_site/`) and rerender the relevant document.
+
+## Figures, sizing, placement, and margin content
+- Prefer Quarto-native figure syntax and options such as `fig-cap`, `fig-alt`, `fig-align`, `fig-width`, `fig-height`, and `out-width`.
+- Margin figures should normally use `.column-margin` when appropriate.
+- If the user wants text wrapped around a figure, be explicit that this is usually HTML/CSS-specific and not reliably portable to PDF.
+- For figure and callout examples, see `.github/instructions/quarto-tips.md`.
 
 ## VSCode workflow and debugging
 - Suggestions should be actionable in VSCode (specific files and minimal diffs).
 - **CRITICAL - Tool Preferences:** When searching files in the terminal, **AI agents MUST use `rg` (ripgrep) instead of `grep`**, and **use `fd` instead of `find`**. These are faster and natively installed/preferred in this environment.
 - Debug approach:
-  - Refer to [.agent/workflows/debug.md](.agent/workflows/debug.md) for diagnostic procedures (`quarto check`, cleaning `_book/`, etc.).
   - Ask for exact error text and minimal reproducible snippets.
+  - Recommend `quarto check` and `quarto render` locally when that would narrow the issue.
+  - If the issue smells like a stale build, specify whether `_book/` or `_site/` should be cleaned before rerendering.
 
 ## Citations and bibliography
-- Managed via `paperpile.bib`. Refer to [.agent/workflows/bibliography.md](.agent/workflows/bibliography.md) for setup and formatting workflows.
+- Bibliography is managed with a shared master file `paperpile.bib` plus an optional project-local `references.bib` for additions or fixes made specifically for this repository.
+- Treat `paperpile.bib` as an externally managed bibliography snapshot, not as the default place to do repository-local curation.
+- Prefer putting project-specific additions into `references.bib`.
+- The preferred VS Code setup is a workspace-local `.vscode/settings.json` that explicitly sets `xrimson.bibtex-tidy` as the default formatter for BibTeX files.
+- `bibtex-tidy` may fail silently on save when the `.bib` file has syntax errors; when formatting stops working, diagnose with `npx bibtex-tidy paperpile.bib` to get a real parse error and line number.
 
 ## YAML and project configuration
 - Be conservative editing `_quarto.yml`:
@@ -104,6 +126,10 @@ Whenever you propose formatting/layout:
   - `chapters/images` for repo-stored image derivatives from teaching materials
   - Lightweight image-management conventions rather than heavy asset bookkeeping
 - Respect these defaults unless the user says otherwise.
+
+## Related instruction files
+- `.github/instructions/quarto-tips.md` contains concrete Quarto syntax examples for figures, callouts, equations, videos, lists, and citations.
+- `.github/instructions/article-publish.instructions.md` covers the standalone HTML publishing workflow when the user asks to prepare or upload a talk or article.
 
 ## Safety rails for debugging
 - If a build error occurs, do not guess wildly:

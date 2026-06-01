@@ -1,0 +1,6 @@
+{
+    "[bibtex]": {
+        "editor.defaultFormatter": "xrimson.bibtex-tidy",
+        "editor.formatOnSave": true
+    }
+}
