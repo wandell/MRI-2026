@@ -1,0 +1,7 @@
+---
+title: "MRI Notes"
+---
+
+# Lecture Notes
+
+This directory holds Quarto lecture notes (`.qmd`) for MRI technology and applications in human neuroscience.
