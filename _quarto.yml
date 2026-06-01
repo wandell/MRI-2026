@@ -1,15 +1,68 @@
 project:
-  type: default
-  output-dir: _site
+  type: book
 
-execute:
-  freeze: auto
+book:
+  title: "Human Neuroimaging with MRI: A Primer"
+  author:
+    - Brian Wandell
+    - Jonathan Winawer
+  date: "06/01/2026"
+  chapters:
+    - index.qmd
+    - part: "Instrumentation and Signals"
+      chapters:
+       - chapters/part-1-instrumentation.qmd
+       - chapters/chapter-01-components.qmd
+    - part: "Image Formation"
+      chapters:
+       - chapters/part-2-image-formation.qmd
+       - chapters/kspace.qmd
+    - part: "Brains and the fMRI signal"
+      chapters:
+       - chapters/part-3-brains.qmd
+       - chapters/appendix-mri-methods-v2.qmd
+    - part: "Applications"
+      chapters:
+       - chapters/part-4-applications.qmd
+       - chapters/reading.qmd
+       - chapters/emotions.qmd
+       
+bibliography: paperpile.bib
 
+crossref:
+  chapters: true
+  fig-prefix: "Figure"
+  tbl-prefix: "Table"
+  sec-prefix: "Section"
+  
+#  I am unsure about these formatting commands for the document.  Experimental.
 format:
   html:
     toc: true
+    layout: sidebar
     number-sections: true
-    theme: cosmo
+    theme: cosmo   # flatly, yeti, sandstone, minty, cerulean, default
+    fig-cap-location: margin
+    render-on-save: true
+    mathjax: "local"
+    math: 
+      number-sections: true
+      number-equations: true
   pdf:
+    documentclass: scrreprt
     toc: true
+    toc-title: "Contents"
+    toc-number-sections: true
+    toc-number-depth: 2
+    fig-caption: true
     number-sections: true
+    number-depth: 2
+    keep-tex: false
+    latex-clean: true
+    math:
+      number-equations: true
+
+
+
+
+
