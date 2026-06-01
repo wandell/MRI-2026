@@ -1,0 +1,8 @@
+---
+title: "MRI Slides"
+format: revealjs
+---
+
+## Slide Decks
+
+This directory holds Quarto slide decks (`.qmd`) and related image assets exported from PowerPoint.
