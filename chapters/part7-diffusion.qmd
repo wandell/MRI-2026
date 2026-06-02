@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Diffusion MRI signals and methods {.unnumbered}
+# Introduction to diffusion MRI {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

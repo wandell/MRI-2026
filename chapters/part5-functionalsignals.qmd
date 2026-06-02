@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Functional MR Signals {.unnumbered}
+# Introduction to functional MR signals {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

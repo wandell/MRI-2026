@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Image Formation {.unnumbered}
+# Introduction to Image Formation {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# MR signals {.unnumbered}
+# Introduction to MR signals {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

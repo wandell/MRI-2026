@@ -12,6 +12,7 @@ book:
     - part: "Instrumentation"
       chapters:
        - chapters/part1-instrumentation.qmd
+       - chapters/ch01-big-iron.qmd
     - part: "Signals"
       chapters:
        - chapters/part2-signals.qmd

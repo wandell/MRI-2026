@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Brain structures and cells {.unnumbered}
+# Introduction to brain systems {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

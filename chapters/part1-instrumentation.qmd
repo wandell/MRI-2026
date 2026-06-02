@@ -2,8 +2,15 @@
 date: last-modified
 ---
 
-# MR instrumentation {.unnumbered}
+# Introduction to MR instrumentation {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
+
+## Big iron
+
+## Coils
+
+## Other stuff
+

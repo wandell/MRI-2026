@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# FMRI data Analysis {.unnumbered}
+# Introduction to fMRI data analysis {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

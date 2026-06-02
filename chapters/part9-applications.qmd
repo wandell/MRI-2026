@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# MRI Applications {.unnumbered}
+# Introduction to MRI Applications {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 
