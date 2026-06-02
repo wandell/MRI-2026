@@ -3,6 +3,43 @@
 This documents the process used to convert teaching slide decks into image assets
 and `.qmd` chapter files for the lecture notes.
 
+## Referring to slides precisely
+
+**Always use slide titles, not slide numbers or PDF page numbers.**
+
+PPTX slide numbers and PDF page numbers diverge whenever hidden slides are present
+(LibreOffice skips hidden slides during PDF conversion). This causes silent off-by-N
+errors that are hard to catch.
+
+The reliable reference forms are:
+
+- Range: "from the slide titled 'X' through the slide before 'Y'"
+- Single slide: "the slide titled 'X'"
+- Untitled slide in a sequence: "the two slides after 'X'"
+
+To quickly list all slide titles and find a range:
+
+```python
+from pptx import Presentation
+prs = Presentation("DeckName.pptx")
+for i, slide in enumerate(prs.slides, 1):
+    title = next((s.text_frame.text.strip()[:70] for s in slide.shapes
+                  if s.has_text_frame and s.name.startswith("Title")), "(no title)")
+    print(f"Slide {i:3d}: {title}")
+```
+
+To find the correct PDF page for a given PPTX slide (accounting for hidden slides):
+
+```python
+pdf_page = 0
+for i, slide in enumerate(prs.slides, 1):
+    if slide._element.get("show") != "0":
+        pdf_page += 1
+    print(f"PPTX {i:2d} -> PDF p.{pdf_page}  [{title}]")
+```
+
+---
+
 ## Faster approach (recommended for future chapters)
 
 The interactive review-then-extract process used for ch01 works well but involves

@@ -8,9 +8,9 @@ date: last-modified
 
 ---
 
-## Big iron
+## Main Magnetic Field 
 
-## Magnetic Fields
+## Magnetic Field Units
 
 ## Gradient Coils
 

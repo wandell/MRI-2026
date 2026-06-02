@@ -8,64 +8,67 @@ date: last-modified
 
 ---
 
-## Overview
+## RF Coils Overview {#sec-rf-coils-overview}
 
-![RF coils are used to both excite the MR signal and receive it.](images/ch03-rf-coils-intro.png){#fig-rf-coils-intro fig-alt="Title slide for the RF coils section, showing the RF Coils for MRI textbook cover and a photo of Stanford's engineering quad."}
+![RF coils are used to both excite the MR signal and receive it.](images/ch03/rf-coils-intro.png){#fig-rf-coils-intro fig-alt="Title slide for the RF coils section, showing the RF Coils for MRI textbook cover and a photo of Stanford's engineering quad."}
 
 RF coils serve two functions in an MRI system: **transmitting** a radiofrequency pulse to excite nuclear spins, and **receiving** the weak MR signal that the spins emit as they relax. The transmit and receive functions may be handled by the same coil or by separate coils.
 
 ## Surface Coils
 
-![A surface coil is a simple inductor-capacitor (LC) resonant circuit with some resistance.](images/ch03-rf-surface-coil-circuit.png){#fig-rf-surface-coil-circuit fig-alt="Diagram of a surface coil showing R (resistor), C (capacitor), L (inductor), and Z (adjustable capacitor) components, alongside a photo of a small surface coil."}
-
-![Surface coil description: the inductor generates an oscillating magnetic field that drives the MR system.](images/ch03-rf-surface-coil-description.png){#fig-rf-surface-coil-description fig-alt="Slide describing how the inductor generates an oscillating B1 field and the capacitor forms a resonant circuit tuned to the Larmor frequency."}
+![A surface coil is a simple inductor-capacitor (LC) resonant circuit with some resistance.](images/ch03/rf-surface-coil-circuit.png){#fig-rf-surface-coil-circuit fig-alt="Diagram of a surface coil showing R (resistor), C (capacitor), L (inductor), and Z (adjustable capacitor) components, alongside a photo of a small surface coil."}
 
 A surface coil consists of an inductor (the coil loop), a capacitor, and a resistor. Together these form a resonant LC circuit tuned to the Larmor frequency. The inductor generates an oscillating magnetic field (B1) that excites the nuclear spins; the capacitor tunes the resonance and stores energy; the resistor is used to match the coil's impedance to the rest of the MR system, ensuring efficient power transfer.
 
 Surface coils provide high local sensitivity but limited spatial coverage — they work best for structures close to the coil surface.
 
+![Surface coil description: the inductor generates an oscillating magnetic field that drives the MR system.](images/ch03/rf-surface-coil-description.png){#fig-rf-surface-coil-description fig-alt="Slide describing how the inductor generates an oscillating B1 field and the capacitor forms a resonant circuit tuned to the Larmor frequency."}
+
 ## Volume Coils and the Birdcage Design
 
-![Volume coil (birdcage): the LC circuit is repeated around the surface of a cylinder, producing more uniform spatial coverage but lower local sensitivity.](images/ch03-rf-volume-coil-birdcage.png){#fig-rf-volume-coil-birdcage fig-alt="Diagram of a birdcage volume coil showing the cylindrical geometry and LC circuit elements, alongside a photo of an actual birdcage coil."}
-
-![The birdcage design is widely used for the body transmit coil, built into the main magnet bore.](images/ch03-rf-birdcage-transmit.png){#fig-rf-birdcage-transmit fig-alt="Photo of a birdcage body coil — a large cylindrical coil with copper rungs and end rings — with text noting it is used as the built-in body coil."}
+![Volume coil (birdcage): the LC circuit is repeated around the surface of a cylinder, producing more uniform spatial coverage but lower local sensitivity.](images/ch03/rf-volume-coil-birdcage.png){#fig-rf-volume-coil-birdcage fig-alt="Diagram of a birdcage volume coil showing the cylindrical geometry and LC circuit elements, alongside a photo of an actual birdcage coil."}
 
 A volume coil repeats the LC resonant circuit around the surface of a cylinder, generating a more uniform B1 field over a large volume. The **birdcage** design — multiple conducting rungs connected by end-rings — is the standard approach. It is built into the scanner as the body coil and operates in its lowest (homogeneous) mode to provide uniform RF excitation. At higher field strengths (3T and above), coupling between the coil and the patient becomes significant and more complex driving schemes are required.
 
+![The birdcage design is widely used for the body transmit coil, built into the main magnet bore.](images/ch03/rf-birdcage-transmit.png){#fig-rf-birdcage-transmit fig-alt="Photo of a birdcage body coil — a large cylindrical coil with copper rungs and end rings — with text noting it is used as the built-in body coil."}
+
+
+
 ## Phased-Array Coils
 
-![Phased-array coil: combines multiple independent surface coils to balance sensitivity and spatial coverage.](images/ch03-rf-phased-array-coil.png){#fig-rf-phased-array-coil fig-alt="Diagram of a phased-array coil showing multiple independent coil elements arranged around the head."}
-
-![Phased-array head coils: comparing 12-channel and 32-channel configurations (Kaza et al., JMRI, 2011).](images/ch03-rf-phased-array-head-coils.png){#fig-rf-phased-array-head-coils fig-alt="Diagrams showing the element layouts of a 12-channel and a 32-channel phased-array head coil."}
+![Phased-array coil: combines multiple independent surface coils to balance sensitivity and spatial coverage.](images/ch03/rf-phased-array-coil.png){#fig-rf-phased-array-coil fig-alt="Diagram of a phased-array coil showing multiple independent coil elements arranged around the head."}
 
 A phased-array coil combines multiple small, independent surface coil elements — each with its own receiver channel — arranged to cover a larger region. Each element detects signal from its local neighborhood with high sensitivity. The signals are combined computationally to produce an image with both broad coverage and good signal-to-noise ratio.
+
+![Phased-array head coils: comparing 12-channel and 32-channel configurations (Kaza et al., JMRI, 2011).](images/ch03/rf-phased-array-head-coils.png){#fig-rf-phased-array-head-coils fig-alt="Diagrams showing the element layouts of a 12-channel and a 32-channel phased-array head coil."}
 
 Phased-array coils also enable **parallel imaging** (e.g., SENSE, GRAPPA), which uses the spatial encoding information from multiple coils to accelerate acquisition. Higher channel counts generally improve SNR and parallel imaging performance, at the cost of greater hardware complexity.
 
 ## Head Coils in Practice
 
-![High-channel-count head coils developed at the University of Minnesota for ultra-high-field imaging.](images/ch03-rf-head-coil-minnesota.png){#fig-rf-head-coil-minnesota fig-alt="Six-panel figure showing head coil components, element arrays, and the assembled coil being worn by a subject."}
+![High-channel-count head coils developed at the University of Minnesota for ultra-high-field imaging.](images/ch03/rf-head-coil-minnesota.png){#fig-rf-head-coil-minnesota fig-alt="Six-panel figure showing head coil components, element arrays, and the assembled coil being worn by a subject."}
 
-![The 64-channel head coil project at Stanford: assembled by Kawin Setsompop's group, Adam Kerr, and Jason Stockmann from MGH.](images/ch03-rf-head-coil-stanford-project.png){#fig-rf-head-coil-stanford-project fig-alt="Photo of a partially assembled 64-channel head coil with many small coil elements visible, next to a workbench setup."}
 
 High-channel-count head coils are still largely hand-assembled, requiring careful placement and tuning of each element. The 64-channel coil shown here was assembled for the CNI in collaboration with Massachusetts General Hospital. The construction remains an artform — each element must be individually tuned and decoupled from its neighbors.
 
+![The 64-channel head coil project at Stanford: assembled by Kawin Setsompop's group, Adam Kerr, and Jason Stockmann from MGH.](images/ch03/rf-head-coil-stanford-project.png){#fig-rf-head-coil-stanford-project fig-alt="Photo of a partially assembled 64-channel head coil with many small coil elements visible, next to a workbench setup."}
+
 ## Coil Design and Simulation
 
-![COMSOL simulation of a birdcage coil: modeling the B1 field distribution inside a human head phantom.](images/ch03-rf-comsol-simulation.png){#fig-rf-comsol-simulation fig-alt="Screenshot of a COMSOL blog post titled 'Designing and Optimizing MRI Birdcage Coils Using Simulation', showing a head phantom inside a birdcage coil model."}
-
-![Simulated sensitivity (B1 field strength) of a birdcage coil across a human head phantom.](images/ch03-rf-birdcage-sensitivity.png){#fig-rf-birdcage-sensitivity fig-alt="Two-panel figure showing the birdcage coil model geometry on the left and a color map of magnetic flux density through the head phantom on the right."}
+![COMSOL simulation of a birdcage coil: modeling the B1 field distribution inside a human head phantom.](images/ch03/rf-comsol-simulation.png){#fig-rf-comsol-simulation fig-alt="Screenshot of a COMSOL blog post titled 'Designing and Optimizing MRI Birdcage Coils Using Simulation', showing a head phantom inside a birdcage coil model."}
 
 Electromagnetic simulation tools such as COMSOL, CST Studio Suite, and Sim4Life are used to model the RF field distribution inside the patient and to compute the Specific Absorption Rate (SAR) — the rate at which RF energy is deposited in tissue. These simulations are essential for safety validation, particularly at high field strengths where field inhomogeneity and SAR become significant.
 
+![Simulated sensitivity (B1 field strength) of a birdcage coil across a human head phantom.](images/ch03/rf-birdcage-sensitivity.png){#fig-rf-birdcage-sensitivity fig-alt="Two-panel figure showing the birdcage coil model geometry on the left and a color map of magnetic flux density through the head phantom on the right."}
+
 ## Commercial Coils
 
-![Nova Medical: a leading commercial manufacturer of high-performance phased-array RF coils for research MRI.](images/ch03-rf-nova-medical.png){#fig-rf-nova-medical fig-alt="Screenshot of the Nova Medical website with the headline 'Leaders in High Field MRI Coil Engineering'. Text notes that many research sites including the CNI and Lucas Center use Nova coils."}
+![Nova Medical: a leading commercial manufacturer of high-performance phased-array RF coils for research MRI.](images/ch03/rf-nova-medical.png){#fig-rf-nova-medical fig-alt="Screenshot of the Nova Medical website with the headline 'Leaders in High Field MRI Coil Engineering'. Text notes that many research sites including the CNI and Lucas Center use Nova coils."}
 
 Many research sites rely on coils from specialized manufacturers rather than the scanner vendor. Nova Medical is a widely used supplier of high-channel-count head coils for Siemens, GE, and Philips scanners. Other vendors in this space include RAPID Biomedical, ScanMed, and PulseTeq.
 
 ## Image Quality Across Coil Types
 
-![Comparison of brain images acquired with surface, volume (birdcage), and phased-array RF coils (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch03-rf-coil-images-comparison.png){#fig-rf-coil-images-comparison fig-alt="Three brain MR images labeled A (surface coil), B (volume coil), and C (phased-array coil), showing differences in spatial coverage and signal uniformity."}
+![Comparison of brain images acquired with surface, volume (birdcage), and phased-array RF coils (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch03/rf-coil-images-comparison.png){#fig-rf-coil-images-comparison fig-alt="Three brain MR images labeled A (surface coil), B (volume coil), and C (phased-array coil), showing differences in spatial coverage and signal uniformity."}
 
 Surface coils provide high SNR in local regions but with non-uniform coverage. Volume coils give uniform coverage across the whole brain but at lower SNR. Phased-array coils combine high local sensitivity across multiple elements, producing images with broad coverage and high SNR — making them the standard choice for modern neuroimaging.
