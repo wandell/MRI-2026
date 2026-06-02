@@ -1,4 +1,4 @@
-![](chapters/front-isetbio-notext.png){fig-align="center" width="80%"}
+![](chapters/images/front-mri-2026.png){fig-align="center" width="80%"}
 
 # Course Overview {.unnumbered}
 Magnetic resonance imaging (MRI) is a primary scientific tool for measuring living human brain structure and function. This course bridges the gap between physics and application, teaching students how to generate anatomical images (sMRI and dMRI), measure quantitative tissue properties (qMRI), and assess brain activity (fMRI).
