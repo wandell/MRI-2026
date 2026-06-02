@@ -10,7 +10,11 @@ date: last-modified
 
 ## Big iron
 
-## Coils
+## Magnetic Fields
 
-## Other stuff
+## Gradient Coils
+
+## RF Coils
+
+## Safety
 

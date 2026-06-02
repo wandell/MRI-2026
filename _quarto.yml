@@ -13,6 +13,9 @@ book:
       chapters:
        - chapters/part1-instrumentation.qmd
        - chapters/ch01-big-iron.qmd
+       - chapters/ch02-gradient-coils.qmd
+       - chapters/ch03-rf-coils.qmd
+       - chapters/ch04-safety.qmd
     - part: "Signals"
       chapters:
        - chapters/part2-signals.qmd
