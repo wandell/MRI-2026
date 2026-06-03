@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# MRI Safety {.unnumbered}
+# MRI Safety
 
 {{< include "includes/WIP-callout.qmd" >}}
 

@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# MRI system {.unnumbered}
+# MRI system
 
 {{< include "includes/WIP-callout.qmd" >}}
 

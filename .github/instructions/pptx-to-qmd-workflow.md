@@ -121,38 +121,107 @@ for shape in slide.shapes:
 prs.save("DeckName.pptx")
 ```
 
-### 7. Create the `.qmd` chapter file
+### 7. Handle progressive build sequences
 
-- Place it in `chapters/chNN-topic.qmd`
-- Use Quarto markdown figure syntax:
+PowerPoint decks frequently use progressive builds — the same slide title repeated
+across 2–4 slides, each adding one element. Export ALL slides in the sequence with a
+numeric suffix (`-1.png`, `-2.png`, `-3.png`). In the `.qmd`, wrap them in a
+`panel-tabset` so readers can click through the steps:
 
 ```markdown
-![Brief caption.](images/chNN-filename.png){#fig-label fig-alt="Alt text."}
+::: {.panel-tabset}
+## Step 1
+![Title — step 1.](images/chNN/filename-1.png){#fig-label-1}
+
+## Step 2
+![Title — step 2.](images/chNN/filename-2.png){#fig-label-2}
+
+## Step 3
+![Title — step 3.](images/chNN/filename-3.png){#fig-label-3}
+:::
+
+Notes from the final slide of the build go here as prose.
 ```
 
+The Python generator script (see below) detects build sequences automatically by
+finding consecutive slides with the same title and emits `panel-tabset` blocks.
+
+### 8. Create the `.qmd` chapter file
+
+- Place it in `chapters/chNN-topic.qmd`
+- Figure labels **must** use `#fig-` prefix with hyphens only (no underscores):
+
+```markdown
+![Brief caption.](images/chNN/filename.png){#fig-chNN-filename}
+```
+
+- The label format `fig-chNN-filename` (all hyphens) is required for Quarto crossrefs.
+  Using underscores (e.g., `fig_chNN_filename`) silently disables figure numbering.
 - Put slide notes as prose between figures (trim AI-generated verbosity).
 - Use `## Section` headers to group related slides.
+- Chapter headings should NOT have `{.unnumbered}` (see figure numbering below).
 - Add the chapter to `_quarto.yml` under the appropriate part.
 
-### 8. Add chapter to `_quarto.yml`
+### 9. Add chapter to `_quarto.yml`
+
+**Critical:** use the `part: file.qmd` syntax (not `part: "string"`) so that part
+introduction files are NOT counted as numbered chapters. This ensures ch01 = Chapter 1,
+ch05 = Chapter 5, etc.:
 
 ```yaml
-- part: "Instrumentation"
+- part: chapters/part1-instrumentation.qmd   # part intro — unnumbered, not a chapter
   chapters:
-   - chapters/part1-instrumentation.qmd
-   - chapters/ch01-instrumentation.qmd
+   - chapters/ch01-big-iron.qmd              # Chapter 1
+   - chapters/ch02-gradient-coils.qmd        # Chapter 2
+- part: chapters/part2-signals.qmd           # part intro — unnumbered, not a chapter
+  chapters:
+   - chapters/ch05-mr-signal-fundamentals.qmd  # Chapter 5
 ```
+
+Part introduction files (e.g., `part1-instrumentation.qmd`) must keep `{.unnumbered}`
+on their headings. Chapter files (ch01–chNN) must NOT have `{.unnumbered}` on their
+primary heading.
+
+## Figure numbering (X.Y format)
+
+To get figures numbered as "5.1, 5.2, ..." in chapter 5:
+
+1. `_quarto.yml` must have `crossref: chapters: true` (already set).
+2. Use `part: file.qmd` syntax in `_quarto.yml` so part intros don't steal chapter numbers.
+3. Chapter headings must NOT use `{.unnumbered}` — numbered headings are required for
+   crossref chapter numbers to be assigned.
+4. Figure labels must use `#fig-` prefix with hyphens.
+
+Part intro files KEEP `{.unnumbered}`. Chapter files DROP it.
+
+If figures show "Figure 1" instead of "Figure 5.1", check:
+- Are the chapter headings missing `{.unnumbered}`? ✓ (they should not have it)
+- Are the labels using hyphens? ✓
+- Is the `_quarto.yml` using `part: file.qmd` not `part: "string"` + file in chapters? ✓
 
 ## Naming conventions
 
-| Context | Pattern | Example |
-|---------|---------|---------|
-| Main chapter images | `chNN-topic.png` | `ch01-gradient-amplifiers.png` |
-| Stanford-specific | `resources-stanford-topic.png` | `resources-stanford-cni-stats.png` |
-| Part-level overview | `partN-topic.png` | `part1-instrumentation-overview.png` |
+Images live in per-chapter subdirectories under `chapters/images/`:
 
-Keep names short — drop redundant words like the chapter subject (e.g., drop "machine-room"
-if every slide in a section is from the machine room).
+```
+chapters/images/
+  ch01/   gradient-amplifiers.png        ← no chapter prefix in filename
+  ch02/   helmholtz-pair-diagram.png
+  ch05/   fid-experiment-3.png           ← build sequence: -1, -2, -3
+  resources-stanford/  cni-stats.png
+```
+
+| Context | Directory | Filename pattern | Example |
+|---------|-----------|-----------------|---------|
+| Main chapter images | `images/chNN/` | `topic.png` | `images/ch01/gradient-amplifiers.png` |
+| Build sequence | `images/chNN/` | `topic-N.png` | `images/ch05/fid-experiment-3.png` |
+| Stanford-specific | `images/resources-stanford/` | `topic.png` | `images/resources-stanford/cni-stats.png` |
+
+The chapter is identified by the directory, not the filename. Drop the `chNN-` prefix
+from individual filenames — it's redundant once the file is inside `images/chNN/`.
+
+Keep names short — drop redundant words like the chapter subject (e.g., inside `ch01/`,
+drop "machine-room" if every slide in that section is from the machine room).
 
 ## Notes on image quality
 
