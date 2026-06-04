@@ -9,37 +9,35 @@ book:
   date: "06/01/2026"
   chapters:
     - index.qmd
-    - part: "Instrumentation"
+    - part: chapters/part1-instrumentation.qmd
       chapters:
-       - chapters/part1-instrumentation.qmd
        - chapters/ch01-big-iron.qmd
        - chapters/ch02-gradient-coils.qmd
        - chapters/ch03-rf-coils.qmd
        - chapters/ch04-safety.qmd
-    - part: "Signals"
+    - part: chapters/part2-signals.qmd
       chapters:
-       - chapters/part2-signals.qmd
-    - part: "Image Formation"
-      chapters:
-       - chapters/part3-imageformation.qmd
-    - part: "Brain"
-      chapters:
-       - chapters/part4-brain.qmd
-    - part: "Functional Signals"
-      chapters:
-       - chapters/part5-functionalsignals.qmd
-    - part: "Data Analysis"
-      chapters:
-       - chapters/part6-dataanalysis.qmd
-    - part: "Diffusion"
-      chapters:
-       - chapters/part7-diffusion.qmd
-    - part: "qMRI"
-      chapters:
-       - chapters/part8-qmri.qmd
-    - part: "Applications"
-      chapters:
-       - chapters/part9-applications.qmd
+       - chapters/ch05-mr-signal-fundamentals.qmd
+       - chapters/ch06-macroscopic-model.qmd
+       - chapters/ch07-t1-relaxation.qmd
+       - chapters/ch08-t2-relaxation.qmd
+       - chapters/ch09-mri-summary-spin-echo.qmd
+       - chapters/ch10-pulse-sequences.qmd
+       - chapters/ch11-physical-mechanisms.qmd
+    - part: chapters/part3-imageformation.qmd
+      chapters: []
+    - part: chapters/part4-brain.qmd
+      chapters: []
+    - part: chapters/part5-functionalsignals.qmd
+      chapters: []
+    - part: chapters/part6-dataanalysis.qmd
+      chapters: []
+    - part: chapters/part7-diffusion.qmd
+      chapters: []
+    - part: chapters/part8-qmri.qmd
+      chapters: []
+    - part: chapters/part9-applications.qmd
+      chapters: []
        
 bibliography:
   - paperpile.bib

@@ -1,0 +1,99 @@
+---
+date: last-modified
+---
+
+# T2 Relaxation and Signal Contrast
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## The net magnetization is summarized by two components
+
+![The net magnetization is summarized by two components.](images/ch08/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch08-the-net-magnetization-is-summarized-by-two-compone}
+
+## Transverse magnetization
+
+::: {.panel-tabset}
+
+## Step 1
+
+![Transverse magnetization — step 1.](images/ch08/transverse-magnetization-1.png){#fig-ch08-transverse-magnetization-1}
+
+## Step 2
+
+![Transverse magnetization — step 2.](images/ch08/transverse-magnetization-2.png){#fig-ch08-transverse-magnetization-2}
+
+:::
+
+## Transverse relaxation:  T2
+
+![Transverse relaxation:  T2.](images/ch08/transverse-relaxation-t2.png){#fig-ch08-transverse-relaxation-t2}
+
+## The spin de-phasing
+
+![The spin de-phasing.](images/ch08/the-spin-de-phasing.png){#fig-ch08-the-spin-de-phasing}
+
+## MR: The two mechanisms of spin dephasing
+
+![MR: The two mechanisms of spin dephasing.](images/ch08/mr-the-two-mechanisms-of-spin-dephasing.png){#fig-ch08-mr-the-two-mechanisms-of-spin-dephasing}
+
+## Two sources of transverse magnetization decay
+
+![Two sources of transverse magnetization decay.](images/ch08/two-sources-of-transverse-magnetization-decay.png){#fig-ch08-two-sources-of-transverse-magnetization-decay}
+
+## Transverse magnetization decay
+
+::: {.panel-tabset}
+
+## Step 1
+
+![Transverse magnetization decay — step 1.](images/ch08/transverse-magnetization-decay-1.png){#fig-ch08-transverse-magnetization-decay-1}
+
+## Step 2
+
+![Transverse magnetization decay — step 2.](images/ch08/transverse-magnetization-decay-2.png){#fig-ch08-transverse-magnetization-decay-2}
+
+:::
+
+## T1-weighted images: gray is darker than white
+
+![T1-weighted images: gray is darker than white.](images/ch08/t1-weighted-images-gray-is-darker-than-white.png){#fig-ch08-t1-weighted-images-gray-is-darker-than-white}
+
+Values from https://www.mdpi.com/2072-6694/14/22/5606
+
+Images from http://fmri.ucsd.edu/Howto/3T/structure.html
+
+Project:  UCSF
+Subject HCP350002
+Session T1s_MPR
+
+## T2-weighted images: white is darker than gray
+
+![T2-weighted images: white is darker than gray.](images/ch08/t2-weighted-images-white-is-darker-than-gray.png){#fig-ch08-t2-weighted-images-white-is-darker-than-gray}
+
+Values from https://www.mdpi.com/2072-6694/14/22/5606
+
+Images from http://fmri.ucsd.edu/Howto/3T/structure.html
+
+Project:  UCSF
+Subject HCP350002
+Session T2W_SPC
+
+## Summary of the relative signal intensities  using T1 and T2
+
+![Summary of the relative signal intensities  using T1 and T2.](images/ch08/summary-of-the-relative-signal-intensities-using-t.png){#fig-ch08-summary-of-the-relative-signal-intensities-using-t}
+
+## T2-weighted images measure pathologies involving fluid filled regions
+
+![T2-weighted images measure pathologies involving fluid filled regions.](images/ch08/t2-weighted-images-measure-pathologies-involving-f.png){#fig-ch08-t2-weighted-images-measure-pathologies-involving-f}
+
+Values from:  https://pubmed.ncbi.nlm.nih.gov/10232510/
+
+## Pulse sequence impact on tumor visibility
+
+![Pulse sequence impact on tumor visibility.](images/ch08/pulse-sequence-impact-on-tumor-visibility.png){#fig-ch08-pulse-sequence-impact-on-tumor-visibility}
+
+Figure 3.1 (a) Coronal image of the brain showing a tumour (arrow). In this image the tumour is bright against the darker grey
+of the normal brain tissue. (b) The same slice with a different pulse sequence, this time showing the tumour darker than the
+surrounding brain

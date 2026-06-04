@@ -1,0 +1,17 @@
+---
+date: last-modified
+---
+
+# Physical Mechanisms of T1 and T2
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## The physical sources of T1 recovery and T2 decay differ!
+
+![The physical sources of T1 recovery and T2 decay differ!.](images/ch11/the-physical-sources-of-t1-recovery-and-t2-decay-d.png){#fig-ch11-the-physical-sources-of-t1-recovery-and-t2-decay-d}
+
+## There are multiple mechanisms that can influence the bulk magnetization
+
+![There are multiple mechanisms that can influence the bulk magnetization.](images/ch11/there-are-multiple-mechanisms-that-can-influence-t.png){#fig-ch11-there-are-multiple-mechanisms-that-can-influence-t}

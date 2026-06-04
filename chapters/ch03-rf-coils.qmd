@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Radiofrequency Coils {.unnumbered}
+# Radiofrequency Coils
 
 {{< include "includes/WIP-callout.qmd" >}}
 

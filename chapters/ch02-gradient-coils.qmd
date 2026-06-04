@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Main field gradient coils {.unnumbered}
+# Main field gradient coils
 
 {{< include "includes/WIP-callout.qmd" >}}
 
