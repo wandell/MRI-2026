@@ -1,0 +1,33 @@
+---
+date: last-modified
+---
+
+# Practical Software: Image Data Formats
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Practical software matters: Image data formats
+
+![Practical software matters: Image data formats.](images/ch21/practical-software-matters-image-data-formats.png){#fig-ch21-practical-software-matters-image-data-formats}
+
+## MRI – Raw data
+
+![MRI – Raw data.](images/ch21/mri-raw-data.png){#fig-ch21-mri-raw-data}
+
+## DICOM
+
+![DICOM.](images/ch21/dicom.png){#fig-ch21-dicom}
+
+## Flywheel stores all the information in the DICOM header
+
+![Flywheel stores all the information in the DICOM header.](images/ch21/flywheel-stores-all-the-information-in-the-dicom-h.png){#fig-ch21-flywheel-stores-all-the-information-in-the-dicom-h}
+
+## NIfTI format
+
+![NIfTI format.](images/ch21/nifti-format.png){#fig-ch21-nifti-format}
+
+## Anatomy with color map overlays
+
+![Anatomy with color map overlays.](images/ch21/anatomy-with-color-map-overlays.png){#fig-ch21-anatomy-with-color-map-overlays}

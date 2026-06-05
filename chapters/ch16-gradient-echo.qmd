@@ -1,0 +1,29 @@
+---
+date: last-modified
+---
+
+# Gradient Echo Sequences
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Gradient Echo sequence
+
+![Gradient Echo sequence.](images/ch16/gradient-echo-sequence.png){#fig-ch16-gradient-echo-sequence}
+
+## Gradient echo sequence (move to previous section next year)
+
+![Gradient echo sequence (move to previous section next year).](images/ch16/gradient-echo-sequence-move-to-previous-section-ne.png){#fig-ch16-gradient-echo-sequence-move-to-previous-section-ne}
+
+## Why create echoes with gradients instead of a 180° pulse?
+
+![Why create echoes with gradients instead of a 180° pulse?.](images/ch16/why-create-echoes-with-gradients-instead-of-a-180.png){#fig-ch16-why-create-echoes-with-gradients-instead-of-a-180}
+
+## Gradient echo parameters and T1/T2*
+
+![Gradient echo parameters and T1/T2*.](images/ch16/gradient-echo-parameters-and-t1t2.png){#fig-ch16-gradient-echo-parameters-and-t1t2}
+
+## Summary
+
+![Summary.](images/ch16/summary.png){#fig-ch16-summary}

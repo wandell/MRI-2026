@@ -28,6 +28,32 @@ for i, slide in enumerate(prs.slides, 1):
     print(f"Slide {i:3d}: {title}")
 ```
 
+**Critical:** when reading slides from the ZIP, always get the correct slide order from
+`ppt/presentation.xml` via its relationship file — do NOT sort slide XML files
+alphabetically. Alphabetic sort gives `slide1, slide10, slide11, ..., slide2` which
+is wrong. Use this pattern instead:
+
+```python
+with zipfile.ZipFile(path) as z:
+    prs_xml = z.read('ppt/presentation.xml')
+    prs_root = etree.fromstring(prs_xml)
+    ns = {'p': 'http://schemas.openxmlformats.org/presentationml/2006/main',
+          'r': 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'}
+    slide_ids = prs_root.xpath('.//p:sldIdLst/p:sldId', namespaces=ns)
+    rels_xml = z.read('ppt/_rels/presentation.xml.rels')
+    rels_root = etree.fromstring(rels_xml)
+    rel_map = {r.get('Id'): r.get('Target') for r in rels_root}
+    rns = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
+    ordered_slides = [
+        'ppt/' + rel_map[s.get(f'{{{rns}}}id')].lstrip('/')
+        for s in slide_ids
+    ]
+```
+
+Note: LibreOffice handles corrupt embedded images gracefully (logs a warning but
+still converts). If `python-pptx` raises `BadZipFile: Bad CRC-32`, try the
+LibreOffice conversion path directly — the resulting PDF will still be usable.
+
 To find the correct PDF page for a given PPTX slide (accounting for hidden slides):
 
 ```python

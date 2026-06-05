@@ -1,0 +1,43 @@
+---
+date: last-modified
+---
+
+# Image Distortions and Quality
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Image distortions and image quality
+
+![Image distortions and image quality.](images/ch19/image-distortions-and-image-quality.png){#fig-ch19-image-distortions-and-image-quality}
+
+## Distortions due to magnetic field inhomogeneities.
+
+![Distortions due to magnetic field inhomogeneities..](images/ch19/distortions-due-to-magnetic-field-inhomogeneities.png){#fig-ch19-distortions-due-to-magnetic-field-inhomogeneities}
+
+## Distortions caused by gradient problems.
+
+![Distortions caused by gradient problems..](images/ch19/distortions-caused-by-gradient-problems.png){#fig-ch19-distortions-caused-by-gradient-problems}
+
+## Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING
+
+::: {.panel-tabset}
+
+## Step 1
+
+![Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING — step 1.](images/ch19/effect-of-under-sampling-important-for-parallel-im-1.png){#fig-ch19-effect-of-under-sampling-important-for-parallel-im-1}
+
+## Step 2
+
+![Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING — step 2.](images/ch19/effect-of-under-sampling-important-for-parallel-im-2.png){#fig-ch19-effect-of-under-sampling-important-for-parallel-im-2}
+
+:::
+
+## Ghosting is a particularly important imaging artifact
+
+![Ghosting is a particularly important imaging artifact.](images/ch19/ghosting-is-a-particularly-important-imaging-artif.png){#fig-ch19-ghosting-is-a-particularly-important-imaging-artif}
+
+## Functional imaging: B0 non-uniformity distortion
+
+![Functional imaging: B0 non-uniformity distortion.](images/ch19/functional-imaging-b0-non-uniformity-distortion.png){#fig-ch19-functional-imaging-b0-non-uniformity-distortion}
