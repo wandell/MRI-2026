@@ -25,7 +25,17 @@ book:
        - chapters/ch10-pulse-sequences.qmd
        - chapters/ch11-physical-mechanisms.qmd
     - part: chapters/part3-imageformation.qmd
-      chapters: []
+      chapters:
+       - chapters/ch12-image-formation-principles.qmd
+       - chapters/ch13-gradient-encoding-lauterbur.qmd
+       - chapters/ch14-fourier-series-kspace.qmd
+       - chapters/ch15-slice-selection.qmd
+       - chapters/ch16-gradient-echo.qmd
+       - chapters/ch17-imaging-within-slice.qmd
+       - chapters/ch18-kspace-epi.qmd
+       - chapters/ch19-image-quality.qmd
+       - chapters/ch20-parallel-imaging.qmd
+       - chapters/ch21-image-data-formats.qmd
     - part: chapters/part4-brain.qmd
       chapters: []
     - part: chapters/part5-functionalsignals.qmd

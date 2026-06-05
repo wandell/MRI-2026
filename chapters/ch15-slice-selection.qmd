@@ -1,0 +1,37 @@
+---
+date: last-modified
+---
+
+# Slice Selection
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Image formation: Slice selection
+
+![Image formation: Slice selection.](images/ch15/image-formation-slice-selection.png){#fig-ch15-image-formation-slice-selection}
+
+## A gradient sets Larmor frequency for a slice
+
+![A gradient sets Larmor frequency for a slice.](images/ch15/a-gradient-sets-larmor-frequency-for-a-slice.png){#fig-ch15-a-gradient-sets-larmor-frequency-for-a-slice}
+
+## A pulse sequence for slice selection
+
+![A pulse sequence for slice selection.](images/ch15/a-pulse-sequence-for-slice-selection.png){#fig-ch15-a-pulse-sequence-for-slice-selection}
+
+## Slice selection
+
+![Slice selection.](images/ch15/slice-selection.png){#fig-ch15-slice-selection}
+
+## Slice selection pulses:  how wide will the slice be?
+
+![Slice selection pulses:  how wide will the slice be?.](images/ch15/slice-selection-pulses-how-wide-will-the-slice-be.png){#fig-ch15-slice-selection-pulses-how-wide-will-the-slice-be}
+
+## Slice thickness and location depend on the gradient and the pulse
+
+![Slice thickness and location depend on the gradient and the pulse.](images/ch15/slice-thickness-and-location-depend-on-the-gradien.png){#fig-ch15-slice-thickness-and-location-depend-on-the-gradien}
+
+## The RF pulse can change slice thickness and location
+
+![The RF pulse can change slice thickness and location.](images/ch15/the-rf-pulse-can-change-slice-thickness-and-locati.png){#fig-ch15-the-rf-pulse-can-change-slice-thickness-and-locati}

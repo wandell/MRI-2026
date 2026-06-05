@@ -1,0 +1,113 @@
+---
+date: last-modified
+---
+
+# Linear Models and the Fourier Series
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Linear models and the Fourier Series (k-space)
+
+![Linear models and the Fourier Series (k-space).](images/ch14/linear-models-and-the-fourier-series-k-space.png){#fig-ch14-linear-models-and-the-fourier-series-k-space}
+
+## Linear models are important in science and engineering
+
+![Linear models are important in science and engineering.](images/ch14/linear-models-are-important-in-science-and-enginee.png){#fig-ch14-linear-models-are-important-in-science-and-enginee}
+
+## The Fourier series is a linear model – the basis functions are harmonics
+
+![The Fourier series is a linear model – the basis functions are harmonics.](images/ch14/the-fourier-series-is-a-linear-model-the-basis-fun.png){#fig-ch14-the-fourier-series-is-a-linear-model-the-basis-fun}
+
+## The Fourier series is a linear model
+
+![The Fourier series is a linear model.](images/ch14/the-fourier-series-is-a-linear-model.png){#fig-ch14-the-fourier-series-is-a-linear-model}
+
+From wikipediaThere were three important contributions in this work, one purely mathematical, two essentially physical. In mathematics, Fourier claimed that any function of a variable, whether continuous or discontinuous, can be expanded in a series of sines of multiples of the variable. Though this result is not correct without additional conditions, Fourier's observation that some discontinuous functions are the sum of infinite series was a breakthrough. The question of determining when a Fourier series converges has been fundamental for centuries. Joseph-Louis Lagrange had given particular cases of this (false) theorem, and had implied that the method was general, but he had not pursued the subject. Peter Gustav Lejeune Dirichlet was the first to give a satisfactory demonstration of it with some restrictive conditions. This work provides the foundation for what is today known as the Fourier transform.Other material in the following is fromhttp://www-groups.dcs.st-and.ac.uk/history/Biographies/Fourier.html
+
+## The harmonic basis functions (sin and cos)
+
+![The harmonic basis functions (sin and cos).](images/ch14/the-harmonic-basis-functions-sin-and-cos.png){#fig-ch14-the-harmonic-basis-functions-sin-and-cos}
+
+## Linear models:  Matrix tableau representation
+
+![Linear models:  Matrix tableau representation.](images/ch14/linear-models-matrix-tableau-representation.png){#fig-ch14-linear-models-matrix-tableau-representation}
+
+## Estimating the weights from the signal
+
+![Estimating the weights from the signal.](images/ch14/estimating-the-weights-from-the-signal.png){#fig-ch14-estimating-the-weights-from-the-signal}
+
+Teachmri:  harmonicsFFTandImages29
+
+## Historical note: Fourier
+
+![Historical note: Fourier.](images/ch14/historical-note-fourier.png){#fig-ch14-historical-note-fourier}
+
+Teachmri:  harmonicsFFTandImages30
+
+## History of Fourier’s publication
+
+::: {.panel-tabset}
+
+## Step 1
+
+![History of Fourier’s publication — step 1.](images/ch14/history-of-fouriers-publication-1.png){#fig-ch14-history-of-fouriers-publication-1}
+
+## Step 2
+
+![History of Fourier’s publication — step 2.](images/ch14/history-of-fouriers-publication-2.png){#fig-ch14-history-of-fouriers-publication-2}
+
+:::
+
+## 2D Fourier Transform:Sinusoidal and cosinusoidal images (Harmonic Patterns)
+
+![2D Fourier Transform:Sinusoidal and cosinusoidal images (Harmonic Patterns).](images/ch14/2d-fourier-transformsinusoidal-and-cosinusoidal-im.png){#fig-ch14-2d-fourier-transformsinusoidal-and-cosinusoidal-im}
+
+fmri-fig-04-07-0.jpgNotes about negative frequenciesYou're correct! In the Fourier Transform representation of a real-valued image, the values of the negative frequencies are related to the values of the positive frequencies in a specific way. This relationship stems from the properties of real-valued functions and the symmetry of the Fourier Transform.Here's how it works:1. Real-valued images and conjugate symmetry:A real-valued image means that its intensity values are real numbers, not complex numbers. This property translates to a specific behavior in the Fourier domain: conjugate symmetry.Conjugate symmetry implies that for every complex number F(k) corresponding to a positive frequency k in the Fourier Transform, the complex conjugate F(-k) will be the corresponding value at the negative frequency -k. In other words:Re[F(k)] = Re[F(-k)]Im[F(k)] = -Im[F(-k)]where Re() and Im() represent the real and imaginary parts of a complex number, respectively.2. Implications for intensity values:Since the absolute value of a complex number represents its magnitude, we can infer from the conjugate symmetry that:|F(k)| = |F(-k)|This means that the magnitude (absolute value) of a frequency component in the Fourier Transform is the same at both the positive and negative frequencies.However, the phase of the complex numbers will be different for positive and negative frequencies due to the sign difference in the imaginary part. This difference in phase doesn't affect the intensity of the image information and can often be ignored in image analysis.3. Practical observations:In real-world images, some components might not perfectly exhibit perfect conjugate symmetry due to noise or imperfect data acquisition. However, the general principle of matching magnitudes between positive and negative frequencies holds true in most cases.To summarize:In a real-valued image, the magnitude of a frequency component in the Fourier Transform is the same at both the positive and negative frequencies.The phase of these components will be different, but this difference doesn't affect the intensity information in the image.Understanding this relationship can be helpful when interpreting and analyzing MRI images in the Fourier domain.I hope this explanation clarifies the connection between positive and negative frequencies in the Fourier Transform of a real-valued image! Feel free to ask if you have any further questions about this or other aspects of MRI image formation.
+
+## Harmonics – 1D
+
+![Harmonics – 1D.](images/ch14/harmonics-1d.png){#fig-ch14-harmonics-1d}
+
+## Adding vertical harmonics
+
+![Adding vertical harmonics.](images/ch14/adding-vertical-harmonics.png){#fig-ch14-adding-vertical-harmonics}
+
+## Harmonics – 2D
+
+![Harmonics – 2D.](images/ch14/harmonics-2d.png){#fig-ch14-harmonics-2d}
+
+## The 2-dimensional Fourier series
+
+![The 2-dimensional Fourier series.](images/ch14/the-2-dimensional-fourier-series.png){#fig-ch14-the-2-dimensional-fourier-series}
+
+## Video: Summing 2D harmonics produce any image
+
+![Video: Summing 2D harmonics produce any image.](images/ch14/video-summing-2d-harmonics-produce-any-image.png){#fig-ch14-video-summing-2d-harmonics-produce-any-image}
+
+## How different frequencies contribute to an image
+
+::: {.panel-tabset}
+
+## Step 1
+
+![How different frequencies contribute to an image — step 1.](images/ch14/how-different-frequencies-contribute-to-an-image-1.png){#fig-ch14-how-different-frequencies-contribute-to-an-image-1}
+
+## Step 2
+
+![How different frequencies contribute to an image — step 2.](images/ch14/how-different-frequencies-contribute-to-an-image-2.png){#fig-ch14-how-different-frequencies-contribute-to-an-image-2}
+
+## Step 3
+
+![How different frequencies contribute to an image — step 3.](images/ch14/how-different-frequencies-contribute-to-an-image-3.png){#fig-ch14-how-different-frequencies-contribute-to-an-image-3}
+
+## Step 4
+
+![How different frequencies contribute to an image — step 4.](images/ch14/how-different-frequencies-contribute-to-an-image-4.png){#fig-ch14-how-different-frequencies-contribute-to-an-image-4}
+
+:::
+
+## How do you calculate the Fourier coefficient?
+
+![How do you calculate the Fourier coefficient?.](images/ch14/how-do-you-calculate-the-fourier-coefficient.png){#fig-ch14-how-do-you-calculate-the-fourier-coefficient}
