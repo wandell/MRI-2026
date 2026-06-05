@@ -12,6 +12,8 @@ date: last-modified
 
 ![Magnetic Resonance Imaging:  Principles of image formation.](images/ch12/magnetic-resonance-imaging-principles-of-image-for.png){#fig-ch12-magnetic-resonance-imaging-principles-of-image-for}
 
+Next, we are going to ask how we might create images from the MR signal, enabling us to measure not just the average signal from a whole volume, but separating out where in the volume the signal might come from.
+
 ## Controlling magnetic field gradients to resolve spatial position
 
 ![Controlling magnetic field gradients to resolve spatial position.](images/ch12/controlling-magnetic-field-gradients-to-resolve-sp.png){#fig-ch12-controlling-magnetic-field-gradients-to-resolve-sp}
