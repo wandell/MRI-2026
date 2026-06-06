@@ -24,7 +24,10 @@ date: last-modified
 
 ![The Fourier series is a linear model.](images/ch14/the-fourier-series-is-a-linear-model.png){#fig-ch14-the-fourier-series-is-a-linear-model}
 
-From wikipediaThere were three important contributions in this work, one purely mathematical, two essentially physical. In mathematics, Fourier claimed that any function of a variable, whether continuous or discontinuous, can be expanded in a series of sines of multiples of the variable. Though this result is not correct without additional conditions, Fourier's observation that some discontinuous functions are the sum of infinite series was a breakthrough. The question of determining when a Fourier series converges has been fundamental for centuries. Joseph-Louis Lagrange had given particular cases of this (false) theorem, and had implied that the method was general, but he had not pursued the subject. Peter Gustav Lejeune Dirichlet was the first to give a satisfactory demonstration of it with some restrictive conditions. This work provides the foundation for what is today known as the Fourier transform.Other material in the following is fromhttp://www-groups.dcs.st-and.ac.uk/history/Biographies/Fourier.html
+**From wikipedia **
+"There were three important contributions in this work, one purely mathematical, two essentially physical. In mathematics, Fourier claimed that any function of a variable, whether continuous or discontinuous, can be expanded in a series of sines of multiples of the variable. Though this result is not correct without additional conditions, Fourier's observation that some discontinuous functions are the sum of infinite series was a breakthrough. The question of determining when a Fourier series converges has been fundamental for centuries. Joseph-Louis Lagrange had given particular cases of this (false) theorem, and had implied that the method was general, but he had not pursued the subject. Peter Gustav Lejeune Dirichlet was the first to give a satisfactory demonstration of it with some restrictive conditions. This work provides the foundation for what is today known as the Fourier transform."
+[Other material in the following is from](http://www-groups.dcs.st-and.ac.uk/history/Biographies/Fourier.html)
+
 
 ## The harmonic basis functions (sin and cos)
 

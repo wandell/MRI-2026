@@ -43,20 +43,21 @@ The energy difference between the parallel and anti-parallel two states determin
 
 ![The net magnetization is the sum of the spins.](images/ch06/the-net-magnetization-is-the-sum-of-the-spins.png){#fig-ch06-the-net-magnetization-is-the-sum-of-the-spins}
 
-Figure 3.4 Precession. The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B).
-In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
+Figure 3.4 Precession. The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B). In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
+
+We summarize the behavior of the spins by calculating the **net magnetization**, which is the vector sum of all the individual spins. The net magnetization vector ($\mathbf{M}$) points in the direction of the majority of the spins and has a magnitude proportional to the number of spins aligned in that direction. At equilibrium, the net magnetization points along the direction of the $B_0$ field (the zz-axis) because more spins are aligned with $B_0$ than against it.
 
 ## The RF signal creates a ‘precession’ signal of the net magnetization
 
 ::: {.panel-tabset}
 
-## Step 1
+## Creating the precession signal of the net magnetization
 
 ![The RF signal creates a ‘precession’ signal of the net magnetization — step 1.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-1.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1}
 
-## Step 2
+## Video of the precession to be included here.
 
-![The RF signal creates a ‘precession’ signal of the net magnetization — step 2.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-2.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-2}
+![Video of the precession to be included here.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-2.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-2}
 
 :::
 
