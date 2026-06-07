@@ -138,5 +138,10 @@ In the Fourier Transform representation of a real-valued image, the values of th
 ## Calculating the Fourier weights (coefficients)
 
 ![How do you calculate the Fourier coefficient?.](images/ch14/how-do-you-calculate-the-fourier-coefficient.png){#fig-ch14-how-do-you-calculate-the-fourier-coefficient}
-The inner product
+
+We need to explain the inner product around here.
+
+Maybe some more examples, or a video around here.
+
+
 
