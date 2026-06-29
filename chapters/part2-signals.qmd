@@ -2,11 +2,10 @@
 date: last-modified
 ---
 
-# Introduction to MR signals {.unnumbered #sec-mr-signals}
+# Introduction to MR signals {#sec-mr-signals .unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
 The free induction decay experiment is explained.
-
