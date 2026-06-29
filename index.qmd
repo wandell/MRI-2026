@@ -9,40 +9,8 @@ We welcome students from engineering, neuroscience, and psychology backgrounds. 
 ## Instructional Approach
 This course is designed around active, live interaction. While we provide Panopto recordings for occasional, unavoidable absences, the core value of the course lies in our synchronous discussions of research papers and collaborative homework reviews. We expect regular attendance to ensure a high-level dialogue that benefits the entire cohort.
 
-# Topics
+## Course topics
+Review the menu at the left for an overview of the topics covered in the course.  The different parts are collapsible, so you should be able to leaf through the coverage.
 
-## MR Instrumentation
-
-Magnets, coils, computers, whatever
-
-## MR Signals
-
-T1, T2, T2*
-
-## Image formation
-
-Fourier Transform (k-space), Sampling issues, Distortions
-
-Reconstruction principles; parallel imaging; multiplexing (mux).
-
-## Brain components 
-
-Cell types, Vasculature
-
-## Functional signals
-
-fMRI (not bold); visual field maps, functional specializations, other topics
-
-## Data analysis methods
-
-time series, beta-weights, other ...
-
-## Diffusion 
-
-## Quantitative MRI topics
-
-Multi-echo quantification. Correcting for coil
-
-## Applications
 
 

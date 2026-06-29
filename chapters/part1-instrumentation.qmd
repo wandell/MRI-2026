@@ -8,13 +8,11 @@ date: last-modified
 
 ---
 
-## Main Magnetic Field 
+We begin withn a broad overview of MR instrumentation.  We describe how the main magnetic field is created, and the importance of super conductivity.  We also introduce the basic units of magnetic fields.
 
-## Magnetic Field Units
+Then the two types of coils, **RF coils and gradient coils**, are introduced.  The RF coils have an essential role in evoking and recording the signal. How this works will be a relatively early topic, when we get to the free induction decay experiment at the beginning of the next section, @sec-mr-signals.
 
-## Gradient Coils
+The gradient coils have an essential role in image formation, which we will describe in great detail in later chapeters.
 
-## RF Coils
-
-## Safety
+**Safety** is very important to all of us. The risks, and most importantly how to be safe, when working around the magnet is a primary concern of all imaging centers.  And all users at these centers!
 
