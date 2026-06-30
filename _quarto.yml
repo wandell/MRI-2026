@@ -72,19 +72,19 @@ format:
     math: 
       number-sections: true
       number-equations: true
-  pdf:
-    documentclass: scrreprt
-    toc: true
-    toc-title: "Contents"
-    toc-number-sections: true
-    toc-number-depth: 2
-    fig-caption: true
-    number-sections: true
-    number-depth: 2
-    keep-tex: false
-    latex-clean: true
-    math:
-      number-equations: true
+#  pdf:
+#    documentclass: scrreprt
+#    toc: true
+#    toc-title: "Contents"
+#    toc-number-sections: true
+#    toc-number-depth: 2
+#    fig-caption: true
+#    number-sections: true
+#    number-depth: 2
+#    keep-tex: false
+#    latex-clean: true
+#    math:
+#      number-equations: true
 
 
 

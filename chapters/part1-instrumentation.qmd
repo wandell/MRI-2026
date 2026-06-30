@@ -8,10 +8,11 @@ date: last-modified
 
 ---
 
-We begin withn a broad overview of MR instrumentation.  We describe how the main magnetic field is created, and the importance of super conductivity.  We also introduce the basic units of magnetic fields.
+We begin with an overview of the MRI instrumentation. An MRI system is organized across multiple rooms: the scanner room containing the magnet bore, the console room for the operator, and the machine room containing the gradient amplifiers and support electronics. We describe how superconducting magnets generate the main magnetic field ($B_0$) and introduce the standard units of magnetic field strength.
 
-Then the two types of coils, **RF coils and gradient coils**, are introduced.  The RF coils have an essential role in evoking and recording the signal. How this works will be a relatively early topic, when we get to the free induction decay experiment at the beginning of the next part, [Introduction to MR signals](part2-signals.qmd).
+Next, we introduce the two main types of electromagnetic coils:
 
-The gradient coils have an essential role in image formation, which we will describe in great detail in later chapeters.
+- **Radiofrequency (RF) coils**, which excite nuclear spins and record the resulting signals. We explore this process at the beginning of the next part, starting with the free induction decay experiment in [Introduction to MR signals](part2-signals.qmd).
+- **Gradient coils**, which vary the magnetic field spatially to enable image formation.
 
-**Safety** is very important to all of us. The risks, and most importantly how to be safe, when working around the magnet is a primary concern of all imaging centers.  And all users at these centers!
+Finally, we discuss **MRI safety**, outlining the physical hazards of working around a high-field magnet and the essential safety practices required for all operators and subjects.

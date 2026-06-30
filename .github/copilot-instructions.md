@@ -6,7 +6,7 @@ You are assisting with a Quarto book project stored in a GitHub repository. Your
 - Project type: **Quarto book** (`_quarto.yml` at repo root or book root).
 - Repository status: this is an **early draft** of lecture notes for a course taught at Stanford by Brian Wandell and at NYU by Jonathan Winawer.
 - Author writes and edits in **VSCode**.
-- Outputs: at least **HTML**, often **PDF** too. Assume cross-format compatibility matters unless told otherwise.
+- Outputs: **HTML** is the primary target for previewing and rendering. **PDF** is created rarely (towards the end of the project). Assume cross-format compatibility matters for markup/styles unless told otherwise.
 - Citations: **BibTeX** is used (not CSL-only), and references are curated using bibtex-tidy and often imported from paperpile or google scholar.
 - Workspace instruction entrypoint: keep shared Copilot instructions in `.github/copilot-instructions.md`; supporting task-specific guidance lives in `.github/instructions/`.
 - The course title at Stanford is **Human Neuroimaging with MRI: A Primer**.
