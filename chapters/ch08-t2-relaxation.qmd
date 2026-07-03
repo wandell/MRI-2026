@@ -32,11 +32,27 @@ date: last-modified
 
 ## The spin de-phasing
 
+<!--
 ![The spin de-phasing.](images/ch08/the-spin-de-phasing.png){#fig-ch08-the-spin-de-phasing}
+-->
+
+::: {.content-visible when-format="html"}
+![Individual magnetic moments start aligned and progressively de-phase (become incoherent); the sum of the magnetic moments, and the resulting signal, decays as the individual spins diverge.](images/ch08/spin-dephasing-t2-signal-loss.mp4){#vid-ch08-spin-dephasing-t2-signal-loss width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Individual magnetic moments progressively de-phase, and the sum of the magnetic moments (and resulting signal) decays as a result (video; see the HTML version for the animation).](images/ch08/spin-dephasing-t2-signal-loss.png){#vid-ch08-spin-dephasing-t2-signal-loss width="70%"}
+:::
+
+* Transverse magnetization declines as the directions of the spins (their *relative phases*) diverge, becoming incoherent
+* Vectors on the left represent individual spins
+* Blue arrow on the right represents the reduction in the net transverse magnetization as the spins de-phase (become incoherent)
 
 ## MR: The two mechanisms of spin dephasing
 
+<!--
 ![MR: The two mechanisms of spin dephasing.](images/ch08/mr-the-two-mechanisms-of-spin-dephasing.png){#fig-ch08-mr-the-two-mechanisms-of-spin-dephasing}
+-->
 
 ## Two sources of transverse magnetization decay
 
@@ -97,3 +113,19 @@ Values from:  https://pubmed.ncbi.nlm.nih.gov/10232510/
 Figure 3.1 (a) Coronal image of the brain showing a tumour (arrow). In this image the tumour is bright against the darker grey
 of the normal brain tissue. (b) The same slice with a different pulse sequence, this time showing the tumour darker than the
 surrounding brain
+
+## Why is the T2 measurement not quantitative?
+
+![Why is the T2 measurement not quantitative? When we measure across different positions in the brain, the absolute level of the starting point (M0) differs, mainly because of PD and coil inhomogeneities (excite and receive). In this example, the signal level at 32 ms differs between locations, but the T2 time constant does not.](images/ch08/why-t2-measurement-not-quantitative.png){#fig-ch08-why-t2-measurement-not-quantitative}
+
+::: {.content-visible when-format="html"}
+![Multiple spin echoes: the decay of the echo peak amplitudes measures T2, while the absolute starting amplitude (M0) varies with position because of PD and coil inhomogeneities.](images/ch08/multiple-echoes-decay-t2-quantitative.mp4){#vid-ch08-multiple-echoes-decay-t2-quantitative width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Multiple spin echoes: the decay of the echo peak amplitudes measures T2, while the absolute starting amplitude (M0) varies with position (video; see the HTML version for the animation).](images/ch08/multiple-echoes-decay-t2-quantitative.png){#vid-ch08-multiple-echoes-decay-t2-quantitative width="70%"}
+:::
+
+* When we measure different brain positions, the absolute level of the initial excitation differs
+* There are several reasons - but mainly proton density (PD) and coil inhomogeneities that impact both excite and receive
+* The inhomogeneities cause the size of the bulk magnetization ($M_0$) to differ

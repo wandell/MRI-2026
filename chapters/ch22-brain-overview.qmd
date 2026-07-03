@@ -43,3 +43,11 @@ Cortical computations take place in the gray matter, a thin (2-4 mm) sheet of ne
 The brain's job is to interpret data and lead to actions. Even simple perceptual judgments, such as the lightness of a surface, depend on substantial interpretation of image data by brain circuits — as illustrated by the classic checkerboard lightness illusion.
 
 ![Checkerboard lightness illusion (Anderson and Winawer, *Nature*, 2005): squares of identical physical luminance appear different in lightness depending on surrounding context.](images/ch22/checkerboard-illusion.png){#fig-ch22-checkerboard-illusion fig-alt="Two checkerboard patterns with a shadow illusion demonstrating that identical gray squares appear different depending on context."}
+
+::: {.content-visible when-format="html"}
+![Rotating 3D rendering of a human brain surface.](images/ch22/rotating-brain-animation.mp4){#vid-ch22-rotating-brain width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Rotating 3D rendering of a human brain surface (video; see the HTML version for the animation).](images/ch22/rotating-brain-animation.png){#vid-ch22-rotating-brain width="80%"}
+:::

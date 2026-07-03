@@ -2,13 +2,13 @@
 date: last-modified
 ---
 
-# Principles of Image Formation
+# Image Formation Principles
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-## Magnetic Resonance Imaging:  Principles of image formation
+## Image formation principles overview
 
 ![Magnetic Resonance Imaging:  Principles of image formation.](images/ch12/magnetic-resonance-imaging-principles-of-image-for.png){#fig-ch12-magnetic-resonance-imaging-principles-of-image-for}
 
@@ -18,7 +18,7 @@ Next, we are going to ask how we might create images from the MR signal, enablin
 
 ![Controlling magnetic field gradients to resolve spatial position.](images/ch12/controlling-magnetic-field-gradients-to-resolve-sp.png){#fig-ch12-controlling-magnetic-field-gradients-to-resolve-sp}
 
-To move a spin between two states, we require an RF photon whose energy is matched to the difference in energy between the two states; The energy of an RF photon is E = hv where h is Planck’s constant and v is frequency The RF pulse frequency we need to flip the spins varies with field strengthSir Joseph Larmor (11 July 1857 Magheragall, County Antrim, Ireland – 19 May 1942 Holywood, County Down, Northern Ireland [1]), a physicist and mathematician who made innovations in the understanding of electricity, dynamics,thermodynamics, and the electron theory of matter. His most influential work was Aether and Matter, a theoretical physics book published in 1900.Ampere saw the originalThe birth of the electric machines: a commentary on Faraday (1832) ‘Experimental researches in electricity’https://royalsocietypublishing.org/doi/full/10.1098/rsta.2014.0208“Within months of Ørsted's discovery, the French physicist and mathematician André-Marie Ampère had shown that two current carrying wires placed in parallel close to each other each generated magnetic lines of force that caused the wires to be attracted or repelled from each other depending on whether the currents were flowing in the same or in opposite directions. Ampère would go on to help found the field of classical electromagnetism and has the SI unit of electric current named after him.”
+To move a spin between two states, we require an RF photon whose energy is matched to the difference in energy between the two states; The energy of an RF photon is $E = hv$ where h is Planck’s constant and $v$ is frequency The RF pulse frequency we need to flip the spins varies with field strengthSir Joseph Larmor (11 July 1857 Magheragall, County Antrim,Ireland – 19 May 1942 Holywood, County Down, Northern Ireland [1])a physicist and mathematician who made innovations in the understanding of electricity,dynamics,thermodynamics, and the electron theory of matter. His most influential work was Aether and Matter, a theoretical physics book published in 1900.Ampere saw the originalThe birth of the electric machines: a commentary on Faraday (1832) ‘Experimental researches in electricity’https://royalsocietypublishing.org/doi/full/10.1098/rsta.2014.0208“. Within months of Ørsted's discovery, the French physicist and mathematician André-Marie Ampère had shown that two current carrying wires placed in parallel close to each other each generated magnetic lines of force that caused the wires to be attracted or repelled from each other depending on whether the currents were flowing in the same or in opposite directions. Ampère would go on to help found the field of classical electromagnetism and has the SI unit of electric current named after him.”
 
 ## Using a gradient to resolve the spatial locations of two beakers of water
 

@@ -89,6 +89,29 @@ many round-trips. A more efficient approach:
 python3 /path/to/skills/pptx/scripts/office/soffice.py --headless --convert-to pdf "DeckName.pptx"
 ```
 
+**If the deck is very large (100s of MB) or conversion hangs/times out**, the cause is
+usually one or more embedded video files (`ppt/media/*.mov`, `*.mp4`) — LibreOffice
+has to load them even though it won't render hidden slides. Check media sizes first:
+
+```python
+import zipfile
+z = zipfile.ZipFile("DeckName.pptx")
+for i in sorted(z.infolist(), key=lambda i: -i.file_size)[:10]:
+    print(f"{i.file_size/1e6:8.2f} MB  {i.filename}")
+```
+
+If large videos are present, extract them first (see "Embedded videos" below), then
+strip them from a working copy before converting to PDF — this is much faster than
+converting the full deck and does not affect which slides appear in the PDF:
+
+```bash
+cp "DeckName.pptx" /tmp/work.pptx   # do this in /tmp, not a mounted/synced folder —
+                                      # mounted folders may not support in-place rename
+cd /tmp
+zip work.pptx -d "ppt/media/media1.mov" "ppt/media/media2.mov"   # repeat per large file
+python3 /path/to/skills/pptx/scripts/office/soffice.py --headless --convert-to pdf work.pptx
+```
+
 ### 2. Convert PDF pages to PNG images (all at once)
 
 ```bash
@@ -171,6 +194,94 @@ Notes from the final slide of the build go here as prose.
 
 The Python generator script (see below) detects build sequences automatically by
 finding consecutive slides with the same title and emits `panel-tabset` blocks.
+
+### 7a. Embedded videos
+
+Slides sometimes embed video (demos, animations, recordings). These should be
+extracted and included in the Quarto notes as real `<video>` elements (HTML output),
+not as a static screenshot of the slide — a rendered PDF page of a video placeholder
+just shows a frozen player UI (play button, view count, etc.), which looks bad and
+isn't the actual content.
+
+**Find which slides have video**, using the slide relationship files (fast — this
+does not require opening the video data itself):
+
+```python
+import zipfile, re
+from lxml import etree
+
+z = zipfile.ZipFile("DeckName.pptx")
+video_exts = ('.mov', '.mp4', '.avi', '.wmv', '.m4v')
+
+prs_root = etree.fromstring(z.read('ppt/presentation.xml'))
+ns = {'p': 'http://schemas.openxmlformats.org/presentationml/2006/main',
+      'r': 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'}
+rns = ns['r']
+rels_root = etree.fromstring(z.read('ppt/_rels/presentation.xml.rels'))
+rel_map = {r.get('Id'): r.get('Target') for r in rels_root}
+ordered_slides = ['ppt/' + rel_map[s.get(f'{{{rns}}}id')].lstrip('/')
+                   for s in prs_root.findall('.//p:sldIdLst/p:sldId', ns)]
+
+for idx, slide_path in enumerate(ordered_slides, 1):
+    rel_path = f"ppt/slides/_rels/{slide_path.split('/')[-1]}.rels"
+    if rel_path in z.namelist():
+        for rel in etree.fromstring(z.read(rel_path)):
+            target = rel.get('Target') or ''
+            if target.lower().endswith(video_exts):
+                print(f"pptx slide {idx}: {target}")
+```
+
+**Extract the raw video bytes.** PowerPoint stores media uncompressed inside the
+zip (`compress_type == 0`), so extraction is a fast raw byte copy — no need to load
+the file through `python-pptx`:
+
+```python
+z = zipfile.ZipFile("DeckName.pptx")
+with z.open("ppt/media/media1.mov") as f_in, open("out/media1.mov", "wb") as f_out:
+    f_out.write(f_in.read())
+```
+
+**Convert/compress for the web** with `ffmpeg`. Check codec first — PowerPoint videos
+are usually already H.264/AAC, so a container remux to `.mp4` is a fast stream copy:
+
+```bash
+ffmpeg -y -i media1.mov -c copy -movflags +faststart media1.mp4
+```
+
+If the source is large (PowerPoint/Keynote screen recordings are often 4K at very
+high bitrate — 40–60+ Mbps — which produces multi-hundred-MB files that exceed
+GitHub's 100MB per-file push limit), re-encode at a lower resolution/CRF instead:
+
+```bash
+ffmpeg -y -i media1.mov -vf "scale=1920:-2" -c:v libx264 -preset veryfast -crf 18 \
+  -c:a aac -b:a 160k -movflags +faststart media1.mp4
+```
+
+`-crf 18` at 1080p is visually near-lossless for typical slide content and, combined
+with the resolution drop from 4K, usually lands well under 100MB even for
+30–60 second clips. Check the output size and adjust CRF/resolution if still too
+large.
+
+**Generate a poster-frame PNG** for the PDF fallback (nicer than a screenshot of the
+embedded player UI):
+
+```bash
+ffmpeg -y -ss 1 -i media1.mp4 -frames:v 1 media1.png
+```
+
+**Store the video next to the chapter's images** (`chapters/images/chNN/`, same as
+PNGs) and embed it with a static PDF fallback, per
+`.github/instructions/quarto-tips.md` §6:
+
+```markdown
+::: {.content-visible when-format="html"}
+![Caption.](images/chNN/filename.mp4){#vid-chNN-filename width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Caption (video; see the HTML version for the animation).](images/chNN/filename.png){#vid-chNN-filename width="80%"}
+:::
+```
 
 ### 8. Create the `.qmd` chapter file
 

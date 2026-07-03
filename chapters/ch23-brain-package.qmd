@@ -1,0 +1,65 @@
+---
+date: last-modified
+---
+
+# Brain package
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+The brain is packaged inside several concentric layers: skin, skull, the meninges (dura, arachnoid, and pia mater), and a dense vasculature. Each layer has a distinct mechanical or physiological role, and each is visible in structural MRI.
+
+![Skin, skull, and vasculature surrounding the brain (Netter Atlas of Human Anatomy, Plate 96).](images/ch23/brain-structures-overview.png){#fig-ch23-brain-structures-overview fig-alt="Netter atlas illustration of the scalp, skull, and superficial cerebral vasculature."}
+
+## Layers of the head
+
+From outside in: scalp, aponeurosis, periosteum, skull bone, dura mater (1st meningeal layer), arachnoid layer (2nd meningeal layer), and the brain itself with its pia mater (3rd meningeal layer).
+
+::: {.panel-tabset}
+## Step 1
+
+![Layers of the head, numbered 1-7 on a dissection specimen: scalp, aponeurosis, periosteum, skull bone, dura mater, arachnoid layer, and pia mater/brain.](images/ch23/head-layers-1.png){#fig-ch23-head-layers-1 fig-alt="Numbered dissection photo of the head showing seven layers from scalp to brain."}
+
+## Step 2
+
+![Detail on the aponeurosis (epicranial aponeurosis, running from frontalis to occipitalis muscle) and periosteum (membrane covering the outer bone surface).](images/ch23/head-layers-2.png){#fig-ch23-head-layers-2 fig-alt="Same layered head diagram with added detail on the aponeurosis and periosteum."}
+
+## Step 3
+
+![Approximate skull thickness by region: frontal bone ~6-8 mm, parietal bone ~4-7 mm, occipital bone ~6-10 mm, temporal bone ~2-4 mm.](images/ch23/head-layers-3.png){#fig-ch23-head-layers-3 fig-alt="Same layered head diagram with added skull-thickness values by region."}
+:::
+
+## Layers of the head on the way to the brain
+
+The same seven layers, viewed as a labeled schematic and as a dissection photograph.
+
+::: {.panel-tabset}
+## Diagram
+
+![Schematic sagittal view of the seven layers, plus internal structures (lateral, third, and fourth ventricles; choroid plexus; foramen of Monro; subdural and subarachnoid spaces).](images/ch23/head-layers-diagram.png){#fig-ch23-head-layers-diagram fig-alt="Labeled schematic sagittal diagram of the head layers and ventricular system."}
+
+## Dissection
+
+![The same seven layers shown on a dissection specimen.](images/ch23/head-layers-dissection.png){#fig-ch23-head-layers-dissection fig-alt="Numbered dissection photo of the head showing all seven layers."}
+:::
+
+## Appearance in a T1-weighted scan
+
+![Sagittal T1-weighted MRI with the same layers labeled: skin (epidermis, dermis), subcutaneous fibroadipose tissue, frontalis muscle, calvarium (outer table, diploic space, inner table), and dura with the superior sagittal sinus. The diploe is the spongy bone between the calvarium's inner and outer tables; the calvarium is the domelike upper skull excluding the jaw and face.](images/ch23/t1-weighted-appearance.png){#fig-ch23-t1-weighted-appearance fig-alt="Labeled sagittal T1-weighted MRI showing skin, skull, and dural layers."}
+
+## Pathology: thickening of the dura
+
+![Dural-pachymeningeal thickening and diffuse enhancement on post-contrast MRI: (A) axial, (B) coronal, (C) sagittal (noncontrasted, showing typical age-related atrophy), (D) FLAIR axial showing scattered periventricular gliosis consistent with chronic white matter disease.](images/ch23/dura-thickening-pathology.png){#fig-ch23-dura-thickening-pathology fig-alt="Four-panel MRI showing dural thickening and enhancement in axial, coronal, sagittal, and FLAIR views."}
+
+## Why so many layers?
+
+The brain is soft, metabolically demanding, and mechanically fragile, while the skull is rigid and subject to motion, impact, and vibration. No single interface can solve all of these constraints at once, so layering separates the functions: the dura provides mechanical support and venous drainage, the arachnoid and CSF provide hydraulic suspension and shock absorption, and the pia forms an intimate interface between vessels and tissue. The brain is not rigidly mounted — it is suspended and supplied.
+
+From an engineering perspective, the different layers of the packaging perform different roles: load-bearing (skull), and bulk fluid transport and pressure management (CSF). Endothelial cells surrounding the vasculature (the blood-brain barrier) control the passage of specific molecules.
+
+## Examples of layered structures
+
+Layering for graceful failure is a general engineering strategy, not unique to the brain. Laminated safety glass has multiple layers, cracks rather than shattering, and fails in a contained, predictable way. Composite aircraft skins orient fiber layers differently so cracks arrest at interfaces, engineering in damage tolerance. The brain's multiple meningeal layers similarly localize damage — for example, distinguishing epidural from subdural bleeds — rather than allowing a global failure.
+
+![The protective container of the brain: scalp, skull, dura mater, arachnoid mater, and pia mater.](images/ch23/layered-structures-engineering-analogy.png){#fig-ch23-layered-structures-engineering-analogy fig-alt="Illustration of a head with scalp, skull, dura, arachnoid, and pia mater layers labeled, alongside text about laminated glass and aircraft skin analogies."}

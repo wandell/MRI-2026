@@ -81,6 +81,12 @@ You are assisting with a Quarto book project stored in a GitHub repository. Your
 - Keep metadata aligned with the current course framing: Stanford title, both authors listed, and draft-stage assumptions.
 - Don’t introduce new dependencies unless necessary.
 
+## AI-authored prose in chapters
+- When an AI agent converts PPTX slides into `.qmd` chapters, it does not only transcribe slide text and speaker notes verbatim. It regularly writes original connective prose: transition sentences between figures, short definitions, historical/background context, and synthesis that ties a sequence of slides into a narrative.
+- This generated prose is a **first draft written in the author's voice as best the agent can approximate it**, not a direct quotation of the source deck. It should be treated as draft text requiring the same human review as any other AI-assisted writing — check it for factual accuracy, tone, and whether it says what the instructor actually wants said.
+- Slide-derived figures/captions are generally lower-risk (they come from the deck almost directly), while paragraph-level prose between figures is the highest-value thing to spot-check first.
+- See `TODO.md` at the repo root for a running list of specific things flagged for human review after each extraction pass.
+
 ## Image management
 - **See `.github/instructions/pptx-to-qmd-workflow.md` for the full PPTX → PNG → `.qmd` extraction workflow** (conversion commands, slide identification, naming, build sequences, crossref labels).
 - Treat slide decks and other instructor-specific source materials as **external working files**, not default repository assets.

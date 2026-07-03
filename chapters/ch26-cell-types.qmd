@@ -1,0 +1,81 @@
+---
+date: last-modified
+---
+
+# Cell types
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## The neuron doctrine
+
+Reticular theory held that the nervous system is a single continuous network — a view most associated with the Italian physician and Nobel laureate Camillo Golgi. The theory was refuted by later observations from the Spanish pathologist Santiago Ramón y Cajal, using a staining technique that Golgi himself had discovered. That work established the **neuron doctrine**: the nervous system is composed of discrete cells (neurons), not a continuous syncytium.
+
+::: {.panel-tabset}
+## History
+
+![Ramón y Cajal at work, and Camillo Golgi (inset): neuron doctrine versus reticular theory.](images/ch26/cajal-golgi-history-1.png){#fig-ch26-cajal-golgi-history-1 fig-alt="Historical photo of Ramon y Cajal working at a microscope, with a portrait of Camillo Golgi inset."}
+
+## Cajal's drawing
+
+![Cajal's own drawing comparing the reticular theory supported by Golgi (left) with his own neuron doctrine (right), using nerve cells of the spinal cord.](images/ch26/cajal-golgi-history-2.png){#fig-ch26-cajal-golgi-history-2 fig-alt="Cajal's hand-drawn comparison of reticular theory and neuron doctrine using spinal cord nerve cells."}
+:::
+
+Golgi's reticular theory was wrong structurally, but not absurd functionally, and he fought for it to the end. Both men shared the 1906 Nobel Prize; at the ceremony, the institute's president praised Golgi as the "pioneer of modern research in the nervous system" and Cajal as the man who had "given the study of the nervous system the form that it has taken in the present day." When Golgi delivered the prizewinner's address the next day, he surprised the audience by launching into a defense of reticular theory:
+
+> GOLGI: It may seem strange that, since I have always been opposed to the neuron theory — although acknowledging that its starting-point is to be found in my own work — I have chosen this question of the neuron as the subject of my lecture, and that it comes at a time when this doctrine is generally recognized to be going out of favour.
+
+## Cortical neuron types
+
+Cortical neurons can be classified by their layer (using Nissl stains, which reveal cell bodies) and by their full dendritic and axonal morphology (using Golgi stains, which reveal only 1-5% of neurons but show the entire cell).
+
+::: {.panel-tabset}
+## Nissl vs. Golgi
+
+![Nissl-stained sections of visual and motor cortex compared to a Golgi-stained section of association cortex, showing cortical layers II/III through VI.](images/ch26/cortical-neuron-types-1.png){#fig-ch26-cortical-neuron-types-1 fig-alt="Three columns comparing Nissl-stained visual cortex, Nissl-stained motor cortex, and Golgi-stained association cortex."}
+
+## Layer summary
+
+![Classic layer-by-layer summary of cortical cell types: neuroglia, stratum zonale, small/medium/extra-large pyramidal neurons, Bailarger's line, small and polymorphic neurons, inverted pyramidal neurons, large pyramidal neurons, and polymorphic/spindle neurons, down to white matter.](images/ch26/cortical-neuron-types-2.png){#fig-ch26-cortical-neuron-types-2 fig-alt="Labeled diagram of cortical layers 1-6 with named cell types at each depth, alongside a colored illustration of layered cortex."}
+
+## Spiny vs. non-spiny
+
+![Summary of cell types in primary visual cortex: spiny pyramidal and spiny stellate neurons (excitatory), and smooth or sparsely spiny neurons (inhibitory, GABAergic).](images/ch26/cortical-neuron-types-3.png){#fig-ch26-cortical-neuron-types-3 fig-alt="Diagram comparing spiny (excitatory) and non-spiny (inhibitory) cortical neuron morphologies."}
+:::
+
+People get a thrill out of visualizing individual neurons in three dimensions.
+
+::: {.content-visible when-format="html"}
+![Three-dimensional visualization of several reconstructed cortical neurons, showing their distinct dendritic and axonal arbors.](images/ch26/neuron-types-3d-visualization.mp4){#vid-ch26-neuron-types-3d-visualization width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Three-dimensional visualization of several reconstructed cortical neurons (video; see the HTML version for the animation).](images/ch26/neuron-types-3d-visualization.png){#vid-ch26-neuron-types-3d-visualization width="80%"}
+:::
+
+## Cataloging cell types
+
+Modern large-scale surveys extend this classification considerably. A survey of mouse V1 identified eight morphologically defined interneuron types alongside pyramidal cells, sorted here by abundance: large basket cells (37.6%), Martinotti cells (20.1%), bipolar cells (12.4%), neurogliaform cells (11.5%), small basket cells (9.4%), double-bouquet basket cells (5.6%), and horizontally elongated basket cells (3.4%) [@sandberg2019-mousecelltypes]. These mouse catalogs differ from the corresponding catalogs built for primate cortex.
+
+![Representative morphologies and spiking responses for eight interneuron types plus pyramidal cells in mouse V1 (Layer 4), from a large-scale cellular survey.](images/ch26/mouse-v1-cell-type-catalog.png){#fig-ch26-mouse-v1-cell-type-catalog fig-alt="Reconstructed morphologies and electrophysiological spiking traces for pyramidal cells and eight interneuron types in mouse visual cortex."}
+
+## Summary of neuronal function
+
+There are many types of cortical cells, but their signaling is directional and highly specific: dendrites receive input, the soma integrates it, and the axon carries output to specific synaptic targets. These connections form during development.
+
+::: {.panel-tabset}
+## Structure
+
+![Summary of neuronal structure and signal flow: dendritic input, soma, axon (with myelin), and axon terminals, alongside a detailed diagram of nucleus, mitochondria, and synaptic cleft.](images/ch26/neuronal-function-summary-1.png){#fig-ch26-neuronal-function-summary-1 fig-alt="Labeled diagram of a neuron showing dendritic input, soma, myelinated axon, and axon terminals, with signal flow indicated by an arrow."}
+
+## Structure and function
+
+![The same neuron diagram, with a note that Cajal described the parts while Golgi's intuition about mesh-like, whole-system function still has some resonance today: neuronal function depends on the structure of the entire connected circuit.](images/ch26/neuronal-function-summary-2.png){#fig-ch26-neuronal-function-summary-2 fig-alt="Same labeled neuron diagram with additional text about structure versus whole-circuit function."}
+:::
+
+## Rodent-human comparisons
+
+Rodent and primate (including human) cortex share basic cell classes — excitatory glutamatergic pyramidal cells and inhibitory GABAergic interneurons — that share fundamental features of morphology, physiology, and gene expression. Both also share a layered cortical organization with characteristic cell-type distributions and connectivity patterns, and both rely on similar basic circuit mechanisms, such as feedforward and feedback inhibition, to process information.
+
+The differences are mainly in degree rather than kind. Primates exhibit substantially greater diversity of cortical cell types, reflected in more subtypes distinguished by morphology, electrophysiology, and gene expression. Cortical layer thickness and organization differ as well: primates have a more prominent outer subventricular zone during development, contributing to the expansion of cortical layers. And while there is substantial overlap in gene expression between rodents and primates, primates show unique expression patterns associated with specific cell types and cortical areas, which likely underlie some of the functional specializations of primate cortex.

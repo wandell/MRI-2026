@@ -39,6 +39,14 @@ book:
     - part: chapters/part4-brain.qmd
       chapters:
        - chapters/ch22-brain-overview.qmd
+       - chapters/ch23-brain-package.qmd
+       - chapters/ch24-gross-anatomy.qmd
+       - chapters/ch25-model-brain-systems.qmd
+       - chapters/ch26-cell-types.qmd
+       - chapters/ch27-cell-signaling.qmd
+       - chapters/ch28-gross-neurovascular.qmd
+       - chapters/ch29-fine-scale-neurovascular.qmd
+       - chapters/ch30-neurovascular-unit.qmd
     - part: chapters/part5-functionalsignals.qmd
       chapters: []
     - part: chapters/part6-dataanalysis.qmd

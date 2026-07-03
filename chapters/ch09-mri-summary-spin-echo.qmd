@@ -74,9 +74,25 @@ The Hahn echo was not only a method to remove static dephasing; it introduced th
 
 ![Single spin echo: Signal.](images/ch09/single-spin-echo-signal.png){#fig-ch09-single-spin-echo-signal}
 
+::: {.content-visible when-format="html"}
+![The spins dephase; at a certain point they are flipped 180° (B1 pulse) so the leading phases become lagging; they re-phase, producing the echo at time TE.](images/ch09/single-spin-echo-formation.mp4){#vid-ch09-single-spin-echo-formation width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![The spins dephase, are flipped 180° (B1 pulse), and re-phase to produce the echo at time TE (video; see the HTML version for the animation).](images/ch09/single-spin-echo-formation.png){#vid-ch09-single-spin-echo-formation width="70%"}
+:::
+
 ## Multiple echoes
 
 ![Multiple echoes.](images/ch09/multiple-echoes.png){#fig-ch09-multiple-echoes}
+
+::: {.content-visible when-format="html"}
+![Repeating the 180° pulse produces multiple echoes; the peak of each echo declines over time because of spin-spin (T2) relaxation, and the decay of the echo amplitudes measures the pure T2 decay.](images/ch09/multiple-spin-echoes-decay.mp4){#vid-ch09-multiple-spin-echoes-decay width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Repeating the 180° pulse produces multiple echoes whose peak amplitudes decay with T2 (video; see the HTML version for the animation).](images/ch09/multiple-spin-echoes-decay.png){#vid-ch09-multiple-spin-echoes-decay width="70%"}
+:::
 
 Hongjian He proposes to give a lecture about multi-echo
 

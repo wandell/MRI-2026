@@ -28,26 +28,33 @@ From this paper:
 
 ![Source of the MR signal: Hydrogen nuclei (spins, protons).](images/ch06/source-of-the-mr-signal-hydrogen-nuclei-spins-prot.png){#fig-ch06-source-of-the-mr-signal-hydrogen-nuclei-spins-prot}
 
-People use a metaphor that the protons oscillate between one of two permissible states.  But it is probably more sensible to see the protons as distributed uniformly, as in the right image, and then when we apply the B0 field RF pulse we change the distribution to be biased.  Applying the RF pulse rotates all of the spins.  The longer we apply the pulse the more they rotate.  
+People use a metaphor that the spins (protons) oscillate between one of two permissible states.  But it is may be more sensible to see the protons as distributed uniformly, as in the right image, and then when we apply the B0 field RF pulse we change the distribution to be biased. 
 
-The energy difference between these two states determines the frequency of an RF signal that is needed to flip from one state to the other.  This is called the Larmor frequency. Slightly more of the protons have their positive side (red) oriented along with the B0 field. If we add an RF pulse along the longitudinal axis at this frequency, we change the preponderance of the spins from the orange state to the blue state.  They will then relax back along the main axis
+The impact of the RF pulse is to rotate all of the spins. The longer we apply the pulse the more they rotate. Intuitively, this explains why the FID signal increases with the increasing amplitude or duration of the RF excitation, and then as the rotation brings returns to distribution to the original state the signal decreases.
 
+<!-- 
 Extra images from
 Is Quantum Mechanics Necessary for Understanding Magnetic Resonance?
 LARS G. HANSON
 Sent to me by Hongjian He
+-->
 
 ## The FID signal: quantal description
 
 ![The FID signal: quantal description.](images/ch06/the-fid-signal-quantal-description.png){#fig-ch06-the-fid-signal-quantal-description}
 
-The energy difference between the parallel and anti-parallel two states determines the frequency of an RF signal that is needed to flip from one state to the other.  This is called the Larmor frequency. Slightly more of the protons have their positive side (red) oriented along with the B0 field. If we add an RF pulse along the longitudinal axis at this frequency, we change the preponderance of the spins from the orange state to the blue state.  They will then relax back along the main axis
+It is very important to understand this point: The physical mechanism causing the relaxation (return of the distribution to its original state) differs between the three world axes. Relaxation along the axis defined by the direction of the main field has one type of mechanism, and relaxation in the plane perpendicular to the main field has a different type of mechanism.  Thus, we use a different metaphor for these two types of relaxation.
+
+The relaxation parallel to the main field depends on the energy difference between the spins that are in the parallel and anti-parallel two states.  And this energy difference determines the frequency of an RF signal that is needed to flip from one state to the other: **the Larmor frequency**. 
+
+Slightly more of the protons have their positive side (red) oriented along with the B0 field. If we add an RF pulse along the longitudinal axis at this frequency, we change the preponderance of the spins from the orange state to the blue state. Left alone, the spins will relax back along the main axis.
 
 ## The net magnetization is the sum of the spins
-
 ![The net magnetization is the sum of the spins.](images/ch06/the-net-magnetization-is-the-sum-of-the-spins.png){#fig-ch06-the-net-magnetization-is-the-sum-of-the-spins}
 
-Figure 3.4 Precession. The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B). In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
+:::{.callout-note title="Precession"}
+The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B). In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
+:::
 
 We summarize the behavior of the spins by calculating the **net magnetization**, which is the vector sum of all the individual spins. The net magnetization vector ($\mathbf{M}$) points in the direction of the majority of the spins and has a magnitude proportional to the number of spins aligned in that direction. At equilibrium, the net magnetization points along the direction of the $B_0$ field (the zz-axis) because more spins are aligned with $B_0$ than against it.
 
@@ -59,9 +66,15 @@ We summarize the behavior of the spins by calculating the **net magnetization**,
 
 ![The RF signal creates a ‘precession’ signal of the net magnetization — step 1.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-1.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1}
 
-## Video of the precession to be included here.
+## Precession of the net magnetization
 
-![Video of the precession to be included here.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-2.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-2}
+::: {.content-visible when-format="html"}
+![The net magnetization vector M precesses around the z-axis, like a spinning top, tracing out the precession described above.](images/ch06/precession-of-net-magnetization.mp4){#vid-ch06-precession-of-net-magnetization width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![The net magnetization vector M precesses around the z-axis, like a spinning top (video; see the HTML version for the animation).](images/ch06/precession-of-net-magnetization.png){#vid-ch06-precession-of-net-magnetization width="70%"}
+:::
 
 :::
 
@@ -71,7 +84,20 @@ We summarize the behavior of the spins by calculating the **net magnetization**,
 
 ## The B1 signal applies a force to the net magnetization creating the transverse signal
 
+<!--
 ![The B1 signal applies a force to the net magnetization creating the transverse signal.](images/ch06/the-b1-signal-applies-a-force-to-the-net-magnetiza.png){#fig-ch06-the-b1-signal-applies-a-force-to-the-net-magnetiza}
+-->
+
+::: {.content-visible when-format="html"}
+![The B1 field applies a torque that tilts M away from the z-axis; as M rotates (precesses), it creates a transverse (xy) magnetization.](images/ch06/b1-force-creates-transverse-signal.mp4){#vid-ch06-b1-force-creates-transverse-signal width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![The B1 field applies a torque that tilts M away from the z-axis, creating a transverse (xy) magnetization (video; see the HTML version for the animation).](images/ch06/b1-force-creates-transverse-signal.png){#vid-ch06-b1-force-creates-transverse-signal width="70%"}
+:::
+
+* The RF signal from the coil (B1) applies a torque that tilts the direction of the net magnetization ($M$)
+* The signal rotates around the main axis (precesses), creating a transverse (xy) magnetization
 
 The RF excitation field does have a component along the zz-axis (the direction of the B0B_0 field), but this zz-component typically does not have a significant effect on the net magnetization during MRI. Here’s why:
 
@@ -102,7 +128,17 @@ Would you like to discuss RF coil design, or how B1B_1 fields are optimized to c
 
 ## Measuring the net magnetization
 
-![Measuring the net magnetization.](images/ch06/measuring-the-net-magnetization.png){#fig-ch06-measuring-the-net-magnetization}
+::: {.content-visible when-format="html"}
+![The precessing net magnetization induces a signal in a receiver coil (shown here as the copper coil), which can be the same as or different from the transmit coil.](images/ch06/measuring-net-magnetization-coil.mp4){#vid-ch06-measuring-net-magnetization-coil width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![The precessing net magnetization induces a signal in a receiver coil (video; see the HTML version for the animation).](images/ch06/measuring-net-magnetization-coil.png){#vid-ch06-measuring-net-magnetization-coil width="70%"}
+:::
+
+* The precessing magnetic field produces the measured electrical (RF) signal
+* The RF coil measures the electrical signal
+* The receiver coil (shown hyere as the copper coil) can be the same or different from the RF transmit (excite) coil
 
 ## The RF signal (B1) causes the net magnetization to precess
 
