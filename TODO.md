@@ -2,18 +2,25 @@
 
 Running list of items an AI agent flagged while extracting PPTX images/videos into the Quarto chapters. Nothing here blocks rendering; these are judgment calls or minor issues worth a human look.
 
+## Structural change: new chapter inserted, renumbering deferred (most recent work)
+- [ ] A new chapter, `chapters/pulse-sequences-t2-quantification.qmd` ("Pulse Sequences, T2 Quantification, and a Look Ahead to BOLD"), was built from PPTX slides 99–111 of "02 Signals and Sequence.pptx" and inserted into `_quarto.yml` right after ch08 (T2 Relaxation) and before ch09 (MRI Summary/Spin Echo). Quarto computes the displayed chapter number from position in the TOC, not from the filename, so it will render correctly as the chapter after ch08 even though its filename doesn't yet start with a chapter number.
+- [ ] **This chapter's filename is intentionally temporary.** Its figure/video labels use a `pulseseqt2-` prefix instead of `chNN-` for the same reason. A full renumbering pass is still needed: rename `ch09-mri-summary-spin-echo.qmd`→ch10, `ch10-pulse-sequences.qmd`→ch11, `ch11-physical-mechanisms.qmd`→ch12, and then cascade that +1 shift through every chapter in part3 (currently ch12–ch21) and part4 (currently ch22–ch30, the brain chapters), including their image folders and all `fig-chNN-*`/`vid-chNN-*` labels, and finally rename `pulse-sequences-t2-quantification.qmd` to its proper `chNN-` name. This was deferred as its own dedicated pass (touches ~21 chapters) rather than rushed into this session — see task list.
+- [ ] This chapter absorbs content that used to live in `ch10-pulse-sequences.qmd` (slides 99–111 were already extracted there, but with several MATLAB code blocks left as unfenced plain text, which likely rendered as garbled paragraphs — probably why this material looked "not extracted" to you). That old material was removed from `ch10-pulse-sequences.qmd` and replaced with a one-line pointer to the new chapter, and the MATLAB blocks are now in proper fenced code blocks. Please check the code renders/highlights as expected.
+- [ ] I also deleted the erroneous "Why is the T2 measurement not quantitative?" section I had mistakenly added to `ch08-t2-relaxation.qmd` in the prior turn — that was a duplicate I created by not noticing the content already existed (in garbled form) in ch10. The content now lives once, properly, in the new chapter.
+- [ ] The reused "Multiple Spin Echoes" video clip (same clip appears twice in the source deck) is now only copied into the new chapter's image folder — the erroneous copy that had been placed in ch08's folder was removed.
+
 ## Rendering
-- [ ] Full `quarto render` of ch05–ch10 and ch22–ch30 hasn't been run in this environment (no `quarto` CLI available here). Please render both HTML and PDF locally and spot-check figure/video numbering, especially the new video blocks.
+- [ ] Full `quarto render` hasn't been run in this environment (no `quarto` CLI available here). Please render both HTML and PDF locally and spot-check figure/video numbering, especially the new video blocks and the new chapter's code blocks.
 - [ ] For every embedded video, confirm the HTML version autoplays/loops acceptably and the PDF fallback poster frame is a reasonable stand-in.
 
 ## Pre-existing bug found (not introduced this session)
 - [ ] `chapters/ch06-macroscopic-model.qmd`: the heading "Applying the RF field rotates all the spins" and its label `#fig-ch06-applying-the-rf-field-rotates-all-the-spins` appear **twice** (once mid-chapter, once near the end), both pointing at the same image. This will cause a duplicate-label warning/error in Quarto. Decide whether the second occurrence should be removed, renamed, or was intentional repetition.
 
-## New videos added (ch06, ch08, ch09 — from "02 Signals and Sequence.pptx")
+## New videos added (ch06, ch08, ch09, and the new pulse-sequences chapter — from "02 Signals and Sequence.pptx")
 - [ ] ch06: precession of net magnetization, B1 force → transverse signal, and receiver-coil measurement — three short animations (silent, small) inserted where the deck had "Play precess.avi" links or an explicit "Video to be included here" placeholder.
-- [ ] ch08: spin de-phasing animation, plus a **new** "Why is the T2 measurement not quantitative?" section built from PowerPoint slide 106, which had not been extracted into any chapter before. Please confirm this new section reads correctly and belongs where I put it (after the tumor-visibility figure).
+- [ ] ch08: spin de-phasing animation.
 - [ ] ch09: single spin-echo formation and multiple spin-echo decay animations.
-- [ ] The "Multiple spin echoes" video clip is reused twice in the source deck (once for ch09's "Multiple echoes," once for ch08's new T2 section) — I copied the same clip into both chapters' image folders rather than sharing one file. Fine to leave as-is, or point both at one shared asset if you'd rather not duplicate ~2.5MB.
+- [ ] New chapter: the "Multiple Spin Echoes" clip, illustrating why the T2 measurement isn't quantitative.
 - [ ] I have not yet checked "02 Signals and Sequences Extra.pptx" for additional videos — it's on Google Drive and wasn't downloaded to the sandbox when I tried to scan it. Say the word if you want that one checked too.
 
 ## Chapter 4 (Brain) image quality
