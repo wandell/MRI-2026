@@ -225,6 +225,35 @@ If figures show "Figure 1" instead of "Figure 5.1", check:
 - Are the labels using hyphens? ✓
 - Is the `_quarto.yml` using `part: file.qmd` not `part: "string"` + file in chapters? ✓
 
+## Splitting one deck into multiple chapters
+
+A single PPTX deck often covers enough material for several book chapters. This
+needs an explicit decision process, separate from the per-slide keep/skip/edit
+decisions in step 4 above.
+
+- **Chapter numbers are global and sequential across the whole book**, not
+  per-part and not tied to the source deck's own numbering. Find the next
+  available number by checking the highest existing `chNN` across all of
+  `_quarto.yml` (not just the target part) and continue from there.
+- **The source deck's internal "Part N" label is unrelated to the book's
+  `partN-*.qmd` structure.** For example, "04 Brain Part 1 Anatomy" is the
+  instructor's own deck-organization scheme; it does not mean this deck becomes
+  "Chapter 1" or maps one-to-one with the book's Part 4. Do not assume a 1:1
+  mapping between a deck's internal parts and book chapters.
+- Process to split a deck:
+  1. List all slide titles (script above), noting hidden slides.
+  2. Identify topic clusters — natural subject breaks, independent of the
+     deck's internal slide/part numbering.
+  3. Propose a chapter grouping (chapter title + slide-title range for each
+     proposed chapter) to the user and get explicit approval **before**
+     extracting any images or notes.
+  4. Once approved, run each chapter's slide range through the extraction
+     pipeline (steps 1–9 above) independently, assigning consecutive chapter
+     numbers in slide order.
+  5. Add each new chapter to `_quarto.yml` under the correct part, in slide
+     order, using the `part: file.qmd` syntax (see figure-numbering notes
+     below for why this matters).
+
 ## Naming conventions
 
 Images live in per-chapter subdirectories under `chapters/images/`:

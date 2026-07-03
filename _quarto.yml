@@ -37,7 +37,8 @@ book:
        - chapters/ch20-parallel-imaging.qmd
        - chapters/ch21-image-data-formats.qmd
     - part: chapters/part4-brain.qmd
-      chapters: []
+      chapters:
+       - chapters/ch22-brain-overview.qmd
     - part: chapters/part5-functionalsignals.qmd
       chapters: []
     - part: chapters/part6-dataanalysis.qmd

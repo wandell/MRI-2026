@@ -10,20 +10,24 @@ date: last-modified
 
 ## Fundamental MR measurements
 
+<!--
 ![Fundamental MR measurements.](images/ch05/fundamental-mr-measurements.png){#fig-ch05-fundamental-mr-measurements}
+-->
 
 In this section we review the relationship between the programming parameters and the physical measurements of magnetic resonance we measure. Finally, we describe how these parameters appear in the images we produce.
 
+* Pulse sequence programming
+* Fundamental MR parameters
+* Image contrast
+
 ## Pulse sequency programming
-
-
 
 ![The main elements we control in the MR instrument.](images/ch05/pulse-sequency-programming.png){#fig-ch05-pulse-sequency-programming}
 <!-- Page 168, Pictures to Protons -->
-The basic elements we control are the large gradients and the RF transmission.  We control the amplitudes and timing of those signals.  The steady state field is not varied, just the gradients and RF signal.
+The instrument components we control are the signals on the RF coil transmission and the large imaging gradients. We control both the amplitudes and timing of those signals.  The steady state field ($B_0$) is not varied, though we might notice some of its imperfections and try to calibrate them out using a method called **shimming**. 
+
+
 ## User’s console: Adjusts pulse sequence parameters
-
-
 
 ::: {.panel-tabset}
 
@@ -41,7 +45,7 @@ The basic elements we control are the large gradients and the RF transmission.  
 
 :::
 
-The orchestration of the signal amplitudes and timing is called 'pulse sequence programming'. The three tabs in this image show screen shots with the various parameters we set to control the actions of the pulse sequence.
+But the programming is principally designed to control the gradients and RF signal. The orchestration of the signal amplitudes and timing is called 88pulse sequence programming**'**. The three tabs in this image show screen shots with the various parameters we set to control the actions of the pulse sequence.
 
 ## MR pulse sequences
 

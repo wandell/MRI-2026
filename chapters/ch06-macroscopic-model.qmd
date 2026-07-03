@@ -10,15 +10,19 @@ date: last-modified
 
 ## The standard MR macroscopic model
 
+<!--
 ![The standard MR macroscopic model.](images/ch06/the-standard-mr-macroscopic-model.png){#fig-ch06-the-standard-mr-macroscopic-model}
+-->
 
-Reference about 
-Drawing single NMR spins and understanding relaxation
-Mike P. Williamson
-Sheffield
+:::{.callout-note title="Drawing single NMR spins"}
 
+From this paper:
 
-How should we draw vectors to represent individual nuclear spins? Vectors in 3D space are merely a way of understanding the mathematics of quantum mechanics, which provides the “true” description of a single spin-½ nucleus. They are a useful aid to understanding, but there is no single “correct” vector representation, and the different vector models that are used have advantages and disadvantages. Here, we discuss the 2 standard vector models for a nuclear magnetic resonance spin: the up/down or alignment model and the 2-cone model, and we show how they relate to quantum mechanics. We show why both of these models are limited and discuss a third model, the uniform model, in which individual spins can be in any orientation. We demonstrate how the uniform model presents a clear and logically coherent description for spins: at equilibrium; following a 90° pulse; and during the subsequent relaxation back to equilibrium. The uniform model is fully consistent with quantum mechanics and leads to an understanding of coherence and relaxation that cannot be obtained from the other 2 models. We suggest that the uniform model is more helpful than the other 2 for most purposes.
+*Drawing single NMR spins and understanding relaxation, Mike P. Williamson, Sheffield*
+
+"How should we draw vectors to represent individual nuclear spins? Vectors in 3D space are merely a way of understanding the mathematics of quantum mechanics, which provides the “true” description of a single spin-½ nucleus. They are a useful aid to understanding, but there is no single “correct” vector representation, and the different vector models that are used have advantages and disadvantages. Here, we discuss the 2 standard vector models for a nuclear magnetic resonance spin: the up/down or alignment model and the 2-cone model, and we show how they relate to quantum mechanics. We show why both of these models are limited and discuss a third model, the uniform model, in which individual spins can be in any orientation. We demonstrate how the uniform model presents a clear and logically coherent description for spins: at equilibrium; following a 90° pulse; and during the subsequent relaxation back to equilibrium. The uniform model is fully consistent with quantum mechanics and leads to an understanding of coherence and relaxation that cannot be obtained from the other 2 models. We suggest that the uniform model is more helpful than the other 2 for most purposes."
+:::
+
 
 ## Source of the MR signal: Hydrogen nuclei (spins, protons)
 

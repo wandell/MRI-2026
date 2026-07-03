@@ -1,0 +1,45 @@
+---
+date: last-modified
+---
+
+# Brain overview
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+The brain is a physical system built from multiple interacting subsystems, operating across a huge range of spatial and temporal scales. This chapter previews four of those subsystems, each covered in more depth in the chapters that follow: the physical container (skull, meninges, geometry), neurons and glia (signaling and computation), white matter (long-range connections), and vasculature (energy delivery and waste removal).
+
+## The physical container
+
+![Sagittal T1-weighted MRI showing the layers between skin and brain: epidermis, dermis, subcutaneous fibroadipose tissue, frontalis muscle, the calvarium (outer table, diploic space, inner table), and the dura with the superior sagittal sinus.](images/ch22/physical-container.png){#fig-ch22-physical-container fig-alt="Labeled sagittal T1-weighted MRI showing skin, skull, and dural layers surrounding the brain."}
+
+## Neurons and glia
+
+Cortical computations take place in the gray matter, a thin (2-4 mm) sheet of neural tissue covering the surface of the brain, containing on the order of $10^5$ neurons/mm$^3$ ($10^{11}$ total) and roughly as many glial cells.
+
+![The human cerebral cortex, and typical order-of-magnitude counts for neurons, synapses, and cortical surface area.](images/ch22/neurons.png){#fig-ch22-neurons fig-alt="Photo of a human brain alongside statistics on neuron density, synapse counts, and cortical surface area."}
+
+![Glia are roughly as numerous as neurons and support development, signaling, and repair; a single astrocyte can influence on the order of $10^5$ synapses.](images/ch22/glia.png){#fig-ch22-glia fig-alt="Photo of a human brain alongside statistics on glial cell density and the glia-to-neuron ratio."}
+
+## White matter
+
+![A coronal brain section showing white matter and the long-range axon connections that link cortical regions.](images/ch22/white-matter-connections.png){#fig-ch22-white-matter-connections fig-alt="Photo of a dissected coronal brain section with white matter and connection pathways labeled."}
+
+## Vasculature
+
+::: {.panel-tabset}
+## Overview
+
+![Cerebral vasculature revealed by plastic-emulsion injection followed by tissue dissolution, illustrating the density of the brain's blood supply.](images/ch22/vasculature-1.png){#fig-ch22-vasculature-1 fig-alt="Cast of cerebral blood vessels showing the dense vascular network of the brain."}
+
+## Density
+
+![Cortex is densely vascularized: most neurons lie within 10-20 $\mu$m of a capillary, and capillary density is 2-3x higher in cortex than in white matter.](images/ch22/vasculature-2.png){#fig-ch22-vasculature-2 fig-alt="Same cerebral vasculature cast, with added statistics on capillary density and proximity to neurons."}
+:::
+
+## What the brain does
+
+The brain's job is to interpret data and lead to actions. Even simple perceptual judgments, such as the lightness of a surface, depend on substantial interpretation of image data by brain circuits — as illustrated by the classic checkerboard lightness illusion.
+
+![Checkerboard lightness illusion (Anderson and Winawer, *Nature*, 2005): squares of identical physical luminance appear different in lightness depending on surrounding context.](images/ch22/checkerboard-illusion.png){#fig-ch22-checkerboard-illusion fig-alt="Two checkerboard patterns with a shadow illusion demonstrating that identical gray squares appear different depending on context."}

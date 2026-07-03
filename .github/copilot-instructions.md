@@ -82,6 +82,7 @@ You are assisting with a Quarto book project stored in a GitHub repository. Your
 - Don’t introduce new dependencies unless necessary.
 
 ## Image management
+- **See `.github/instructions/pptx-to-qmd-workflow.md` for the full PPTX → PNG → `.qmd` extraction workflow** (conversion commands, slide identification, naming, build sequences, crossref labels).
 - Treat slide decks and other instructor-specific source materials as **external working files**, not default repository assets.
 - Do **not** assume PPTX files belong in the repo unless the user explicitly wants shared versioning of those source decks.
 - Repository image assets should normally be the exported derivatives actually used by the Quarto notes, stored in `chapters/images`.
@@ -130,6 +131,7 @@ Whenever you propose formatting/layout:
 ## Related instruction files
 - `.github/instructions/quarto-tips.md` contains concrete Quarto syntax examples for figures, callouts, equations, videos, lists, and citations.
 - `.github/instructions/article-publish.instructions.md` covers the standalone HTML publishing workflow when the user asks to prepare or upload a talk or article.
+- `.github/instructions/pptx-to-qmd-workflow.md` is the **primary reference for converting PowerPoint teaching slides into `chapters/images/` PNGs and chapter `.qmd` files.** Read it before doing any PPTX → PNG extraction or chapter-building work. It covers: identifying slides by title (not slide number, since hidden slides shift PDF page numbers), the `soffice`/`pdftoppm` conversion pipeline, extracting slide notes via `python-pptx`, progressive-build (`panel-tabset`) handling, the `images/chNN/` naming convention, and the `#fig-chNN-*` crossref label requirements.
 
 ## Safety rails for debugging
 - If a build error occurs, do not guess wildly:

@@ -8,9 +8,12 @@ date: last-modified
 
 ---
 
-## Overview
+## Safety Considerations Overview
 
-![MRI safety topics: ferromagnetic hazards, magnet quenching, helium venting, field strength limits, and real-world accidents.](images/ch04/safety-overview.png){#fig-safety-overview fig-alt="Safety overview slide listing key topics: ferromagnetic hazards and projectile risks, magnet quenching causes and consequences, helium venting systems, field strength safety limits, and real-world accident examples. Stanford campus background."}
+* Ferromagnetic hazards and projectile risks
+* Magnet quenching and helium venting systems
+* Field strength safety limits
+* Real-world accidents
 
 ## Main Magnetic Field (B0): General Properties
 
@@ -43,21 +46,21 @@ Reference: [YouTube video](https://www.youtube.com/watch?v=uDfwxoigZZk)
 
 ![Sequence of photographs showing a superconducting magnet quench event at a manufacturing facility.](images/ch04/safety-quench-sequence.png){#fig-safety-quench-sequence fig-alt="Six-panel time sequence showing a magnet quench, with helium vapor erupting from the scanner in a large white cloud."}
 
-![Explanation of the quench process: loss of superconductivity leads to resistive heating, helium boil-off, and venting.](images/ch04/safety-quench-description.png){#fig-safety-quench-description fig-alt="Slide describing the quench process: the cooling system fails, the magnet develops resistance, heat builds up, helium converts to gas, pressure increases, and the system vents."}
-
 A superconducting magnet requires no ongoing electrical power once charged — the current flows indefinitely as long as the wire remains below its critical temperature. If the cooling system fails, the wire warms, develops resistance, generates heat, which drives further warming in a runaway process. The liquid helium rapidly converts to gas (expanding by a factor of ~700), pressure builds, and the system releases the helium through a dedicated vent pipe in an event called a **quench**.
 
 In an open space a quench is spectacular but not immediately dangerous. In an enclosed room, the escaping helium — which is inert — can displace oxygen and create an asphyxiation hazard. MRI scanner rooms are required to have helium venting systems for this reason.
 
-## Additional Accidents
-
-### Recent Accident (Korea)
+## Recent Accident (Korea)
 
 ![Korean news broadcast reporting an MRI accident in which a patient was struck by an oxygen canister drawn into the bore.](images/ch04/safety-recent-accident.png){#fig-safety-recent-accident fig-alt="Screenshot of a Korean KBS news broadcast showing an MRI scanner with an oxygen canister lodged in the bore."}
 
-### Hitachi Open-Platform Scanner
+**Extract the video or insert the web link.** 
+
+## Hitachi Open-Platform Scanner
 
 ![Hitachi 0.7T open-platform surgical MRI scanner — an alternative geometry that reduces some access constraints.](images/ch04/safety-hitachi-open-scanner.png){#fig-safety-hitachi-open-scanner fig-alt="Photo of a Hitachi 0.7T open-platform MRI scanner with a horizontal gap between the upper and lower magnet poles, allowing lateral access to the patient."}
+
+**Move this slide elsewhere**
 
 Open-platform scanners use a vertical field geometry with a gap between the upper and lower magnet assemblies. The lower field strength (typically 0.7T or below) limits SNR compared to closed-bore systems, but the open geometry allows surgical access and is better tolerated by claustrophobic patients.
 
