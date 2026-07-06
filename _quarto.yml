@@ -49,7 +49,12 @@ book:
        - chapters/ch29-fine-scale-neurovascular.qmd
        - chapters/ch30-neurovascular-unit.qmd
     - part: chapters/part5-functionalsignals.qmd
-      chapters: []
+      chapters:
+       - chapters/ch31-walter-k.qmd
+       - chapters/ch32-blood-oxygenation-levels.qmd
+       - chapters/ch33-balloon-model.qmd
+       - chapters/ch34-functional-mri-signal.qmd
+       - chapters/ch35-preliminary-neurological-measurements.qmd
     - part: chapters/part6-dataanalysis.qmd
       chapters: []
     - part: chapters/part7-diffusion.qmd

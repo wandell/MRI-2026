@@ -1,0 +1,41 @@
+---
+date: last-modified
+---
+
+# Blood oxygenation levels
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Why the brain's energy budget matters for MRI
+
+The brain is metabolically expensive tissue. It makes up only about 2% of body weight, yet it receives roughly 15% of cardiac output and consumes about 20% of the body's total oxygen and 25% of its total glucose. Within the normal range of global cerebral blood flow, the brain extracts about 50% of the oxygen and about 10% of the glucose carried in arterial blood. High-energy phosphates — predominantly ATP — are the brain's principal energy currency, and maintaining their supply is what drives this outsized appetite for oxygen and glucose [@raichle2006-brainwork].
+
+![Brain energy and weight considerations: the brain is 2% of body weight but receives 15% of cardiac output and uses 20% of total body oxygen and 25% of total body glucose.](images/ch32/brain-metabolism-numbers.png){#fig-ch32-brain-metabolism-numbers fig-alt="Slide listing brain metabolism statistics alongside a glowing red illustration of a brain inside a light bulb, representing brain energy use."}
+
+## Blood flow outpaces oxygen use
+
+If neural activity simply burned oxygen at a locally accelerated rate, one might expect blood flow and oxygen consumption to rise together, in lockstep, wherever neurons became more active. The actual physiology is more surprising: blood flow increases substantially when neurons are active, but the extra flow increases the available oxygen supply by more than local oxygen use goes up. As a result, the fraction of oxygen actually extracted from the blood — the **oxygen extraction fraction (OEF)** — decreases in active regions. Combining these two effects, an active region ends up with relatively more oxygenated blood than a resting region [@foxraichle1986-uncoupling].
+
+This is the physiological fact that makes BOLD contrast possible: because the oxygenation-to-deoxygenation ratio changes with neural activity, and because oxygenated and deoxygenated hemoglobin have different magnetic properties, this ratio becomes a contrast mechanism for the T2*-weighted MRI signal.
+
+![The imperfect coupling between blood flow and oxygen consumption: PET maps of blood flow, glucose use, oxygen use, and oxygen availability, showing more oxygenated blood in active regions than resting regions (Fox and Raichle, PNAS, 1986).](images/ch32/imperfect-coupling-flow-oxygen.png){#fig-ch32-imperfect-coupling-flow-oxygen fig-alt="Slide showing a schematic PET stimulus display alongside four brain PET maps labeled blood flow, glucose use, oxygen use, and oxygen availability."}
+
+## The Fox et al. 1988 data
+
+The clearest early demonstration of this uncoupling came from Fox, Raichle, Mintun, and Dence's 1988 PET study comparing blood flow to cerebral metabolic rate (CMR) for glucose and for oxygen, at rest and during visual stimulation [@fox1988-nonoxidative].
+
+For glucose, blood flow (upper row) and the cerebral metabolic rate for glucose (lower row) were closely coupled throughout the brain, both at rest and during visual stimulation: stimulation increased regional blood flow and glucose CMR by similar amounts (49% and 56%, respectively).
+
+![Fox et al., 1988: blood flow (upper row) and cerebral metabolic rate for glucose (lower row) during rest and visual stimulation, showing closely coupled percentage increases.](images/ch32/fox1988-glucose-cmr.png){#fig-ch32-fox1988-glucose-cmr fig-alt="PET images comparing resting and stimulated blood flow and glucose metabolic rate, with a difference map and percent increase color scale."}
+
+For oxygen, the story is different. Blood flow and oxygen CMR were closely coupled at rest, but visual stimulation markedly increased blood flow (49%) while only modestly increasing oxygen CMR (5%). More oxygen is delivered to the active tissue than is actually consumed there.
+
+![Fox et al., 1988: blood flow (upper row) and cerebral metabolic rate for oxygen (lower row), showing a large blood flow increase (49%) but only a small oxygen CMR increase (5%) during visual stimulation.](images/ch32/fox1988-oxygen-cmr.png){#fig-ch32-fox1988-oxygen-cmr fig-alt="PET images comparing resting and stimulated blood flow and oxygen metabolic rate, with a difference map and percent increase color scale, with arrows highlighting a large blood-flow increase and a small oxygen increase."}
+
+## Summary: an oversupply of oxygen
+
+Putting the numbers together: the heart and lungs oxygenate the blood delivered to the brain. During rest, about 40% of that oxygen is consumed by brain tissue. In the active state, 30–50% more blood is delivered, but only about 5% more oxygen is consumed — so more oxygen is supplied than is used, and the oversupply shifts the local oxy/deoxy ratio measurably. This shift in the ratio of oxygenated to deoxygenated hemoglobin is precisely what the BOLD signal detects.
+
+![Summary: blood oxygenation and volume increase when neurons are active. In the control state, roughly 40% of arterial oxygen is extracted; in the active state, blood delivery rises 30-50% while oxygen consumption rises only about 5%, changing the local oxy/deoxy ratio.](images/ch32/oxy-deoxy-ratio-summary.png){#fig-ch32-oxy-deoxy-ratio-summary fig-alt="Diagram of heart and lungs supplying arterial blood to the brain and receiving venous blood back, comparing oxygen extraction fraction between a resting control state and an active state."}
