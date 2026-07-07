@@ -2,13 +2,15 @@
 date: last-modified
 ---
 
-# Pulse Sequences
+# Inversion recovery pulse sequence
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-## Inversion recovery: Spin-lattice (T1)
+**Introduce spin-lattice terminology**
+
+## Measuring the T1 time constant: 
 
 ::: {.panel-tabset}
 
@@ -30,6 +32,7 @@ date: last-modified
 
 ![Combining inversion recovery and Hahn spin-echo.](images/ch10/combining-inversion-recovery-and-hahn-spin-echo.png){#fig-ch10-combining-inversion-recovery-and-hahn-spin-echo}
 
+<!--
 ## Thursday of the 2nd week
 
 ::: {.panel-tabset}
@@ -43,6 +46,7 @@ date: last-modified
 ![Thursday of the 2nd week — step 2.](images/ch10/thursday-of-the-2nd-week-2.png){#fig-ch10-thursday-of-the-2nd-week-2}
 
 :::
+-->
 
 ## The signal magnitude formation when for 180 deg flip
 
@@ -57,9 +61,6 @@ Barral:  A robust methodology for in vivo T1 mapping
 Stikov:  On the accuracy of T1 mapping: Searching for common ground
 
 If you don’t want to just produce an image, but you want to know the T1, you can use this method by Joelle Barral at Stanford
-
-
-
 
 Original method by Look Locker
 

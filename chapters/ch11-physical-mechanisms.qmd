@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Physical Mechanisms of T1 and T2
+# MR summaries
 
 {{< include "includes/WIP-callout.qmd" >}}
 
@@ -14,4 +14,13 @@ date: last-modified
 
 ## There are multiple mechanisms that can influence the bulk magnetization
 
+An important principle is that we have working models of the MR signal.  These models tell us that we can use the MRI system to learn about different aspects of the substrate we are measuring.  This is very important when it comes to making measurements of the brain.
+
 ![There are multiple mechanisms that can influence the bulk magnetization.](images/ch11/there-are-multiple-mechanisms-that-can-influence-t.png){#fig-ch11-there-are-multiple-mechanisms-that-can-influence-t}
+
+## MRI terminology
+
+To understand the instrument and the signals, we have explored new ideas, we have introduced many new terms. Here is a brief summary.
+
+![MRI terms.](images/ch09/mri-terms-we-have-covered.png){#fig-ch09-mri-terms-we-have-covered}
+

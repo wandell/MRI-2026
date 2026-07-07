@@ -1,0 +1,29 @@
+---
+date: last-modified
+---
+
+<!-- TEMP FILENAME: this chapter is inserted mid-part2 (after Inversion Recovery Pulse Sequence, before MR Summaries). Once the full ch09-ch30 renumbering pass happens (see TODO.md), rename this file to chNN-felix-bloch-equations.qmd and update its fig labels from the `bloch-` prefix to the matching `chNN-` prefix, matching the project convention. -->
+
+# Felix Bloch and the Bloch equations
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## The Bloch Equations
+
+![The Bloch Equations.](images/felix-bloch-equations/the-bloch-equations.png){#fig-bloch-the-bloch-equations}
+
+## The Bloch Equations in differential equation form
+
+![The Bloch Equations in differential equation form.](images/felix-bloch-equations/the-bloch-equations-in-differential-equation-form.png){#fig-bloch-differential-equation-form}
+
+![Slide 068.](images/felix-bloch-equations/slide-068.png){#fig-bloch-slide-068}
+
+![Slide 069.](images/felix-bloch-equations/slide-069.png){#fig-bloch-slide-069}
+
+![Slide 070.](images/felix-bloch-equations/slide-070.png){#fig-bloch-slide-070}
+
+## Felix Bloch at Stanford
+
+![Felix Bloch at Stanford.](images/felix-bloch-equations/felix-bloch-at-stanford.png){#fig-bloch-felix-bloch-at-stanford}

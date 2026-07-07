@@ -2,39 +2,11 @@
 date: last-modified
 ---
 
-# MRI Summary and Spin Echo
+# Spin Echo pulse sequence
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
-
-## MRI Summary
-
-![MRI Summary.](images/ch09/mri-summary.png){#fig-ch09-mri-summary}
-
-## MRI terms we have covered
-
-![MRI terms we have covered.](images/ch09/mri-terms-we-have-covered.png){#fig-ch09-mri-terms-we-have-covered}
-
-## The Bloch Equations
-
-![The Bloch Equations.](images/ch09/the-bloch-equations.png){#fig-ch09-the-bloch-equations}
-
-## The Bloch Equations in differential equation form
-
-![The Bloch Equations in differential equation form.](images/ch09/the-bloch-equations-in-differential-equation-form.png){#fig-ch09-the-bloch-equations-in-differential-equation-form}
-
-![Slide 068.](images/ch09/slide-068.png){#fig-ch09-slide-068}
-
-![Slide 069.](images/ch09/slide-069.png){#fig-ch09-slide-069}
-
-![Slide 070.](images/ch09/slide-070.png){#fig-ch09-slide-070}
-
-## Felix Bloch at Stanford
-
-![Felix Bloch at Stanford.](images/ch09/felix-bloch-at-stanford.png){#fig-ch09-felix-bloch-at-stanford}
-
-## Pulse sequences
 
 ![Pulse sequences.](images/ch09/pulse-sequences.png){#fig-ch09-pulse-sequences}
 
@@ -114,14 +86,8 @@ Hongjian He proposes to give a lecture about multi-echo
 
 ![E. L. Hahn.](images/ch09/e-l-hahn.png){#fig-ch09-e-l-hahn}
 
-## … but that's how I got one of the National Research Council Fellowships. So with that in my bonnet, Nordsieck, who was there at Illinois, had of course previously worked with Felix Bloch. They’d done some theory together. He said, "Why don't you go to Stanford? Bloch is a good man and you'd learn a lot." So I said, "OK," and California attracted me, since I'd been there during the war in the Navy in training school, so I went to Stanford and that's how I became a post-doc for one year, a fellow, and then I was an instructor for one year. So there I continued my work on spin echoes and directed a student of his, under me as well, a PhD, and we did a problem together.
-
 ![… but that's how I got one of the National Research Council Fellowships. So with that in my bonnet, Nordsieck, who was there at Illinois, had of course previously worked with Felix Bloch. They’d done some theory together. He said, "Why don't you go to Stanford? Bloch is a good man and you'd learn a lot." So I said, "OK," and California attracted me, since I'd been there during the war in the Navy in training school, so I went to Stanford and that's how I became a post-doc for one year, a fellow, and then I was an instructor for one year. So there I continued my work on spin echoes and directed a student of his, under me as well, a PhD, and we did a problem together..](images/ch09/-but-thats-how-i-got-one-of-the-national-research.png){#fig-ch09--but-thats-how-i-got-one-of-the-national-research}
 
 ## Hahn’s interview
 
 ![Hahn’s interview.](images/ch09/hahns-interview.png){#fig-ch09-hahns-interview}
-
-## Measuring the T1 time constant:  Inversion recovery
-
-![Measuring the T1 time constant:  Inversion recovery.](images/ch09/measuring-the-t1-time-constant-inversion-recovery.png){#fig-ch09-measuring-the-t1-time-constant-inversion-recovery}
