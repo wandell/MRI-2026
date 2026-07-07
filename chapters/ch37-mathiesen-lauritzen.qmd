@@ -1,0 +1,61 @@
+---
+date: last-modified
+---
+
+# The Mathiesen-Lauritzen experiments
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+The first direct test of the coupling between neural signals and blood flow comes from a series of experiments by Mathiesen, Caesar, and Lauritzen, who measured cerebral blood flow (CBF) near Purkinje cells in the rat cerebellum while electrically stimulating specific fiber pathways [@mathiesen1998-cbf].
+
+## The cerebellum as a model system
+
+The cerebellum is a useful system for this kind of experiment because its circuitry is unusually well characterized, and the same basic wiring diagram is conserved across species even though absolute brain size varies enormously.
+
+![Gross anatomy of the rat brain (dorsal view), with the cerebellum, vermis, and paraflocculus labeled, alongside a comparison of cerebellum size across humans, rats, and mice.](images/ch37/cerebellum-model-system-anatomy.png){#fig-ch37-cerebellum-model-system-anatomy fig-alt="Dorsal view illustration of a rat brain labeled with olfactory bulb, cerebrum, pineal gland, cerebellum, vermis, and other structures, alongside small silhouette comparisons of human, rat, and mouse cerebellum size."}
+
+The cerebellar cortex has a distinctive laminar, "leafy" structure, visible in cross-section as a folded sheet of gray matter (the folia) wrapped around a core of white matter and deep nuclei.
+
+![Cross-section of the cerebellum showing its folded, leafy gross anatomy, with the cerebellar cortex, dentate nucleus, and inferior olivary nucleus labeled.](images/ch37/cerebellum-gross-anatomy.png){#fig-ch37-cerebellum-gross-anatomy fig-alt="Anatomical cross-section illustration of the cerebellum showing its folded leafy structure, with labels for cerebellar cortex, dentate nucleus, superior peduncle, pons, and inferior olivary nucleus, alongside two smaller schematic diagrams of cerebellar lobules."}
+
+At the cellular level, Purkinje cells are the principal output neurons of the cerebellar cortex. They are inhibitory (GABAergic), and their cell bodies form a nearly single-cell-thick layer at the boundary between the molecular layer above and the granule cell layer below. Their elaborate, fan-shaped dendritic trees extend upward into the molecular layer, all confined to a single plane — a distinctive anatomical signature visible in stained tissue.
+
+![Micrograph of cerebellar cortex, with the molecular layer, Purkinje cell layer, and granule cell layer labeled, showing the planar dendritic arbors of individual Purkinje cells.](images/ch37/purkinje-histology.png){#fig-ch37-purkinje-histology fig-alt="Orange-stained micrograph of cerebellar cortex tissue showing a row of Purkinje cell bodies with dendritic trees extending upward into the molecular layer, and the granule cell layer below."}
+
+The cerebellar circuit has a small number of well-defined cell types: Purkinje cells (the output neurons); granule cells, which receive mossy fiber input and send parallel fibers up to contact Purkinje cells; Golgi cells, stellate cells, and basket cells, all inhibitory interneurons that shape the Purkinje response; and the deep cerebellar nuclei neurons, which receive inhibitory input from Purkinje cells and constitute the output of the cerebellum. Two afferent pathways drive this circuit: mossy fibers, which bring input from many brain regions to the granule cells, and climbing fibers, which arise from the inferior olive and form powerful synapses directly onto Purkinje cells.
+
+![Diagram of the cerebellar circuit, showing parallel fibers, climbing fibers, mossy fibers, Purkinje cells, stellate and basket cells, Golgi cells, and the deep cerebellar nuclei and inferior olive.](images/ch37/cerebellar-circuit-diagram.png){#fig-ch37-cerebellar-circuit-diagram fig-alt="Colored schematic diagram of the cerebellar cortex circuit showing parallel fibers, a Purkinje cell, stellate cell, basket cell, Golgi cell, granule cell, climbing fiber, mossy fiber, cerebellar nuclei, and inferior olive, organized by cortical layer."}
+
+A three-dimensional cutaway view makes the geometry of this circuit more concrete: parallel fibers run horizontally through the molecular layer, crossing the planar dendritic trees of many Purkinje cells at once, while climbing fibers wrap around a single Purkinje cell's dendrites.
+
+![Three-dimensional cutaway diagram of cerebellar cortex, showing how parallel fibers, Purkinje cells, granule cells, mossy fibers, and other interneurons are arranged across the molecular, Purkinje cell, and granule cell layers.](images/ch37/cerebellar-circuitry-3d.png){#fig-ch37-cerebellar-circuitry-3d fig-alt="Three-dimensional wedge diagram of cerebellar cortex showing parallel fibers running across the top, a Purkinje cell with fan-shaped dendrites, granule cells, mossy fibers, stellate cells, basket cells, and Golgi cells, layered from molecular layer to granule cell layer."}
+
+Because the fiber pathways of the cerebellum — and the excitatory or inhibitory identity of each cell type — are present across species and well understood, Mathiesen and colleagues argued that whatever principles govern the coupling between activity and blood flow here should generalize to other brain circuits.
+
+## Stimulating a single, well-defined circuit
+
+Mathiesen, Caesar, and Lauritzen measured cerebral blood flow near Purkinje cells while electrically stimulating two afferent pathways: the parallel fibers and the climbing fibers, each entering the circuit at a different point.
+
+![Diagram of the cerebellar circuit and stimulation protocol, showing Electrode 1 stimulating the climbing fiber/inferior olive pathway and Electrode 2 stimulating the parallel fibers, with the site of blood flow measurement near the Purkinje cells.](images/ch37/mathiesen-stimulation-protocol.png){#fig-ch37-mathiesen-stimulation-protocol fig-alt="Diagram of the cerebellar circuit with parallel fibers, mossy fibers, a Purkinje cell, and a deep cerebellar nuclei neuron, with Electrode 1 near the inferior olive and Electrode 2 stimulating parallel fibers, and a callout box indicating CBF measured near Purkinje cells."}
+
+A simplified conceptual diagram makes the logic of the experiment explicit: climbing fibers and parallel fibers both excite the Purkinje cell directly, while parallel fibers also excite the inhibitory stellate cells, which in turn inhibit the Purkinje cell. Recording near the Purkinje cell therefore captures the net balance of these excitatory and inhibitory synaptic currents, independent of whatever the Purkinje cell's own output spikes are doing.
+
+![Conceptual diagram of one circuit in the cerebellum: climbing fibers and parallel fibers both excite the Purkinje cell, while parallel fibers also drive inhibitory stellate cells that feed back onto the Purkinje cell.](images/ch37/mathiesen-circuit-logic.png){#fig-ch37-mathiesen-circuit-logic fig-alt="Circuit diagram with Electrode 1 driving climbing fibers and Electrode 2 driving parallel fibers, both converging with a plus sign onto a Purkinje cells box, and parallel fibers also driving stellate cells that feed back onto Purkinje cells."}
+
+## Parallel fiber stimulation inhibits spiking, yet blood flow increases
+
+The key result: stimulating the parallel fibers strongly *inhibited* the spontaneous spiking of Purkinje cells — the spike rate dropped essentially to zero during the stimulation period — while cerebral blood flow, measured at the same site, *increased*.
+
+![Parallel fiber stimulation suppresses Purkinje cell spiking (top trace) while cerebral blood flow measured near the same Purkinje cells increases (bottom trace), with spontaneous, inhibition, and recovery periods marked (Mathiesen, Caesar, Akgören & Lauritzen, 1998).](images/ch37/parallel-fiber-inhibits-spiking.png){#fig-ch37-parallel-fiber-inhibits-spiking fig-alt="Two-panel time series plot: top panel shows Purkinje cell spike rate dropping to near zero during a labeled inhibition period, bottom panel shows cerebral blood flow rising and peaking during and after the same period, with parallel fiber stimulation marked in green."}
+
+This is the central, counterintuitive finding: if spikes themselves were the unique or primary driver of local blood flow, blood flow should have decreased along with the spike rate. Instead, blood flow rose while spiking was suppressed, implying that the excitatory synaptic drive onto the circuit — not the Purkinje cell's own spike output — was what determined the local hemodynamic response.
+
+## Conclusions
+
+Mathiesen and colleagues drew three conclusions from this and related experiments in the same preparation [@mathiesen1998-cbf]:
+
+![Summary of the Mathiesen et al. conclusions, alongside the abstract of the original 1998 Journal of Physiology paper.](images/ch37/mathiesen-conclusions.png){#fig-ch37-mathiesen-conclusions fig-alt="Slide titled Mathiesen et al conclusions with three bulleted findings, alongside a scanned journal abstract titled Modification of activity-dependent increases of cerebral blood flow by excitatory synaptic activity and spikes in rat cerebellar cortex."}
+
+Activity-dependent increases in CBF depend on synaptic activity, including the activity of inhibitory interneurons — not simply on the net spike output of the principal neurons. The spiking activity of Purkinje cells, the cerebellum's principal output neurons, does not by itself determine the vascular response. And there is a strong correlation between CBF and the amplitude of the large-scale extracellular field potentials — a signal that reflects synaptic current flow rather than individual spikes, and one taken up again in the next chapter.
