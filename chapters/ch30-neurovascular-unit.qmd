@@ -8,9 +8,9 @@ date: last-modified
 
 ---
 
-## A relatively new system concept
+In 1890, Roy and Sherrington proposed that local neural activity controls local blood flow, but the idea saw little sustained follow-up [@roy1890-bloodsupply]. This makes a lot of sense because the neurons draw a great deal of the body's energy from the blood supply, and it is likely that there would be a way for neurons to signal their needs.
 
-In 1890, Roy and Sherrington proposed that local neural activity controls local blood flow, but the idea saw little sustained follow-up [@roy1890-bloodsupply]. Through most of 20th-century neuroscience, research focused on neurons and synapses, and the vasculature was largely treated as background. That changed in the late 1990s and early 2000s, when the rise of functional MRI directed attention back to the vascular response and to the cells that produce it: neurons, glia, pericytes, endothelium, and smooth muscle acting together.
+Through most of 20th-century neuroscience, research focused on neurons and synapses, and the vasculature was largely treated as background. That changed in the late 1990s and early 2000s, when the rise of functional MRI directed attention back to the vascular response and to the cells that produce it: neurons, glia, pericytes, endothelium, and smooth muscle acting together.
 
 The **neurovascular unit (NVU)** names this coupled biological system, linking neural signaling, metabolism, blood flow, and the blood-brain barrier.
 

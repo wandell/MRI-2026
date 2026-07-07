@@ -2,11 +2,13 @@
 date: last-modified
 ---
 
-# The functional MRI signal
+# Discovery of the functional MRI signal
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
+
+The possibility of making a functional MRI measurement was in the air in the late 1980s and early 1990s. Ogawa had done preliminary work in an animal model showing that such a measurement might be possible. Would the methods also work in human?
 
 ## The discovery of BOLD
 

@@ -8,9 +8,13 @@ date: last-modified
 
 ---
 
-The first direct test of the coupling between neural signals and blood flow comes from a series of experiments by Mathiesen, Caesar, and Lauritzen, who measured cerebral blood flow (CBF) near Purkinje cells in the rat cerebellum while electrically stimulating specific fiber pathways [@mathiesen1998-cbf].
+For many years, a central question in neuroimaging was whether the fMRI signal is directly coupled to spikes — the action potentials that carry information along an axon. Framed this way, the question is too narrow, and probably never true in any strict sense. The blood supply does not measure spikes directly; it responds to local metabolic demand, which astrocytes sense at the synapse. A coupling between the BOLD signal and spiking would only be expected if spikes were the principal driver of that metabolic demand.
+
+The broader picture is that many different signals contribute to metabolic demand: ionotropic and metabotropic transmission, volume transmission, neuromodulators, and both spiking and sub-threshold synaptic activity. The chapters that follow examine this hypothesis directly, using experiments that separate electrical signals into their components and ask which components predict the BOLD response. The short answer, developed across several experiments, is that spikes are not always tightly coupled to metabolic demand — sometimes they are, but in other cases, particularly those that depend on the local circuitry, metabolic demand can be dissociated from spiking activity.
 
 ## The cerebellum as a model system
+
+The first direct test of the coupling between neural signals and blood flow comes from a series of experiments by Mathiesen, Caesar, and Lauritzen, who measured cerebral blood flow (CBF) near Purkinje cells in the rat cerebellum while electrically stimulating specific fiber pathways [@mathiesen1998-cbf].
 
 The cerebellum is a useful system for this kind of experiment because its circuitry is unusually well characterized, and the same basic wiring diagram is conserved across species even though absolute brain size varies enormously.
 

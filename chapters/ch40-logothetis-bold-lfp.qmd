@@ -2,21 +2,13 @@
 date: last-modified
 ---
 
-# Logothetis experiments: BOLD and the LFP
+# BOLD and the LFP: Linear systems modeling
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-Logothetis and colleagues addressed the question raised in the last two chapters directly, by recording electrophysiological signals and the BOLD response simultaneously in the same tissue, in primate visual cortex.
-
-## Simultaneous measurement of neural signals and the BOLD response
-
-In their original 2001 study, Logothetis, Pauls, Augath, Trinath, and Oeltermann recorded from primary visual cortex of anesthetized monkeys while presenting a flickering visual stimulus, placing a microelectrode within the region activated by the stimulus in a 4.7T scanner [@logothetis2001-pf]. This single experiment yields, at one site, all of the signals discussed so far: the raw mean electrical field, its spike and MUA components, the LFP, and the BOLD response.
-
-![Simultaneous BOLD and electrophysiological recording in primate visual cortex: electrode placement (panel a), the BOLD response overlaid on the raw mEFP and its RMS envelope (panel c), and time-frequency spectrograms of the LFP and MUA responses at three different stimulus durations (panels d-f) (Logothetis et al., 2001).](images/ch40/logothetis2001-fig1-neural-bold.png){#fig-ch40-logothetis2001-fig1-neural-bold fig-alt="Multi-panel figure from a Nature paper showing an FLASH MRI scan with electrode location, a time series plot with BOLD signal, signal RMS, and mean EFP overlaid over about 45 seconds, and three-dimensional time-frequency spectrogram plots for 24, 12, and 4 second stimulus durations."}
-
-The electrical signals were separated into frequency bands as described in the previous chapter, and the resulting LFP and MUA time series were compared against the simultaneously measured BOLD response.
+How can we relate the two, very different, types of measurements:  BOLD and LFP?  Logothetis approached the problem by using linear systems methods. It is a move that we will see in other fields as well, such as trying to relate the activation in neural networks with the signals from real neurons.
 
 ## Predicting the BOLD response with linear systems theory
 
@@ -58,18 +50,4 @@ Taken together, these results support a more general claim made by Logothetis an
 >
 > — @logothetisInterpretingBOLDSignal2004
 
-## Timing matters as much as circuit type
-
-The same logic extends to how two populations of neurons are timed relative to each other, not just whether their inputs are excitatory or inhibitory. Because both excitatory and inhibitory synaptic activity require ion pumps to restore the resulting concentration gradients, both kinds of activity contribute to the mEF-based energy cost — but they can have very different effects on the net electrical signal, depending on their relative timing.
-
-::: {.panel-tabset}
-## Synchronous populations
-
-![If two neuron populations A (excitatory) and B (inhibitory) are active synchronously, the BOLD signal modulates because both populations' pumps are active, even though their electrical contributions to the mEF may partly cancel.](images/ch40/timing-synchronous-case.png){#fig-ch40-timing-synchronous-case fig-alt="Diagram with a green arrow labeled Neurons A and a red arrow labeled Neurons B both pointing into a small cerebellar-circuit icon with a plus sign, and text stating BOLD modulates because both signals make the pumps active."}
-
-## Populations in opposition
-
-![If the same two populations are active in opposition (one increasing while the other decreases), the total mEF can remain roughly constant even though the BOLD signal still reflects the combined metabolic cost of both populations' pumps.](images/ch40/timing-opposition-case.png){#fig-ch40-timing-opposition-case fig-alt="Diagram identical in layout to the synchronous case but with a minus sign between the two neuron population arrows, and text stating BOLD remains constant because both signals make the pumps active."}
-:::
-
-The practical implication is that the mEF (and its LFP/MUA components) and the BOLD signal can, in principle, dissociate depending on the timing relationship between excitatory and inhibitory populations — not only on which signal (spikes versus synaptic potentials) is doing the work. This distinction between what the electrical signal shows and what the BOLD signal shows, driven by the shared metabolic cost of restoring ion gradients regardless of the net electrical outcome, is a recurring theme in interpreting discrepancies between electrophysiology and fMRI.
+This still leaves open why synaptic potentials, rather than spikes, should dominate the metabolic signal in the first place. That question is taken up directly in the next chapter, which works out the energetic cost of the underlying biophysical processes — and, with that cost accounting in hand, returns to the question of circuit properties to show that timing, not just excitation versus inhibition, also determines how the mEF and the BOLD signal relate.

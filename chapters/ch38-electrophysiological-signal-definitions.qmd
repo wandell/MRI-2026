@@ -40,4 +40,4 @@ Investigators typically split this sum into two frequency bands and treat each a
 
 ![The mean electrical field decomposed by frequency band: the raw signal (top), the local field potential (10-150 Hz, green), and the multi-unit activity (200-500 Hz, blue).](images/ch38/fourier-decomposition-lfp-mua.png){#fig-ch38-fourier-decomposition-lfp-mua fig-alt="Three-panel figure showing a raw voltage time series at top, and two filtered sub-band time series below labeled 10 to 150 Hz and 200 to 500 Hz, each with amplitude in Hz-scaled units and a stimulus period marked with dashed red lines."}
 
-With these three candidate signals defined — spikes, LFP, and MUA — the next chapters ask which one actually predicts the BOLD response, starting with the energy costs of the underlying biophysical processes and then turning to the Logothetis experiments that measured all of these signals simultaneously with fMRI.
+With these three candidate signals defined — spikes, LFP, and MUA — the next chapter turns directly to the Logothetis experiments, which measured all of them simultaneously with fMRI and ask which one actually predicts the BOLD response.

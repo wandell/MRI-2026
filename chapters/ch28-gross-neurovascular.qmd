@@ -8,6 +8,12 @@ date: last-modified
 
 ---
 
+Psychologists and cognitive scientists often talk about neurons; they sometimes talk about glia; but it is exceedly rare for them to discuss the blood supply. This is an interesting contrast with neurosurgeons operate on the brain, or engineers who build systems composed of circuits.  The neurosurgeons are intensely aware of the blood supply because they know that disrupting it will kill either that brain region, or potentially the patient.  Engineers know that a mistake in the power supply can render the whole circuit useless.
+
+It seems likely that variations in the blood supply to different parts of the brain will also matter for how the brain circuits perform. There is much indirect evidence on this point - such as the simple observation that exercise that keeps the vascular system healthy also has a positive effect on mental tasks.
+
+And that's why we include this section in our teaching. The blood supply will surely matter to general health and specific forms of mental health.  We just don't know how yet.  Plus, we can use MR to measure several aspects of the vasculature and the blood supply!
+
 ## Dural venous sinuses
 
 Blood draining from the brain empties into the dural venous sinuses before leaving the skull through the internal jugular veins. The major sinuses — superior sagittal, straight, transverse, sigmoid, and occipital — form an interconnected system at the base and vault of the skull, joined by smaller sinuses and plexuses around the skull base.

@@ -2,13 +2,18 @@
 date: last-modified
 ---
 
-# Brain overview
+# Brain systems overview
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-The brain is a physical system built from multiple interacting subsystems, operating across a huge range of spatial and temporal scales. This chapter previews four of those subsystems, each covered in more depth in the chapters that follow: the physical container (skull, meninges, geometry), neurons and glia (signaling and computation), white matter (long-range connections), and vasculature (energy delivery and waste removal).
+The brain is a physical system built from multiple interacting subsystems, operating across a huge range of spatial and temporal scales. This chapter previews four of those subsystems, each covered in more depth in the chapters that follow: 
+
+* the physical container (skull, meninges, geometry), 
+* neurons and glia (signaling and computation), 
+* white matter (long-range connections), and 
+* vasculature (energy delivery and waste removal).
 
 ## The physical container
 

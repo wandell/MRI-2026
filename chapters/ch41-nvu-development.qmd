@@ -8,7 +8,9 @@ date: last-modified
 
 ---
 
-The preceding chapters established that local neuronal activity — chiefly synaptic activity, restored by ion pumps — drives the BOLD signal, and that this coupling depends on circuit properties and timing rather than on spike counts alone. This chapter asks a different question: how does neuronal activity actually communicate its need for more blood to the vasculature, and does that communication pathway change over development?
+The preceding chapters established that local neuronal activity — chiefly synaptic activity, restored by ion pumps — drives the BOLD signal, and that this coupling depends on circuit properties and timing rather than on spike counts alone. This chapter asks a different question: how does neuronal activity actually communicate its need for more blood to the vasculature? 
+
+Equally interesting, we ask a related question.  There are many research groups aiming to use fMRI to understand how the brain develops from birth onwards. It is important to know, therefore, whether the critical communication pathways from neurons to vascular change over development?
 
 ## The neurovascular unit hypothesis
 

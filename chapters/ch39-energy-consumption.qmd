@@ -2,13 +2,13 @@
 date: last-modified
 ---
 
-# Energy consumption in the brain
+# Which signals consume the most energy?
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-The Mathiesen-Lauritzen result raises a natural question: of the several candidate neural signals — spikes, synaptic currents, sub-threshold membrane potentials — which requires the most energy, and therefore the most local blood delivery? Answering this requires a brief look at where the brain's energy budget actually goes.
+The Mathiesen-Lauritzen result, and the Logothetis experiments that followed it, both point the same way: synaptic activity, not spiking, is what best predicts local blood flow and the BOLD signal. But why should that be true? Of the several candidate neural signals — spikes, synaptic currents, sub-threshold membrane potentials — which actually requires the most energy, and therefore the most local blood delivery? Answering this requires a brief look at where the brain's energy budget actually goes.
 
 ## The brain's baseline energy budget
 
@@ -32,4 +32,20 @@ Lennie used this kind of energy accounting to ask a sharper question: given the 
 
 His answer is surprising: the cost of a single spike is high enough that, given the brain's total energy supply, no more than about 1% of cortical neurons can be substantially active concurrently. At any given moment, the overwhelming majority of cortical cells must be quiet. This has two consequences Lennie draws out explicitly: the brain must rely on sparse representational codes, using very few active neurons at a time to encode information, and it must allocate its limited energy budget flexibly across regions according to task demand rather than supplying all regions equally. That second requirement — local, on-demand control of blood flow rather than uniform perfusion — is exactly what functional MRI exploits, and why mechanisms of selective attention matter for where that limited energy budget gets spent.
 
-With this energy budget in mind, the next chapter returns to the Logothetis experiments and asks directly which of the candidate electrophysiological signals — spikes, MUA, or LFP — actually predicts the measured BOLD response.
+## Timing matters as much as circuit type
+
+The previous chapter showed that the BOLD signal depends on circuit properties — whether a region's synaptic input is purely excitatory or reflects a balance of excitation and inhibition — not just on spike counts. The same ion-pump accounting extends that argument one step further, to how two populations of neurons are timed relative to each other. Because both excitatory and inhibitory synaptic activity require ion pumps to restore the resulting concentration gradients, both kinds of activity contribute to the mEF-based energy cost — but they can have very different effects on the net electrical signal, depending on their relative timing.
+
+::: {.panel-tabset}
+## Synchronous populations
+
+![If two neuron populations A (excitatory) and B (inhibitory) are active synchronously, the BOLD signal modulates because both populations' pumps are active, even though their electrical contributions to the mEF may partly cancel.](images/ch39/timing-synchronous-case.png){#fig-ch39-timing-synchronous-case fig-alt="Diagram with a green arrow labeled Neurons A and a red arrow labeled Neurons B both pointing into a small cerebellar-circuit icon with a plus sign, and text stating BOLD modulates because both signals make the pumps active."}
+
+## Populations in opposition
+
+![If the same two populations are active in opposition (one increasing while the other decreases), the total mEF can remain roughly constant even though the BOLD signal still reflects the combined metabolic cost of both populations' pumps.](images/ch39/timing-opposition-case.png){#fig-ch39-timing-opposition-case fig-alt="Diagram identical in layout to the synchronous case but with a minus sign between the two neuron population arrows, and text stating BOLD remains constant because both signals make the pumps active."}
+:::
+
+The practical implication is that the mEF (and its LFP/MUA components) and the BOLD signal can, in principle, dissociate depending on the timing relationship between excitatory and inhibitory populations — not only on which signal (spikes versus synaptic potentials) is doing the work, and not only on whether a circuit's inputs are purely excitatory or balanced. This distinction between what the electrical signal shows and what the BOLD signal shows, driven by the shared metabolic cost of restoring ion gradients regardless of the net electrical outcome, is a recurring theme in interpreting discrepancies between electrophysiology and fMRI.
+
+With this full energy accounting in hand — the fixed cost of housekeeping, the cost of restoring ion gradients after synaptic and spiking activity, and the way timing between populations shapes the net signal — the next chapter turns to how this local energy demand is actually communicated to the vasculature: the neurovascular unit.

@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Brain package
+# The packaging
 
 {{< include "includes/WIP-callout.qmd" >}}
 

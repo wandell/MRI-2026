@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Cell types
+# Neuronal cell types
 
 {{< include "includes/WIP-callout.qmd" >}}
 

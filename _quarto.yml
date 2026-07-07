@@ -52,17 +52,15 @@ book:
       chapters:
        - chapters/ch31-walter-k.qmd
        - chapters/ch32-blood-oxygenation-levels.qmd
-       - chapters/ch33-balloon-model.qmd
        - chapters/ch34-functional-mri-signal.qmd
-       - chapters/ch35-preliminary-neurological-measurements.qmd
-       - chapters/ch36-brain-signals-intro.qmd
        - chapters/ch37-mathiesen-lauritzen.qmd
        - chapters/ch38-electrophysiological-signal-definitions.qmd
-       - chapters/ch39-energy-consumption.qmd
        - chapters/ch40-logothetis-bold-lfp.qmd
+       - chapters/ch39-energy-consumption.qmd
        - chapters/ch41-nvu-development.qmd
     - part: chapters/part6-dataanalysis.qmd
-      chapters: []
+      chapters:
+       - chapters/ch35-preliminary-neurological-measurements.qmd
     - part: chapters/part7-diffusion.qmd
       chapters: []
     - part: chapters/part8-qmri.qmd
