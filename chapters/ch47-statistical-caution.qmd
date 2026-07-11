@@ -1,0 +1,77 @@
+---
+date: last-modified
+---
+
+# Statistical significance, effect size, and the individual
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+The preceding chapters built up the machinery of the general linear model and signal detection theory. This chapter steps back and asks why caution is required when applying that machinery: statistical significance is not the same thing as scientific importance, a group difference is not the same thing as an individual diagnosis, and a summary statistic is not a substitute for looking at the data.
+
+## Statistical significance is not scientific importance
+
+The economist and statistician Deirdre McCloskey, together with Stephen Ziliak, made this case at book length, arguing that a purely qualitative "significant/not significant" rule has displaced the quantitative question of how large an effect actually is, across the life and human sciences [@ziliak2008-cult]:
+
+> In many of the life and human sciences the existence/whether question of the philosophical disciplines has substituted for the size-matters/how-much question of the scientific disciplines. The substitution is causing a loss of jobs, justice, profits, environmental quality, and even life. The substitution we are worrying about here is called "statistical significance" — a qualitative, philosophical rule that has substituted for a quantitative, scientific magnitude and judgment.
+>
+> — @ziliak2008-cult
+
+![Cover of Ziliak and McCloskey's *The Cult of Statistical Significance*, alongside the book's opening statement of the problem.](images/ch47/ziliak-mccloskey-cult-of-significance.png){#fig-ch47-ziliak-mccloskey-cult-of-significance fig-alt="Slide with a block of text titled A Significant Problem on the left and the book cover The Cult of Statistical Significance by Stephen T. Ziliak and Deirdre N. McCloskey on the right."}
+
+The statistical effect size, $d'$, is a case in point: it is a ratio (separation over spread), not a measurement in real-world units. Two methods can have very different effect sizes while producing very different real-world outcomes — and the ranking can even reverse. Consider two weight-loss methods, A and B. Method A produces an average weight loss of 10 pounds with a standard deviation of 2 pounds, giving $d' = 10/2 = 5$. Method B produces an average loss of only 5 pounds, but with a much tighter standard deviation of 0.5 pounds, giving $d' = 5/0.5 = 10$ — twice the effect size of method A, despite producing half the actual weight loss.
+
+![Two weight-loss methods illustrating that statistical effect size is not the same as size in real units: method B has double the effect size of method A ($d'=10$ vs. $d'=5$) despite producing half the actual weight loss (5 lbs vs. 10 lbs).](images/ch47/effect-size-vs-real-units.png){#fig-ch47-effect-size-vs-real-units fig-alt="Two overlapping bell-curve distributions over weight loss, labeled Method A (wide, centered near 10) and Method B (narrow, centered near 5), with effect sizes of 5 and 10 respectively listed at left."}
+
+Which method would you choose? If the real-world goal is weight lost, method A wins decisively despite its smaller $d'$. The lesson generalizes directly to fMRI: a large $d'$ or a small $p$-value tells you a difference is reliably detectable, not that it is large, or that it matters.
+
+## Terminology across fields
+
+The vocabulary for describing detection performance was introduced in earlier chapters using the language of signal detection theory (hits, false alarms, $d'$). Several other fields use different names for exactly the same quantities, and it is worth having all of them side by side.
+
+Statisticians describe **Type I and Type II errors**: a Type I error is a false alarm — rejecting a true null hypothesis — with probability $\alpha$; a Type II error is a miss — failing to reject a false null hypothesis — with probability $\beta$.
+
+![The standard statistical table of error types, crossing the truth of the null hypothesis against the decision made, alongside the equivalent signal-detection-theory picture (overlapping distributions and an ROC curve) and confusion-matrix layout (TP/FP/FN/TN).](images/ch47/terminology-type1-type2.png){#fig-ch47-terminology-type1-type2 fig-alt="Left: a table of error types with rows Don't reject and Reject and columns Null hypothesis True and False, cells labeled Correct inference, Type II error, Type I error, Correct inference. Right: two overlapping bell curves and an ROC curve, plus a 2x2 TP/FP/FN/TN confusion matrix."}
+
+The diagnostic-testing and machine-learning literatures describe **sensitivity and specificity**: sensitivity (the true positive rate) is the probability of a positive test result given that the individual truly is positive — a hit. Specificity (the true negative rate) is the probability of a negative test result given that the individual truly is negative — a correct rejection.
+
+![Sensitivity and specificity illustrated with a Venn-diagram-style scatter of relevant/selected elements: sensitivity is the fraction of relevant elements that were selected, specificity concerns the negative elements.](images/ch47/terminology-sensitivity-specificity.png){#fig-ch47-terminology-sensitivity-specificity fig-alt="Circle of selected elements overlapping a rectangle of relevant elements, divided into false negatives, true positives, false positives, and true negatives, with formulas for sensitivity and specificity below."}
+
+The information-retrieval literature describes **precision and recall**: precision (also called positive predictive value) is the fraction of relevant instances among the retrieved instances; recall (equivalent to sensitivity) is the fraction of relevant instances that were actually retrieved. Recall is simply the complement of the Type II error rate (one minus the Type II error rate); precision is related to the Type I error rate, but in a more complicated way, since it also depends on the prior probability of encountering a relevant versus an irrelevant item.
+
+![Precision and recall, defined over the same selected/relevant element diagram: precision asks how many retrieved items are relevant, recall asks how many relevant items were retrieved.](images/ch47/terminology-precision-recall.png){#fig-ch47-terminology-precision-recall fig-alt="Same circle-and-rectangle diagram as the sensitivity/specificity figure, now labeled with retrieved elements and relevant elements, with formulas for precision and recall below."}
+
+## Group comparisons and single subjects
+
+Many neuroimagers perform group comparisons: a typical report summarizes a response or structural difference between two groups, and the cover of a well-known handbook of fMRI data analysis is itself built around exactly this kind of group-difference brain map [@poldrack2011-handbook]. But group comparisons differ greatly from the designs needed for diagnosis of a single participant, and the tools required for the two purposes differ as well.
+
+![The cover of the *Handbook of Functional MRI Data Analysis*, illustrating a typical group-comparison statistical brain map (Poldrack, Mumford, and Nichols, 2011).](images/ch47/poldrack-handbook-cover.png){#fig-ch47-poldrack-handbook-cover fig-alt="Three axial and sagittal brain maps with red-yellow and blue-green statistical overlays, next to the book cover text Handbook of Functional MRI Data Analysis by Poldrack, Mumford, and Nichols."}
+
+### Design for diagnosis
+
+The goal of a diagnostic measurement is to determine the best way to help a particular individual — not to characterize a population average. A population distribution of some potentially useful diagnostic measurement might look like the blue histogram below; two individual children's measurements, marked as filled circles, fall at opposite tails of that distribution, and we would like to use the measurement to decide how to support each child (for example, whether remedial training is likely to help, or whether an electronic reading aid would serve better).
+
+![A population distribution of a diagnostic measurement (N=1000), with two individual children's measurements marked at the two tails, illustrating the goal of individual diagnosis.](images/ch47/design-for-diagnosis-population.png){#fig-ch47-design-for-diagnosis-population fig-alt="Histogram of a measurement value for 1000 subjects, bell-shaped and centered near zero, with a green dot near -4 labeled Will learn with remedial training and a red dot near 4 labeled Difficulty learning to read visually, use electronic aids."}
+
+### The problem with group comparisons
+
+A group comparison can give a misleading impression of how well a diagnostic measure actually works. Suppose the same population measurement is compared between a control group and a test group of poor readers. Plotted as overlapping histograms, the two distributions are almost entirely overlapping — the measurement, on its own, would not help much with diagnosing an individual. But plotted instead as a group-mean bar chart with error bars, the same data can look like a large, unambiguous difference.
+
+::: {.panel-tabset}
+## Overlapping distributions
+![The same measurement compared between a control group and a test group of poor readers, plotted as overlapping histograms (N=1000 per group): the distributions overlap almost completely.](images/ch47/group-comparison-histograms.png){#fig-ch47-group-comparison-histograms fig-alt="Two heavily overlapping histograms, one blue labeled Control and one orange labeled Test, both bell-shaped and centered close together."}
+
+## Group means and error bars
+![The identical data, now plotted as group means with standard-error bars: the same nearly-complete overlap between individuals now looks like a large, clean difference between the two group means, and the paper reporting it might encourage treating this as a useful biomarker — a mistaken conclusion for the reasons in the previous panel. This gap between what the histogram shows and what the bar chart seems to show grows larger, not smaller, as the sample size N increases.](images/ch47/group-comparison-bar-chart-punchline.png){#fig-ch47-group-comparison-bar-chart-punchline fig-alt="Left panel repeats the overlapping histograms; right panel shows a bar chart with a small negative Control bar and a much larger positive Test bar, each with small error bars, making the group difference look large and clean."}
+:::
+
+The histogram makes clear that the size of the individual-level effect is small; the bar chart makes it look as though the effect size is large, when in fact it is only *statistically* significant — a distinction that matters enormously for any claim about using a measure diagnostically, and one that becomes more pronounced, not less, as the sample size grows.
+
+## The importance of visualization: Anscombe's quartet
+
+Group-level summary statistics can also actively obscure the structure of the underlying data, independent of any question about individual diagnosis or sample size. Anscombe's quartet is the classic demonstration: four different datasets share an identical mean, variance, correlation, and linear regression line, to several decimal places — yet look completely different when actually plotted [@anscombe1973-graphs].
+
+![Anscombe's quartet: four datasets with identical summary statistics (mean, variance, correlation, regression line, and $R^2$) but strikingly different structure when visualized — a straightforward linear relationship, a clear curve, a linear relationship with one outlier, and a single-point-driven relationship with no other variation in $x$.](images/ch47/anscombes-quartet.png){#fig-ch47-anscombes-quartet fig-alt="Table of summary statistics (mean, variance, correlation, regression line, R-squared) all identical across four datasets, next to four scatter plots labeled y1 vs x1 through y4 vs x4, each showing visibly different data patterns despite sharing the same fitted regression line."}
+
+The moral for fMRI analysis is direct: a reported beta weight, $d'$, or $p$-value is a summary statistic like the ones in Anscombe's table — useful, but no substitute for looking at the underlying time series, the scatter of individual subjects, or the raw distribution the summary was computed from.

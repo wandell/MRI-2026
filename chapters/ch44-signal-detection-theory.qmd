@@ -1,0 +1,73 @@
+---
+date: last-modified
+---
+
+# Signal detection theory and the logic of decisions
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+The beta-weights produced by the general linear model are numbers — but numbers alone don't answer questions. To decide whether a beta weight differs from zero, or whether one beta weight is larger than another, we need a theory of decisions under uncertainty. That theory is **signal detection theory (SDT)**, also called statistical decision theory.
+
+## Block designs and the design matrix
+
+In a block design, one compares the signal level averaged over different periods of time, rather than modeling each brief event separately. An alternating block design simply alternates between condition A and condition B; a controlled block design adds a third, unstimulated baseline condition C, interleaved with A and B, so that each condition can be compared against a common rest period as well as against each other. There are several statistical matters that must be accounted for when making these comparisons, particularly when many different conditions are compared.
+
+![Two block-design schemes: an alternating block design comparing conditions A and B directly, and a controlled block design that interleaves a baseline condition C between the A and B blocks.](images/ch44/block-design-timeline.png){#fig-ch44-block-design-timeline fig-alt="Two rows of colored boxes along a time axis: the top row alternates red A and blue B blocks, the bottom row alternates red A and blue B blocks each followed by a white C block."}
+
+The same block structure can be written as a design matrix, exactly as in the event-related case: each condition becomes a column of the matrix, and the model solves for a beta weight per condition at each voxel.
+
+![The block design written as a design matrix: alternating A and B blocks become two columns, multiplied by a vector of beta weights.](images/ch44/block-design-matrix-2cond.png){#fig-ch44-block-design-matrix-2cond fig-alt="Matrix equation diagram: an fMRI time series column equals a two-column block design matrix (labeled A and B) times a two-element beta vector."}
+
+Extending the design to three conditions is a simple extension of the same matrix: one more column, one more beta weight.
+
+![The controlled block design (A, B, and baseline C) written as a three-column design matrix, with three corresponding beta weights.](images/ch44/block-design-matrix-3cond.png){#fig-ch44-block-design-matrix-3cond fig-alt="Matrix equation diagram: an fMRI time series column equals a three-column block design matrix (labeled A, B, C) times a three-element beta vector."}
+
+## Reasoning about the beta weights
+
+Each voxel yields a beta weight per condition per trial. Each beta estimates the strength of response to a specific condition — these are measurement summaries, not direct readouts of neural mechanism. Repeating an experiment produces a table of beta weights that vary from trial to trial, reflecting measurement noise as well as any true underlying difference between conditions.
+
+![An example table of trial-by-trial beta weights for two conditions, A and B, illustrating that even a real underlying difference is obscured by trial-to-trial variability.](images/ch44/beta-weights-table.png){#fig-ch44-beta-weights-table fig-alt="Table with columns Trial, beta(A), and beta(B), listing ten trials with beta(A) values around 0.7-1.3 and beta(B) values around 0.3-0.8."}
+
+In the case of these linear models, we would like to know which of the $\beta_i$ is non-zero: we say $\beta_i = 0$ is the value expected for pure noise, and a non-zero value indicates signal plus noise. Or we might want to know whether one weight is bigger than another: $\beta_i > \beta_j$, meaning the response to condition $i$ is bigger than the response to condition $j$. Answering either question requires a way to reason about noisy measurements — which is exactly what signal detection theory provides.
+
+## How do we decide under uncertainty?
+
+Signal detection theory treats beta values as noisy measurements and uses statistical decision theory to reason about hits, misses, and false alarms; about effect size (Cohen's $d$, or $d'$), not just statistical significance; and about the tradeoffs between sensitivity and specificity that come with any fixed decision rule.
+
+Statistical decision theory analyzes the available information to decide between two possibilities. In the fMRI case, we decide whether $\beta_i = 0$ (noise alone) or $|\beta_i| > 0$ (signal plus noise). The approach is also called hypothesis testing — how much evidence do we have that a hypothesis is true or not.
+
+Any such decision can be laid out in a two-by-two table, crossing the true state of the world (is a signal actually present?) against the decision that was made (did we decide a signal was present?). The four cells of this table are a hit (signal present, decision "signal"), a miss (signal present, decision "noise" — a false negative, traditionally called a Type II error), a false alarm (signal absent, decision "signal" — a false positive, traditionally called a Type I error), and a correct rejection (signal absent, decision "noise").
+
+::: {.callout-note}
+The slide image below (and its analogues later in this chapter) labels these cells with the Type I/Type II terms reversed relative to the standard usage above — it marks the miss as "Type I Error" and the false alarm as "Type II Error." A corrected version of this same diagram appears later in the course (@fig-ch46-sdt-matrix-corrected-labels). Worth fixing at the source before these slides are reused.
+:::
+
+![The general signal-detection decision matrix, crossing the true state of the world (signal-plus-noise vs. noise) against the decision made, with hit, miss, false alarm, and correct rejection labeled in the four cells.](images/ch44/sdt-matrix-generic.png){#fig-ch44-sdt-matrix-generic fig-alt="Two-by-two blue table with rows Signal+noise and Noise and columns Signal+noise decision and Noise decision, cells labeled Hit, Type I Error (Miss), Type II Error (False Alarm), and Correct Rejection."}
+
+The same structure applies directly to an fMRI beta weight, replacing "signal present" with $|\beta_i| > 0$ and "signal absent" with $\beta_i = 0$.
+
+![The same decision matrix applied to an fMRI beta-weight decision: is $|\beta_i| > 0$ (signal present) or $\beta_i = 0$ (noise)?](images/ch44/sdt-matrix-fmri-example.png){#fig-ch44-sdt-matrix-fmri-example fig-alt="Two-by-two blue table with rows and columns labeled by beta_i greater than 0 and beta_i equals 0, cells labeled Hit, Type I Error (Miss), Type II Error (False Alarm), Correct Rejection."}
+
+The same decision structure recurs constantly outside of fMRI as well — a medical diagnostic test, for example, faces exactly the same four possibilities: disease present or absent, crossed against a positive or negative test result.
+
+![The signal-detection matrix applied to medical diagnosis: disease present or absent (rows) crossed against a positive or negative diagnostic decision (columns).](images/ch44/sdt-matrix-medical-example.png){#fig-ch44-sdt-matrix-medical-example fig-alt="Two-by-two blue table with rows Disease condition and No disease condition and columns Diagnosis positive and Diagnosis negative, cells labeled Hit, Type I Error (Miss), Type II Error (False Alarm), Correct Rejection."}
+
+## A worked example: how good is a diagnostic test?
+
+Suppose we run 200 cases in an experiment, 100 with the disease and 100 without. A perfect test correctly diagnoses every case: all 100 disease cases test positive, and all 100 disease-free cases test negative. This is the excellent case.
+
+![A perfect diagnostic test: 100 of 100 disease cases test positive, and 0 of 100 disease-free cases test positive — an excellent result.](images/ch44/medical-diagnosis-perfect-test.png){#fig-ch44-medical-diagnosis-perfect-test fig-alt="Two-by-two table with 100 and 0 in the top row and 0 and 100 in the bottom row, labeled Excellent, under the heading Example: Medical diagnosis."}
+
+Now compare this against a test that always says "positive," regardless of the true disease state. It still catches all 100 true disease cases — so its hit rate looks perfect — but it also flags all 100 disease-free cases as positive. Without also checking the false-alarm rate, the test looks deceptively good.
+
+![A lousy diagnostic test that always reports "positive": it still achieves 100 of 100 hits, but also produces 100 false alarms out of 100 disease-free cases.](images/ch44/medical-diagnosis-always-positive.png){#fig-ch44-medical-diagnosis-always-positive fig-alt="Two-by-two table with 100 and 0 in the top row and 100 and 0 in the bottom row, labeled Lousy, under the heading Example: Medical diagnosis."}
+
+The mirror-image failure is a test that always says "negative." It correctly clears every disease-free case — a perfect correct-rejection rate — but misses every true case of disease.
+
+![A lousy diagnostic test that always reports "negative": it correctly clears all 100 disease-free cases, but misses all 100 true disease cases.](images/ch44/medical-diagnosis-always-negative.png){#fig-ch44-medical-diagnosis-always-negative fig-alt="Two-by-two table with 0 and 100 in the top row and 0 and 100 in the bottom row, labeled Lousy, under the heading Example: Medical diagnosis."}
+
+## Conclusion
+
+To make a decision, it is essential to measure both the test condition (disease present) and the control condition (disease absent). A hit rate or a false-alarm rate on its own says almost nothing about the quality of a test — only the pair of them, taken together, does. The same point applies directly to fMRI: reporting only how often a voxel crosses a statistical threshold when a stimulus is present says nothing useful unless it is compared against how often the same voxel crosses that threshold when nothing of interest is happening. The next chapter works through this logic using several concrete diagnostic examples, including one very close to home.

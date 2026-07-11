@@ -63,3 +63,27 @@ From an engineering perspective, the different layers of the packaging perform d
 Layering for graceful failure is a general engineering strategy, not unique to the brain. Laminated safety glass has multiple layers, cracks rather than shattering, and fails in a contained, predictable way. Composite aircraft skins orient fiber layers differently so cracks arrest at interfaces, engineering in damage tolerance. The brain's multiple meningeal layers similarly localize damage — for example, distinguishing epidural from subdural bleeds — rather than allowing a global failure.
 
 ![The protective container of the brain: scalp, skull, dura mater, arachnoid mater, and pia mater.](images/ch23/layered-structures-engineering-analogy.png){#fig-ch23-layered-structures-engineering-analogy fig-alt="Illustration of a head with scalp, skull, dura, arachnoid, and pia mater layers labeled, alongside text about laminated glass and aircraft skin analogies."}
+
+## The venous sinuses are not passive drains {#sec-ch23-skull-drains}
+
+::: {.callout-note}
+Placement flagged for review: this section was added from a February 2026 Nature news item, and Brian still needs to decide exactly where it fits best relative to the rest of the chapter — it may belong earlier, alongside the "why so many layers" discussion, rather than as a closing section.
+:::
+
+The dural venous sinuses were described above as providing "mechanical support and venous drainage" — but a 2026 study in mice and humans shows that this drainage system is considerably more active than that description suggests. Researchers directly imaged the venous sinuses — the network of large veins embedded in the meningeal membrane closest to the skull — and found that they are not passive vessels, as had long been assumed [@nelson2026-skulldrains].
+
+> In a study in mice and humans published in *Nature* today, researchers captured the venous sinuses pumping blood and cerebrospinal fluid. The vessels also continuously shuffled their cells around to accommodate for patrolling immune cells.
+>
+> The study found that human sinuses are also wrapped in a layer of smooth muscle and have similar porosity to mouse sinuses. The ruffling of cells, however, couldn't be shown in humans because current non-invasive imaging methods do not [yet provide sufficient resolution].
+>
+> — @nelson2026-skulldrains
+
+::: {.panel-tabset}
+## Overview
+![The dural venous sinuses drain fluid from the brain and skull, and — according to a 2026 imaging study — actively pump blood and CSF while their lining cells continuously rearrange ("ruffle") to admit patrolling immune cells (Nelson, *Nature* news, 2026).](images/ch23/skull-drains-venous-sinuses-1.png){#fig-ch23-skull-drains-venous-sinuses-1 fig-alt="Nature news article headline 'How skull drains keep the brain safe from damage and pathogens,' with a colored sagittal MRI-style image of a skull and brain vasculature."}
+
+## Findings
+![The 2026 study's key findings: the sinuses pump blood and CSF, their cells shuffle to accommodate immune surveillance, and human sinuses share smooth-muscle wrapping and porosity with the mouse sinuses studied directly.](images/ch23/skull-drains-venous-sinuses-2.png){#fig-ch23-skull-drains-venous-sinuses-2 fig-alt="Continuation of the Nature news article text describing the study's findings in mice and humans, alongside the same skull-and-vasculature image."}
+:::
+
+The immune-surveillance role adds a second function to the venous sinuses' mechanical one: beyond carrying blood and CSF away from the brain, the sinus lining appears to actively reshape itself to let patrolling immune cells through — a behavior the researchers call "ruffling." Human sinuses share the same smooth-muscle wrapping and porosity as the mouse sinuses studied directly, though whether ruffling itself occurs in humans is not yet known, since current non-invasive imaging methods lack the resolution to see it directly.
