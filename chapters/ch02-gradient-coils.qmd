@@ -10,29 +10,28 @@ date: last-modified
 
 ## Main field and gradient coils overview
 
-![Hans Ørsted, Nikola Tesla, and Johann Carl Friedrich Gauss — pioneers of electromagnetism whose names are used as units of magnetic field..](images/ch02/scanner-components-diagram.png){#fig-scanner-components-diagram fig-alt="Block diagram of MR system components including RF, gradient, and control systems."}
+![Hans Christian Ørsted, Nikola Tesla, and Carl Friedrich Gauss — pioneers of electromagnetism whose names are used as units of magnetic field.](images/ch02/scanner-components-diagram.png){#fig-scanner-components-diagram fig-alt="Block diagram of MR system components including RF, gradient, and control systems."}
 
-The discovery of magnetism.  Then the relationship between electricity and magnetism.  Maybe Clerk Maxwell inserted here.
+The discovery of magnetism, electricity, and their relationship is one of the great achievements of science. Society depends on our understanding of these forces. The three pioneers shown here each have a unit of magnetic field measurement named after them: the Oersted (Oe), the Tesla (T), and the Gauss (G).
 
-A useful reference for this material is *Pictures to Protons* (p. 168).
-The T/R (Transmit/Receive) switch is a key component that alternates the RF coil
-between transmitting pulses and receiving the MR signal.
+Ørsted demonstrated the connection between electric current and magnetism. Gauss developed important theoretical foundations for understanding magnetic fields. Tesla applied these principles to practical electromagnetic applications.
+
+The connection between electricity and magnetism was first demonstrated by the Danish physicist Hans Christian Ørsted in 1820, when he showed that a current-carrying wire deflected a compass needle placed beneath it.
 
 ## Magnetic Field Units
 
 ![Standard magnetic field units.](images/ch02/magnetic-field-units-pioneers.png){#fig-magnetic-field-units-pioneers fig-alt="Slide showing portraits of Oersted, Tesla, and Gauss alongside a diagram of a current-carrying wire and compass."}
 
-There are two related magnetic field quantities, **H** (magnetic field strength)
-and **B** (magnetic flux density). In free space they differ only by a constant:
-B = μ₀H, where μ₀ = 4π × 10⁻⁷ T·m/A.
+Two related magnetic field quantities describe magnetic effects:
 
-The H-field is measured in **amperes per meter** (A/m) in SI units.
-The B-field is measured in **Tesla** (T).
+- **H** (magnetic field strength): measured in amperes per meter (A/m)
+- **B** (magnetic flux density): measured in Tesla (T)
 
-The connection between electricity and magnetism was first demonstrated by the
-Danish physicist Hans Christian Ørsted in 1820, when he showed that a
-current-carrying wire deflected a compass needle placed beneath it.
+In free space, these quantities are related by:
 
+$$B = \mu_0 H$$
+
+where the permeability of free space is $\mu_0 = 4\pi \times 10^{-7}$ T·m/A.
 
 ## Generating the Static Magnetic Field (B0)
 
