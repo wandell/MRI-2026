@@ -77,7 +77,14 @@ book:
        - chapters/ch52-organization-of-the-maps.qmd
        - chapters/ch53-visual-specializations.qmd
     - part: chapters/part8-diffusion.qmd
-      chapters: []
+      chapters:
+       - chapters/ch54-white-matter-biology.qmd
+       - chapters/ch55-principles-of-diffusion-imaging.qmd
+       - chapters/ch56-diffusion-imaging-of-the-brain.qmd
+       - chapters/ch57-models-of-voxel-level-diffusion.qmd
+       - chapters/ch58-voxel-level-reliability-measures.qmd
+       - chapters/ch59-tractography-combining-voxels-into-tracts.qmd
+       - chapters/ch60-tractography-analyzing-white-matter-tracts.qmd
     - part: chapters/part9-qmri.qmd
       chapters: []
     - part: chapters/part10-applications.qmd

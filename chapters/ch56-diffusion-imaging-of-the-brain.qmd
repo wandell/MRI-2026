@@ -1,0 +1,65 @@
+---
+date: last-modified
+---
+
+# Diffusion Imaging of the Brain
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Diffusion imaging: images, bvecs, bvals
+
+![Diffusion imaging: images, bvecs, bvals.](images/ch56/diffusion-imaging-images-bvecs-bvals.png){#fig-ch56-diffusion-imaging-images-bvecs-bvals}
+
+## Non-diffusion MR image
+
+![Non-diffusion MR image.](images/ch56/non-diffusion-mr-image.png){#fig-ch56-non-diffusion-mr-image}
+
+## Diffusion weighting: Directions
+
+::: {.panel-tabset}
+## Step 1
+
+![Diffusion weighting: Directions — step 1.](images/ch56/diffusion-weighting-directions-1.png){#fig-ch56-diffusion-weighting-directions-1}
+
+## Step 2
+
+![Diffusion weighting: Directions — step 2.](images/ch56/diffusion-weighting-directions-2.png){#fig-ch56-diffusion-weighting-directions-2}
+
+:::
+
+## Angular resolution and b-value (Theory)
+
+![Angular resolution and b-value (Theory).](images/ch56/angular-resolution-and-b-value-theory.png){#fig-ch56-angular-resolution-and-b-value-theory}
+
+## Diffusion-weighting:  b-values
+
+::: {.panel-tabset}
+## Step 1
+
+![Diffusion-weighting:  b-values — step 1.](images/ch56/diffusion-weighting-b-values-1.png){#fig-ch56-diffusion-weighting-b-values-1}
+
+## Step 2
+
+![Diffusion-weighting:  b-values — step 2.](images/ch56/diffusion-weighting-b-values-2.png){#fig-ch56-diffusion-weighting-b-values-2}
+
+## Step 3
+
+![Diffusion-weighting:  b-values — step 3.](images/ch56/diffusion-weighting-b-values-3.png){#fig-ch56-diffusion-weighting-b-values-3}
+
+:::
+
+This multiplies the values in ms/um2 by 1000 1000 um = 1mm 1000 ms = 1 sec X ms/um2 = Y (1e-3 s / (1e-6 mm2) So, if use s/mm2 units Y is 1e+3 X = Y
+
+## Stejskal-Tanner equation is essential for measuring diffusion
+
+![Stejskal-Tanner equation is essential for measuring diffusion.](images/ch56/stejskal-tanner-equation-is-essential-for-measurin.png){#fig-ch56-stejskal-tanner-equation-is-essential-for-measurin}
+
+## Quantifying diffusion with MR‏
+
+![Quantifying diffusion with MR‏.](images/ch56/quantifying-diffusion-with-mr.png){#fig-ch56-quantifying-diffusion-with-mr}
+
+## Diffusion imaging – Mike Moseley!
+
+![Diffusion imaging – Mike Moseley!.](images/ch56/diffusion-imaging-mike-moseley.png){#fig-ch56-diffusion-imaging-mike-moseley}

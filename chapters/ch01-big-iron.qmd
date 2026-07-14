@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# MRI system
+# MRI System
 
 {{< include "includes/WIP-callout.qmd" >}}
 
@@ -22,48 +22,41 @@ date: last-modified
 
 ![Schematic of the multi-room MRI system (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 2.2).](images/ch01/system-rooms-diagram.png){#fig-system-rooms-diagram fig-alt="Diagram showing the scanner room, machine room, and console room with connections between components."}
 
-The MR hardware used for image acquisition consists of the magnet, gradients, control electronics, RF coils, and the computers that coordinate signals, record instrument responses, and process the raw data into images.
+An MRI scanner is a distributed system. Its hardware includes the main magnet, gradient and RF coils, power amplifiers, control electronics, and computers that synchronize signals, record the MR response, and reconstruct images from the raw data.
 
-Functional neuroimaging also requires systems to manage the behavioral experiment. Usually provided by the research labs rather than the scanner vendor, these systems are specialized to present sensory stimuli, record subject responses, and monitor physiological data (such as respiration and heart rate).
+Functional neuroimaging also requires systems to manage the behavioral experiment. These are usually supplied by the research laboratory rather than the scanner vendor, and they present stimuli, record responses, and often monitor physiology such as respiration and heart rate. Their timing must be synchronized with the MR acquisition.
 
 ## Control room
 
-![The control room for for Stanford's Center for Cognitive and Neurobiological Imaging (CNI).](images/ch01/cni-control-room.png){#fig-cni-control-room fig-alt="Photo of the CNI control room showing workstations and monitors."}
+![The control room for Stanford's Center for Cognitive and Neurobiological Imaging (CNI).](images/ch01/cni-control-room.png){#fig-cni-control-room fig-alt="Photo of the CNI control room showing workstations and monitors."}
 
-Experimenters operate the scanner and monitor the subject from the **control room**. That is the location of primary operator console, typically a large display that interacts with the computer controlling the MR scanner. 
+Experimenters operate the scanner and monitor the subject from the **control room**. The primary operator console communicates with the scanner-control computer and displays the current scan, system status, and safety information.
 
-Alongside the main computer one typically finds secondary computers that are used for stimulus presentation and response recording.  Academic imaging centers usually provide interfaces to plug in external laptops to control in-bore displays, sound systems, and button boxes. Supporting quick, reliable hardware switching between different research groups is a key requirement for center management.
+Secondary computers are commonly used for stimulus presentation and response recording. Academic imaging centers usually provide interfaces for external laptops to control in-bore displays, sound systems, and button boxes. Supporting reliable connections for many research groups is an important operational requirement.
 
 ![View of the control room window.](images/ch01/scanner-room.png){#fig-scanner-room fig-alt="Photo of the control room; the window looks into the scanner room."}
 
-This view shows the main computer alongside special purpose equipment for plugging in button boxes, displays for viewing the stimuli shown to the subject and other gear that might be in the scanner room.  The shielded glass window - which in this picture looks mainly like a reflection, lets the operator see into the room and keep an eye on the subject (or patient).
+This view shows the scanner console and equipment used to connect button boxes, stimulus displays, and other devices in the scanner room. The shielded viewing window lets the operator observe the subject while preserving the room's RF shielding.
 
 ## Scanner Room
 
 ![Subject being positioned in the MR scanner.](images/ch01/scanner-room-patient-table.png){#fig-scanner-room-patient-table fig-alt="Photo of a subject lying on the scanner table being positioned by a technician."}
 
-The scanner room houses the magnet bore and the patient table.  In this image we see someone on the table, about to slide into the bore of the magnet.  He is adjusting a mirror that will be over his eyes, enabling him to see a display that is positioned at the other opening of the magnet's bore. If there isn't a display, a mirror still is useful.  It allows the subject to see out of the bore for reducing claustrophobia.
+The scanner room houses the magnet bore and patient table. Here, a subject is preparing to slide into the bore and adjusting a mirror that reflects a display at the far end of the magnet. Even without a display, a mirror can help a subject see out of the bore and reduce claustrophobia.
 
-The wire you see is a squeeze ball; this device is always provided to the subject as a safety alarm for emergency communication. 
+The cable leads to a squeeze bulb, which gives the subject a direct way to alert the operator or stop the scan if needed.
 
 ## RF Shielding
 
-![RF shielding of copper panels are installed in the scanner room walls.](images/ch01/rf-shielding.png){#fig-rf-shielding fig-alt="Photo of copper RF shielding panels in the scanner room."}
+![Copper panels form the RF-shielded enclosure of the scanner room.](images/ch01/rf-shielding.png){#fig-rf-shielding fig-alt="Photo of copper RF shielding panels in the scanner room."}
 
-There isn't any real danger from the RF pulses leaving the scanner room - but it is crucial to block unwanted RF pulses from entering the room. External radiofrequency (RF) signals—such as television or radio broadcasts near the proton resonance frequency (approx. 127.7 MHz at 3T)—can contaminate the weak MR signal emitted by the body. The walls of the scanner room are lined with material that shields (blocks) such unwanted signals from impacting the MR instrument. The construction consists of
+The primary purpose of the room shield is to block unwanted radiofrequency (RF) signals from entering the scanner room. External broadcasts near the proton resonance frequency — about 127.7 MHz at 3 T — can contaminate the very weak MR signal received from the body.
 
-Drywall
-│
-Copper foil or aluminum panel
-│
-Wood framing
-│
+The walls, ceiling, floor, door, and viewing window form a continuous conducting enclosure, usually made with copper or aluminum. Electrical cables pass through filtered penetration panels; nonconductive connections can use waveguides designed to block RF transmission. Together these components make a *Faraday cage*.
 
-There are a few places where the room is opened so that wires enter and leave.  These are managed by specially RF-filtered electrical penetrations, or tubes built to specific specifications called 'waveguides' that maintain the RF integrity of the room.  The whole room is sometimes called a *Faraday cage*.  This is a closed conducting enclosure that greatly attenuates electromagnetic fields. In the context of MRI, its primary purpose is to block radio-frequency (RF) electromagnetic waves from passing between the inside and outside of the scanner room.
+The Faraday cage attenuates RF electromagnetic waves in both directions, but it has essentially no effect on the static main field $B_0$. The magnet's own active or passive magnetic shielding limits the **fringe field**, the region outside the scanner where the static field remains appreciable.
 
-Another reason for some shielding is to make sure the main magnetic field doesn't extend too far, say into the control room or the surrounding rooms. This is called the **fringe field**. In modern scanners, there is usually an active system to limit the fringe field.  
-
-I will say more about that later, after describing the main magnetic field.
+We return to the main field and its fringe field in the next chapter.
 
 ## Machine Room
 
@@ -83,17 +76,17 @@ Here is the main caption that applies to the entire figure group.
 ![Waveguides and patch panel on the scanner room wall.](images/ch01/waveguides.png){#fig-waveguides fig-alt="Close-up photo of waveguides and patch panel connections."}
 :::
 
-The machine room houses critical supporting infrastructure for the MRI system, including gradient amplifiers used for imaging, power supplies, and penetration panels (also called patch panels and waveguides). THere are many cables and pipes that pass between the machine room and the scanner room through these panels.  In some cases the cables are placed in waveguides and and sometimes in panels with electrical filters to prevent RF leakage.
+The machine room houses critical supporting infrastructure, including gradient and RF amplifiers, power supplies, cooling hardware, and penetration panels. Many cables and pipes pass between the machine room and the scanner room. Conductive cables use filtered feedthroughs, while waveguides provide RF-safe paths for appropriate connections.
 
-Click on the different tabs in the figure above to see various views of the machine room at the CNI.  Don't forget how important the people are!
+The tabs above show several views of the CNI machine room, including the people who keep this infrastructure operating.
 
 ## Chilled Water Cooling
 
 ![Chilled water cooling system in the machine room.](images/ch01/chilled-water.png){#fig-chilled-water fig-alt="Photo of the chilled water pipes and cooling system in the machine room."}
 
-A chilled water loop provides continuous cooling for components that generate substantial heat during scanning. The gradient coils, which are essential for imaging, heat up due to rapidly switching electric currents. The RF and gradient power amplifiers also draw a lot of power and get hot. 
+A chilled-water loop removes heat from components that dissipate substantial power during scanning. Rapidly switched currents heat the gradient coils, and the gradient and RF power amplifiers also generate considerable heat.
 
-In the machine room there is a helium compressor (cold head) that keeps the liquid helium cold. Robust thermal management is essential to prevent system shut-downs and component degradation.
+The helium compressor in the machine room supplies high-pressure helium gas to the cryocooler's **cold head**, which is mounted on the magnet. Robust thermal management prevents scanner shutdowns and component degradation.
 
 ## Liquid Helium
 
@@ -105,13 +98,12 @@ In the machine room there is a helium compressor (cold head) that keeps the liqu
 ![Close-up of a liquid helium Dewar with MRI KeepCOLD Services label.](images/ch01/helium-dewar-closeup.png){#fig-helium-dewar-closeup fig-alt="Close-up photo of a liquid helium Dewar showing the cryogenic liquid warning label."}
 :::
 
-Dewars are large, double-walled cryogenic storage vessels designed to transport and store liquid helium. They utilize a high vacuum between the inner and outer walls to minimize heat transfer via conduction and convection. The vessels are typically constructed from materials with low thermal conductivity, such as stainless steel or Invar.
+Dewars are large, double-walled cryogenic vessels used to transport and store liquid helium. A high vacuum between the inner and outer walls, together with radiation shielding, greatly reduces heat transfer. Their metal walls are designed to be mechanically strong while limiting heat flow to the liquid.
 
-Liquid helium keeps the magnet windings at approximately 4.2 K ($-269^\circ\text{C}$), a temperature required to maintain the niobium-titanium (NbTi) wires in a superconducting state. Modern MRI scanners employ a cryocooler (cold head) to continuously recondense helium vapor back into liquid, minimizing helium boil-off and reducing the frequency of cryogen refills.
+Liquid helium keeps the magnet windings near 4.2 K ($-269^\circ\text{C}$), below the critical temperature of niobium-titanium (NbTi) wire. Many modern MRI scanners use a cryocooler (cold head) to recondense helium vapor, minimizing boil-off and reducing the need for cryogen refills.
 
 ## MRI Vendors
 
 ![The three major vendors of human MRI systems: GE, Siemens, and Philips.](images/ch01/mri-vendors.png){#fig-mri-vendors fig-alt="Slide showing photos of scanners from GE, Siemens, and Philips with bullet points about the vendor landscape."}
 
-The market for human MRI systems is dominated by three major vendors: GE HealthCare, Siemens Healthineers, and Philips. While the physical principles of MRI are identical across all platforms, proprietary engineering implementations—such as software interfaces, gradient coil designs, and image reconstruction algorithms—vary significantly. These differences can introduce vendor-specific systematic variance, making it challenging to pool raw data directly. The small-bore preclinical and animal imaging market is led by Bruker, while newer entries like United Imaging Healthcare also serve the clinical market.
-
+GE HealthCare, Siemens Healthineers, and Philips are longstanding major suppliers of human MRI systems. The underlying physics is the same across platforms, but software interfaces, gradient hardware, pulse-sequence implementations, and image-reconstruction algorithms differ. These differences can introduce vendor-specific variation, so multisite studies often require explicit harmonization before data are pooled. Bruker is a major supplier of small-bore preclinical systems; other manufacturers also serve the clinical and research markets.

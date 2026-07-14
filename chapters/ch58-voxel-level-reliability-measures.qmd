@@ -1,0 +1,104 @@
+---
+date: last-modified
+---
+
+# Voxel-Level Reliability Measures
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Modeling the diffusion signal: The ball and stick model
+
+![Modeling the diffusion signal: The ball and stick model.](images/ch58/modeling-the-diffusion-signal-the-ball-and-stick-m.png){#fig-ch58-modeling-the-diffusion-signal-the-ball-and-stick-m}
+
+## The sparse fascicle model (SFM)
+
+::: {.panel-tabset}
+## Step 1
+
+![The sparse fascicle model (SFM) — step 1.](images/ch58/the-sparse-fascicle-model-sfm-1.png){#fig-ch58-the-sparse-fascicle-model-sfm-1}
+
+## Step 2
+
+![The sparse fascicle model (SFM) — step 2.](images/ch58/the-sparse-fascicle-model-sfm-2.png){#fig-ch58-the-sparse-fascicle-model-sfm-2}
+
+:::
+
+## From diffusion data to fiber orientations
+
+![From diffusion data to fiber orientations.](images/ch58/from-diffusion-data-to-fiber-orientations.png){#fig-ch58-from-diffusion-data-to-fiber-orientations}
+
+## Assessing models of the diffusion signals – the precision of the data
+
+![Assessing models of the diffusion signals – the precision of the data.](images/ch58/assessing-models-of-the-diffusion-signals-the-prec.png){#fig-ch58-assessing-models-of-the-diffusion-signals-the-prec}
+
+People have proposed a lot of diffusion models, from the diffusion tensor model on. Fewer people have looked closely at the precision of the data. If you have noisy (imprecise) data, then the ability to distinguish different models is limited. The next set of slides assesses how well we might be able to distinguish different models given the precision of the data.
+
+## Sparse fascicle model (Sparse fascicle model)
+
+![Sparse fascicle model (Sparse fascicle model).](images/ch58/sparse-fascicle-model-sparse-fascicle-model.png){#fig-ch58-sparse-fascicle-model-sparse-fascicle-model}
+
+## Evaluating models using cross-validation
+
+::: {.panel-tabset}
+## Step 1
+
+![Evaluating models using cross-validation — step 1.](images/ch58/evaluating-models-using-cross-validation-1.png){#fig-ch58-evaluating-models-using-cross-validation-1}
+
+## Step 2
+
+![Evaluating models using cross-validation — step 2.](images/ch58/evaluating-models-using-cross-validation-2.png){#fig-ch58-evaluating-models-using-cross-validation-2}
+
+## Step 3
+
+![Evaluating models using cross-validation — step 3.](images/ch58/evaluating-models-using-cross-validation-3.png){#fig-ch58-evaluating-models-using-cross-validation-3}
+
+:::
+
+## Cross-validation
+
+![Cross-validation.](images/ch58/cross-validation.png){#fig-ch58-cross-validation}
+
+## Evaluating models using cross-validation
+
+![Evaluating models using cross-validation.](images/ch58/evaluating-models-using-cross-validation.png){#fig-ch58-evaluating-models-using-cross-validation}
+
+## DTM predicts the independent data more accurately than replication
+
+![DTM predicts the independent data more accurately than replication.](images/ch58/dtm-predicts-the-independent-data-more-accurately.png){#fig-ch58-dtm-predicts-the-independent-data-more-accurately}
+
+## Interpreting ‘variance explained’ in test-retest
+
+::: {.panel-tabset}
+## Step 1
+
+![Interpreting ‘variance explained’ in test-retest — step 1.](images/ch58/interpreting-variance-explained-in-test-retest-1.png){#fig-ch58-interpreting-variance-explained-in-test-retest-1}
+
+## Step 2
+
+![Interpreting ‘variance explained’ in test-retest — step 2.](images/ch58/interpreting-variance-explained-in-test-retest-2.png){#fig-ch58-interpreting-variance-explained-in-test-retest-2}
+
+:::
+
+## The SFM is slightly better (whole brain analysis)
+
+![The SFM is slightly better (whole brain analysis).](images/ch58/the-sfm-is-slightly-better-whole-brain-analysis.png){#fig-ch58-the-sfm-is-slightly-better-whole-brain-analysis}
+
+## SFM outperforms DTM in ~10% of the voxels (b = 4000)
+
+![SFM outperforms DTM in ~10% of the voxels (b = 4000).](images/ch58/sfm-outperforms-dtm-in-10-of-the-voxels-b-4000.png){#fig-ch58-sfm-outperforms-dtm-in-10-of-the-voxels-b-4000}
+
+## In a few regions, the SFM outperforms DTM ~10% of the voxels (b = 4000)
+
+![In a few regions, the SFM outperforms DTM ~10% of the voxels (b = 4000).](images/ch58/in-a-few-regions-the-sfm-outperforms-dtm-10-of-the.png){#fig-ch58-in-a-few-regions-the-sfm-outperforms-dtm-10-of-the}
+
+## Summary
+
+![Summary.](images/ch58/summary.png){#fig-ch58-summary}
+
+## References
+
+![References.](images/ch58/references.png){#fig-ch58-references}
+
+Origins of diffusion imaging Moseley; Cohen, Y; Kucharczyk, J; Mintorovitch, J; Asgari, HS; Wendland, MF; Tsuruda, J; Norman, D (1990). "Diffusion-weighted MR imaging of anisotropic water diffusion in cat central nervous system". Radiology 176 (2): 439–45. Basser et al., 1994 – Biophysical Journal – Good opening sentence: “This paper describes a new NMR imaging modality-MR diffusion tensor imaging.” Basser and Pierpaoli – 1996, Microstructural and Physiological Features of tissues elucidated by quantitative-diffusion-tensor MRI Journal of Magnetic Resonance Imaging (Introduces FA) LE BIHAN D, MANGIN JF, POUPON C, CLARK CA, PAPPATA S, MOLKO N and CHABRIAT H. Diffusion tensor imaging:Concepts and applications. Journal of Magnetic ResonanceImaging, 13: 534-546, 2001. Applications of diffusion imaging to human cognition KLINGBERG T, HEDEHUS M, TEMPLE E, SALZ T, GABRIELI JD, MOSELEY ME and POLDRACK RA. Microstructure of temporoparietal white matter as a basis for reading ability: Evidence from diffusion tensor magnetic resonance imaging. Neuron, 25: 493-500, 2000 See the Diffusion Imaging wikipedia page. It has some serious errors, but the stories from Filler are good.

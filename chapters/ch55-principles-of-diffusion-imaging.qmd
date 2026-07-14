@@ -1,0 +1,99 @@
+---
+date: last-modified
+---
+
+# Principles of Diffusion Imaging
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Diffusion imaging
+
+![Diffusion imaging.](images/ch55/diffusion-imaging.png){#fig-ch55-diffusion-imaging}
+
+## White Matter Biology to Human Neuroimaging
+
+![White Matter Biology to Human Neuroimaging.](images/ch55/white-matter-biology-to-human-neuroimaging.png){#fig-ch55-white-matter-biology-to-human-neuroimaging}
+
+## Myelin wrapping of an oligodendrocyte in the white matter
+
+![Myelin wrapping of an oligodendrocyte in the white matter.](images/ch55/myelin-wrapping-of-an-oligodendrocyte-in-the-white.png){#fig-ch55-myelin-wrapping-of-an-oligodendrocyte-in-the-white}
+
+## Random diffusion of the spins illustrated (Brownian motion)
+
+![Random diffusion of the spins illustrated (Brownian motion).](images/ch55/random-diffusion-of-the-spins-illustrated-brownian.png){#fig-ch55-random-diffusion-of-the-spins-illustrated-brownian}
+
+## Brownian motion:  The Gaussian assumption
+
+![Brownian motion:  The Gaussian assumption.](images/ch55/brownian-motion-the-gaussian-assumption.png){#fig-ch55-brownian-motion-the-gaussian-assumption}
+
+## Einstein and Brownian motion (diffusion)
+
+::: {.panel-tabset}
+## Step 1
+
+![Einstein and Brownian motion (diffusion) — step 1.](images/ch55/einstein-and-brownian-motion-diffusion-1.png){#fig-ch55-einstein-and-brownian-motion-diffusion-1}
+
+## Step 2
+
+![Einstein and Brownian motion (diffusion) — step 2.](images/ch55/einstein-and-brownian-motion-diffusion-2.png){#fig-ch55-einstein-and-brownian-motion-diffusion-2}
+
+:::
+
+## Barrier constrained diffusion of the spins
+
+![Barrier constrained diffusion of the spins.](images/ch55/barrier-constrained-diffusion-of-the-spins.png){#fig-ch55-barrier-constrained-diffusion-of-the-spins}
+
+## Microscopic Structures In the Brain are the barriers
+
+![Microscopic Structures In the Brain are the barriers.](images/ch55/microscopic-structures-in-the-brain-are-the-barrie.png){#fig-ch55-microscopic-structures-in-the-brain-are-the-barrie}
+
+## Measuring diffusion with MR:  Protons Precessing in Phase
+
+![Measuring diffusion with MR:  Protons Precessing in Phase.](images/ch55/measuring-diffusion-with-mr-protons-precessing-in.png){#fig-ch55-measuring-diffusion-with-mr-protons-precessing-in}
+
+## Diffusion Weighting: First Pulse
+
+![Diffusion Weighting: First Pulse.](images/ch55/diffusion-weighting-first-pulse.png){#fig-ch55-diffusion-weighting-first-pulse}
+
+## The spins diffuse in the brain, changing position (Brownian motion)
+
+![The spins diffuse in the brain, changing position (Brownian motion).](images/ch55/the-spins-diffuse-in-the-brain-changing-position-b.png){#fig-ch55-the-spins-diffuse-in-the-brain-changing-position-b}
+
+## Reverse the gradient
+
+![Reverse the gradient.](images/ch55/reverse-the-gradient.png){#fig-ch55-reverse-the-gradient}
+
+## Reduced signal from spin dephasing
+
+![Reduced signal from spin dephasing.](images/ch55/reduced-signal-from-spin-dephasing.png){#fig-ch55-reduced-signal-from-spin-dephasing}
+
+## Pulse sequences for diffusion-weighted imaging
+
+![Pulse sequences for diffusion-weighted imaging.](images/ch55/pulse-sequences-for-diffusion-weighted-imaging.png){#fig-ch55-pulse-sequences-for-diffusion-weighted-imaging}
+
+## Pulse sequences used for diffusion-weighted imaging.
+
+![Pulse sequences used for diffusion-weighted imaging.](images/ch55/pulse-sequences-used-for-diffusion-weighted-imagin.png){#fig-ch55-pulse-sequences-used-for-diffusion-weighted-imagin}
+
+## From the Bloch equation to the Bloch-Torrey equation
+
+![From the Bloch equation to the Bloch-Torrey equation.](images/ch55/from-the-bloch-equation-to-the-bloch-torrey-equati.png){#fig-ch55-from-the-bloch-equation-to-the-bloch-torrey-equati}
+
+## Transverse relaxation:  T2
+
+![Transverse relaxation:  T2.](images/ch55/transverse-relaxation-t2.png){#fig-ch55-transverse-relaxation-t2}
+
+## Diffusion coefficient  impacts the signal size
+
+::: {.panel-tabset}
+## Step 1
+
+![Diffusion coefficient  impacts the signal size — step 1.](images/ch55/diffusion-coefficient-impacts-the-signal-size-1.png){#fig-ch55-diffusion-coefficient-impacts-the-signal-size-1}
+
+## Step 2
+
+![Diffusion coefficient  impacts the signal size — step 2.](images/ch55/diffusion-coefficient-impacts-the-signal-size-2.png){#fig-ch55-diffusion-coefficient-impacts-the-signal-size-2}
+
+:::

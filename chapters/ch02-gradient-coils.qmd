@@ -2,25 +2,27 @@
 date: last-modified
 ---
 
-# Main field gradient coils
+# Main Field and Gradient Coils
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-## Main field and gradient coils overview
+## Main Field and Gradient-Coil Overview
 
-![Hans Christian Ørsted, Nikola Tesla, and Carl Friedrich Gauss — pioneers of electromagnetism whose names are used as units of magnetic field.](images/ch02/scanner-components-diagram.png){#fig-scanner-components-diagram fig-alt="Block diagram of MR system components including RF, gradient, and control systems."}
+![Magnetic-field units and the scientists whose names they bear: Ørsted, Tesla, and Gauss.](images/ch02/scanner-components-diagram.png){#fig-scanner-components-diagram fig-alt="Slide titled Magnetic field units, showing reference field strengths and portraits of Hans Ørsted, Nikola Tesla, and Carl Friedrich Gauss."}
 
-The discovery of magnetism, electricity, and their relationship is one of the great achievements of science. Society depends on our understanding of these forces. The three pioneers shown here each have a unit of magnetic field measurement named after them: the Oersted (Oe), the Tesla (T), and the Gauss (G).
+Electricity and magnetism are inseparable in an MRI scanner: electric currents generate the main, gradient, and RF magnetic fields. The three scientists shown here have units named after them: the oersted (Oe), tesla (T), and gauss (G). In MRI, the main field $B_0$ is normally specified in tesla.
 
-Ørsted demonstrated the connection between electric current and magnetism. Gauss developed important theoretical foundations for understanding magnetic fields. Tesla applied these principles to practical electromagnetic applications.
+Ørsted demonstrated the connection between electric current and magnetism. Gauss developed mathematical foundations for describing magnetic fields. Tesla applied these principles in practical electromagnetic devices.
 
 The connection between electricity and magnetism was first demonstrated by the Danish physicist Hans Christian Ørsted in 1820, when he showed that a current-carrying wire deflected a compass needle placed beneath it.
 
+For scale, Earth's magnetic field is about 0.5 gauss, and a refrigerator magnet is roughly 200 gauss. Most clinical MRI systems operate at 1.5 or 3 tesla; higher-field human systems, such as 7 T and 9.4 T, are used primarily for research.
+
 ## Magnetic Field Units
 
-![Standard magnetic field units.](images/ch02/magnetic-field-units-pioneers.png){#fig-magnetic-field-units-pioneers fig-alt="Slide showing portraits of Oersted, Tesla, and Gauss alongside a diagram of a current-carrying wire and compass."}
+![Magnetic-field unit conversions for magnetic field strength ($H$) and magnetic flux density ($B$).](images/ch02/magnetic-field-units-pioneers.png){#fig-magnetic-field-units-pioneers fig-alt="Table of magnetic-field units and conversions, including oersted, ampere per meter, gauss, and tesla."}
 
 Two related magnetic field quantities describe magnetic effects:
 
@@ -31,93 +33,73 @@ In free space, these quantities are related by:
 
 $$B = \mu_0 H$$
 
-where the permeability of free space is $\mu_0 = 4\pi \times 10^{-7}$ T·m/A.
+where the permeability of free space is $\mu_0 = 4\pi \times 10^{-7}$ T·m/A. Within magnetic materials, magnetization also contributes to $B$. MRI conventionally reports $B_0$ in tesla; $1\ \text{T} = 10{,}000\ \text{G}$.
 
-## Generating the Static Magnetic Field (B0)
+## Generating the Static Magnetic Field ($B_0$)
 
 ### The Helmholtz Pair
 
-![Sketch of the Helmholtz pair.](images/ch02/magnetic-field-units-examples.png){#fig-magnetic-field-units-examples fig-alt="Slide listing example magnetic field levels: Earth 0.5G, refrigerator magnet 200G, MRI scanner 15,000–90,000G."}
+![Helmholtz pair: two current-carrying loops separated by one radius, producing a relatively uniform field at their midpoint.](images/ch02/magnetic-field-units-examples.png){#fig-magnetic-field-units-examples fig-alt="Diagram of a Helmholtz pair showing two circular coils, their radius, separation, and magnetic field at the center."}
 
-Useful reference points: Earth's magnetic field is about 0.5 Gauss; a refrigerator
-magnet is around 200 Gauss; clinical MR scanners operate at 15,000–90,000 Gauss
-(1.5–9 Tesla).
-
-![Helmholtz pair design: two current-carrying loops separated by a distance equal to their radius, producing a relatively uniform field at the center..](images/ch02/magnetic-field-units-table.png){#fig-magnetic-field-units-table fig-alt="Table showing unit conversions between Gauss, milliTesla, Oersted, and kA/m."}
-
-The Helmholtz pair uses two loops carrying current in the **same direction**,
-separated by a distance equal to their radius. This geometry produces a
-relatively uniform field in the region between the coils. However, with only
-two coils the uniform region is too small to encompass a human head.
+The Helmholtz pair uses two loops carrying current in the **same direction**, separated by a distance equal to their radius. This geometry produces a relatively uniform field in the region between the coils. However, with only two coils the uniform region is too small to encompass a human head.
 
 ### The Solenoid Design
 
-![A solenoid design](images/ch02/b0-helmholtz-pair-diagram.png){#fig-b0-helmholtz-pair-diagram fig-alt="Diagram of a Helmholtz pair coil with field lines shown at the center."}
+![A multiple-turn solenoidal winding, with a Helmholtz pair shown for contrast.](images/ch02/magnetic-field-units-table.png){#fig-magnetic-field-units-table fig-alt="Photograph of a multiple-turn cylindrical coil, with a small Helmholtz-pair diagram shown below it."}
 
-To obtain a uniform field over a larger volume, modern MRI magnets use a solenoid
-design in which a coil is wrapped tightly around a cylindrical frame.
-The wraps determine the magnetic field strength, uniformity, and — for a
-resistive magnet — the energy consumption. For a large B₀ field, the energy
-required is very high.
+To produce a uniform field over a large volume, an MRI main magnet uses multiple closely spaced, coaxial solenoidal windings. Their positions and currents determine the field strength and homogeneity. A simple resistive solenoid would dissipate enormous power at MRI field strengths, which is why most clinical and research systems use superconducting windings.
+
+![A solenoid: many closely spaced turns of wire arranged around a cylindrical form.](images/ch02/b0-helmholtz-pair-diagram.png){#fig-b0-helmholtz-pair-diagram fig-alt="Slide illustrating a solenoid with many turns wrapped around a cylindrical form and field lines through its center."}
+
+For a simple solenoid, adding turns or increasing current increases the field. In an MRI magnet, the winding geometry is optimized to make $B_0$ highly uniform throughout the imaging volume.
 
 ## Superconducting Magnets
 
-![Wrong figure.](images/ch02/superconducting-magnet-material.png){#fig-superconducting-magnet-material fig-alt="Diagram of a superconducting magnet showing the helium vessel, shim coils, and outer vacuum shield, alongside a photo of NbTi wire being wound."}
+![Superconducting magnet winding: niobium-titanium (NbTi) wire wound onto a cylindrical former.](images/ch02/superconducting-magnet-material.png){#fig-superconducting-magnet-material fig-alt="Slide titled Energy solution: superconducting magnets, showing NbTi wire being wound onto a glass-reinforced polymer former."}
 
-The energy problem is solved by using **superconducting wire**. A superconducting
-magnet is made by wrapping niobium-titanium (NbTi) wire around a cylindrical
-form. When cooled to approximately 4.2 K (near absolute zero) using liquid
-helium, the wire has zero electrical resistance. Current injected once at
-field strength continues to flow indefinitely with no power input —
-the magnet sustains itself.
+The resistive-power problem is addressed with **superconducting wire**. MRI magnets commonly use niobium-titanium (NbTi) wire wound into multiple coils and kept below its critical temperature, typically near 4 Kelvin in a helium cryostat. In persistent mode, a superconducting switch closes the circuit after the magnet is ramped to field, allowing the current to circulate with essentially no resistive loss. The cryogenic system still requires power to maintain the low temperature.
 
-Liquid helium is the primary cryogen (cooling agent). Liquid nitrogen (~77 K),
-which is less expensive, is sometimes used as an insulating layer around the
-helium vessel.
+Liquid helium is the traditional primary cryogen. Thermal shields and vacuum insulation reduce the heat reaching the helium vessel; older magnet designs sometimes used liquid nitrogen as an additional, relatively inexpensive thermal shield.
 
 ![Cryocooler (cold head) operation: recondensing boiled-off helium to minimize consumption.](images/ch02/superconducting-magnet-cryocooler.png){#fig-superconducting-magnet-cryocooler fig-alt="Diagram of the cryocooler system alongside the cryostat cross-section showing thermal shields."}
 
-Modern MR systems use a **cryocooler** (cold head) to recondense helium gas that
-evaporates during operation. The cryocooler works by compressing and then
-expanding a separate helium gas loop; the expansion stage drops the temperature
-to ~4 K, which is cold enough to recondense the boiled-off cryostat helium back
-into liquid. This process significantly reduces helium consumption and minimizes
-the need for refills.
+Modern MR systems use a **cryocooler** (cold head) to remove heat from the cryostat. In a recondensing system, the cold head condenses helium vapor back into liquid, greatly reducing helium loss and the need for refills. The cryocooler operates with a separate, closed helium-gas cycle that alternately compresses and expands the gas to create a cold stage near 4 K.
 
-### The Maxwell Pair (Z-gradient)
+### The Maxwell Pair: a Z Gradient
 
-![The Maxwell pair: two coils carrying current in opposite directions, producing a field that varies linearly along the z-axis when superimposed on B0.](images/ch02/maxwell-coil.png){#fig-gradient-maxwell-pair fig-alt="Diagram showing a Maxwell pair coil design and the resulting linear z-gradient field added to the static B0 field."}
+![The Maxwell pair: two coils carrying current in opposite directions, producing a field that varies linearly along the z-axis when superimposed on $B_0$.](images/ch02/maxwell-coil.png){#fig-gradient-maxwell-pair fig-alt="Diagram showing a Maxwell pair coil design and the resulting linear z-gradient field added to the static B0 field."}
 
-Unlike the Helmholtz pair, the Maxwell pair runs current in **opposite directions**
-in the two coils. This produces a change in magnetic field from iso-center to
-each coil. When superimposed on the main B0 field, the result is a static field
-that increases linearly along the axis between the two coils — a **z-gradient**.
+Unlike the Helmholtz pair, the two coils of a Maxwell pair carry current in **opposite directions**. Their fields cancel at isocenter and change approximately linearly near the center. When this field is added to the main field, the result is $B(z) = B_0 + G_z z$: a **z-gradient** that makes the field strength depend on position along the bore.
 
-### Three Orthogonal Maxwell Pair Gradients
+### Three Orthogonal Gradient Fields
 
 ![The three MR gradient coils (X, Y, Z) shown in their physical arrangement inside the scanner bore.](images/ch02/gradient-coils-xyz.png){#fig-gradient-coils-xyz fig-alt="3D diagram showing the X, Y, and Z gradient coils arranged concentrically, with the RF body coil surrounding the subject."}
 
-MRI requires three orthogonal gradient coils to encode spatial position in all
-three dimensions. It is important that the X and Y gradients are properly paired;
-without this pairing it would be impossible to generate a true X or Y gradient
-independently.
+MRI requires three independently controlled gradient fields to encode position in all three dimensions. The z-gradient is often produced by a Maxwell-like pair of loops; the x- and y-gradients use saddle-shaped windings around the bore. Each produces a field that varies approximately linearly along its named axis, allowing the scanner to select and encode spatial locations.
+
+::: {.callout-note title="Saddle-shaped windings"}
+An x- or y-gradient winding lies on the cylindrical surface of the bore. Its conductors run lengthwise along two sides of the cylinder and are joined by curved end sections, so the pattern resembles a saddle on a horse. A transverse gradient is commonly made from two symmetric saddle pairs (four saddle sections) placed around the bore. Their fields add to form the desired gradient while unwanted uniform and higher-order fields cancel.
+
+The sections are manufactured and positioned very precisely, then driven together as one gradient coil. They are not ordinarily calibrated as independent saddles. Instead, scanner calibration measures the behavior of the complete gradient system — its strength, axis alignment, cross-axis coupling, timing, and eddy currents — and adjusts amplifier gains and pre-emphasis to correct residual errors.
+:::
 
 ## Shimming
 
-Remarkable how simple some of the tools for controlling the magnetic field can be.  Here is an example of the simple bit of iron that is in a holder, where it slides back and forth, to control the uniformity of the field.
-
 ![Shimming insert used to improve field homogeneity.](images/ch02/shimming.png){#fig-shimming fig-alt="Photo of a person holding a shimming insert."}
+
+For all of the high technology, some methods for adjusting the magnetic field are remarkably simple. This image shows a small ferromagnetic piece that can be positioned along a holder to make a local correction to $B_0$. These **passive shims** improve field homogeneity; scanners also use actively controlled shim coils for adjustable corrections.
 
 ## Gradient Coil Replacement at the CNI
 
-![New gradient coil wrapped for delivery, ready for insertion into the magnet bore.](images/ch02/cni-gradient-replacement.png){#fig-gradient-coil-new-insertion fig-alt="Photo of a large cylindrical gradient coil wrapped in plastic, positioned for insertion into the scanner."}
+::: {.panel-tabset}
 
-These images are from the Ultra-High Performance (UHP) gradient upgrade at the
-CNI. The gradient coils were shipped in containers that inadvertently included
-iron components — a significant problem given the strong magnetic field of the
-scanner. A winch was required to remove the unwanted ferromagnetic material from
-the bore before the new coils could be installed.
+## Receiving the new gradient coil
+![New gradient coil delivered for insertion into the magnet bore. You can see the lines suggesting the saddle-windings.](images/ch02/cni-gradient-replacement.png){#fig-gradient-coil-new-insertion fig-alt="Photo of a large cylindrical gradient coil wrapped in plastic, being moved into position at the CNI."}
 
-![Removing the existing gradient coils from the CNI scanner during the UHP upgrade. The tool shown was used by GE engineers to extract the coil assembly from the housing.](images/ch02/cni-gradient-replacement2.png){#fig-gradient-coil-removal-cni fig-alt="Photo of the gradient coil extraction tool inserted into the scanner bore during the upgrade procedure."}
+<!-- The gradient coils were shipped in containers that inadvertently included iron components — a significant problem given the strong magnetic field of the scanner. A winch was required to remove the unwanted ferromagnetic material from the bore before the new coils could be installed.-->
 
+## Removing the old gradient coil
+![The main gradient coil is being removed from the CNI scanner during an upgrade to the Ultra High Performance (UHP) design.](images/ch02/cni-gradient-replacement2.png){#fig-gradient-coil-removal-cni fig-alt="Photo of the existing gradient coil being withdrawn from the scanner bore using an extraction tool."}
+:::
 
+These images were taken at the time of the Ultra-High Performance (UHP) gradient upgrade at the CNI: the new gradient coil arrived and the existing coil was removed and then replaced. The installation required precise mechanical alignment within the magnet bore, as well as careful attention to the strong static field.

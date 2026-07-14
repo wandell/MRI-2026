@@ -1,0 +1,217 @@
+---
+date: last-modified
+---
+
+# Tractography: Combining Voxels into Tracts
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Tractography models
+
+![Tractography models.](images/ch59/tractography-models.png){#fig-ch59-tractography-models}
+
+## Tractography:  Using the diffusion tensor model
+
+::: {.panel-tabset}
+## Step 1
+
+![Tractography:  Using the diffusion tensor model — step 1.](images/ch59/tractography-using-the-diffusion-tensor-model-1.png){#fig-ch59-tractography-using-the-diffusion-tensor-model-1}
+
+## Step 2
+
+![Tractography:  Using the diffusion tensor model — step 2.](images/ch59/tractography-using-the-diffusion-tensor-model-2.png){#fig-ch59-tractography-using-the-diffusion-tensor-model-2}
+
+## Step 3
+
+![Tractography:  Using the diffusion tensor model — step 3.](images/ch59/tractography-using-the-diffusion-tensor-model-3.png){#fig-ch59-tractography-using-the-diffusion-tensor-model-3}
+
+:::
+
+## Original deterministic methods
+
+![Original deterministic methods.](images/ch59/original-deterministic-methods.png){#fig-ch59-original-deterministic-methods}
+
+## Connect-the-Voxels
+
+![Connect-the-Voxels.](images/ch59/connect-the-voxels.png){#fig-ch59-connect-the-voxels}
+
+## Fiber Assignment by Continuous Tracking (FACT)
+
+![Fiber Assignment by Continuous Tracking (FACT).](images/ch59/fiber-assignment-by-continuous-tracking-fact.png){#fig-ch59-fiber-assignment-by-continuous-tracking-fact}
+
+## The general intuition about tracking
+
+![The general intuition about tracking.](images/ch59/the-general-intuition-about-tracking.png){#fig-ch59-the-general-intuition-about-tracking}
+
+## Start the path in the PDD at a seed - Many seeds will be used
+
+![Start the path in the PDD at a seed - Many seeds will be used.](images/ch59/start-the-path-in-the-pdd-at-a-seed-many-seeds-wil.png){#fig-ch59-start-the-path-in-the-pdd-at-a-seed-many-seeds-wil}
+
+## Interpolate a new tensor at path endpoint
+
+![Interpolate a new tensor at path endpoint.](images/ch59/interpolate-a-new-tensor-at-path-endpoint.png){#fig-ch59-interpolate-a-new-tensor-at-path-endpoint}
+
+## Take next step based on interpolation
+
+![Take next step based on interpolation.](images/ch59/take-next-step-based-on-interpolation.png){#fig-ch59-take-next-step-based-on-interpolation}
+
+## Repeat until you arrive at a tract stopping condition
+
+![Repeat until you arrive at a tract stopping condition.](images/ch59/repeat-until-you-arrive-at-a-tract-stopping-condit.png){#fig-ch59-repeat-until-you-arrive-at-a-tract-stopping-condit}
+
+## Stop for a sharp angle
+
+![Stop for a sharp angle.](images/ch59/stop-for-a-sharp-angle.png){#fig-ch59-stop-for-a-sharp-angle}
+
+## Stop if the data provide no guidance
+
+![Stop if the data provide no guidance.](images/ch59/stop-if-the-data-provide-no-guidance.png){#fig-ch59-stop-if-the-data-provide-no-guidance}
+
+## Probabilistic tractography; global tractography
+
+![Probabilistic tractography; global tractography.](images/ch59/probabilistic-tractography-global-tractography.png){#fig-ch59-probabilistic-tractography-global-tractography}
+
+## Critique of deterministic methods
+
+![Critique of deterministic methods.](images/ch59/critique-of-deterministic-methods.png){#fig-ch59-critique-of-deterministic-methods}
+
+## Principles we would like
+
+![Principles we would like.](images/ch59/principles-we-would-like.png){#fig-ch59-principles-we-would-like}
+
+## Behrens et al. (2003, Nature Neuroscience)
+
+![Behrens et al. (2003, Nature Neuroscience).](images/ch59/behrens-et-al-2003-nature-neuroscience.png){#fig-ch59-behrens-et-al-2003-nature-neuroscience}
+
+## Behrens et al. (2003)
+
+::: {.panel-tabset}
+## Step 1
+
+![Behrens et al. (2003) — step 1.](images/ch59/behrens-et-al-2003-1.png){#fig-ch59-behrens-et-al-2003-1}
+
+## Step 2
+
+![Behrens et al. (2003) — step 2.](images/ch59/behrens-et-al-2003-2.png){#fig-ch59-behrens-et-al-2003-2}
+
+:::
+
+“… we may draw a sample from the posterior pdf on fiber direction at each point in space and construct the streamline (henceforth referred to as a “probabilistic streamline”) from A given these directions. Computationally, this process is extremely cheap. Samples from the local pdfs at each voxel have already been generated, so to generate a single probabilistic streamline from seed point A, referring to the current “front” of the streamline as z, it is sufficient simply to start z at A and: ● Select a random sample, (q, j) from P(q, j|Y) at z. ● Move z a distance s along (q, j) ● Repeat until stopping criterion is met. This probabilistic streamline is said to connect A to all points B along its path. By drawing many such samples, we may build the spatial pdf of P(A  B |Y) for all B. We may then discretize this distribution into voxels by simply counting the number of probabilistic streamlines which pass through a voxel B and dividing by the total number of probabilistic streamlines. (p. 1084)”
+
+## Principles of connection strength in Probtrack
+
+::: {.panel-tabset}
+## Step 1
+
+![Principles of connection strength in Probtrack — step 1.](images/ch59/principles-of-connection-strength-in-probtrack-1.png){#fig-ch59-principles-of-connection-strength-in-probtrack-1}
+
+## Step 2
+
+![Principles of connection strength in Probtrack — step 2.](images/ch59/principles-of-connection-strength-in-probtrack-2.png){#fig-ch59-principles-of-connection-strength-in-probtrack-2}
+
+## Step 3
+
+![Principles of connection strength in Probtrack — step 3.](images/ch59/principles-of-connection-strength-in-probtrack-3.png){#fig-ch59-principles-of-connection-strength-in-probtrack-3}
+
+:::
+
+## Optic radiation (Meyer’s Loop)
+
+![Optic radiation (Meyer’s Loop).](images/ch59/optic-radiation-meyers-loop.png){#fig-ch59-optic-radiation-meyers-loop}
+
+And when we compare our fibers identified based on their HLF signature compare to this post mortem dissection you will see that we identify the full trajectory of the tract including myeres loop which is typically very difficult to find.
+
+## Algorithm comparisons - ConTrack
+
+![Algorithm comparisons - ConTrack.](images/ch59/algorithm-comparisons-contrack.png){#fig-ch59-algorithm-comparisons-contrack}
+
+## Behrens et al. (2003)
+
+![Behrens et al. (2003).](images/ch59/behrens-et-al-2003.png){#fig-ch59-behrens-et-al-2003}
+
+## Characterization and Propagation of Uncertainty in Diffusion-Weighted MR Imaging(Behrens et al., 2003, MRM)
+
+![Characterization and Propagation of Uncertainty in Diffusion-Weighted MR Imaging(Behrens et al., 2003, MRM).](images/ch59/characterization-and-propagation-of-uncertainty-in.png){#fig-ch59-characterization-and-propagation-of-uncertainty-in}
+
+## Thinking about model validation
+
+![Thinking about model validation.](images/ch59/thinking-about-model-validation.png){#fig-ch59-thinking-about-model-validation}
+
+The issue of parameter validity came up frequently during the early days of functional MRI (fMRI). Some challenged the value of this signal because it does not correspond uniquely to action potentials (Calford et al. 2005). But such parameter validity is not a prerequisite for having
+
+## Modern tractography and visualization tools
+
+![Modern tractography and visualization tools.](images/ch59/modern-tractography-and-visualization-tools.png){#fig-ch59-modern-tractography-and-visualization-tools}
+
+## Tractography methods
+
+::: {.panel-tabset}
+## Step 1
+
+![Tractography methods — step 1.](images/ch59/tractography-methods-1.png){#fig-ch59-tractography-methods-1}
+
+## Step 2
+
+![Tractography methods — step 2.](images/ch59/tractography-methods-2.png){#fig-ch59-tractography-methods-2}
+
+## Step 3
+
+![Tractography methods — step 3.](images/ch59/tractography-methods-3.png){#fig-ch59-tractography-methods-3}
+
+## Step 4
+
+![Tractography methods — step 4.](images/ch59/tractography-methods-4.png){#fig-ch59-tractography-methods-4}
+
+:::
+
+## Tools for grouping streamlines in estimated fascicles
+
+![Tools for grouping streamlines in estimated fascicles.](images/ch59/tools-for-grouping-streamlines-in-estimated-fascic.png){#fig-ch59-tools-for-grouping-streamlines-in-estimated-fascic}
+
+## Data representation conventions
+
+![Data representation conventions.](images/ch59/data-representation-conventions.png){#fig-ch59-data-representation-conventions}
+
+## Language and white matter fascicles
+
+![Language and white matter fascicles.](images/ch59/language-and-white-matter-fascicles.png){#fig-ch59-language-and-white-matter-fascicles}
+
+Diffusion-based tractography enables the graphical reconstruction of the white matter pathways in the brain and spinal cord of living humans. This technique has many potential clinical applications, including the investigation of stroke, multiple sclerosis, epilepsy, neurodegenerative diseases, and spinal cord disorders, and it enables hypotheses to be tested that could not previously be considered in living humans. This Review will outline the limitations of tractography, describe its current clinical applications in the most common neurological diseases, and highlight future opportunities
+
+## Vision and white matter fascicles
+
+![Vision and white matter fascicles.](images/ch59/vision-and-white-matter-fascicles.png){#fig-ch59-vision-and-white-matter-fascicles}
+
+## Automated Fiber Quantification (Yeatman)
+
+![Automated Fiber Quantification (Yeatman).](images/ch59/automated-fiber-quantification-yeatman.png){#fig-ch59-automated-fiber-quantification-yeatman}
+
+## Measuring along the tract
+
+![Measuring along the tract.](images/ch59/measuring-along-the-tract.png){#fig-ch59-measuring-along-the-tract}
+
+## The major white matter tracts in the human brain
+
+![The major white matter tracts in the human brain.](images/ch59/the-major-white-matter-tracts-in-the-human-brain.png){#fig-ch59-the-major-white-matter-tracts-in-the-human-brain}
+
+## Stanford Neurosurgery
+
+![Stanford Neurosurgery.](images/ch59/stanford-neurosurgery.png){#fig-ch59-stanford-neurosurgery}
+
+## Tractography methods
+
+![Tractography methods.](images/ch59/tractography-methods.png){#fig-ch59-tractography-methods}
+
+## AFQ-browser (Yeatman … Rokem)
+
+![AFQ-browser (Yeatman … Rokem).](images/ch59/afq-browser-yeatman-rokem.png){#fig-ch59-afq-browser-yeatman-rokem}
+
+## Anatomically-constrained tractography (ACT)
+
+![Anatomically-constrained tractography (ACT).](images/ch59/anatomically-constrained-tractography-act.png){#fig-ch59-anatomically-constrained-tractography-act}
+
+## Free advice
+
+![Free advice.](images/ch59/free-advice.png){#fig-ch59-free-advice}
