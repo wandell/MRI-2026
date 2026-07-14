@@ -30,6 +30,8 @@ date: last-modified
 
 ![Transverse relaxation:  T2.](images/ch08/transverse-relaxation-t2.png){#fig-ch08-transverse-relaxation-t2}
 
+For the relaxation equations and a short biographical note, see the resource [Felix Bloch and the Bloch Equations](resources/felix-bloch-equations.qmd).
+
 ## The spin de-phasing
 
 <!--

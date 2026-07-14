@@ -24,7 +24,6 @@ book:
        - chapters/pulse-sequences-t2-quantification.qmd
        - chapters/ch09-spin-echo.qmd
        - chapters/ch10-pulse-sequences.qmd
-       - chapters/felix-bloch-equations.qmd
        - chapters/ch11-physical-mechanisms.qmd
     - part: chapters/part3-imageformation.qmd
       chapters:
@@ -89,6 +88,10 @@ book:
       chapters: []
     - part: chapters/part10-applications.qmd
       chapters: []
+    - part: "Resources"
+      chapters:
+       - chapters/resources/felix-bloch-equations.qmd
+       - chapters/resources/erwin-hahn.qmd
        
 bibliography:
   - paperpile.bib
@@ -126,7 +129,6 @@ format:
 #    latex-clean: true
 #    math:
 #      number-equations: true
-
 
 
 

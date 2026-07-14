@@ -1,0 +1,47 @@
+---
+date: last-modified
+---
+
+# Erwin L. Hahn and the Spin Echo {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+Erwin L. Hahn introduced the spin echo, a central experimental idea in magnetic resonance. This resource emphasizes the people and papers behind the method; the physics of spin-echo pulse sequences is covered in the main text.
+
+## The Spin-Echo Idea
+
+![Hahn's 1953 article on free nuclear induction, showing an early spin-echo instrument and signal.](../images/ch09/hahn-spin-echo.png){#fig-hahn-free-nuclear-induction}
+
+In a Hahn spin echo, a $90^\circ$ RF pulse creates transverse magnetization. A $180^\circ$ pulse at time $\tau$ reverses phase offsets caused by static field inhomogeneity, producing an echo at approximately $2\tau$. The pulse refocuses reversible dephasing, but it does not reverse irreversible $T_2$ relaxation.
+
+## The Original Spin-Echo Paper
+
+::: {.panel-tabset}
+
+## Step 1
+
+![First excerpt from Hahn's 1950 paper *Spin Echoes*.](../images/ch09/spin-echoes-e-l-hahn-phys-rev-80-580-published-15-1.png){#fig-hahn-spin-echoes-paper-1}
+
+## Step 2
+
+![Second excerpt from Hahn's 1950 paper *Spin Echoes*.](../images/ch09/spin-echoes-e-l-hahn-phys-rev-80-580-published-15-2.png){#fig-hahn-spin-echoes-paper-2}
+
+:::
+
+Hahn's paper, *Spin Echoes*, appeared in *Physical Review* in 1950. It showed how timed RF pulses can create an observable echo and use its decay to measure relaxation.
+
+## Hahn at Berkeley
+
+![Erwin L. Hahn, professor of physics at the University of California, Berkeley.](../images/ch09/e-l-hahn.png){#fig-hahn-portrait}
+
+The biographical slide records Hahn's long career at the University of California, Berkeley and his recognition for the development of pulsed magnetic resonance and signal refocusing.
+
+## Hahn's Stanford Connection
+
+![Excerpt from Hahn's recollection of arriving at Stanford to work with Felix Bloch.](../images/ch09/-but-thats-how-i-got-one-of-the-national-research.png){#fig-hahn-stanford-recollection}
+
+Hahn recalled that a National Research Council fellowship brought him to Stanford, where he worked with Felix Bloch and continued his work on spin echoes. The connection links the history of the spin echo to the development of the Bloch equations.
+
+## Hahn's Interview
+
+![Excerpt from an interview with Hahn about joining the University of California, Berkeley.](../images/ch09/hahns-interview.png){#fig-hahn-interview}

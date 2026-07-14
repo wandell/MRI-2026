@@ -24,15 +24,13 @@ You can create a macroscopic signal after the RF excitation is over.
 
 ![Early NMR had difficulty instrumenting their measurements.](images/ch09/early-nmr-had-difficulty-instrumenting-their-measu.png){#fig-ch09-early-nmr-had-difficulty-instrumenting-their-measu}
 
-## Hahn Spin-Echo
-
-![Hahn Spin-Echo.](images/ch09/hahn-spin-echo.png){#fig-ch09-hahn-spin-echo}
-
 ## Spin Echo (Hahn)
 
 ![Spin Echo (Hahn).](images/ch09/spin-echo-hahn.png){#fig-ch09-spin-echo-hahn}
 
 The Hahn echo was not only a method to remove static dephasing; it introduced the idea that magnetic resonance signals could be engineered in time, allowing detection to be separated from excitation. This temporal separation was essential for overcoming hardware limitations and made practical NMR—and later MRI—possible.
+
+For the original papers and biographical material, see the resource [Erwin L. Hahn and the Spin Echo](resources/erwin-hahn.qmd).
 
 ## Demo by instructor and class spinning
 
@@ -67,27 +65,3 @@ The Hahn echo was not only a method to remove static dephasing; it introduced th
 :::
 
 Hongjian He proposes to give a lecture about multi-echo
-
-## Spin Echoes.  E. L. Hahn Phys. Rev. 80, 580 – Published 15 November 1950
-
-::: {.panel-tabset}
-
-## Step 1
-
-![Spin Echoes.  E. L. Hahn Phys. Rev. 80, 580 – Published 15 November 1950 — step 1.](images/ch09/spin-echoes-e-l-hahn-phys-rev-80-580-published-15-1.png){#fig-ch09-spin-echoes-e-l-hahn-phys-rev-80-580-published-15-1}
-
-## Step 2
-
-![Spin Echoes.  E. L. Hahn Phys. Rev. 80, 580 – Published 15 November 1950 — step 2.](images/ch09/spin-echoes-e-l-hahn-phys-rev-80-580-published-15-2.png){#fig-ch09-spin-echoes-e-l-hahn-phys-rev-80-580-published-15-2}
-
-:::
-
-## E. L. Hahn
-
-![E. L. Hahn.](images/ch09/e-l-hahn.png){#fig-ch09-e-l-hahn}
-
-![… but that's how I got one of the National Research Council Fellowships. So with that in my bonnet, Nordsieck, who was there at Illinois, had of course previously worked with Felix Bloch. They’d done some theory together. He said, "Why don't you go to Stanford? Bloch is a good man and you'd learn a lot." So I said, "OK," and California attracted me, since I'd been there during the war in the Navy in training school, so I went to Stanford and that's how I became a post-doc for one year, a fellow, and then I was an instructor for one year. So there I continued my work on spin echoes and directed a student of his, under me as well, a PhD, and we did a problem together..](images/ch09/-but-thats-how-i-got-one-of-the-national-research.png){#fig-ch09--but-thats-how-i-got-one-of-the-national-research}
-
-## Hahn’s interview
-
-![Hahn’s interview.](images/ch09/hahns-interview.png){#fig-ch09-hahns-interview}
