@@ -62,6 +62,14 @@ Japanese paper Abstract Myelination increases the conduction velocity in long-ra
 
 ![Regulation of myelin structure and conduction velocity by perinodal astrocytes.](images/ch54/regulation-of-myelin-structure-and-conduction-velo.png){#fig-ch54-regulation-of-myelin-structure-and-conduction-velo}
 
+::: {.content-visible when-format="html"}
+![Animation showing perinodal astrocyte regulation of myelin structure and conduction velocity.](images/ch54/perinodal-astrocytes.mp4){#vid-ch54-perinodal-astrocytes width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Animation showing perinodal astrocyte regulation of myelin structure and conduction velocity (video; see the HTML version for the animation).](images/ch54/perinodal-astrocytes-poster.png){#vid-ch54-perinodal-astrocytes width="80%"}
+:::
+
 This Fields paper has lots of interesting points
 
 ## Signaling between axons and glia – activity dependent
@@ -75,6 +83,22 @@ This Fields paper has lots of interesting points
 ## The behavioral task in mice
 
 ![The behavioral task in mice.](images/ch54/the-behavioral-task-in-mice.png){#fig-ch54-the-behavioral-task-in-mice}
+
+::: {.content-visible when-format="html"}
+![Behavioral task recording — run 1 (35 s).](images/ch54/behavioral-task-mice-1.mp4){#vid-ch54-behavioral-task-mice-1 width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Behavioral task recording — run 1 (video; see the HTML version for the animation).](images/ch54/behavioral-task-mice-1-poster.png){#vid-ch54-behavioral-task-mice-1 width="80%"}
+:::
+
+::: {.content-visible when-format="html"}
+![Behavioral task recording — run 2 (15 s).](images/ch54/behavioral-task-mice-2.mp4){#vid-ch54-behavioral-task-mice-2 width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Behavioral task recording — run 2 (video; see the HTML version for the animation).](images/ch54/behavioral-task-mice-2-poster.png){#vid-ch54-behavioral-task-mice-2 width="80%"}
+:::
 
 ## Intervening to block OL generation prevents learning
 

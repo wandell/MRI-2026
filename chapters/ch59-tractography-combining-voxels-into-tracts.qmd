@@ -196,9 +196,25 @@ Diffusion-based tractography enables the graphical reconstruction of the white m
 
 ![The major white matter tracts in the human brain.](images/ch59/the-major-white-matter-tracts-in-the-human-brain.png){#fig-ch59-the-major-white-matter-tracts-in-the-human-brain}
 
+::: {.content-visible when-format="html"}
+![3D visualization rotating through the major white matter tracts (71 s).](images/ch59/white-matter-tracts-visualization.mp4){#vid-ch59-white-matter-tracts width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![3D visualization of the major white matter tracts (video; see the HTML version for the animation).](images/ch59/white-matter-tracts-visualization-poster.png){#vid-ch59-white-matter-tracts width="80%"}
+:::
+
 ## Stanford Neurosurgery
 
 ![Stanford Neurosurgery.](images/ch59/stanford-neurosurgery.png){#fig-ch59-stanford-neurosurgery}
+
+::: {.content-visible when-format="html"}
+![Stanford Neurosurgery tractography demonstration (18 s).](images/ch59/stanford-neurosurgery-video.mp4){#vid-ch59-stanford-neurosurgery width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Stanford Neurosurgery tractography demonstration (video; see the HTML version for the animation).](images/ch59/stanford-neurosurgery-video-poster.png){#vid-ch59-stanford-neurosurgery width="80%"}
+:::
 
 ## Tractography methods
 
