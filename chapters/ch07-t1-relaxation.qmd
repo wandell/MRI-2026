@@ -46,29 +46,13 @@ The RF frequency needed to flip the spins is proportional to field strength beca
 
 ## The Larmor frequency depends on B0 field
 
-::: {.panel-tabset}
-
-## Step 1
-
 ![The Larmor frequency depends on B0 field — step 1.](images/ch07/the-larmor-frequency-depends-on-b0-field-1.png){#fig-ch07-the-larmor-frequency-depends-on-b0-field-1}
-
-## Step 2
-
-![The Larmor frequency depends on B0 field — step 2.](images/ch07/the-larmor-frequency-depends-on-b0-field-2.png){#fig-ch07-the-larmor-frequency-depends-on-b0-field-2}
-
-## Step 3
-
-![The Larmor frequency depends on B0 field — step 3.](images/ch07/the-larmor-frequency-depends-on-b0-field-3.png){#fig-ch07-the-larmor-frequency-depends-on-b0-field-3}
-
-:::
 
 To move a spin between two states, we require an RF photon whose energy is matched to the difference in energy between the two states;
  The energy of an RF photon is E = hv where h is Planck’s constant and v is frequency
  The RF pulse frequency we need to flip the spins varies with field strength
 
-Sir Joseph Larmor (11 July 1857 Magheragall, County Antrim, Ireland – 19 May 1942 Holywood, County Down, Northern Ireland [1]), 
-a physicist and mathematician who made innovations in the understanding of electricity, dynamics,thermodynamics, and the electron theory of matter. 
-His most influential work was Aether and Matter, a theoretical physics book published in 1900.
+For more on Larmor and the relationship between frequency and magnetic field strength, see the resource [Joseph Larmor and his frequency](resources/joseph-larmor.qmd).
 
 ## Spin-lattice interactions
 

@@ -93,6 +93,7 @@ book:
       chapters:
        - chapters/resources/felix-bloch-equations.qmd
        - chapters/resources/erwin-hahn.qmd
+       - chapters/resources/joseph-larmor.qmd
        
 bibliography:
   - paperpile.bib
@@ -130,7 +131,6 @@ format:
 #    latex-clean: true
 #    math:
 #      number-equations: true
-
 
 
 

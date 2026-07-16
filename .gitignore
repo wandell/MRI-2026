@@ -4,6 +4,9 @@
 /_site/
 site_libs/
 
+# Rendered Quarto HTML written alongside chapter source files
+/chapters/**/*.html
+
 
 FOV-1995/*
 jekyll*/*
@@ -42,4 +45,3 @@ talks/2026-London/2026-London-Dai.pptx
 
 # Local workspace files
 FOV-2025-Quarto.code-workspace
-

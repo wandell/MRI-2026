@@ -226,3 +226,26 @@ scp index.html wandell@cardinal.stanford.edu:~/WWW/data/papers/
 ```
 
 Your paper/talk will then be available online as a single integrated document.
+
+### 10. Links to Resource Pages
+
+To link to a resource page from a chapter, use a relative `.qmd` link. From a
+file in `chapters/`, a resource in `chapters/resources/` is addressed as
+`resources/<filename>.qmd`:
+
+```md
+For background, see [Joseph Larmor and his frequency](resources/joseph-larmor.qmd).
+```
+
+The resource must also be listed under the `Resources` part in `_quarto.yml`.
+Quarto then renders its HTML page and rewrites the link correctly in the book:
+
+```yaml
+- part: "Resources"
+  chapters:
+    - chapters/resources/joseph-larmor.qmd
+```
+
+This works for both HTML and PDF book output. If the link is broken in HTML,
+confirm that the resource is in `_quarto.yml`, then render the full book with
+`quarto render` rather than rendering only the source chapter.
