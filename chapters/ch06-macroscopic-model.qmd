@@ -62,12 +62,10 @@ We summarize the behavior of the spins by calculating the **net magnetization**,
 
 ::: {.panel-tabset}
 
-## Creating the precession signal of the net magnetization
-
+## Image: Precession of spins
 ![The RF signal creates a ‘precession’ signal of the net magnetization — step 1.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-1.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1}
 
-## Precession of the net magnetization
-
+## Video: Precession of the net magnetization
 ::: {.content-visible when-format="html"}
 ![The net magnetization vector M precesses around the z-axis, like a spinning top, tracing out the precession described above.](images/ch06/precession-of-net-magnetization.mp4){#vid-ch06-precession-of-net-magnetization width="70%" loop="true" autoplay="true" muted="true"}
 :::
@@ -162,10 +160,12 @@ Figure 3.4 Precession. The movement of a rotating proton or magnet within a magn
 
 Figure 3.16 MR signal reception. As the net magnetization rotates through the transverse plane, the amount of magnetic flux experienced by the receiver coil changes over time (A and B). The changing flux generates an electromotive force, which provides the basis for the MR signal.
 
-## Remember: The FID signal depends on the B1 duration
+## Summary: Explaining why the FID signal depends on B1 duration
 
-![Remember: The FID signal depends on the B1 duration.](images/ch06/remember-the-fid-signal-depends-on-the-b1-duration.png){#fig-ch06-remember-the-fid-signal-depends-on-the-b1-duration}
+![From earlier: The FID signal depends on the B1 duration.](images/ch06/remember-the-fid-signal-depends-on-the-b1-duration.png){#fig-ch06-remember-the-fid-signal-depends-on-the-b1-duration}
 
-## Applying the RF field rotates all the spins
+Because the spins are rotated, the signal increases up to the 90 deg rotation when the spins are fully in the transverse (x-y) plane; the signal starts to decrease as the rotation moves the net magnetization to 180 deg where it has no (x-y) component.  This explains the increase and decrease in @fig-ch06-remember-the-fid-signal-depends-on-the-b1-duration. 
 
-![Applying the RF field rotates all the spins.](images/ch06/applying-the-rf-field-rotates-all-the-spins.png){#fig-ch06-applying-the-rf-field-rotates-all-the-spins}
+![Applying the RF field rotates the spins, rotating the net magnetization.](images/ch06/applying-the-rf-field-rotates-all-the-spins.png){#fig-ch06-applying-the-rf-field-rotates-all-the-spins}
+
+
