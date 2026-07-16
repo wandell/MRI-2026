@@ -50,22 +50,33 @@ A superconducting magnet requires no ongoing electrical power once charged — t
 
 In an open space a quench is spectacular but not immediately dangerous. In an enclosed room, the escaping helium — which is inert — can displace oxygen and create an asphyxiation hazard. MRI scanner rooms are required to have helium venting systems for this reason.
 
+[Here are links to many YouTube videos of quenches, and tutorials about an MR Quench.](https://www.youtube.com/results?search_query=Controlled+MRI+Magnet+Quench)
 ## Recent Accident (Korea)
 
 ![Korean news broadcast reporting an MRI accident in which a patient was struck by an oxygen canister drawn into the bore.](images/ch04/safety-recent-accident.png){#fig-safety-recent-accident fig-alt="Screenshot of a Korean KBS news broadcast showing an MRI scanner with an oxygen canister lodged in the bore."}
 
-**Extract the video or insert the web link.** 
+[Aunt Minnie Article.](https://www.auntminnie.com/clinical-news/mri/article/15629448/oxygen-cylinder-kills-south-korean-man-in-mri-accident)
 
+[Korean TV report](https://news.kbs.co.kr/news/pc/view/view.do?ncd=5302666).
+
+<!--
 ## Hitachi Open-Platform Scanner
 
 ![Hitachi 0.7T open-platform surgical MRI scanner — an alternative geometry that reduces some access constraints.](images/ch04/safety-hitachi-open-scanner.png){#fig-safety-hitachi-open-scanner fig-alt="Photo of a Hitachi 0.7T open-platform MRI scanner with a horizontal gap between the upper and lower magnet poles, allowing lateral access to the patient."}
 
-**Move this slide elsewhere**
-
 Open-platform scanners use a vertical field geometry with a gap between the upper and lower magnet assemblies. The lower field strength (typically 0.7T or below) limits SNR compared to closed-bore systems, but the open geometry allows surgical access and is better tolerated by claustrophobic patients.
-
-## The Scale of Magnetic Forces
-
+-->
+## The Size of Magnetic Forces
+<!--
 ![Demonstration of magnetic field power: a large ferromagnetic object being pulled forcefully toward a magnet.](images/ch04/safety-magnet-power.png){#fig-safety-magnet-power fig-alt="Photo showing a large object being attracted to a magnet, illustrating the scale of forces involved near high-field MRI systems."}
+-->
+
+::: {.content-visible when-format="html"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5z33ZcDgavY?si=1gg_1UZY65Ur2wkT" title="Video of a Hitachi open-platform MRI scanner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+:::
+
+::: {.content-visible when-format="pdf"}
+[Watch the video of the Hitachi open-platform MRI scanner on YouTube.](https://www.youtube.com/watch?v=5z33ZcDgavY)
+:::
 
 The forces involved near a high-field magnet are difficult to appreciate without direct experience. The attractive force scales with the gradient of the field, which increases steeply as an object approaches the bore entrance. Even experienced MRI staff must maintain strict protocols to prevent accidents.
