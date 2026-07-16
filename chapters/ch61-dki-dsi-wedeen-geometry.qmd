@@ -1,0 +1,156 @@
+---
+date: last-modified
+---
+
+# DKI, DSI, and Wedeen Geometry
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+## Diffusion kurtosis model
+
+::: {.panel-tabset}
+## Step 1
+
+![Diffusion kurtosis model — step 1.](images/ch61/diffusion-kurtosis-model-1.png){#fig-ch61-diffusion-kurtosis-model-1}
+
+## Step 2
+
+![Diffusion kurtosis model — step 2.](images/ch61/diffusion-kurtosis-model-2.png){#fig-ch61-diffusion-kurtosis-model-2}
+
+## Step 3
+
+![Diffusion kurtosis model — step 3.](images/ch61/diffusion-kurtosis-model-3.png){#fig-ch61-diffusion-kurtosis-model-3}
+
+## Step 4
+
+![Diffusion kurtosis model — step 4.](images/ch61/diffusion-kurtosis-model-4.png){#fig-ch61-diffusion-kurtosis-model-4}
+
+:::
+
+## Diffusion tensor model
+
+![Diffusion tensor model.](images/ch61/diffusion-tensor-model.png){#fig-ch61-diffusion-tensor-model}
+
+## Diffusion kurtosis model
+
+![Diffusion kurtosis model.](images/ch61/diffusion-kurtosis-model.png){#fig-ch61-diffusion-kurtosis-model}
+
+## Diffusion tensor and kurtosis mathematical formulations
+
+::: {.panel-tabset}
+## Step 1
+
+![Diffusion tensor and kurtosis mathematical formulations — step 1.](images/ch61/diffusion-tensor-and-kurtosis-mathematical-formulations-1.png){#fig-ch61-diffusion-tensor-and-kurtosis-mathematical-formulations-1}
+
+## Step 2
+
+![Diffusion tensor and kurtosis mathematical formulations — step 2.](images/ch61/diffusion-tensor-and-kurtosis-mathematical-formulations-2.png){#fig-ch61-diffusion-tensor-and-kurtosis-mathematical-formulations-2}
+
+:::
+
+## FA and MD comparisons with DTI and DKI
+
+![FA and MD comparisons with DTI and DKI.](images/ch61/fa-and-md-comparisons-with-dti-and-dki.png){#fig-ch61-fa-and-md-comparisons-with-dti-and-dki}
+
+## What measurements support the kurtosis model?
+
+![What measurements support the kurtosis model?](images/ch61/what-measurements-support-the-kurtosis-model.png){#fig-ch61-what-measurements-support-the-kurtosis-model}
+
+## The bi-exponential model
+
+![The bi-exponential model.](images/ch61/the-bi-exponential-model.png){#fig-ch61-the-bi-exponential-model}
+
+## What measurements support the kurtosis model? (continued)
+
+![What measurements support the kurtosis model? (continued)](images/ch61/what-measurements-support-the-kurtosis-model-v2.png){#fig-ch61-what-measurements-support-the-kurtosis-model-v2}
+
+## Software for kurtosis imaging
+
+![Software for kurtosis imaging.](images/ch61/software-for-kurtosis-imaging.png){#fig-ch61-software-for-kurtosis-imaging}
+
+## Diffusion spectrum image (DSI)
+
+![Diffusion spectrum image (DSI).](images/ch61/diffusion-spectrum-image-dsi.png){#fig-ch61-diffusion-spectrum-image-dsi}
+
+## Diffusion spectrum image
+
+::: {.panel-tabset}
+## Step 1
+
+![Diffusion spectrum image — step 1.](images/ch61/diffusion-spectrum-image-1.png){#fig-ch61-diffusion-spectrum-image-1}
+
+## Step 2
+
+![Diffusion spectrum image — step 2.](images/ch61/diffusion-spectrum-image-2.png){#fig-ch61-diffusion-spectrum-image-2}
+
+:::
+
+## Diffusion spectrum imaging
+
+![Diffusion spectrum imaging.](images/ch61/diffusion-spectrum-imaging.png){#fig-ch61-diffusion-spectrum-imaging}
+
+## Q-Space Sampling Schemes for DSI and QBI Acquisitions
+
+![Q-Space Sampling Schemes for DSI and QBI Acquisitions.](images/ch61/q-space-sampling-schemes-for-dsi-and-qbi-acquisitions.png){#fig-ch61-q-space-sampling-schemes-for-dsi-and-qbi-acquisitions}
+
+## Illustrations of tractography using DSI
+
+![Illustrations of tractography using DSI.](images/ch61/illustrations-of-tractography-using-dsi.png){#fig-ch61-illustrations-of-tractography-using-dsi}
+
+## DSI crossing fibers
+
+![DSI crossing fibers.](images/ch61/dsi-crossing-fibers.png){#fig-ch61-dsi-crossing-fibers}
+
+## DSI and Wedeen geometry figures
+
+::: {.panel-tabset}
+## Figure 1
+
+![DSI and Wedeen geometry — figure 1.](images/ch61/dsi-and-wedeen-figure-1.png){#fig-ch61-dsi-and-wedeen-figure-1}
+
+## Figure 2
+
+![DSI and Wedeen geometry — figure 2.](images/ch61/dsi-and-wedeen-figure-2.png){#fig-ch61-dsi-and-wedeen-figure-2}
+
+:::
+
+## Wedeen – geometric structure
+
+![Wedeen – geometric structure.](images/ch61/wedeen-geometric-structure.png){#fig-ch61-wedeen-geometric-structure}
+
+## Grid structure of cerebral pathways
+
+![Grid structure of cerebral pathways.](images/ch61/grid-structure-of-cerebral-pathways.png){#fig-ch61-grid-structure-of-cerebral-pathways}
+
+## White matter sheets hypothesis
+
+::: {.panel-tabset}
+## Step 1
+
+![White matter sheets hypothesis — step 1.](images/ch61/wedeen-white-matter-sheets-1.png){#fig-ch61-wedeen-white-matter-sheets-1}
+
+## Step 2
+
+![White matter sheets hypothesis — step 2.](images/ch61/wedeen-white-matter-sheets-2.png){#fig-ch61-wedeen-white-matter-sheets-2}
+
+:::
+
+The idea is that there are sheets of white matter. They intersect at roughly right angles, forming the highways of the brain.
+
+## Wedeen – Main DSI claim at this point
+
+![Wedeen – Main DSI claim at this point.](images/ch61/wedeen-main-dsi-claim-at-this-point.png){#fig-ch61-wedeen-main-dsi-claim-at-this-point}
+
+## Diffusion Kurtosis Imaging
+
+![Diffusion Kurtosis Imaging.](images/ch61/diffusion-kurtosis-imaging.png){#fig-ch61-diffusion-kurtosis-imaging}
+
+## Diffusion spectrum imaging comparison with DTI, DKI and DSI
+
+![Diffusion spectrum imaging comparison with DTI, DKI and DSI.](images/ch61/diffusion-spectrum-imaging-comparison-with-dti-dki-and-dsi.png){#fig-ch61-diffusion-spectrum-imaging-comparison-with-dti-dki-and-dsi}
+
+## Discuss the comparison
+
+![Discuss the comparison.](images/ch61/discuss-the-comparison.png){#fig-ch61-discuss-the-comparison}

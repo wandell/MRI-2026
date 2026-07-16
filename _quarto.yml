@@ -84,6 +84,7 @@ book:
        - chapters/ch58-voxel-level-reliability-measures.qmd
        - chapters/ch59-tractography-combining-voxels-into-tracts.qmd
        - chapters/ch60-tractography-analyzing-white-matter-tracts.qmd
+       - chapters/ch61-dki-dsi-wedeen-geometry.qmd
     - part: chapters/part9-qmri.qmd
       chapters: []
     - part: chapters/part10-applications.qmd
