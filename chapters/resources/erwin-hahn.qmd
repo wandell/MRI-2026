@@ -6,9 +6,9 @@ date: last-modified
 
 {{< include "../includes/WIP-callout.qmd" >}}
 
-Erwin L. Hahn introduced the spin echo, a central experimental idea in magnetic resonance. This resource emphasizes the people and papers behind the method; the physics of spin-echo pulse sequences is covered in the main text.
+Erwin L. Hahn introduced the concept of the spin echo, a central experimental idea in magnetic resonance. This resource emphasizes the people and papers behind the method; the physics of spin-echo pulse sequences is covered in the main text.
 
-## The Spin-Echo Idea
+![Erwin L. Hahn, professor of physics at the University of California, Berkeley.](images/e-l-hahn.png){#fig-hahn-portrait}
 
 ![Hahn's 1953 article on free nuclear induction, showing an early spin-echo instrument and signal.](images/hahn-spin-echo.png){#fig-hahn-free-nuclear-induction}
 
@@ -16,6 +16,19 @@ In a Hahn spin echo, a $90^\circ$ RF pulse creates transverse magnetization. A $
 
 ## The Original Spin-Echo Paper
 
+Hahn's paper, *Spin Echoes*, appeared in *Physical Review* in 1950. It showed how timed RF pulses can create an observable echo and use its decay to measure relaxation. This is the text from Hahn's 1950 paper introducing the idea of Spin Echos.
+
+> ABSTRACT 
+> Intense radio frequency power in the form of pulses is applied to an ensemble of spins in a liquid placed in a large static magnetic field H0. The frequency of the pulsed r-f power satisfies the condition for nuclear magnetic resonance, and the pulses last for times which are short compared with the time in which the nutating macroscopic magnetic moment of the entire spin ensemble can decay. 
+> After removal of the pulses a non-equilibrium configuration of isochromatic macroscopic moments remains in which the moment vectors precess freely. Each moment vector has a magnitude at a given precession frequency which is determined by the distribution of Larmor frequencies imposed upon the ensemble by inhomogeneities in H0. 
+
+> At times determined by pulse sequences applied in the past the constructive interference of these moment vectors gives rise to observable spontaneous nuclear induction signals. The properties and underlying principles of these spin echo signals are discussed with use of the Bloch theory. 
+
+> Relaxation times are measured directly and accurately from the measurement of echo amplitudes. An analysis includes the effect on relaxation measurements of the self-diffusion of liquid molecules which contain resonant nuclei. Preliminary studies are made of several effects associated with spin echoes, including the observed shifts in magnetic resonance frequency of spins due to magnetic shielding of nuclei contained in molecules.
+
+Notice how much you have learned in the first few weeks.  It should be largely comprehensible, although the language may seem a bit old-fashioned.
+
+<!--
 ::: {.panel-tabset}
 
 ## Step 1
@@ -27,20 +40,28 @@ In a Hahn spin echo, a $90^\circ$ RF pulse creates transverse magnetization. A $
 ![Second excerpt from Hahn's 1950 paper *Spin Echoes*.](images/spin-echoes-e-l-hahn-phys-rev-80-580-published-15-2.png){#fig-hahn-spin-echoes-paper-2}
 
 :::
+-->
 
-Hahn's paper, *Spin Echoes*, appeared in *Physical Review* in 1950. It showed how timed RF pulses can create an observable echo and use its decay to measure relaxation.
 
 ## Hahn at Berkeley
 
-![Erwin L. Hahn, professor of physics at the University of California, Berkeley.](images/e-l-hahn.png){#fig-hahn-portrait}
 
-The biographical slide records Hahn's long career at the University of California, Berkeley and his recognition for the development of pulsed magnetic resonance and signal refocusing.
+
+[The biographical record](https://repository.aip.org/node/127972) describes Hahn's long career at the University of California, Berkeley and his recognition for the development of pulsed magnetic resonance and signal refocusing.
+
+He was professor of physics, from 1955 to 1991, and subsequently, Professor Emeritus at the University of California, Berkeley.  … In 2013, Sir Peter Mansfield said in his autobiography that Hahn was "the person who really missed out" the Nobel Prize for his contribution to the principles of spin echoes.[6] He also received the 2016 Gold Medal from the International Society for Magnetic Resonance in Medicine (ISMRM). The award, ISMRM's highest honor, was given to Hahn for his creation of pulsed magnetic resonance and processes of signal refocusing which are essential to modern day MRI.[7] 
+
 
 ## Hahn's Stanford Connection
 
+<!--
 ![Excerpt from Hahn's recollection of arriving at Stanford to work with Felix Bloch.](images/-but-thats-how-i-got-one-of-the-national-research.png){#fig-hahn-stanford-recollection}
+-->
 
 Hahn recalled that a National Research Council fellowship brought him to Stanford, where he worked with Felix Bloch and continued his work on spin echoes. The connection links the history of the spin echo to the development of the Bloch equations.
+
+> … but that's how I got one of the National Research Council Fellowships. So with that in my bonnet, Nordsieck, who was there at Illinois, had of course previously worked with Felix Bloch. They’d done some theory together. He said, "Why don't you go to Stanford? Bloch is a good man and you'd learn a lot." So I said, "OK," and California attracted me, since I'd been there during the war in the Navy in training school, so I went to Stanford and that's how I became a post-doc for one year, a fellow, and then I was an instructor for one year. So there I continued my work on spin echoes and directed a student of his, under me as well, a PhD, and we did a problem together.
+
 
 ## Hahn's Interview
 
