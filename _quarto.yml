@@ -94,7 +94,12 @@ book:
        - chapters/resources/felix-bloch-equations.qmd
        - chapters/resources/erwin-hahn.qmd
        - chapters/resources/joseph-larmor.qmd
-       
+       - chapters/resources/phineas-gage.qmd
+       - chapters/resources/leukoencephalopathy.qmd
+       - chapters/resources/developmental-hemispherectomy.qmd
+       - chapters/resources/wada-testing.qmd
+       - chapters/resources/ptsd-prediction.qmd
+
 bibliography:
   - paperpile.bib
   - references.bib

@@ -1,0 +1,25 @@
+---
+date: last-modified
+---
+
+# Leukoencephalopathy and White Matter Adaptability {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+Leukoencephalopathy refers to a group of disorders that primarily affect the white matter of the brain, generally presenting with progressive symptoms whose nature depends on the underlying cause and pattern of white matter involvement. Leukoencephalopathies first diagnosed in adulthood are relatively uncommon, but they are important to recognize given the inherited nature of some of these disorders and the potential for therapeutic management to affect clinical course [@neth2021-pd].
+
+Neth and Carabenciov report a striking case: an incidentally discovered, idiopathic adulthood leukoencephalopathy with imaging findings far more severe than the patient's clinical presentation would suggest.
+
+## The Case
+
+A 66-year-old right-handed man with a history of type 2 diabetes was rear-ended by a truck, resulting in significant back and neck discomfort that brought him to the emergency department. Before the accident, he had been fully functional in all activities of daily living and was operating his own business. He had no known perinatal injury or developmental difficulties as a child, and he had graduated from high school.
+
+His neurologic exam was notable for difficulty following multistep commands, ocular motor apraxia, and simultagnosia, but he had normal strength and coordination, with a relatively normal gait aside from a stooped posture.
+
+CT imaging obtained in the emergency department revealed diffuse white matter changes, prompting follow-up MRI. The MRI showed prominent white matter volume loss and cavitary lesions consistent with dysmyelination or diffuse cystic leukodystrophy — with notable relative preservation of the cerebral cortex and deep gray nuclei.
+
+![Sagittal and coronal T2-weighted MRI showing diffuse white matter volume loss and cavitary lesions consistent with dysmyelination or diffuse cystic leukodystrophy; axial and coronal CT from the initial presentation showing the same chronic-appearing white matter changes [@neth2021-pd].](images/leuko-mri-ct-imaging.png){#fig-leuko-imaging}
+
+## Adaptability Despite Severe Imaging Findings
+
+Despite the severity of these imaging findings, the patient continued to live a fully functional life. The authors present this case as clinical evidence of the remarkable adaptability of the human brain to insult — a theme that recurs throughout this set of resources, from Phineas Gage to the "Brain of a White-Collar Worker" case. In each instance, the degree of structural damage visible on imaging is a poor guide to the degree of functional impairment actually observed.

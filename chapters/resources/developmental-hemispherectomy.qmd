@@ -1,0 +1,19 @@
+---
+date: last-modified
+---
+
+# Developmental Hemispherectomy and Plasticity {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+Hemispherectomy — surgical removal or disconnection of an entire cerebral hemisphere, most often to control severe, otherwise-intractable childhood epilepsy — is one of the most dramatic demonstrations of the developing brain's capacity for reorganization. Children who undergo the procedure early in life can go on to recover language, motor, and cognitive function to a degree that would be impossible after equivalent damage in an adult, illustrating how much more plastic the young brain is than the mature one.
+
+The source slide for this topic is a single link to a television news segment on a case of developmental hemispherectomy:
+
+{{< video https://www.youtube.com/watch?v=2MKNsI5CWoU >}}
+
+::: {.callout-note}
+## For human review
+
+The original slide's notes also included a couple of links that do not appear to relate to hemispherectomy or developmental plasticity (a NODDI presentation and a related diffusion-imaging article). Those look like leftover notes from a different context and have been omitted here; please confirm and, if additional plasticity-related reading is intended for this section, add it directly.
+:::
