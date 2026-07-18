@@ -85,9 +85,9 @@ book:
       chapters: []
     - part: "Resources"
       chapters:
+       - chapters/resources/joseph-larmor.qmd
        - chapters/resources/felix-bloch-equations.qmd
        - chapters/resources/erwin-hahn.qmd
-       - chapters/resources/joseph-larmor.qmd
        - chapters/resources/lauterbur.qmd
        - chapters/resources/phineas-gage.qmd
        - chapters/resources/leukoencephalopathy.qmd
