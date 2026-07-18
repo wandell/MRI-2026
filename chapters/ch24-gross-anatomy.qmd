@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Gross anatomy
+# Gross anatomy and model brain systems
 
 {{< include "includes/WIP-callout.qmd" >}}
 
@@ -47,3 +47,37 @@ Neurologists and psychologists commonly use a structure-function naming scheme �
 ### Inferior view
 
 ![Inferior view landmarks: optic chiasm, olfactory bulb and tract, mammillary body, uncus, parahippocampal gyrus, infundibular stalk, cerebral peduncles, pons, inferior olive, medullary pyramids, and cerebellum.](images/ch24/inferior-view-labels.png){#fig-ch24-inferior-view-labels fig-alt="Inferior view of the brain with many structures labeled, including the optic chiasm, olfactory tract, and brainstem."}
+
+## Model brain systems
+
+There are many aspects of the brain that cannot be easily studied in human. Scientists have learned a great deal by examining the brains of other animals.
+
+Rodents, and to a lesser extent other primates, have served as a primary model system. A great deal has been learned that applies to the human brain.  But it is always important to remember that comparing model systems to the human brain requires understanding both the components they share and where they differ. It is clear that there are significant differences, so that generalization from model systems to humans requires proof.
+
+In this chapter, we make a few observations about different animal brains.  This topic is fascinating in itself, even when the animal brains differ significantly from human.
+
+### The human brain and model brains
+
+Brain volume varies enormously across common model species: mouse, macaque, and human brains have volumes in roughly the ratio 1:15:3000 (0.5 g, 100 g, and 1500 g, respectively).  When two systems differ by a factor of 3000, it is wise to be cautious about extrapolating principles between them.
+
+![Mouse, macaque, and human brains shown at the same physical scale, illustrating their roughly 1:15:3000 volume ratio.](images/ch24/human-model-brains-comparison.png){#fig-ch24-human-model-brains-comparison fig-alt="Photo comparing a mouse, macaque, and human brain at the same scale, with approximate weights labeled."}
+
+### Gray and white matter across species
+
+Histological sections show that the relative proportions of gray and white matter differ substantially across species. Thus, it is not just the volumes that differ but the composition of cell types differ as well.
+
+![Coronal histological sections of macaque, human, marmoset, and mouse brain, stained to reveal gray and white matter.](images/ch24/gray-white-matter-species-histology.png){#fig-ch24-gray-white-matter-species-histology fig-alt="Four coronal histology sections comparing gray and white matter across macaque, human, marmoset, and mouse brains."}
+
+Here is a second way of representing the same images to emphasize the differences.
+
+![The same four species compared at a common physical scale (1 cm), showing that white matter is proportionally larger in the human brain.](images/ch24/white-matter-proportion-humans.png){#fig-ch24-white-matter-proportion-humans fig-alt="Coronal histology sections of macaque, human, marmoset, and mouse brains scaled to the same physical size."}
+
+### Rodent-primate scaling rules
+
+Cellular scaling rules for rodent brains differ significantly from those for primate brains [@herculano-houzel2007-cellularscalingrules]. In rodents, neuron *size* — but not neuron *number* — grows with brain size. In primates (including humans), neuron *number* scales with brain size while neuron size stays roughly constant, and brain size increases approximately isometrically with cell number: an 11x larger primate brain is built with about 10x more neurons and about 12x more non-neuronal cells of similar average size. This is a large effect — if the human brain had scaled by the rodent rule instead of the primate rule, a 3-lb human brain would weigh roughly 100 lbs.
+
+Neurons are thought to scale with information-processing demands, while glia scale with physical and metabolic support demands; the interesting differences across species are now thought to be morphological, molecular, and circuit-specific rather than purely numerical.
+
+Cortical white and gray matter volumes are tightly related across a wide range of species — spanning shrews to whales — following a power law (exponent 1.23) across nearly six orders of magnitude of brain size [@zhang2000-dz]. The white-to-gray matter ratio is roughly 1:1 in humans but only about 1:10 in mouse.
+
+![Cortical white matter volume versus gray matter volume across dozens of mammalian species, spanning nearly six orders of magnitude (Zhang and Sejnowski, *PNAS*, 2000).](images/ch24/cortical-white-gray-matter-scaling.png){#fig-ch24-cortical-white-gray-matter-scaling fig-alt="Log-log scatter plot of white matter volume versus gray matter volume across many mammalian species, with a fitted power-law line."}

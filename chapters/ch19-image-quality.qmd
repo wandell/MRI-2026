@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Image Distortions and Quality
+# Image Distortions, Quality, and Parallel Imaging
 
 {{< include "includes/WIP-callout.qmd" >}}
 
@@ -41,3 +41,57 @@ date: last-modified
 ## Functional imaging: B0 non-uniformity distortion
 
 ![Functional imaging: B0 non-uniformity distortion.](images/ch19/functional-imaging-b0-non-uniformity-distortion.png){#fig-ch19-functional-imaging-b0-non-uniformity-distortion}
+
+## Parallel imaging
+
+### Multiple read channels:  Parallel imaging
+
+![Multiple read channels:  Parallel imaging.](images/ch19/multiple-read-channels-parallel-imaging.png){#fig-ch19-multiple-read-channels-parallel-imaging}
+
+### Parallel magnetic resonance imaging (pMRI) algorithms
+
+![Parallel magnetic resonance imaging (pMRI) algorithms.](images/ch19/parallel-magnetic-resonance-imaging-pmri-algorithm.png){#fig-ch19-parallel-magnetic-resonance-imaging-pmri-algorithm}
+
+### Multiple-coil acquisition principles
+
+![Multiple-coil acquisition principles.](images/ch19/multiple-coil-acquisition-principles.png){#fig-ch19-multiple-coil-acquisition-principles}
+
+### Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING
+
+![Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING.](images/ch19/effect-of-under-sampling-important-for-parallel-im-3.png){#fig-ch19-effect-of-under-sampling-important-for-parallel-im-3}
+
+### Under-sampling in k-space produces overlap (aliasing)
+
+![Under-sampling in k-space produces overlap (aliasing).](images/ch19/under-sampling-in-k-space-produces-overlap-aliasin.png){#fig-ch19-under-sampling-in-k-space-produces-overlap-aliasin}
+
+### Interpreting data from multiple coils (spatial domain)
+
+![Interpreting data from multiple coils (spatial domain).](images/ch19/interpreting-data-from-multiple-coils-spatial-doma.png){#fig-ch19-interpreting-data-from-multiple-coils-spatial-doma}
+
+### Substrate contributions to the aliased coil response
+
+![Substrate contributions to the aliased coil response.](images/ch19/substrate-contributions-to-the-aliased-coil-respon.png){#fig-ch19-substrate-contributions-to-the-aliased-coil-respon}
+
+### The intensity in the coil images
+
+![The intensity in the coil images.](images/ch19/the-intensity-in-the-coil-images.png){#fig-ch19-the-intensity-in-the-coil-images}
+
+### Multiple coils means multiple, similar linear equations from those points
+
+![Multiple coils means multiple, similar linear equations from those points.](images/ch19/multiple-coils-means-multiple-similar-linear-equat.png){#fig-ch19-multiple-coils-means-multiple-similar-linear-equat}
+
+### Matrix notation expressing the ideas
+
+![Matrix notation expressing the ideas.](images/ch19/matrix-notation-expressing-the-ideas.png){#fig-ch19-matrix-notation-expressing-the-ideas}
+
+### Parallel imaging can achieve high resolution
+
+![Parallel imaging can achieve high resolution.](images/ch19/parallel-imaging-can-achieve-high-resolution.png){#fig-ch19-parallel-imaging-can-achieve-high-resolution}
+
+### Parallel magnetic resonance imaging (pMRI) reconstruction algorithms
+
+![Parallel magnetic resonance imaging (pMRI) reconstruction algorithms.](images/ch19/parallel-magnetic-resonance-imaging-pmri-reconstru.png){#fig-ch19-parallel-magnetic-resonance-imaging-pmri-reconstru}
+
+### Corporate names for different methods
+
+![Corporate names for different methods.](images/ch19/corporate-names-for-different-methods.png){#fig-ch19-corporate-names-for-different-methods}
