@@ -58,10 +58,8 @@ book:
        - chapters/ch42-general-linear-model.qmd
        - chapters/ch43-testing-linearity.qmd
        - chapters/ch44-signal-detection-theory.qmd
-       - chapters/ch45-sdt-diagnostic-examples.qmd
        - chapters/ch46-discriminability-roc.qmd
        - chapters/ch47-statistical-caution.qmd
-       - chapters/ch48-history-hypothesis-testing.qmd
     - part: chapters/part7-vision.qmd
       chapters:
        - chapters/ch49-introduction-to-vision.qmd
