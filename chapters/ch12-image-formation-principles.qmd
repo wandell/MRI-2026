@@ -53,3 +53,25 @@ To move a spin between two states, we require an RF photon whose energy is match
 ## Image formation: the gradients
 
 ![Image formation: the gradients.](images/ch12/image-formation-the-gradients.png){#fig-ch12-image-formation-the-gradients}
+
+## Representing the gradient
+
+::: {.panel-tabset}
+
+## Step 1
+
+![Representing the gradient — step 1.](images/ch12/representing-the-gradient-1.png){#fig-ch12-representing-the-gradient-1}
+
+## Step 2
+
+![Representing the gradient — step 2.](images/ch12/representing-the-gradient-2.png){#fig-ch12-representing-the-gradient-2}
+
+## Step 3
+
+![Representing the gradient — step 3.](images/ch12/representing-the-gradient-3.png){#fig-ch12-representing-the-gradient-3}
+
+## Step 4
+
+![Representing the gradient — step 4.](images/ch12/representing-the-gradient-4.png){#fig-ch12-representing-the-gradient-4}
+
+:::

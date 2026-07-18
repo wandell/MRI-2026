@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Fine-scale neurovascular anatomy
+# Fine-scale neurovascular anatomy and the neurovascular unit
 
 {{< include "includes/WIP-callout.qmd" >}}
 
@@ -51,3 +51,51 @@ Regional inhomogeneities in vasculature within human cortex have been documented
 ## Glossary: capillaries, pericytes, and blood flow control
 
 A few terms are useful for describing the fine-scale vasculature. An **arteriole** is a small branch of an artery leading to a capillary. A **capillary** is any of the fine branching blood vessels that form a network between the arterioles and venules. A **venule** is a very small vein, especially one collecting blood from the capillaries. **Pericytes** are contractile cells that wrap around the endothelial cells of capillaries and venules throughout the body; they are a likely modulator of blood flow in response to changes in neural activity, which may contribute to functional imaging signals and to CNS vascular disease, though other theories exist. The **endothelium** — the lining of blood vessels — forms the blood-brain barrier [@peppiatt2006-pericytes].
+
+## The neurovascular unit
+
+In 1890, Roy and Sherrington proposed that local neural activity controls local blood flow, but the idea saw little sustained follow-up [@roy1890-bloodsupply]. This makes a lot of sense because the neurons draw a great deal of the body's energy from the blood supply, and it is likely that there would be a way for neurons to signal their needs.
+
+Through most of 20th-century neuroscience, research focused on neurons and synapses, and the vasculature was largely treated as background. That changed in the late 1990s and early 2000s, when the rise of functional MRI directed attention back to the vascular response and to the cells that produce it: neurons, glia, pericytes, endothelium, and smooth muscle acting together.
+
+The **neurovascular unit (NVU)** names this coupled biological system, linking neural signaling, metabolism, blood flow, and the blood-brain barrier.
+
+### Specialized vascular cell types
+
+Beyond arteries and veins, the vasculature includes specialized cell types — pericytes, smooth muscle, and endothelial cells among them — that control the flow to different parts of the system, including at precapillary sphincters.
+
+![A capillary bed fed by an arteriole and drained by a venule, showing precapillary sphincters, a metarteriole, a thoroughfare channel, and an arteriovenous anastomosis.](images/ch29/nvu-capillary-bed-precapillary-sphincters.png){#fig-ch29-nvu-capillary-bed-precapillary-sphincters fig-alt="Diagram of a capillary bed with an arteriole on the left and venule on the right, labeling the precapillary sphincter, metarteriole, capillaries, thoroughfare channel, and arteriovenous anastomosis."}
+
+### Perivascular space and the glymphatic system
+
+The space surrounding brain blood vessels — called the perivascular space or Virchow-Robin space — has a function of its own: clearing waste and distributing solutes through what is now known as the **glymphatic system**. Many different cell types and molecules contribute to this system, including endothelial cells, smooth muscle, pericytes, astrocytes (via aquaporin-4 channels), and the surrounding neuropil, from pial and penetrating arteries down to the capillary bed [@jessen2015-rh].
+
+![The neurovascular unit from pial artery to capillary, showing endothelial cells, smooth muscle, the Virchow-Robin (perivascular) space, leptomeningeal cells, glia limitans, basal lamina, tight and gap junctions, pericytes, AQP4 channels, astrocytes, oligodendrocytes, and a neuron.](images/ch29/nvu-glymphatic-drawing.png){#fig-ch29-nvu-glymphatic-drawing fig-alt="Detailed cross-sectional drawing of a pial artery narrowing to a penetrating artery and capillary, with labeled cell types and structures including the perivascular space, pericytes, and astrocyte end-feet."}
+
+### From pial arteries to capillaries
+
+Pial arteries and penetrating arterioles are surrounded by perivascular nerves and contractile perivascular muscle; lymphatic cells are also present around the pial veins and arteries. Glial cells (astrocytes) make contact with these perivascular nerves, coupling neural and vascular signaling from the brain's surface down into the tissue [@iadecola2017-ho].
+
+![Cross-sections of a pial arteriole and a penetrating arteriole, showing the subarachnoid space, vascular muscle, internal elastic lamina, endothelium, and perivascular nerves, alongside a confocal image of pial and penetrating vasculature.](images/ch29/cerebrovascular-tree-pial-penetrating.png){#fig-ch29-cerebrovascular-tree-pial-penetrating fig-alt="Two circular cross-section diagrams of a pial arteriole and penetrating arteriole with labeled layers, next to a green-and-blue confocal microscopy image of pial surface and penetrating vasculature."}
+
+At the finest scale, intraparenchymal arterioles and capillaries are wrapped by smooth muscle cells (arterioles) or pericytes (capillaries), astrocyte end-feet, and neurons. The **blood-brain barrier (BBB)** is a highly selective semipermeable barrier formed by these brain endothelial cells that separates circulating blood from the brain's extracellular fluid. It allows the passage of water, some gases, and lipid-soluble molecules by passive diffusion, as well as the selective transport of molecules such as glucose and amino acids that are crucial to neural function.
+
+![Cross-sections of an intraparenchymal arteriole and a capillary, showing the endothelium, smooth muscle cells (SMC) or pericytes, astrocytes, and neuropil, alongside a confocal image locating these structures along the pial-to-parenchymal vasculature.](images/ch29/cerebrovascular-tree-bbb-capillaries.png){#fig-ch29-cerebrovascular-tree-bbb-capillaries fig-alt="Two circular cross-section diagrams of an intraparenchymal arteriole and a capillary with labeled endothelium, smooth muscle cell or pericyte, astrocyte, and neuron, next to a confocal microscopy image of the vasculature."}
+
+### NVU overview
+
+The neurovascular unit is the system that signals between neurons and the vasculature. Its main components are simple — endothelial cells, pericytes, astrocytes, neurons, and microglia — but the details of cell types and signaling continue to be refined, and the concept itself has evolved considerably over the last twenty years [@iadecola2017-ho; @attwell2010-glialneuronalcontrol; @nedergaard2020-glymphaticfailure]. Pericytes, in particular, are capillary-associated mural cells that probably regulate microvascular flow at certain capillary segments, help maintain the blood-brain barrier, and provide the fine spatial control that makes neurovascular coupling — and fMRI — possible.
+
+![The neurovascular unit: an endothelial cell and pericyte forming a capillary wall, surrounded by an astrocyte, with an adjacent neuron and microglial cell.](images/ch29/nvu-overview-diagram.png){#fig-ch29-nvu-overview-diagram fig-alt="Diagram of a capillary cross section with pericyte and endothelial cell, surrounded by an astrocyte, adjacent to a neuron and a microglial cell, labeled with a basement membrane."}
+
+### Capillary-level signaling
+
+There is always a finer resolution waiting to be explored. At the capillary level, synaptic activity increases oxygen utilization and releases K⁺ that is sensed by astrocytic and pericyte K⁺ channels, producing a conducted hyperpolarization that travels along the capillary wall through gap junctions and peg-socket contacts between endothelial cells. This local signal increases flow velocity and red blood cell deformability upstream, coordinated with a dip in local oxygen concentration [@iadecola2017-ho].
+
+![Capillary-level signaling: synaptic activity and K⁺ release trigger conducted hyperpolarization along endothelial cells via gap junctions, increasing flow velocity and red blood cell deformability, alongside an oxygen dip.](images/ch29/capillaries-signaling-iadecola.png){#fig-ch29-capillaries-signaling-iadecola fig-alt="Diagram of two neurons synapsing near an astrocyte process contacting a capillary with a pericyte, showing K+ channels, gap junctions, peg-socket contacts, conducted hyperpolarization, an oxygen dip trace, and increased flow velocity with red blood cells."}
+
+### Viewing the whole system
+
+Putting the pieces together: a stimulus is encoded by neurons and drives synaptic activity, illustrated here by glutamate release. These neuronal signals are monitored by astrocytes, which feed back onto the synapse and also communicate signals to the vasculature — releasing NO, PGE2, EETs, adenosine, and K⁺ — dilating or constricting the arteriole and adjusting flow at the capillary via pericytes. In this way, the vasculature supplies the energy the neural system needs, moment to moment, wherever it is needed.
+
+![The full neurovascular signaling loop: a stimulus drives synaptic glutamate release, sensed by neurons and astrocytes, which signal via NO, PGE2, EETs, adenosine, and K⁺ to dilate the arteriole and, via pericytes, adjust flow at the capillary.](images/ch29/nvu-whole-system-summary.png){#fig-ch29-nvu-whole-system-summary fig-alt="Flow diagram from stimulus to synapse to glutamate, branching to neuron, astrocyte, and pericyte, which signal via NO, PGE2, EET, adenosine, and K+ to an arteriole and capillary shown dilating."}

@@ -28,7 +28,6 @@ book:
     - part: chapters/part3-imageformation.qmd
       chapters:
        - chapters/ch12-image-formation-principles.qmd
-       - chapters/ch13-gradient-encoding-lauterbur.qmd
        - chapters/ch14-fourier-series-kspace.qmd
        - chapters/ch15-slice-selection.qmd
        - chapters/ch17-imaging-within-slice.qmd
@@ -44,7 +43,6 @@ book:
        - chapters/ch27-cell-signaling.qmd
        - chapters/ch28-gross-neurovascular.qmd
        - chapters/ch29-fine-scale-neurovascular.qmd
-       - chapters/ch30-neurovascular-unit.qmd
     - part: chapters/part5-functionalsignals.qmd
       chapters:
        - chapters/ch31-walter-k.qmd
@@ -52,7 +50,6 @@ book:
        - chapters/ch34-functional-mri-signal.qmd
        - chapters/ch37-mathiesen-lauritzen.qmd
        - chapters/ch38-electrophysiological-signal-definitions.qmd
-       - chapters/ch40-logothetis-bold-lfp.qmd
        - chapters/ch39-energy-consumption.qmd
        - chapters/ch41-nvu-development.qmd
     - part: chapters/part6-dataanalysis.qmd
@@ -91,6 +88,7 @@ book:
        - chapters/resources/felix-bloch-equations.qmd
        - chapters/resources/erwin-hahn.qmd
        - chapters/resources/joseph-larmor.qmd
+       - chapters/resources/lauterbur.qmd
        - chapters/resources/phineas-gage.qmd
        - chapters/resources/leukoencephalopathy.qmd
        - chapters/resources/developmental-hemispherectomy.qmd
