@@ -6,12 +6,11 @@ date: last-modified
 
 {{< include "includes/WIP-callout.qmd" >}}
 
+---
 
 <!--
 ![MRI instrumentation topics: system overview, main magnetic field, and hardware components.](images/ch01/instrumentation-overview.png){#fig-instrumentation-overview fig-alt="Title slide listing three topics: MRI system overview, main magnetic field B0, and system hardware components."}
 -->
-
----
 
 ## MRI System: Multiple Rooms and Components
 
