@@ -1,0 +1,176 @@
+---
+date: last-modified
+---
+
+# Cortical Flattening and the Marching Cubes Algorithm
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+The previous chapter built a 3D mesh representation of the cortical surface
+and introduced flat maps as a way to display data on that surface. This
+chapter works through the two computational methods that make that possible:
+flattening, which maps the 3D mesh onto a 2D plane, and marching
+cubes/marching squares, the general algorithm for extracting a surface (or a
+boundary curve, in 2D) from classified volumetric data in the first place.
+
+## Flattening the cortical surface
+
+Gray-matter nodes on the cortical mesh have 3D positions $(x, y, z)$; the goal
+of flattening is to assign each node a 2D position $(u, v)$ in an image plane
+while preserving, as much as possible, the neighborhood relations of the
+original mesh. The method used here follows a principle developed by W.T.
+Tutte (1960): place each node at the average position of its connected
+neighbors, and no folds are introduced into the surface this way
+(@fig-ch68-flattening-tutte-principle; @tutte1963-drawgraph).
+
+![Flattening a cortical mesh follows Tutte's principle: place each node at
+the average position of its connected
+neighbors.](images/ch68/flattening-tutte-principle.png){#fig-ch68-flattening-tutte-principle}
+
+The important practical point is that this averaging condition is a *linear*
+system. If $\mathbf{X}$ holds the 2D positions of the interior nodes and
+$\mathbf{X}_0$ the fixed positions of the perimeter nodes, the condition that
+each interior node sits at the average of its neighbors is written
+$\mathbf{X} = \mathbf{N}\mathbf{X} + \mathbf{P}\mathbf{X}_0$, where
+$\mathbf{N}$ is a node-connection matrix (normalized by each node's number of
+connections) and $\mathbf{P}$ plays the same role for perimeter connections.
+Solving for $\mathbf{X}$ gives $\mathbf{X} = (\mathbf{I} - \mathbf{N})^{-1}
+\mathbf{P}\mathbf{X}_0$ — a single linear solve places every interior node at
+once, in a way that preserves the mesh's topology
+(@fig-ch68-flattening-matrix-linear-equation).
+
+![The matrix form of the flattening equation: node positions are found by
+solving one linear
+system.](images/ch68/flattening-matrix-linear-equation.png){#fig-ch68-flattening-matrix-linear-equation}
+
+In practice, once a segmentation exists, flattening a patch of cortex is
+straightforward: select a start point on the mesh, select a distance (radius)
+defining how much of the mesh to unfold, and run the algorithm
+(@fig-ch68-flattening-tools-steps). Tools such as `mrFlatMesh` implement this
+directly: they read in the gray-matter mesh, take a start point and a radius,
+and solve the flattening equations
+(@fig-ch68-mrflatmesh-gui).
+
+![Flattening tools: given a segmentation, select a start point and a radius,
+then run the
+algorithm.](images/ch68/flattening-tools-steps.png){#fig-ch68-flattening-tools-steps}
+
+![`mrFlatMesh`: a graphical tool for flattening a patch of the gray-matter
+mesh.](images/ch68/mrflatmesh-gui.png){#fig-ch68-mrflatmesh-gui}
+
+The result can be inspected directly: the mesh triangles end up on the plane
+without any edge crossings, confirming the flattening is valid, though the
+triangles are not uniformly positioned across the flattened patch
+(@fig-ch68-examining-flattened-mesh). Two further quantities are typically
+computed and displayed alongside the flattened mesh: a manifold distance map
+(geodesic distance from the starting point, measured along the original
+surface) and a curvature map, which together let a viewer judge how much the
+flattening has distorted the true surface (@fig-ch68-measuring-distances-curvature).
+
+![Examining the flattened mesh: triangles land on the plane without edge
+crossings, though unevenly
+spaced.](images/ch68/examining-flattened-mesh.png){#fig-ch68-examining-flattened-mesh}
+
+![Measuring distances (a manifold distance map) and showing curvature,
+computed alongside the flattened
+mesh.](images/ch68/measuring-distances-curvature.png){#fig-ch68-measuring-distances-curvature}
+
+## Marching squares: finding a boundary curve
+
+Both flattening and mesh construction depend on a more basic operation:
+extracting a boundary (in 2D) or a surface (in 3D) from a classified grid of
+samples. In two dimensions this is the marching squares algorithm. Each grid
+node is classified as inside or outside the shape (green vertices inside,
+in this illustration); new vertices are placed at the midpoint of each
+in/out pair of neighboring grid nodes (red), and the boundary is drawn
+through those new vertices.
+
+::: {.panel-tabset}
+## Classified grid
+
+![A regular grid of sample points classified as inside (green) or outside a
+shape.](images/ch68/marching-squares-grid-vertices.png){#fig-ch68-marching-squares-1}
+
+## Drawing the boundary
+
+![New vertices (red) are placed at the midpoint of each in/out pair, and the
+boundary is drawn through
+them.](images/ch68/marching-squares-boundary-line.png){#fig-ch68-marching-squares-2}
+
+## Local configurations
+
+![Only a small number of distinct local line configurations are possible,
+each a rotation of one of four basic
+cases.](images/ch68/marching-squares-configurations.png){#fig-ch68-marching-squares-3}
+:::
+
+The result is an "OK" but visibly jagged representation of the true boundary
+— the polygon approximation is more angular than the underlying shape, so
+some form of boundary smoothing is required. One simple approach: find the
+curve normals at each vertex, smooth the way their orientation changes along
+the curve, and reconstruct the curve from the smoothed normals
+(@fig-ch68-boundary-smoothing-normals).
+
+![Boundary smoothing: find the curve normals, smooth their orientation
+change, and reconstruct the curve from the smoothed
+normals.](images/ch68/boundary-smoothing-normals.png){#fig-ch68-boundary-smoothing-normals}
+
+## Marching cubes: finding a surface in 3D
+
+Marching cubes is the natural three-dimensional generalization of marching
+squares, and it is the standard algorithm for extracting a surface mesh from
+a classified 3D volume such as a segmented gray/white matter
+volume (@lorensen1987-marchingcubes). Each cube (formed by eight neighboring
+voxel corners) has its corners classified as above or below an isovalue;
+since there are 8 corners, there are $2^8 = 256$ possible corner
+classifications, and the algorithm must determine which section (or
+sections) of surface divides each cube accordingly.
+
+::: {.panel-tabset}
+## Classifying cube corners
+
+![Each of a cube's 8 corners is classified as inside or outside the
+isosurface, giving 256 possible
+configurations.](images/ch68/marching-cubes-corner-classification.png){#fig-ch68-marching-cubes-1}
+
+## The 15 distinct cube combinations
+
+![After removing trivial (all-in or all-out) cases, 15 distinct surface
+configurations remain; edge-intersection points determine how the surface
+cuts through each
+cube.](images/ch68/marching-cubes-15-combinations.png){#fig-ch68-marching-cubes-2}
+
+## Symmetry reduces the cases further
+
+![Rotation about any of the 3 primary axes, mirroring, and corner-state
+inversion relate many of the 15 combinations to each other, so only a
+handful of truly distinct cases must be handled
+explicitly.](images/ch68/marching-cubes-symmetry-reduction.png){#fig-ch68-marching-cubes-3}
+:::
+
+Increasing the point-sampling density improves the smoothness of the
+resulting mesh but does not, by itself, solve the fundamental jaggedness
+problem — the surface is still built from flat triangular facets, just more
+of them (@fig-ch68-point-sampling-density).
+
+![Increasing point-sampling density improves resolution but does not solve
+the fundamental faceting
+problem.](images/ch68/point-sampling-density.png){#fig-ch68-point-sampling-density}
+
+## Connectivity, revisited
+
+Both marching squares and marching cubes depend on a definition of
+neighborhood connectivity among voxels, the same issue raised in the previous
+chapter's discussion of white-matter topology. In 3D, the two common
+conventions are 6-connectivity (only face-adjacent neighbors) and
+26-connectivity (all face-, edge-, and corner-adjacent neighbors)
+(@fig-ch68-connectivity-6-26-neighborhood). The choice of connectivity
+convention affects which configurations are treated as topologically valid
+and is part of why the Euler-number bookkeeping introduced earlier matters in
+practice, not just in principle.
+
+![Common types of voxel connectivity: 6-neighborhood (face-adjacent only)
+versus 26-neighborhood (face, edge, and corner
+adjacent).](images/ch68/connectivity-6-26-neighborhood.png){#fig-ch68-connectivity-6-26-neighborhood}

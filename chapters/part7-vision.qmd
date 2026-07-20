@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Introduction to visual neuroscience with fMRI {.unnumbered}
+# Visual Neuroscience with fMRI {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

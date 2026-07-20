@@ -1,0 +1,334 @@
+---
+date: last-modified
+---
+
+# Topology, Statistical Parameter Mapping, and Surface Visualization
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+This chapter is about how the shape of the brain — its folded, topologically
+complex surface — shapes the choices we make when we smooth, average, and
+visualize MRI data. The theme running through the chapter is that summary
+statistics and generic image-processing operations (smoothing, volume
+averaging, statistical parameter maps) can silently mix together signals from
+neighboring but functionally unrelated tissue unless the underlying geometry
+of cortex is respected.
+
+## Why visualization matters
+
+Anscombe's quartet is a classic illustration of a general danger: four data
+sets with identical summary statistics (mean, variance, correlation) can look
+completely different once plotted (@fig-ch67-anscombes-quartet). The same
+danger applies to brain data — two very different patterns of activity or
+tissue structure can share the same summary numbers, so visualizing the data
+directly, not just its statistics, is an essential check.
+
+![Anscombe's quartet: four data sets with the same summary statistics but
+very different shapes when
+plotted.](images/ch67/anscombes-quartet.png){#fig-ch67-anscombes-quartet}
+
+Spatial resolution compounds this problem in the brain because of cortical
+folding. Two points that are close together in physical (Euclidean) space can
+be far apart along the folded cortical sheet, on opposite banks of a sulcus
+(@fig-ch67-spatial-proximity-brain-folds). Any analysis that treats nearby
+voxels as necessarily related is implicitly assuming a spatial smoothness that
+the folded anatomy does not actually have.
+
+![Spatial proximity in a volume does not imply proximity along the cortical
+surface — brain folding brings distant regions of cortex physically close
+together.](images/ch67/spatial-proximity-brain-folds.png){#fig-ch67-spatial-proximity-brain-folds}
+
+## Topology and visualization
+
+A single MR slice can cut across a sulcus twice, sampling both banks in the
+same plane even though they are far apart along the cortical sheet — for
+example, a coronal slice through the calcarine sulcus includes tissue from
+both banks of the fold (@fig-ch67-calcarine-sulcus-mr-slice). This is the
+concrete anatomical reason topology matters: the natural neighborhood
+structure of the data is defined by the cortical surface, not by the
+Euclidean geometry of the acquired volume.
+
+![A coronal MR slice through the calcarine sulcus. The dotted line marks the
+slice plane; an MR slice through the blue line would include parts of
+opposite banks of the
+sulcus.](images/ch67/calcarine-sulcus-mr-slice.png){#fig-ch67-calcarine-sulcus-mr-slice}
+
+## Matching data methods to what you are studying
+
+Thinking about the natural shape and organization of the problem you are
+studying is important. Mathematical theorems about smoothing and averaging
+are very useful, but every problem has its own special features, and being
+sensitive to them is essential — spatial averaging in the brain is a good
+example. A smoothing kernel applied in volume space averages together
+whatever voxels fall within its radius, regardless of whether those voxels
+belong to the same fold of cortex.
+
+::: {.panel-tabset}
+## Grid of samples
+
+![A regular grid of sample locations overlaid on an axial
+slice.](images/ch67/smoothing-kernel-grid.png){#fig-ch67-smoothing-kernel-grid-1}
+
+## Selecting a pair of nodes
+
+![Two neighboring grid nodes are
+selected.](images/ch67/smoothing-kernel-node-pair.png){#fig-ch67-smoothing-kernel-grid-2}
+
+## The averaging kernel
+
+![A circular averaging kernel is centered on the selected
+nodes.](images/ch67/smoothing-kernel-averaging-circle.png){#fig-ch67-smoothing-kernel-grid-3}
+:::
+
+The trouble is visible as soon as the kernel straddles a sulcus. Opposite
+banks of a sulcus can be very close together in volume space yet functionally
+distinct — one bank gray matter, the other white matter, or two banks
+belonging to different functional maps — so opposite sides of sulci can't be
+distinguished by a purely volumetric criterion
+(@fig-ch67-opposite-sulci-sides-indistinguishable). The figure shown in-plane
+is only a 2D cross-section; the averaging itself happens in the full 3D
+volume, which makes the problem worse, not better.
+
+![Opposite banks of a sulcus can be indistinguishable in volume space: white
+matter and gray matter from both banks can fall within the same local
+neighborhood. The averaging kernel operates in the volume even though only an
+in-plane slice is
+shown.](images/ch67/opposite-sulci-sides-indistinguishable.png){#fig-ch67-opposite-sulci-sides-indistinguishable}
+
+Smoothing therefore averages together signal from tissue that may not belong
+together at all (@fig-ch67-what-is-averaged-by-smoothing) — the same
+sulcus-crossing problem, now shown as it would appear after a smoothing
+kernel has been applied at several locations along a fold.
+
+![What is actually averaged by smoothing: circles mark local regions where
+the kernel mixes signal across opposite banks of a
+sulcus.](images/ch67/what-is-averaged-by-smoothing.png){#fig-ch67-what-is-averaged-by-smoothing}
+
+## Statistical parameter mapping
+
+Statistical parameter maps (SPMs) render a statistical test (for example, a
+t- or F-statistic computed at every voxel) as a color overlay on an anatomical
+image. An older convention in the literature — one that can still be found in
+some papers — displayed these overlays on a small number of 2D slices, which
+is a visualization choice worth being alert to when reading older figures, since
+it can make results look more (or less) spatially extensive than they are.
+
+Spatial smoothing is applied before statistical testing for several distinct
+reasons, and it is worth separating them out:
+
+::: {.panel-tabset}
+## (i) Matched filter theorem
+
+By the matched filter theorem, the optimal smoothing kernel size matches the
+expected spatial size of the effect being tested — smoothing at the wrong
+scale reduces sensitivity.
+
+![Motivation (i): the matched filter theorem sets the optimal smoothing
+kernel size.](images/ch67/smoothing-matched-filter.png){#fig-ch67-smoothing-rationale-1}
+
+## (ii) Central limit theorem
+
+By the central limit theorem, smoothing renders the noise distribution more
+Gaussian, which helps satisfy the assumptions behind parametric statistical
+tests.
+
+![Motivation (ii): smoothing makes the error distribution more
+normal.](images/ch67/smoothing-central-limit.png){#fig-ch67-smoothing-rationale-2}
+
+## (iii) Gaussian random field theory
+
+Inferences about regional effects that rely on Gaussian random field theory
+assume the underlying statistical field is smooth; explicit smoothing helps
+satisfy that assumption.
+
+![Motivation (iii): Gaussian random field theory assumes a smooth statistical
+field.](images/ch67/smoothing-gaussian-random-field.png){#fig-ch67-smoothing-rationale-3}
+
+## (iv) Inter-subject averaging
+
+When averaging across subjects — whose anatomy never aligns perfectly — more
+aggressive smoothing (e.g., 8 mm in fMRI, 16 mm in PET) is often needed to
+project individual results onto a common space.
+
+![Motivation (iv): heavier smoothing compensates for imperfect inter-subject
+alignment.](images/ch67/smoothing-intersubject-averaging.png){#fig-ch67-smoothing-rationale-4}
+:::
+
+Each of these is a legitimate reason to smooth, but each also trades away
+some spatial specificity — precisely the specificity that the sulcus-crossing
+problem above shows can matter a great deal in folded cortex.
+
+## Surface-based visualization
+
+Visualization exists to communicate results clearly, and the choice of
+surface matters as much as the statistics. The same activation can look very
+different rendered on a small number of thick axial slices versus rendered on
+a 3D cortical surface reconstruction (@fig-ch67-spm-quality-communication).
+
+![The same statistical result shown (a) on thick axial slices and (b)
+rendered on a 3D cortical surface — the surface rendering communicates the
+spatial extent of the activation far more
+clearly.](images/ch67/spm-quality-communication.png){#fig-ch67-spm-quality-communication}
+
+Cortical surface projections are commonly shown from standard viewpoints,
+such as the lateral surface and the ventral occipital surface, so that
+results from different studies and subjects can be compared directly
+(@fig-ch67-lateral-surface-projection, @fig-ch67-ventral-lateral-projection).
+
+![A lateral surface projection of the cortex (data from Brunswick and
+Paulesu).](images/ch67/lateral-surface-projection.png){#fig-ch67-lateral-surface-projection}
+
+![A ventral occipital view of the cortical
+surface.](images/ch67/ventral-lateral-projection.png){#fig-ch67-ventral-lateral-projection}
+
+A concrete example of why this matters: interpreting results shown in a
+conventional multi-slice format is hard, even for an experienced reader
+(@fig-ch67-multislice-format-challenge). The same visual word form area data,
+replotted on a 3D cortical surface reconstruction, is much easier to
+interpret — the contrast showing an increasing response as a word form
+becomes more visible is immediately legible as a single, spatially coherent
+region rather than scattered patches across several slices
+(@fig-ch67-word-form-area-3d-surface).
+
+![Multi-slice format visualization is a challenge to understand: color
+indicates stimulus eccentricity, but the spatial pattern is hard to read
+across
+slices.](images/ch67/multislice-format-challenge.png){#fig-ch67-multislice-format-challenge}
+
+![The same data shown on a 3D surface reconstruction: the visual word form
+area is much easier to see than in the multi-slice
+view.](images/ch67/word-form-area-3d-surface.png){#fig-ch67-word-form-area-3d-surface}
+
+## Building the cortical surface
+
+To build a representation of the cortical surface, the anatomical MRI volume
+is segmented into gray and white matter, and the boundary between them is
+identified. A variety of software tools do this segmentation; here the
+boundary is shown as identified by itkGray, one of several available
+pipelines (others include FreeSurfer)
+(@fig-ch67-itkgray-graywhite-boundary; @carman1995-corticalsurface;
+@dale1999-corticalsurfacereconstruction; @fischl1999-corticalsurfacebased;
+@wandell2000-visualization).
+
+![Identifying the gray-white boundary in cortex using
+itkGray.](images/ch67/itkgray-graywhite-boundary.png){#fig-ch67-itkgray-graywhite-boundary}
+
+Automatic segmentation is an excellent first approximation and very useful in
+practice (@fig-ch67-segmentation-first-approximation), but there are always
+imperfections that need to be checked and, often, hand-corrected
+(@fig-ch67-segmentation-imperfections).
+
+![Automatic gray/white segmentation: an excellent first approximation and
+very useful on its
+own.](images/ch67/segmentation-first-approximation.png){#fig-ch67-segmentation-first-approximation}
+
+![But there are always imperfections that need
+checking.](images/ch67/segmentation-imperfections.png){#fig-ch67-segmentation-imperfections}
+
+Once the voxels are classified as gray or white matter, they must be
+connected into a well-formed graph before a surface mesh can be built. Gray
+matter nodes are considered connected if they share a common parent voxel or
+if their parents are connected, and the classification, connectivity, and
+resulting cortical graph are all closely linked
+(@fig-ch67-classification-connectivity).
+
+![Classification, connectivity, and the resulting graph of gray-matter
+nodes.](images/ch67/classification-connectivity.png){#fig-ch67-classification-connectivity}
+
+A well-formed white-matter classification must also avoid topological defects
+— cavities (holes enclosed by white matter) and handles (spurious
+connections that create a loop where none should exist). The Euler number is
+a standard way of detecting the presence of such defects
+(@fig-ch67-euler-number-cavities-handles; @toriwaki-eulernumber).
+
+![White matter topology: avoiding cavities and handles. The Euler number
+detects topological defects in the classified
+volume.](images/ch67/euler-number-cavities-handles.png){#fig-ch67-euler-number-cavities-handles}
+
+## From classified voxels to a mesh
+
+Graphics programs represent surfaces as meshes: a set of vertices (points)
+and edges (connections between them). A mesh can be built directly from the
+boundary of the classified white-matter voxels
+(@fig-ch67-mesh-from-classified-voxels).
+
+![Creating the surface mesh from classified
+voxels.](images/ch67/mesh-from-classified-voxels.png){#fig-ch67-mesh-from-classified-voxels}
+
+Representing the cortex as a mesh matters for more than visualization: the
+same mesh that renders the surface for viewing (in tools such as MeshLab)
+also encodes the gray-matter connectivity graph used for measurement, so a
+properly connected mesh is required both for pictures that look right and for
+distances and areas that are computed correctly
+(@fig-ch67-importance-of-being-a-mesh).
+
+![The importance of being a mesh: a single mesh structure supports both
+visualization and correct gray-node
+connectivity.](images/ch67/importance-of-being-a-mesh.png){#fig-ch67-importance-of-being-a-mesh}
+
+A raw mesh built directly from voxel boundaries is jagged; 3D graphical tools
+(such as VTK, the Visualization Toolkit) can smooth the mesh without
+destroying the topological neighborhood relations of the surface
+(@fig-ch67-smoothing-the-3d-mesh). Modern segmentation and meshing tools such
+as itkGray increasingly build in this kind of anatomical and topological
+knowledge automatically, though getting good results still requires practice
+(@fig-ch67-itkgray-tissue-classification).
+
+![Smoothing the 3D mesh with tools such as VTK, preserving the surface's
+topological
+properties.](images/ch67/smoothing-the-3d-mesh.png){#fig-ch67-smoothing-the-3d-mesh}
+
+![Tissue classification tools such as itkGray incorporate increasingly
+sophisticated anatomical
+knowledge.](images/ch67/itkgray-tissue-classification.png){#fig-ch67-itkgray-tissue-classification}
+
+## Curvature and extreme smoothing
+
+Shading a rendered surface by local curvature makes the gyri and sulci easy
+to read at a glance: curvature is inversely related to the radius of the
+circle that best fits the local surface
+(@fig-ch67-shading-surface-curvature). Even after very heavy smoothing, the
+mesh's topology — its neighborhood connectivity — remains unchanged; only the
+geometry (the shape) is altered, not the underlying graph structure
+(@fig-ch67-extreme-smoothing-topology-unchanged).
+
+![Shading the surface by curvature: high curvature marks tightly folded gyri
+and sulci, low curvature marks flatter
+regions.](images/ch67/shading-surface-curvature.png){#fig-ch67-shading-surface-curvature}
+
+![Extreme smoothing changes the surface's shape but leaves its topology
+unchanged.](images/ch67/extreme-smoothing-topology-unchanged.png){#fig-ch67-extreme-smoothing-topology-unchanged}
+
+## Flat maps
+
+Because the cortical sheet is topologically close to a 2D surface, it can be
+cut and unfolded into a flat map — a representation that preserves
+neighborhood relations along the cortical surface far better than any single
+volumetric slice can. Flattened representations are especially useful for
+displaying data that vary smoothly across the surface, such as eccentricity
+maps from retinotopic mapping experiments
+(@fig-ch67-eccentricity-maps, @fig-ch67-flat-map-views,
+@fig-ch67-eccentricity-map-flattened).
+
+![An eccentricity map shown on the folded cortical
+surface.](images/ch67/eccentricity-maps.png){#fig-ch67-eccentricity-maps}
+
+![A flat-map view of the brain
+surface.](images/ch67/flat-map-views.png){#fig-ch67-flat-map-views}
+
+![The same eccentricity map shown on the flattened
+representation.](images/ch67/eccentricity-map-flattened.png){#fig-ch67-eccentricity-map-flattened}
+
+No flattening is perfect, however. The cortical surface has intrinsic
+curvature, which limits how well distances measured on the flattened image
+can match true distances on the folded surface — even a surface that is
+basically flat, and not strongly curved like a sphere, will not be perfectly
+representable on a plane without some distortion
+(@fig-ch67-intrinsic-curvature-limits). The next chapter takes up the
+flattening procedure itself in detail.
+
+![Intrinsic curvature limits how well distances on a flattened image can
+match true distances on the cortical
+surface.](images/ch67/intrinsic-curvature-limits.png){#fig-ch67-intrinsic-curvature-limits}

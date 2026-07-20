@@ -1,0 +1,80 @@
+---
+date: last-modified
+---
+
+# Segmentation and Visualization: Additional Examples
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+This short chapter collects a few additional examples that round out the
+visualization pipeline introduced over the previous two chapters: iso-voxel
+resampling, gray/white segmentation tools, and the practical benefit of
+averaging multiple scans before segmenting. The overall pipeline these three
+chapters trace runs from raw voxels, through gray/white segmentation, to
+surface boundaries (marching cubes), surface smoothing, and finally flat
+maps.
+
+## Gray-white segmentation is essential
+
+Every step in the surface-construction pipeline — meshing, smoothing,
+flattening — depends on an accurate gray/white matter segmentation as its
+starting point. Overlaying a sampling grid on an unsegmented axial slice (a)
+versus the same slice with the gray/white boundary traced (b) makes clear how
+much structure the segmentation step adds before any surface computation can
+begin (@fig-ch69-graywhite-segmentation-essential).
+
+![(a) An axial slice with a sampling grid overlaid, before segmentation. (b)
+The same slice with the gray/white matter boundary
+traced.](images/ch69/graywhite-segmentation-essential.png){#fig-ch69-graywhite-segmentation-essential}
+
+Segmentation is typically done with dedicated tools such as itkGray (built on
+ITK-SNAP), which let a user inspect a volume in multiple planes
+simultaneously, draw and edit labels, and preview the resulting 3D region
+(@fig-ch69-itkgray-segmentation-tool).
+
+![itkGray (built on ITK-SNAP), a segmentation tool showing axial, sagittal,
+and coronal views alongside a 3D
+preview.](images/ch69/itkgray-segmentation-tool.png){#fig-ch69-itkgray-segmentation-tool}
+
+## Voxel size and resampling
+
+Scanner voxels are frequently anisotropic — for example, $0.9375 \times
+0.9375 \times 1.2$ mm — and if the image is displayed without accounting for
+this, each measurement sample simply becomes one image pixel and the brain
+appears artificially "thin" (@fig-ch69-original-scan-anisotropic-voxels).
+
+![The original scan represented as voxels with no scaling applied: each
+sample is one pixel, so the anisotropic $0.9375 \times 0.9375 \times 1.2$~mm
+voxels make the brain look
+thin.](images/ch69/original-scan-anisotropic-voxels.png){#fig-ch69-original-scan-anisotropic-voxels}
+
+Resampling to an isotropic (iso-)voxel size — for example, $0.9 \times 0.9
+\times 0.9$ mm — corrects this distortion, at the cost of introducing
+interpolation noise (@fig-ch69-resampled-iso-voxel). Standard scattered-data
+and grid interpolation routines (such as MATLAB's `interp2` for 2D reslicing
+and `TriScatteredInterp` for scattered 3D data) are the practical tools used
+to perform this resampling.
+
+![Resampled to an isotropic $0.9 \times 0.9 \times 0.9$~mm voxel grid — note
+the interpolation noise introduced in the
+process.](images/ch69/resampled-iso-voxel.png){#fig-ch69-resampled-iso-voxel}
+
+## Averaging multiple scans improves segmentation
+
+Co-registering and averaging several repeated scans of the same subject
+reduces noise substantially before any segmentation is attempted
+(@fig-ch69-coregistered-averaged-scans).
+
+![Multiple scans of the same subject, co-registered and
+averaged.](images/ch69/coregistered-averaged-scans.png){#fig-ch69-coregistered-averaged-scans}
+
+The benefit shows up directly in the intensity histogram used to separate
+gray and white matter: averaging sharpens the separation between the gray and
+white matter intensity peaks, making automatic segmentation more reliable
+(@fig-ch69-averaging-improves-segmentation-histograms).
+
+![Averaging multiple scans sharpens the separation between gray- and
+white-matter intensity peaks, making segmentation
+easier.](images/ch69/averaging-improves-segmentation-histograms.png){#fig-ch69-averaging-improves-segmentation-histograms}

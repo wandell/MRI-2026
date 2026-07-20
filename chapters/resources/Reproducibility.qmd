@@ -1,0 +1,213 @@
+---
+date: last-modified
+---
+
+# Achieving Reproducibility: Perspectives and New Tools {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+This resource is drawn from a talk on computational reproducibility in MRI
+research, built around experience running the Stanford Center for Cognitive
+and Neurobiological Imaging (CNI) and developing the Flywheel data and
+computation platform. The talk's own summary of the argument is a simple
+chain: quantitative measurements feed computational models, and both must be
+built so that they can be checked and shared
+(@fig-repro-title-triangle-summary).
+
+![Quantitative measurements, computational models, and the discipline of
+checking and sharing — the throughline of this
+talk.](images/reproducibility/title-triangle-summary.png){#fig-repro-title-triangle-summary}
+
+**Disclosure.** The presenter is an active participant in Flywheel Exchange
+LLC, a commercial venture related to the data-management platform described
+here. The story begins with work at Stanford building a new MRI neuroimaging
+center, and that work was later transferred to Flywheel as a commercial
+venture.
+
+## Motivation: a reproducibility problem with two different causes
+
+Much of the public conversation about reproducibility in neuroscience and
+psychology focuses on statistical reproducibility — whether *N* is large
+enough, whether *p* is small enough, whether the right test was used, or, in
+the worst cases, outright research misconduct (fabricated or manipulated
+images have been the basis of several recent high-profile retractions and
+investigations, as documented in books such as *Bad Blood* by John Carreyrou
+and *Rigor Mortis* by Richard Harris). But for a center that manages MRI data
+for many labs, a different and more tractable problem is at least as
+important: computational reproducibility — whether the specific chain of
+software, parameters, and data versions that produced a given result can be
+recovered and rerun at all, independent of whether the underlying statistics
+were sound. Replication (repeating an experiment to see if the scientific
+finding holds up) and computational reproducibility (recovering the exact
+computational pipeline behind a result) are related but distinct goals, and
+an MRI center is much better positioned to guarantee the second than the
+first, since replicating expensive, complex MRI experiments is not
+something a data-management platform can solve on its own.
+
+Computational reproducibility is not something that can be bolted on after
+the fact. It has to be designed into a project from the beginning, with a set
+of programming and research disciplines that are maintained throughout the
+project's life. Large, well-funded projects like the Human Connectome
+Project (HCP) and the Adolescent Brain Cognitive Development (ABCD) study
+have this discipline built in — but the argument here is that every lab
+should have access to it, not just the largest consortia.
+
+## From simple beginnings to a data-management problem
+
+In the early 1990s, MRI acquisition was comparatively simple, and there was
+correspondingly little need — or ability — to do much in the way of data
+management; computational infrastructure and data-analysis methods were
+primitive by later standards (@fig-repro-mri-room-1992). By the time a new
+MRI center for cognitive and neurobiological imaging was being built roughly
+fifteen years later, in 2008, both the instrumentation and the computational
+demands had grown substantially more complex, and Stanford's own IT
+infrastructure could not, by itself, solve the data-management problem that
+running a modern multi-user MRI center creates (@fig-repro-cni-construction-2008).
+
+![MRI acquisition in 1992: simpler hardware, and correspondingly limited
+computational infrastructure for data
+management.](images/reproducibility/mri-room-1992.png){#fig-repro-mri-room-1992}
+
+![Building the Stanford Center for Cognitive and Neurobiological Imaging
+(CNI) in 2008 raised data-management questions that the scanner hardware
+alone could not
+answer.](images/reproducibility/cni-construction-2008.png){#fig-repro-cni-construction-2008}
+
+## Data management as a prerequisite to computational reproducibility
+
+The starting point is architectural: data should be archived at the center
+itself, before it ever leaves, and made available through a platform-independent
+web browser rather than requiring users to re-gather or manually copy their
+own data for each analysis or publication
+(@fig-repro-web-browser-database-access). Storing data thoughtfully at the
+point of capture — rather than simply handing raw files out to whoever asks
+— is treated here as close to a professional obligation, not a nicety.
+
+![Archiving data at the center and exposing it through a platform-independent
+web browser removes the burden on individual users to re-gather data for
+publication or
+re-analysis.](images/reproducibility/web-browser-database-access.png){#fig-repro-web-browser-database-access}
+
+Underneath that browser-based access sits a data capture architecture that
+has to classify and interpret many different kinds of MR data — raw DICOM
+from the instrument or a hospital PACS system, legacy data users want to add
+retroactively, behavioral and physiological recordings that matter for
+reproducibility, and the output of custom reconstruction pipelines — and
+route all of it, de-identified, into a per-project store
+(@fig-repro-flywheel-data-capture-architecture).
+
+![The Flywheel data capture architecture: a reaper process classifies,
+de-identifies, and uploads many different MR and non-MR data types into a
+user's
+project.](images/reproducibility/flywheel-data-capture-architecture.png){#fig-repro-flywheel-data-capture-architecture}
+
+## Tools are better than rules
+
+A recurring lesson from running a multi-user center: it works better to give
+users good tools than to try to enforce data-management rules by policy
+alone. Users have different preferences for how they want to pre-process
+their data, project membership changes over time so permissions need to be
+easy to manage, and many users want help with pre-processing, project notes,
+and visualization rather than being left to solve those problems themselves
+(@fig-repro-flywheel-tools-better-than-rules).
+
+![Tools, not just rules: gear rules, per-user permissions, and a built-in
+image viewer, all attached directly to a
+project.](images/reproducibility/flywheel-tools-better-than-rules.png){#fig-repro-flywheel-tools-better-than-rules}
+
+In practice, this means packaging common computations as installable,
+shareable units — called Gears in Flywheel — so that many kinds of analysis
+can be installed once and shared between users. A single lab's site might
+share dozens of Gears with collaborators, including FreeSurfer, FSL, HCP
+pipelines, tractography tools, file-format converters (DICOM), and
+directory-structure converters (BIDS), among others
+(@fig-repro-flywheel-providing-users-tools). Every time a Gear runs, its
+parameters are stored automatically in the project's provenance record, so
+that exactly how a given result — a FreeSurfer run, for example — was
+produced can always be recovered later
+(@fig-repro-flywheel-gears-provenance).
+
+![Gears package common analyses (FreeSurfer, FSL, HCP pipelines,
+tractography, format conversion, and more) as installable, shareable
+units.](images/reproducibility/flywheel-providing-users-tools.png){#fig-repro-flywheel-providing-users-tools}
+
+![Computational record keeping: the Gears used and their parameters are
+stored automatically in a project's Provenance
+tab.](images/reproducibility/flywheel-gears-provenance.png){#fig-repro-flywheel-gears-provenance}
+
+## Cloud-scale computing and programmatic access
+
+"Cloud-scale" here means something specific: the ability to select and run
+many Gears across many different data sets at the same time, with the cloud
+provider handling the underlying machine provisioning on demand
+(@fig-repro-flywheel-cloud-scale-computing). This matters because data sets
+have grown larger and analyses more complex — capacity that would be
+impractical for an individual lab to provision and maintain on its own.
+
+![Cloud-scale computing: many Gears can be run across many data sets
+simultaneously, with compute capacity provisioned on
+demand.](images/reproducibility/flywheel-cloud-scale-computing.png){#fig-repro-flywheel-cloud-scale-computing}
+
+Beyond pre-packaged Gears, programmers need to be able to write their own
+special-purpose scripts and explore new methods. A software development kit
+(SDK) exposes language bindings for Python, MATLAB, and R, along with REST
+database endpoints, so that new computations can be developed and shared
+just as easily as the pre-packaged ones
+(@fig-repro-flywheel-sdk-language-bindings). In practice, this SDK can be
+driven from a Jupyter notebook or a MATLAB Live Script to search for data,
+download it, run an analysis such as a FreeSurfer segmentation, and upload
+the resulting analysis back into the system — a complete round trip from
+query to stored, reproducible result
+(@fig-repro-flywheel-sdk-livescript-interface).
+
+![Language bindings (SDK) for Python, MATLAB, and R, plus REST database
+endpoints, support exploration and new methods
+development.](images/reproducibility/flywheel-sdk-language-bindings.png){#fig-repro-flywheel-sdk-language-bindings}
+
+![A MATLAB Live Script driving the SDK: search Flywheel for T1-weighted
+files, download them, run a FreeSurfer segmentation, and upload the analysis
+back to the
+project.](images/reproducibility/flywheel-sdk-livescript-interface.png){#fig-repro-flywheel-sdk-livescript-interface}
+
+## Databases built for different purposes
+
+At the time of publication, curated data is often placed on a shared public
+site such as OpenNeuro, the NIMH Data Archive (NDA), the USC Laboratory of
+Neuro Imaging's Image and Data Archive (IDA), or FITBIR, among others (LORIS,
+COINS, and XNAT serve similar roles). These sites add real value — checking
+data quality and providing standard pipelines — but they are designed for a
+different purpose than an MRI center's own data system: they are built to
+host curated, published data for reuse, not to manage an ongoing project's
+full range of cloud computation
+(@fig-repro-shared-databases-comparison).
+
+![Public data-sharing platforms (OpenNeuro, NDA, IDA, FITBIR) serve a
+different purpose than a center's own data-management
+system.](images/reproducibility/shared-databases-comparison.png){#fig-repro-shared-databases-comparison}
+
+Statistical reproducibility is a related but separate concern from the
+computational reproducibility this resource focuses on. Null-hypothesis
+statistical testing and group comparisons remain deeply embedded in
+neuroscience's publication culture, particularly in cognitive and clinical
+neuroscience, and the NIH itself has published principles and guidelines for
+reporting rigorous, reproducible preclinical research
+(@nih-rigorreproducibility). The tools described here are built to support
+many kinds of computation — not to adjudicate the final statistical
+hypothesis test.
+
+## FAIR principles
+
+Flywheel's design is explicitly an attempt to implement the FAIR
+principles — a set of community-developed guidelines stating that data (or
+any digital object) should be Findable, Accessible, Interoperable, and
+Reusable (@wilkinson2016-fairprinciples). Computational reproducibility, in
+this framing, is what it looks like to take the FAIR principles seriously in
+the specific context of a working MRI center: measure quantitatively, build
+computational models on top of those measurements, and build the whole
+pipeline so that it can be checked and shared
+(@fig-repro-fair-principles-nature-article).
+
+![The FAIR Guiding Principles for scientific data management and
+stewardship (@wilkinson2016-fairprinciples), the framework Flywheel is built
+to
+implement.](images/reproducibility/fair-principles-nature-article.png){#fig-repro-fair-principles-nature-article}

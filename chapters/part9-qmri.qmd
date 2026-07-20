@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Introduction to quantitative MRI {.unnumbered}
+# Quantitative MRI {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

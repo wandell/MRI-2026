@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Introduction to brain systems {.unnumbered}
+# Brain Systems {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 

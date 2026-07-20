@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Introduction to MR instrumentation {.unnumbered}
+# MR Instrumentation {.unnumbered}
 
 {{< include "includes/WIP-callout.qmd" >}}
 
