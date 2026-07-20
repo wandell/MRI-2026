@@ -1,0 +1,122 @@
+---
+date: last-modified
+---
+
+# Arterial Spin Labeling and Quantitative Susceptibility Mapping
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+This chapter describes two more quantitative methods, each built on a different
+piece of MR physics. Arterial spin labeling uses inflowing blood as an
+endogenous tracer to measure perfusion. Quantitative susceptibility mapping uses
+the phase of the signal — normally discarded — to estimate the magnetic
+susceptibility of the tissue, which is sensitive to iron and myelin.
+
+## Arterial spin labeling
+
+Arterial spin labeling (ASL) measures cerebral blood flow (CBF) without an
+injected contrast agent. The trick is to magnetically "label" arterial blood
+upstream and then image the tissue after the labeled blood has arrived. Because
+the label is created with an RF pulse rather than a chemical, the same
+experiment can be repeated with and without labeling, and the *difference*
+between the two images isolates the contribution of the delivered blood. The
+labeling can be applied as a brief pulse (pulsed ASL, PASL) or as a sustained
+saturation of arterial water (continuous ASL, CASL); both are usually read out
+with a gradient-echo or spin-echo sequence, and background suppression is used
+to remove the static signal from scalp and bone.
+
+In continuous ASL (@fig-ch63-asl-continuous), a small dedicated coil placed near
+the carotid delivers a continuous train of inversion pulses, labeling the blood
+in the feeding artery. The imaging plane is then measured over time, the
+measurement is repeated without labeling, and the difference reflects the
+labeled spins that have flowed into the plane.
+
+![Continuous ASL. A transmission coil near the carotid continuously labels
+arterial blood; the imaging plane is measured with and without labeling, and the
+difference maps the delivered blood.](images/ch63/asl-continuous.png){#fig-ch63-asl-continuous}
+
+A widely used pulsed variant is FAIR — flow-sensitive alternating inversion
+recovery (@fig-ch63-asl-fair). Here two acquisitions are compared: one labels a
+thick volume around and including the imaging plane, so that spins already in
+the plane plus spins flowing in both contribute; the other labels only the
+plane itself. The spins in the plane contribute to both measurements, so the
+difference again isolates the arterial spins that flowed in.
+
+![FAIR (flow-sensitive alternating inversion recovery), a pulsed ASL scheme. The
+difference between a non-selective and a slice-selective inversion isolates the
+inflowing arterial spins.](images/ch63/asl-fair.png){#fig-ch63-asl-fair}
+
+ASL is quantitative and physiologically specific, but it pays for that with
+sensitivity. The perfusion signal change is much smaller than the BOLD signal
+change measured in an ordinary functional experiment. Comparing pseudo-continuous
+ASL and BOLD activation for the same task, the BOLD maps are far more robust
+across subjects and sites (@fig-ch63-asl-vs-bold). ASL is chosen when an absolute,
+interpretable perfusion measurement matters more than raw detection power.
+
+![The perfusion signal change from pCASL is much smaller and less reproducible
+across subjects than the BOLD signal change for the same
+task.](images/ch63/asl-vs-bold.png){#fig-ch63-asl-vs-bold}
+
+## Quantitative susceptibility mapping
+
+Magnetic susceptibility (χ) measures how strongly a material becomes magnetized
+in an applied field, χ = M/H. It is helpful to picture the material as filled
+with tiny compass needles. *Paramagnetic* materials — deoxyhemoglobin, ferritin,
+some neurotransmitters — weakly align with the field (χ > 0). *Diamagnetic*
+materials — oxyhemoglobin, water, lipids, many proteins — weakly oppose it
+(χ < 0). *Ferromagnetic* materials such as iron align strongly and can stay
+aligned when the field is removed, but these are not found in the brain. Because
+myelin is diamagnetic and iron-bearing molecules are paramagnetic, a map of
+susceptibility carries information about both.
+
+The complication is that susceptibility is not measured directly. What the
+scanner records is the *phase* of the signal, which reflects the local field
+perturbation produced by the susceptibility distribution — and that perturbation
+is spatially spread out, not localized to the source. Quantitative
+susceptibility mapping (QSM) begins by keeping the phase and amplitude from each
+receive coil and combining them as complex numbers, rather than forming the
+usual weighted sum of magnitudes (@fig-ch63-qsm-coil-combination). A naive
+complex sum without phase correction can cancel to zero where the coil phases
+disagree, so careful phase handling is central to the method.
+
+![QSM retains the phase and amplitude of each coil and combines them as a complex
+exponential. Without phase correction the complex sum can cancel to zero
+magnitude.](images/ch63/qsm-coil-combination.png){#fig-ch63-qsm-coil-combination}
+
+The heart of QSM is an inversion. The measured field perturbation is related to
+the underlying susceptibility distribution by a known physical forward model; QSM
+runs that model backward — a "field-to-source inversion" — to convert the spatial
+field measurement into a spatial estimate of susceptibility. For a single
+susceptibility source the field perturbation has the characteristic
+dipole pattern, and the inversion recovers a compact source
+(@fig-ch63-qsm-single-point). The same inversion applied voxel-by-voxel yields a
+whole-brain susceptibility map (@fig-ch63-qsm-whole-brain).
+
+![The core QSM calculation for a single source. The measured field perturbation
+(a dipole pattern) is inverted through the physical forward model to estimate the
+susceptibility.](images/ch63/qsm-single-point.png){#fig-ch63-qsm-single-point}
+
+![Applying the field-to-source inversion across the whole brain produces a
+susceptibility map.](images/ch63/qsm-whole-brain.png){#fig-ch63-qsm-whole-brain}
+
+Clinically, QSM is attractive because susceptibility tracks iron deposition and
+myelin loss. In multiple sclerosis, for example, the susceptibility map
+delineates deep gray-matter structures and lesion cores more cleanly than the
+raw phase image, whose nonlocal contrast smears the lesion edge
+(@fig-ch63-qsm-multiple-sclerosis).
+
+![QSM in multiple sclerosis. Compared with the magnitude and phase images, the
+susceptibility map gives cleaner delineation of deep gray matter and a
+sharper lesion core.](images/ch63/qsm-multiple-sclerosis.png){#fig-ch63-qsm-multiple-sclerosis}
+
+A practical caution runs through the QSM literature: the inversion is
+ill-posed, and there are many algorithmic choices — regularization, background
+field removal, and so on — with active debate about which are correct. Community
+reconstruction challenges exist precisely to compare them. It is a good place to
+remember Box and Draper's aphorism that all models are wrong, but some are
+useful (@fig-ch63-qsm-reconstruction-challenge).
+
+![There are many QSM reconstruction algorithms and ongoing debate about which is
+correct; community challenges compare them.](images/ch63/qsm-reconstruction-challenge.png){#fig-ch63-qsm-reconstruction-challenge}

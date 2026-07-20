@@ -1,0 +1,55 @@
+---
+date: last-modified
+---
+
+# The T1w/T2w Ratio for Myelin Mapping {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+A recurring goal of quantitative MRI is a map of myelin content. One popular and
+inexpensive approach uses only two ordinary structural scans — a T1-weighted and
+a T2-weighted image — and forms their ratio. This resource describes the idea and,
+importantly, the reasons to be cautious about interpreting it as a myelin measure.
+
+## The idea
+
+The T1w/T2w method was introduced by Glasser and Van Essen (2011) as a way to map
+cortical areas from myelin content (@fig-t1t2-glasser-vanessen). Both a
+T1-weighted and a T2-weighted image carry a similar receive-coil intensity bias,
+but that bias divides out in their *ratio*, while the myelin-related contrast in
+the two images reinforces. The resulting T1w/T2w map enhances myelin contrast and
+is generalizable across 3 T scanners and pulse sequences without any special
+acquisition. Mapped to the cortical surface, the spatial gradients of the group
+map agree well with cytoarchitectonic areal borders, so the ratio became a widely
+used, low-cost proxy for cortical myelination.
+
+![Glasser and Van Essen (2011) introduced the T1w/T2w ratio to map cortical areas
+by myelin content; the ratio cancels the shared receive-coil intensity bias.](images/t1t2-ratio-glasser-vanessen.png){#fig-t1t2-glasser-vanessen}
+
+## Why the ratio is not a specific myelin measure
+
+The convenience of the method should not be mistaken for validity. A series of
+studies comparing the T1w/T2w ratio against histology and against more direct
+myelin-MRI measures — quantitative susceptibility mapping, magnetization transfer
+saturation, and multi-echo myelin water fraction (MWF) — find that the ratio does
+not track myelin specifically, especially in white matter
+(@fig-t1t2-critique-1, @fig-t1t2-critique-2).
+
+Several findings recur across this literature. In the corpus callosum the T1w/T2w
+map does not positively correlate with Luxol-fast-blue optical density and shows,
+if anything, a weak negative correlation, whereas myelin water fraction correlates
+strongly and positively with the histology. Direct method comparisons find only
+weak correlations between the T1w/T2w ratio and both SyMRI relaxometry and MT
+saturation, even though those two agree well with each other. And reliability is
+not the issue — the ratio is highly reproducible test–retest — but reproducibility
+is not validity: a measure can be stable yet still fail to reflect the quantity of
+interest. The reasonable summary is that the T1w/T2w ratio may correlate with
+myelin at the cortical level but is not a specific map of myelin density in white
+matter, and should be used with that limitation in mind.
+
+![Studies reporting a discrepancy between T1w/T2w maps and histology, and weak
+correlations with other myelin-MRI measures.](images/t1t2-ratio-critique-1.png){#fig-t1t2-critique-1}
+
+![Test–retest and concurrent-validity comparisons: the T1w/T2w ratio is reliable
+but has low criterion validity as an index of myelin, particularly in white and
+subcortical structures.](images/t1t2-ratio-critique-2.png){#fig-t1t2-critique-2}

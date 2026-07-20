@@ -78,7 +78,12 @@ book:
        - chapters/ch60-tractography-analyzing-white-matter-tracts.qmd
        - chapters/ch61-dki-dsi-wedeen-geometry.qmd
     - part: chapters/part9-qmri.qmd
-      chapters: []
+      chapters:
+       - chapters/ch62-noddi-magnetization-transfer.qmd
+       - chapters/ch63-asl-qsm.qmd
+       - chapters/ch64-vaso-multiecho-mrf.qmd
+       - chapters/ch65-high-field-imaging.qmd
+       - chapters/ch66-mtv-gratio.qmd
     - part: chapters/part10-applications.qmd
       chapters: []
     - part: "Resources"
@@ -92,6 +97,8 @@ book:
        - chapters/resources/developmental-hemispherectomy.qmd
        - chapters/resources/wada-testing.qmd
        - chapters/resources/ptsd-prediction.qmd
+       - chapters/resources/T1-T2-ratio.qmd
+       - chapters/resources/brain-beats.qmd
 
 bibliography:
   - paperpile.bib

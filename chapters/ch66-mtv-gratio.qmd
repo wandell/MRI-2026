@@ -1,0 +1,171 @@
+---
+date: last-modified
+---
+
+# Macromolecular Tissue Volume and the g-ratio
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+This chapter develops two related quantitative measures of white-matter tissue.
+Macromolecular tissue volume (MTV) estimates the fraction of a voxel that is
+*not* water — the space taken up by myelin, membranes, and other macromolecules.
+The g-ratio combines a myelin estimate with an axon estimate to report a
+geometric property of the fiber that governs conduction speed. Both build on the
+quantitative T1 and proton-density mapping introduced earlier, and both require
+careful removal of the coil-related intensity bias that contaminates raw MR
+images.
+
+## Macromolecular tissue volume
+
+The motivation for MTV is microstructural. A very small part of a white-matter
+voxel contains axons wrapped in many layers of myelin, and each myelin membrane
+is a lipid bilayer surrounded by water (@fig-ch66-mtv-myelin-water). The more
+myelin and other macromolecular material a voxel contains, the less room is left
+for water. If we can measure the water fraction accurately, then one minus that
+fraction — the macromolecular tissue volume — is a measure of tissue content.
+
+![A white-matter voxel is dominated by myelinated axons. Each myelin membrane is
+a lipid bilayer (~5 nm) surrounded by water (~1 nm layers); more myelin means
+less space for water.](images/ch66/mtv-myelin-water.png){#fig-ch66-mtv-myelin-water}
+
+The water fraction is estimated from proton density (PD), and here the practical
+difficulty appears. Raw scanner images are not quantitative: their brightness
+falls off systematically from the center to the edge because of the receive
+coil's spatially varying sensitivity (@fig-ch66-mtv-raw-image-bias). Recovering a
+true PD map means separating this coil gain from the tissue signal, not merely
+cosmetically flattening the image.
+
+![A raw T1-weighted image. Brightness varies from edge to center because of the
+receive coil's spatially varying sensitivity — an artifact that must be removed
+quantitatively to estimate proton density.](images/ch66/mtv-raw-image-bias.png){#fig-ch66-mtv-raw-image-bias}
+
+The starting point is quantitative T1 mapping. A single T1-weighted image
+confounds the tissue's T1 with the scan parameters and coil gain; acquiring
+several images at different flip angles and fitting the spoiled gradient-echo
+signal equation separates these factors, yielding clean T1 and PD (M0) maps
+(@fig-ch66-qmri-measuring-t1). The image intensity can be written schematically as
+a function of coil gain, scan parameters, and tissue properties, and the fit
+disentangles them.
+
+![Quantitative T1. The same brain at several flip angles shows that intensity
+depends on scan parameters as well as tissue T1. Fitting the signal equation
+across flip angles separates coil gain, T1, and proton
+density.](images/ch66/qmri-measuring-t1.png){#fig-ch66-qmri-measuring-t1}
+
+Estimating PD from the data is an ill-posed problem, and it is instructive to see
+why. In simulation without noise the coil sensitivity and PD can be recovered
+perfectly; add realistic noise and the estimates degrade badly, because a
+flexible model fits the noise rather than the signal, and the cross-validation
+accuracy collapses (@fig-ch66-pd-overfitting-regularization). The remedy is
+regularization: adding a constraint from something else we know to be true. Here
+the useful prior is the physical relationship between T1 and PD, which lets a
+biophysically regularized fit recover accurate PD maps.
+
+![Overfitting in PD estimation. Without noise the fit is perfect (top); with
+noise, an unconstrained fit tracks the noise and fails (bottom). A regularization
+constraint is needed.](images/ch66/pd-overfitting-regularization.png){#fig-ch66-pd-overfitting-regularization}
+
+Is the resulting MTV a genuine measure of tissue volume, independent of the
+particular chemistry? A calibration experiment says largely yes. Working with the
+chemistry department to build lipid phantoms — with and without inserted
+cholesterol — the measured lipid volume tracks the calculated lipid volume along
+the line of identity regardless of whether cholesterol is present
+(@fig-ch66-mtv-lipid-calibration). MTV measures how much space the macromolecules
+occupy, not what they are made of.
+
+![Lipid-phantom calibration. Measured lipid volume matches calculated lipid
+volume along the identity line whether or not cholesterol is added, showing that
+MTV is largely insensitive to lipid chemistry.](images/ch66/mtv-lipid-calibration.png){#fig-ch66-mtv-lipid-calibration}
+
+Chemistry does leave a separate signature, however, in how strongly the water
+interacts with the macromolecular surfaces. The same tissue volume can produce a
+different surface-interaction rate. Defining the volume of interacting protons as
+$VIP = (T1_m - T1_f)/(T1_c - T1_f)$ — where $T1_m$ is the measured T1, $T1_f$ the
+T1 of free water, and $T1_c$ a calibration value — and the surface interaction
+rate as $SIR = VIP/MTV$, cholesterol-containing samples show a higher interaction
+rate at the same lipid volume (@fig-ch66-mtv-vip-sir). MTV and SIR are
+complementary: one reports how much material is present, the other reports
+something about its surface chemistry.
+
+![Same volume, different signature. VIP/SIR increases with cholesterol at matched
+lipid volume, so the surface-interaction rate carries chemical information beyond
+the volume itself.](images/ch66/mtv-vip-sir.png){#fig-ch66-mtv-vip-sir}
+
+### Why not just use diffusion?
+
+The usual way to characterize white matter is diffusion imaging, but FA is not a
+clean measure of tissue content. FA varies enormously along a single tract, and
+the largest swings come from *geometry* — crossing fibers — rather than from
+myelin. Where callosal fibers cross the corticospinal tract, FA drops sharply,
+and the rank ordering of subjects changes from place to place along the tract
+(@fig-ch66-diffusion-fa-along-tract). MTV is attractive precisely because it
+responds to tissue content more directly than FA does.
+
+![FA varies strongly along the corticospinal tract, dropping where callosal fibers
+cross it. The largest FA changes reflect fiber geometry, not tissue
+content.](images/ch66/diffusion-fa-along-tract.png){#fig-ch66-diffusion-fa-along-tract}
+
+Combining a tract model with quantitative maps gives tract profiles that can be
+compared against a normative range. In multiple sclerosis patients, the
+macromolecular tissue volume fraction (MTVF) along the corticospinal tract falls
+below the control distribution at specific locations, and the diffusion and FA
+profiles add complementary information about disease stage
+(@fig-ch66-mtv-tract-profile-ms).
+
+![Tract profiles in two MS patients (red) against the control distribution
+(gray). MTVF, a diffusion index, and FA each drop below the normal range at
+particular tract locations.](images/ch66/mtv-tract-profile-ms.png){#fig-ch66-mtv-tract-profile-ms}
+
+## The g-ratio
+
+Myelin does two things for an axon: it speeds conduction and it lowers the energy
+cost of signaling. Conduction velocity rises with fiber caliber, but only for
+myelinated axons — the unmyelinated curve stays low across the whole range of
+diameters (@fig-ch66-gratio-conduction-speed). The precise speed depends on how
+much myelin wraps a given axon.
+
+![Conduction speed versus fiber caliber. Myelinated fibers (upper curve) conduct
+far faster than unmyelinated fibers (lower curve), and the relationship depends on
+myelin amount.](images/ch66/gratio-conduction-speed.png){#fig-ch66-gratio-conduction-speed}
+
+The amount of myelin is not arbitrary: across axons there is a consistent
+relationship between myelin thickness and axon perimeter, so larger axons carry
+proportionally thicker sheaths (@fig-ch66-gratio-axon-myelin-relation). This
+regularity is captured by a single number, the g-ratio.
+
+![Myelin thickness scales with axon perimeter across a population of fibers
+(Fraher, 1972), motivating a single geometric summary — the
+g-ratio.](images/ch66/gratio-axon-myelin-relation.png){#fig-ch66-gratio-axon-myelin-relation}
+
+The **g-ratio** is the ratio of the inner (axon) to the outer (axon + myelin)
+diameter of a myelinated fiber (@fig-ch66-gratio-geometry). It matters because it
+sets the balance between conduction speed and the metabolic and spatial cost of
+myelin. It can be estimated from MRI by combining a myelin volume fraction (MVF)
+and an axon volume fraction (AVF): $g = \sqrt{1/(1 + MVF/AVF)}$. In practice MVF
+comes from a myelin-sensitive measurement such as MTV or magnetization transfer,
+and AVF comes from a diffusion model that estimates the intra-axonal water
+fraction.
+
+![Geometry of the g-ratio, $g = r/R = \sqrt{1/(1 + MVF/AVF)}$, with the tissue
+water compartments and their relaxation times. MVF is the myelin volume fraction;
+AVF is the axon volume fraction.](images/ch66/gratio-geometry.png){#fig-ch66-gratio-geometry}
+
+Putting these ingredients together yields whole-brain g-ratio maps from
+multi-shell diffusion plus a myelin measurement: separate MVF and AVF maps combine
+into a g-ratio map that is relatively uniform across healthy white matter
+(@fig-ch66-gratio-whole-brain). The clinical interest is that the g-ratio can
+distinguish kinds of tissue damage. In multiple sclerosis, lesions are
+hyperintense on FLAIR and reduced on both the MVF and AVF maps, but the g-ratio
+map — being a ratio — separates lesions in which myelin and axons are lost
+proportionally (g-ratio near normal) from the occasional lesion with
+disproportionate myelin loss (elevated g-ratio) (@fig-ch66-gratio-multiple-sclerosis).
+
+![Whole-brain g-ratio from multi-shell DWI. MVF and AVF maps combine into a
+g-ratio map that is fairly uniform across healthy white
+matter.](images/ch66/gratio-whole-brain.png){#fig-ch66-gratio-whole-brain}
+
+![g-ratio in multiple sclerosis (Stikov et al., 2015). Lesions reduce MVF and AVF,
+but most retain a near-normal g-ratio; only one lesion here has a g-ratio above
+0.8, indicating disproportionate myelin loss.](images/ch66/gratio-multiple-sclerosis.png){#fig-ch66-gratio-multiple-sclerosis}

@@ -1,0 +1,106 @@
+---
+date: last-modified
+---
+
+# VASO, Multi-echo, and MR Fingerprinting
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+This chapter collects three more methods. VASO is a functional contrast that
+isolates blood volume rather than blood oxygenation. Multi-echo acquisition
+turns the ordinary T2\* signal into separate estimates of the starting
+magnetization and the decay time. MR fingerprinting abandons the idea of a
+single contrast entirely, using a deliberately varied acquisition and
+pattern-matching to read out several tissue parameters at once.
+
+## VASO
+
+Vascular-space-occupancy (VASO) imaging, developed by van Zijl and colleagues,
+is a functional method aimed at improving the spatial specificity of fMRI
+(@fig-ch64-vaso-concept). It exploits the fact that the T1 of blood differs from
+the T1 of brain parenchyma. By timing an inversion pulse to null the blood
+signal, VASO suppresses the contribution from within the vessels while sparing
+the tissue signal. Changes in the nulled signal then track changes in blood
+*volume*, a different physiological variable than the blood-oxygenation change
+that drives BOLD.
+
+![VASO uses an inversion pulse timed to null the blood signal — possible because
+blood and parenchyma have different T1 — so that the measured change reflects
+blood volume.](images/ch64/vaso-concept.png){#fig-ch64-vaso-concept}
+
+## Multi-echo imaging
+
+An ordinary gradient-echo measures the signal at a single echo time, so the
+value it reports mixes two things: the starting magnetization S₀ (set by proton
+density and by transmit/receive coil sensitivity) and the T2\* decay. That is
+why a plain T2\*-weighted image is not quantitative — the absolute signal level
+at a given echo time differs from place to place even when the underlying decay
+constant is the same (@fig-ch64-multiecho-t2-not-quantitative). What is
+comparable across locations is the *time constant* of the decay, not the signal
+level at one instant.
+
+![The measured signal at a fixed echo time depends on both S₀ and T2\*. Because
+proton density and coil inhomogeneity make S₀ vary across the brain, the signal
+level is not comparable between locations; the T2\* time constant
+is.](images/ch64/multiecho-t2-not-quantitative.png){#fig-ch64-multiecho-t2-not-quantitative}
+
+Multi-echo acquisition addresses this by reading out the same excitation at
+several echo times (@fig-ch64-multiecho-examples). Fitting the exponential decay
+across echoes separates the two quantities, producing an S₀ map and a T2\* map
+(@fig-ch64-multiecho-s0-t2star-maps). This separation is valuable for
+denoising functional data: BOLD is nominally a T2\* change, but real signals
+also contain S₀ fluctuations that are artifactual, and having both maps lets one
+be removed to clean up the other.
+
+![The same slice acquired at increasing echo times (TE = 15, 31, 48 ms). The
+contrast changes systematically with echo time as the signal
+decays.](images/ch64/multiecho-examples.png){#fig-ch64-multiecho-examples}
+
+![Fitting the decay across echoes yields separate S₀ and T2\* maps from the same
+multi-echo data.](images/ch64/multiecho-s0-t2star-maps.png){#fig-ch64-multiecho-s0-t2star-maps}
+
+## MR fingerprinting
+
+MR fingerprinting (MRF), introduced by Ma and colleagues (Ma et al., 2013,
+*Nature*), inverts the usual logic of an MR experiment. Rather than tuning the
+sequence to produce one contrast, MRF drives the tissue with a deliberately
+varied, pseudo-random sequence so that each tissue type produces a distinctive
+signal "fingerprint" over time. Matching each measured fingerprint against a
+precomputed dictionary of simulated signals then yields several tissue
+parameters at once — T1, T2, and others — and, because the matching tolerates
+imperfections, it suppresses measurement error rather than propagating it
+(@fig-ch64-mrf-abstract).
+
+![The MR fingerprinting proposal: a single varied acquisition, matched against
+simulated signals, quantifies multiple tissue properties
+simultaneously.](images/ch64/mrf-abstract.png){#fig-ch64-mrf-abstract}
+
+In practice the acquisition is an ordinary pulse sequence — RF pulses, slice
+selection, and a readout — but with the flip angle and repetition time changed
+from one excitation to the next, and an efficient (often spiral) k-space
+trajectory (@fig-ch64-mrf-pulse-sequence). The key design choice is the
+*schedule* of flip angles and repetition times: a pseudo-random schedule
+(@fig-ch64-mrf-concept) makes different tissues follow visibly different signal
+trajectories.
+
+![An MRF acquisition. The flip angle and repetition time vary across
+excitations, read out along a spiral k-space
+trajectory.](images/ch64/mrf-pulse-sequence.png){#fig-ch64-mrf-pulse-sequence}
+
+![The flip-angle and repetition-time schedules are pseudo-random. Two example
+schedules are shown; the varied parameters are what give each tissue a
+distinctive signal.](images/ch64/mrf-concept.png){#fig-ch64-mrf-concept}
+
+The readout step is a simulation-and-match. The expected signal trajectory for
+each candidate substrate — white matter, gray matter, CSF, fat, off-resonance
+variants — is simulated in advance, and the measured signal is assigned to
+whichever simulated trajectory it matches best (@fig-ch64-mrf-simulation-match).
+The same simulation-based reconstruction idea has been used more narrowly to get
+fast, accurate quantitative T2 maps from multi-spin-echo data, correcting for
+the stimulated and indirect echoes that otherwise contaminate rapid protocols.
+
+![Different substrates produce distinct simulated signals (top); the measured
+signal is matched to the best-fitting simulated trajectory
+(bottom).](images/ch64/mrf-simulation-match.png){#fig-ch64-mrf-simulation-match}

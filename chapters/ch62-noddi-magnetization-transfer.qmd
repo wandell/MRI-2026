@@ -1,0 +1,121 @@
+---
+date: last-modified
+---
+
+# NODDI and Magnetization Transfer
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+The diffusion methods in the previous part estimate a tensor, or a set of
+crossing directions, from the water signal in each voxel. The methods in this
+part go further: they fit an explicit *model of the tissue* and report
+parameters that are meant to correspond to biological quantities — the fraction
+of a voxel occupied by neurites, the dispersion of those neurites, the amount of
+myelin. This chapter introduces two such methods. NODDI models the diffusion
+signal as arising from separate tissue compartments; magnetization transfer
+exploits the exchange of magnetization between water bound to macromolecules and
+free water.
+
+## NODDI
+
+NODDI stands for **N**eurite **O**rientation **D**ispersion and **D**ensity
+**I**maging (@fig-ch62-noddi-tissue-model). Introduced by Zhang and colleagues
+(Zhang et al., 2012, *NeuroImage*), it is a clinically feasible way to estimate
+aspects of neurite morphology — the arrangement of dendrites and axons — rather
+than reporting a single summary of anisotropy. It is particularly useful near
+and within the gray matter, where a simple tensor is a poor description of the
+underlying geometry.
+
+![The NODDI tissue model. The measured signal is modeled as a weighted sum of an
+intracellular compartment (restricted diffusion inside neurites), an
+extracellular compartment (hindered diffusion around them), and an isotropic
+CSF compartment.](images/ch62/noddi-tissue-model.png){#fig-ch62-noddi-tissue-model}
+
+The model separates the voxel into three microstructural environments
+(@fig-ch62-noddi-compartment-model). The *intracellular* compartment is
+represented as a set of sticks — anisotropic cylinders of effectively zero
+radius — whose orientations follow a Watson distribution. The *extracellular*
+compartment is the space around the neurites, occupied by glia and cell bodies,
+where diffusion is hindered but roughly isotropic. The *isotropic* compartment
+is CSF, with a larger, free diffusivity. Each compartment contributes an
+independent signal to the voxel, and the fitted parameters include the
+intracellular volume fraction, the isotropic volume fraction, and an orientation
+dispersion index derived from the Watson concentration parameter.
+
+![The NODDI compartment model and its estimated parameters. The normalized
+signal is a weighted combination of intracellular, extracellular, and isotropic
+terms; the orientation dispersion index (OD) is computed from the Watson
+concentration parameter κ.](images/ch62/noddi-compartment-model.png){#fig-ch62-noddi-compartment-model}
+
+Fitting a multi-compartment model of this kind requires more than the single
+diffusion weighting used for a tensor fit. NODDI uses a multi-shell acquisition
+(@fig-ch62-noddi-acquisition): low b-values (for example, b ≈ 700 s/mm²) are
+sensitive to the hindered diffusion in the extra-neurite space, while high
+b-values (for example, b ≈ 2000 s/mm²) help characterize the restricted
+diffusion inside the neurites. Twenty to thirty directions per nonzero shell are
+typically recommended for a robust fit. The model is fit with the NODDI Toolbox
+or, faster, with the AMICO implementation.
+
+![NODDI acquisition protocol. Multiple b-value shells with many directions per
+shell are required; low and high b-values are sensitive to the extracellular and
+intracellular compartments, respectively.](images/ch62/noddi-acquisition.png){#fig-ch62-noddi-acquisition}
+
+The reason to go to this trouble is that NODDI reports something different from
+fractional anisotropy (@fig-ch62-noddi-vs-fa). Voxels with the same FA can have
+quite different neurite density and orientation dispersion; NODDI disentangles
+these two contributions. For anyone looking for a biomarker that is more
+specific than FA — say, one that responds to neurite density but not to
+fanning — this separation is the appeal.
+
+![Voxels with the same FA (same color) can differ in neurite density and
+orientation dispersion. NODDI separates the two microstructural factors that FA
+conflates.](images/ch62/noddi-vs-fa.png){#fig-ch62-noddi-vs-fa}
+
+These specificity claims should be read with some caution. Model-based
+parameters are only as trustworthy as the model, and later work has tested
+whether NODDI's neurite density really measures what its name suggests.
+Lampinen and colleagues, for example, compared NODDI's neurite density against
+a measure of microscopic anisotropy obtained with a richer acquisition that
+varies the *shape* of the diffusion weighting — combining linear tensor encoding
+(a gradient in a single direction) with spherical tensor encoding (weighting in
+all directions at once), a general scheme sometimes called b-tensor encoding
+(@fig-ch62-noddi-critique). The comparison shows that the tidy biological labels
+attached to model parameters are provisional; the parameter is an estimate under
+assumptions, not a direct measurement of the tissue.
+
+![NODDI has been evaluated against methods that vary the shape of the diffusion
+weighting (b-tensor encoding), which test whether the fitted neurite density
+behaves as a specific measure of microstructure.](images/ch62/noddi-critique.png){#fig-ch62-noddi-critique}
+
+## Magnetization transfer
+
+Magnetization transfer imaging (MTI) uses a completely different contrast
+mechanism. Water in tissue exists in two loosely coupled pools: a *free* pool of
+mobile water and a *bound* pool of water associated with macromolecules such as
+the proteins and lipids of myelin. A specially designed saturation pulse
+deposits radiofrequency energy almost entirely into the bound pool. Some of that
+energy is then transferred to the free pool, primarily through dipole–dipole
+interactions, partially saturating it. When the free pool is subsequently imaged
+with routine pulses and gradients, its signal is reduced — and the size of that
+reduction depends on how much bound-pool material is present
+(@fig-ch62-mt-mechanism).
+
+![Magnetization transfer. A saturation pulse excites the bound pool; energy
+transfers to the free water pool and reduces its signal. The magnetization
+transfer ratio, MTR = (S₀ − S_mt)/S₀, quantifies the effect at each
+location.](images/ch62/mt-mechanism.png){#fig-ch62-mt-mechanism}
+
+Because this is an imaging measurement, the magnetization transfer ratio can be
+compared across locations. Tissues rich in macromolecular content — myelinated
+white matter in particular — show a larger MT effect than tissue that is mostly
+free water. This gives MT contrast a sensitivity to myelin-related structure
+that ordinary T1- or T2-weighting does not have. A classic demonstration is that
+the saturation pulse sharpens the boundary of the central sulcus: after the
+pulse, the heavily myelinated tissue lining the sulcus stands out (arrows) in a
+way it does not in the unsaturated image (@fig-ch62-mt-central-sulcus).
+
+![MT contrast distinguishes the central sulcus. Left: no saturation pulse.
+Right: after the saturation pulse, the strongly myelinated banks of the sulcus
+are highlighted (arrows).](images/ch62/mt-central-sulcus.png){#fig-ch62-mt-central-sulcus}

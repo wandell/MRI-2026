@@ -101,3 +101,18 @@ Running list of items an AI agent flagged while extracting PPTX images/videos in
 
 ## Citations added this session
 New entries were added to `references.bib` (not `paperpile.bib`) for: Avery & Krichmar 2017, Abbott (Nature News) 2025, Peppiatt et al. 2006, Roy & Sherrington 1890, Attwell et al. 2010, Nedergaard & Goldman 2020. Worth a quick check that these match the wording/edition you'd cite, since they were sourced from web search rather than your own library.
+
+## Part 9 (qMRI) — new chapters from decks "08a NODDI…" and "08b MTV GRatio" (this session)
+Five new chapters (ch62–ch66) plus one resource were extracted. All slide notes in these decks were mostly bare URLs, so the connective prose between figures is **AI-authored draft in your voice** and should be read for accuracy/tone first.
+- [ ] ch62 (NODDI + Magnetization Transfer): check the NODDI compartment-model description and the Lampinen/b-tensor-encoding critique paragraph.
+- [ ] ch63 (ASL + QSM): verify the CASL vs FAIR explanation and the QSM field-to-source inversion framing.
+- [ ] ch64 (VASO, Multi-echo, MRF): check VASO nulling explanation and the MRF dictionary-matching description.
+- [ ] ch65 (High field): I titled it "High Field Imaging Challenges" per your outline; framed around the RF-wavelength/B1 problem and transmit arrays. Several slides were journal-header + Stanford-background captures — I folded those to prose and kept only the content figures.
+- [ ] ch66 (MTV + g-ratio): this deck had 84 slides. I curated ~13 figures and represented the deep PD-estimation method chain (coil sensitivity, ALS, cross-validation, regularization slides 44–57) with a single conceptual figure (overfitting/regularization). Tell me if you want more of that methodology restored as its own section.
+- [ ] Resource `chapters/resources/T1-T2-ratio.qmd` (08a slides 59–62): created per your instruction. Skipped the "TODO: Describe the idea here" placeholder slide.
+- [ ] No bibliography entries were added for these chapters — author/year references (Zhang 2012, Ma 2013, Glasser & Van Essen 2011, Stikov 2015, Fraher 1972, etc.) are currently inline prose only. Add to references.bib if you want them cited.
+
+## Resource: "08d Brain Beats" (now chapters/resources/brain-beats.qmd, not a chapter)
+- [x] Built as a Resource (per your request), not ch67. Two embedded videos were extracted and web-encoded: `amri-motion.mp4` (re-encoded 4K->1080p, 2.2 MB) and `vasculature-pulsation.mp4` (6.7 MB), both with PDF poster-frame fallbacks, stored in `chapters/resources/images/brain-beats/`.
+- [ ] Review the AI-authored prose (glymphatic model, cardiac-pulsation method, aMRI description) — slide notes were sparse. Skipped slide 8 ("Reliable cardiac triggered time series") because its overlay boxes rendered empty in the PDF export; skipped the "add color map here" placeholder slide 11.
+- [ ] Fixed a path bug from earlier in the session: the T1-T2-ratio resource images were mistakenly placed in `chapters/images/` — moved to `chapters/resources/images/` where resource `.qmd` files resolve them.

@@ -1,0 +1,112 @@
+---
+date: last-modified
+---
+
+# Brain Beats: Pulsatile Motion and Flow {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+The brain is not static inside the skull. With every heartbeat it moves, the
+blood surges through the cerebral arteries and drains through the venous sinuses,
+and the cerebrospinal fluid (CSF) is pushed and pulled through the ventricles and
+subarachnoid spaces. These pulsations are a nuisance for functional imaging — they
+add cardiac-frequency noise to the signal — but they are also a measurement
+opportunity. This resource collects a few methods that image the beating,
+flowing brain, and the anatomy of the fluid compartments they probe.
+
+## Amplified MRI
+
+Cardiac-driven brain motion is small, but it can be made visible. Amplified MRI
+(aMRI) takes retrospectively cardiac-gated MRI data and exaggerates the tiny
+frame-to-frame displacements, much as Eulerian video magnification amplifies
+subtle motion in ordinary video. A phase-based amplification algorithm improves
+on the original intensity-based approach, producing a clearer, less noisy
+visualization of how the brain deforms over the cardiac cycle.
+
+::: {.content-visible when-format="html"}
+![Amplified MRI (aMRI): cardiac-driven brain motion, exaggerated for
+visualization.](images/brain-beats/amri-motion.mp4){#vid-brainbeats-amri width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Amplified MRI (aMRI): cardiac-driven brain motion, exaggerated for
+visualization (video; see the HTML version for the
+animation).](images/brain-beats/amri-motion.png){#vid-brainbeats-amri width="80%"}
+:::
+
+## The fluid compartments
+
+To interpret these signals it helps to keep the brain's fluid compartments in
+mind (@fig-brainbeats-glymphatic). By volume the brain is mostly intracellular
+fluid (~65%), with interstitial (extracellular) fluid (~15%), CSF (~10%), and
+blood (~10%) making up the rest. The blood is separated from the other
+compartments by the blood–brain barrier and the blood–CSF barrier, formed by
+tight junctions between endothelial or choroid-plexus epithelial cells. CSF is
+produced at the choroid plexus, circulates through the ventricles and subarachnoid
+spaces, and — in the glymphatic model — exchanges with interstitial fluid along
+perivascular routes gated by astrocytic aquaporin-4 channels.
+
+![The brain's fluid compartments and barriers: ventricles and choroid plexus,
+the blood–brain barrier, and the blood–CSF barrier (after Jessen et al., "The
+Glymphatic System: A Beginner's Guide").](images/brain-beats/glymphatic-compartments.png){#fig-brainbeats-glymphatic}
+
+## Cardiac pulsations in the MR signal
+
+Functional MRI is sensitive to blood flow, oxygenation, and volume, and these
+change on two very different time scales (@fig-brainbeats-bold-cardiac). The
+familiar BOLD hemodynamic response unfolds over ~10–20 s. Superimposed on it are
+much faster cardiac pulsations, once per heartbeat. The clinical motivation —
+conditions such as migraine and raised intracranial pressure — is to build a tool
+that characterizes the whole-brain distribution and timing of these pulsations
+rapidly at 3 T.
+
+![Functional MRI is influenced by blood flow, oxygenation, and volume. The slow
+BOLD response (top) and the fast cardiac pulsations (bottom) occur on very
+different time scales.](images/brain-beats/bold-vs-cardiac.png){#fig-brainbeats-bold-cardiac}
+
+Resolving pulsations that recur roughly once per second requires fast sampling
+and a way to reference the data to the heartbeat (@fig-brainbeats-cardiac-method).
+A pulse oximeter on the thumb records the photoplethysmogram (PPG). The fMRI
+signal is sampled quickly (here TR = 250 ms, slice acquisition time 50 ms), each
+sample is aligned to the nearest heartbeat peak, and the aligned traces are
+averaged across many beats. Splitting the data into even and odd heartbeats and
+comparing the two averages gives a direct estimate of the measurement's
+reliability.
+
+![Measuring cardiac pulsations. A thumb pulse oximeter (A) provides the heartbeat
+reference for the rapidly sampled fMRI signal (B); traces are aligned to heartbeat
+peaks (C) and averaged, with even/odd splits used to assess reliability
+(D).](images/brain-beats/cardiac-method.png){#fig-brainbeats-cardiac-method}
+
+## Where the flow happens
+
+The pulsations are ultimately driven by the cerebral circulation. Arterial blood
+arrives through the carotid and basilar arteries and is distributed by the
+anterior, middle, and posterior cerebral arteries; venous blood drains through
+the superior sagittal and transverse sinuses (@fig-brainbeats-blood-flow).
+Directly imaging the vascular pulsation over a single heartbeat shows the
+negative MR signal changes propagating through the vasculature
+(@vid-brainbeats-vasculature).
+
+![Blood flow schematic: arterial supply (carotid/basilar, anterior/middle/
+posterior cerebral arteries) and venous drainage (superior sagittal, transverse
+sinuses).](images/brain-beats/blood-flow-schematic.png){#fig-brainbeats-blood-flow}
+
+::: {.content-visible when-format="html"}
+![Vasculature: negative MR pulsations over a single
+heartbeat.](images/brain-beats/vasculature-pulsation.mp4){#vid-brainbeats-vasculature width="80%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Vasculature: negative MR pulsations over a single heartbeat (video; see the
+HTML version for the
+animation).](images/brain-beats/vasculature-pulsation.png){#vid-brainbeats-vasculature width="80%"}
+:::
+
+The same cardiac cycle drives CSF motion. CSF flows from the lateral ventricles
+through the third and fourth ventricles and out into the subarachnoid spaces
+(@fig-brainbeats-csf-flow), and this pulsatile flow is increasingly thought to
+matter for clearance of metabolic waste from the brain.
+
+![CSF flow schematic: from the lateral and third ventricles through the fourth
+ventricle into the subarachnoid spaces.](images/brain-beats/csf-flow-schematic.png){#fig-brainbeats-csf-flow}

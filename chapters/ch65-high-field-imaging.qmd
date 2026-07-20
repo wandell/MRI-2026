@@ -1,0 +1,65 @@
+---
+date: last-modified
+---
+
+# High Field Imaging Challenges
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+Most of the quantitative methods in this part benefit from a stronger static
+field, because signal-to-noise ratio grows with field strength and can be traded
+for higher spatial resolution. Ultra-high-field systems — 7 T and, at a handful
+of research centers, 9.4 T — push toward resolutions that begin to reveal
+cortical and vascular detail unavailable at 3 T. Those gains come with real
+engineering challenges, which is the subject of this short chapter.
+
+## The resolution payoff
+
+The clearest motivation for higher field is spatial detail. Comparing the same
+volunteer's brain at 3 T and 9.4 T, the higher field resolves fine cortical and
+vascular structure that is blurred at the lower field
+(@fig-ch65-highfield-3t-vs-9p4t). At 9.4 T, whole-brain gradient-echo images can
+reach in-plane resolutions of a few hundred micrometers
+(@fig-ch65-highfield-9p4t-sagittal), and susceptibility-weighted acquisitions
+resolve venous vasculature in exquisite detail
+(@fig-ch65-highfield-swi).
+
+![The brain of one volunteer imaged at 3 T (left) and 9.4 T (right). The higher
+field supports substantially finer spatial
+resolution.](images/ch65/highfield-3t-vs-9p4t.png){#fig-ch65-highfield-3t-vs-9p4t}
+
+![A sagittal gradient-echo image at 9.4 T with whole-brain coverage, roughly
+280 µm in-plane and 1 mm thick, acquired in about five and a half minutes. The
+transmit phases of the 16 elements were optimized for this
+slice.](images/ch65/highfield-9p4t-sagittal.png){#fig-ch65-highfield-9p4t-sagittal}
+
+![Susceptibility-weighted imaging at 9.4 T, here about 0.175 mm in-plane, resolves
+fine venous structure.](images/ch65/highfield-swi.png){#fig-ch65-highfield-swi}
+
+## The instrumentation challenge
+
+The reason ultra-high-field imaging is hard is that the RF wavelength shrinks as
+field strength rises. At 9.4 T the wavelength in tissue is comparable to the size
+of the head, so a single transmit coil can no longer produce a uniform
+excitation — the transmit field ($B_1^+$) becomes patchy, brightening and
+darkening across the brain. The response is parallel transmission: an array of
+independently driven transmit elements whose phases (and amplitudes) are adjusted
+to shape the excitation, as in the 16-element system used for the images above.
+The caption's remark that the transmit phases "were optimized for this slice"
+reflects exactly this — the excitation has to be tuned, sometimes per slice, to
+achieve uniformity.
+
+Building such arrays is a hardware problem in its own right. Each element
+needs integrated transmit/receive switches and preamplifiers so the same coil can
+both transmit and receive (@fig-ch65-highfield-transmit-array). Even with all of
+this, the images typically require intensity correction after the fact to
+compensate for the residual non-uniform sensitivity — the 9.4 T images above are
+explicitly noted as *non-intensity-corrected*, which is why their brightness
+varies across the field of view. High field buys resolution, but only after the
+transmit-uniformity and coil-engineering problems are solved.
+
+![Transmit-array hardware for high-field imaging. Integrated transmit/receive
+switches with preamplifiers let the array operate in transceive
+mode.](images/ch65/highfield-transmit-array.png){#fig-ch65-highfield-transmit-array}
