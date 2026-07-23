@@ -8,9 +8,14 @@ date: last-modified
 
 ---
 
+## T2 time course and T2 contrast
+
+![T2 time course and T2 contrast.](images/ch07/t2-time-course-and-t2-contrast.png){#fig-ch07-t2-time-course-and-t2-contrast}
+
 ## The net magnetization is summarized by two components
 
 ![The net magnetization is summarized by two components.](images/ch08/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch08-the-net-magnetization-is-summarized-by-two-compone}
+
 
 ## Transverse magnetization
 

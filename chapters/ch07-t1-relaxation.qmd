@@ -126,6 +126,3 @@ Google image search seems to think this image came from here
 
 ![T1 from multiple molecules:  Fast Exchange Theory.](images/ch07/t1-from-multiple-molecules-fast-exchange-theory.png){#fig-ch07-t1-from-multiple-molecules-fast-exchange-theory}
 
-## T2 time course and T2 contrast
-
-![T2 time course and T2 contrast.](images/ch07/t2-time-course-and-t2-contrast.png){#fig-ch07-t2-time-course-and-t2-contrast}
