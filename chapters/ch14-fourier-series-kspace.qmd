@@ -119,7 +119,7 @@ In the Fourier Transform representation of a real-valued image, the values of th
 
 ## The whole Fourier Transform
 
-![How different frequencies contribute to an image — step 1.](images/ch14/how-different-frequencies-contribute-to-an-image-1.png){#fig-ch14-how-different-frequencies-contribute-to-an-image-1}
+![How different frequencies contribute to an image — step 1: image space and its k-space (Fourier transform) representation (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch14/how-different-frequencies-contribute-to-an-image-1.png){#fig-ch14-how-different-frequencies-contribute-to-an-image-1}
 
 ## The region near (0,0)
 

@@ -12,7 +12,7 @@ date: last-modified
 
 ## Pulse sequences: Spin echo (Hahn)
 
-![Pulse sequences: Spin echo (Hahn).](images/ch09/pulse-sequences-spin-echo-hahn.png){#fig-ch09-pulse-sequences-spin-echo-hahn}
+![Pulse sequences: Spin echo (Hahn). The hare-and-tortoise analogy shows how a 180° refocusing pulse reverses phase coherence: fast ("hare") and slow ("tortoise") spins that have dephased by TE/2 are flipped and return into phase at time TE (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 5.10).](images/ch09/pulse-sequences-spin-echo-hahn.png){#fig-ch09-pulse-sequences-spin-echo-hahn}
 
 ## The RF pulse sequence up to now (FID)
 

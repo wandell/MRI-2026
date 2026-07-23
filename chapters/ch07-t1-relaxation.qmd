@@ -14,9 +14,7 @@ date: last-modified
 
 ## The RF signal (B1) causes the net magnetization to precess
 
-![The RF signal (B1) causes the net magnetization to precess.](images/ch07/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch07-the-rf-signal-b1-causes-the-net-magnetization-to-p}
-
-Figure 3.4 Precession. The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B). In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
+![The RF signal (B1) causes the net magnetization to precess: the rotating frame and laboratory frame views (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch07/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch07-the-rf-signal-b1-causes-the-net-magnetization-to-p}
 
 ## The net magnetization is summarized by two components
 
@@ -24,15 +22,15 @@ Figure 3.4 Precession. The movement of a rotating proton or magnet within a magn
 
 ## The longitudinal component:  High- and low-stability states
 
-![The longitudinal component:  High- and low-stability states.](images/ch07/the-longitudinal-component-high-and-low-stability.png){#fig-ch07-the-longitudinal-component-high-and-low-stability}
+![The longitudinal component:  High- and low-stability states (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.6).](images/ch07/the-longitudinal-component-high-and-low-stability.png){#fig-ch07-the-longitudinal-component-high-and-low-stability}
 
 ## Energy from an RF pulse changes spins between the two stable binary states
 
-![Energy from an RF pulse changes spins between the two stable binary states.](images/ch07/energy-from-an-rf-pulse-changes-spins-between-the.png){#fig-ch07-energy-from-an-rf-pulse-changes-spins-between-the}
+![Energy from an RF pulse changes spins between the two stable binary states (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.9).](images/ch07/energy-from-an-rf-pulse-changes-spins-between-the.png){#fig-ch07-energy-from-an-rf-pulse-changes-spins-between-the}
 
 ## Spin Transition and Quantum Energy
 
-![Spin Transition and Quantum Energy.](images/ch07/spin-transition-and-quantum-energy.png){#fig-ch07-spin-transition-and-quantum-energy}
+![Spin Transition and Quantum Energy (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.8).](images/ch07/spin-transition-and-quantum-energy.png){#fig-ch07-spin-transition-and-quantum-energy}
 
 To move a spin between two states, we require an RF photon whose energy is matched to the difference in energy between the two states;
  
@@ -86,7 +84,7 @@ The time course of the net magnetization depends on the material.  So, if we mea
 
 ## Surface Interaction Rate (SIR)
 
-![Surface Interaction Rate (SIR).](images/ch07/surface-interaction-rate-sir.png){#fig-ch07-surface-interaction-rate-sir}
+![Surface Interaction Rate (SIR); portraits of Bloch and Purcell (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 1.13).](images/ch07/surface-interaction-rate-sir.png){#fig-ch07-surface-interaction-rate-sir}
 
 Mz(t) = M0(- 1exp(-t/T1) )
 

@@ -110,11 +110,7 @@ Values from:  https://pubmed.ncbi.nlm.nih.gov/10232510/
 
 ## Pulse sequence impact on tumor visibility
 
-![Pulse sequence impact on tumor visibility.](images/ch08/pulse-sequence-impact-on-tumor-visibility.png){#fig-ch08-pulse-sequence-impact-on-tumor-visibility}
-
-Figure 3.1 (a) Coronal image of the brain showing a tumour (arrow). In this image the tumour is bright against the darker grey
-of the normal brain tissue. (b) The same slice with a different pulse sequence, this time showing the tumour darker than the
-surrounding brain
+![Pulse sequence impact on tumor visibility: (a) coronal image of the brain showing a tumor (arrow), bright against the darker grey of normal brain tissue; (b) the same slice with a different pulse sequence, showing the tumor darker than the surrounding brain (McRobbie et al., *MRI: From Picture to Proton*, 2e, Fig. 3.1).](images/ch08/pulse-sequence-impact-on-tumor-visibility.png){#fig-ch08-pulse-sequence-impact-on-tumor-visibility}
 
 ::: {.callout-note}
 Why the T2 measurement is not quantitative, and a preview of the T2*/BOLD signal, are covered in the next chapter (pulse sequence diagrams, T2 quantification, and a look ahead to BOLD).

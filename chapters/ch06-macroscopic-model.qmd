@@ -26,7 +26,7 @@ From this paper:
 
 ## Source of the MR signal: Hydrogen nuclei (spins, protons)
 
-![Source of the MR signal: Hydrogen nuclei (spins, protons).](images/ch06/source-of-the-mr-signal-hydrogen-nuclei-spins-prot.png){#fig-ch06-source-of-the-mr-signal-hydrogen-nuclei-spins-prot}
+![Source of the MR signal: Hydrogen nuclei (spins, protons) (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.2).](images/ch06/source-of-the-mr-signal-hydrogen-nuclei-spins-prot.png){#fig-ch06-source-of-the-mr-signal-hydrogen-nuclei-spins-prot}
 
 People use a metaphor that the spins (protons) oscillate between one of two permissible states.  But it is may be more sensible to see the protons as distributed uniformly, as in the right image, and then when we apply the B0 field RF pulse we change the distribution to be biased. 
 
@@ -41,7 +41,7 @@ Sent to me by Hongjian He
 
 ## The FID signal: quantal description
 
-![The FID signal: quantal description.](images/ch06/the-fid-signal-quantal-description.png){#fig-ch06-the-fid-signal-quantal-description}
+![The FID signal: quantal description (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.5).](images/ch06/the-fid-signal-quantal-description.png){#fig-ch06-the-fid-signal-quantal-description}
 
 It is very important to understand this point: The physical mechanism causing the relaxation (return of the distribution to its original state) differs between the three world axes. Relaxation along the axis defined by the direction of the main field has one type of mechanism, and relaxation in the plane perpendicular to the main field has a different type of mechanism.  Thus, we use a different metaphor for these two types of relaxation.
 
@@ -50,7 +50,7 @@ The relaxation parallel to the main field depends on the energy difference betwe
 Slightly more of the protons have their positive side (red) oriented along with the B0 field. If we add an RF pulse along the longitudinal axis at this frequency, we change the preponderance of the spins from the orange state to the blue state. Left alone, the spins will relax back along the main axis.
 
 ## The net magnetization is the sum of the spins
-![The net magnetization is the sum of the spins.](images/ch06/the-net-magnetization-is-the-sum-of-the-spins.png){#fig-ch06-the-net-magnetization-is-the-sum-of-the-spins}
+![The net magnetization is the sum of the spins (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.7).](images/ch06/the-net-magnetization-is-the-sum-of-the-spins.png){#fig-ch06-the-net-magnetization-is-the-sum-of-the-spins}
 
 :::{.callout-note title="Precession"}
 The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B). In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
@@ -140,9 +140,7 @@ Would you like to discuss RF coil design, or how B1B_1 fields are optimized to c
 
 ## The RF signal (B1) causes the net magnetization to precess
 
-![The RF signal (B1) causes the net magnetization to precess.](images/ch06/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch06-the-rf-signal-b1-causes-the-net-magnetization-to-p}
-
-Figure 3.4 Precession. The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B). In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
+![The RF signal (B1) causes the net magnetization to precess: the rotating frame and laboratory frame views (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch06/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch06-the-rf-signal-b1-causes-the-net-magnetization-to-p}
 
 ## The receive coil measures the electrical radio frequency signal from the spins
 
@@ -150,15 +148,15 @@ Figure 3.4 Precession. The movement of a rotating proton or magnet within a magn
 
 ## Step 1
 
-![The receive coil measures the electrical radio frequency signal from the spins — step 1.](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-1.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-1}
+![The receive coil measures the electrical radio frequency signal from the spins — step 1 (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.16).](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-1.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-1}
 
 ## Step 2
 
-![The receive coil measures the electrical radio frequency signal from the spins — step 2.](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-2.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-2}
+![The receive coil measures the electrical radio frequency signal from the spins — step 2 (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.16).](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-2.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-2}
 
 :::
 
-Figure 3.16 MR signal reception. As the net magnetization rotates through the transverse plane, the amount of magnetic flux experienced by the receiver coil changes over time (A and B). The changing flux generates an electromotive force, which provides the basis for the MR signal.
+MR signal reception (Huettel et al., Figure 3.16): as the net magnetization rotates through the transverse plane, the amount of magnetic flux experienced by the receiver coil changes over time (A and B). The changing flux generates an electromotive force, which provides the basis for the MR signal.
 
 ## Summary: Explaining why the FID signal depends on B1 duration
 

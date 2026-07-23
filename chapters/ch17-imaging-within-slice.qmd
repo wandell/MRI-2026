@@ -48,13 +48,9 @@ date: last-modified
 
 ![Second moment in time.](images/ch17/second-moment-in-time.png){#fig-ch17-second-moment-in-time}
 
-Figure 7.19 k-space path for a pair of frequency- and phase-encode gradients, showing echo formation. Following the RF pulse, and before the gradients are applied, the signal is at the centre of k-space. This means that it represents the total image brightness irrespective of spatial localization.37
-
 ## The spatial weighting at two moments in time
 
 ![The spatial weighting at two moments in time.](images/ch17/the-spatial-weighting-at-two-moments-in-time.png){#fig-ch17-the-spatial-weighting-at-two-moments-in-time}
-
-Figure 7.19 k-space path for a pair of frequency- and phase-encode gradients, showing echo formation. Following the RF pulse, and before the gradients are applied, the signal is at the centre of k-space. This means that it represents the total image brightness irrespective of spatial localization.38
 
 ## Fourier encoding:  the magnetization is weighted by different spatial harmonics
 
@@ -82,7 +78,7 @@ A very brief history of spiral MRI (with the Stanford thread)Origins (late 1980s
 
 ## Step 1
 
-![Effects of magnetic field gradients on spin phase — step 1.](images/ch17/effects-of-magnetic-field-gradients-on-spin-phase-1.png){#fig-ch17-effects-of-magnetic-field-gradients-on-spin-phase-1}
+![Effects of magnetic field gradients on spin phase — step 1 (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch17/effects-of-magnetic-field-gradients-on-spin-phase-1.png){#fig-ch17-effects-of-magnetic-field-gradients-on-spin-phase-1}
 
 ## Step 2
 

@@ -24,7 +24,7 @@ A,1,4,6,721:96,23:138
 
 ## As the RF signal is measured, we estimate the image harmonics
 
-![As the RF signal is measured, we estimate the image harmonics.](images/ch18/as-the-rf-signal-is-measured-we-estimate-the-image.png){#fig-ch18-as-the-rf-signal-is-measured-we-estimate-the-image}
+![As the RF signal is measured, we estimate the image harmonics (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch18/as-the-rf-signal-is-measured-we-estimate-the-image.png){#fig-ch18-as-the-rf-signal-is-measured-we-estimate-the-image}
 
 ## Example: reading two lines in k-space
 
@@ -32,11 +32,11 @@ A,1,4,6,721:96,23:138
 
 ## Step 1
 
-![Example: reading two lines in k-space — step 1.](images/ch18/example-reading-two-lines-in-k-space-1.png){#fig-ch18-example-reading-two-lines-in-k-space-1}
+![Example: reading two lines in k-space — step 1 (McRobbie et al., *MRI: From Picture to Proton*, 2e, Fig. 7.19).](images/ch18/example-reading-two-lines-in-k-space-1.png){#fig-ch18-example-reading-two-lines-in-k-space-1}
 
 ## Step 2
 
-![Example: reading two lines in k-space — step 2.](images/ch18/example-reading-two-lines-in-k-space-2.png){#fig-ch18-example-reading-two-lines-in-k-space-2}
+![Example: reading two lines in k-space — step 2 (McRobbie et al., *MRI: From Picture to Proton*, 2e, Fig. 7.19).](images/ch18/example-reading-two-lines-in-k-space-2.png){#fig-ch18-example-reading-two-lines-in-k-space-2}
 
 :::
 
@@ -60,4 +60,4 @@ Notice that we have more coil measurements, I, than we have unknown substrate va
 
 ## An EPI pulse sequence (A) and its k-space trajectory (B).
 
-![An EPI pulse sequence (A) and its k-space trajectory (B)..](images/ch18/an-epi-pulse-sequence-a-and-its-k-space-trajectory.png){#fig-ch18-an-epi-pulse-sequence-a-and-its-k-space-trajectory}
+![An EPI pulse sequence (A) and its k-space trajectory (B) (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch18/an-epi-pulse-sequence-a-and-its-k-space-trajectory.png){#fig-ch18-an-epi-pulse-sequence-a-and-its-k-space-trajectory}

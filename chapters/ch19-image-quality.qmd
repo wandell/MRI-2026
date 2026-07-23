@@ -14,11 +14,11 @@ date: last-modified
 
 ## Distortions due to magnetic field inhomogeneities.
 
-![Distortions due to magnetic field inhomogeneities..](images/ch19/distortions-due-to-magnetic-field-inhomogeneities.png){#fig-ch19-distortions-due-to-magnetic-field-inhomogeneities}
+![Distortions due to magnetic field inhomogeneities: a correct phantom image compared to one distorted by field inhomogeneities (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch19/distortions-due-to-magnetic-field-inhomogeneities.png){#fig-ch19-distortions-due-to-magnetic-field-inhomogeneities}
 
 ## Distortions caused by gradient problems.
 
-![Distortions caused by gradient problems..](images/ch19/distortions-caused-by-gradient-problems.png){#fig-ch19-distortions-caused-by-gradient-problems}
+![Distortions caused by gradient problems: original image, k-space trajectory, and resulting "squeezed" image for several systematic mis-calibrations (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch19/distortions-caused-by-gradient-problems.png){#fig-ch19-distortions-caused-by-gradient-problems}
 
 ## Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING
 
@@ -26,7 +26,7 @@ date: last-modified
 
 ## Step 1
 
-![Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING — step 1.](images/ch19/effect-of-under-sampling-important-for-parallel-im-1.png){#fig-ch19-effect-of-under-sampling-important-for-parallel-im-1}
+![Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING — step 1 (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch19/effect-of-under-sampling-important-for-parallel-im-1.png){#fig-ch19-effect-of-under-sampling-important-for-parallel-im-1}
 
 ## Step 2
 
@@ -54,7 +54,7 @@ date: last-modified
 
 ### Multiple-coil acquisition principles
 
-![Multiple-coil acquisition principles.](images/ch19/multiple-coil-acquisition-principles.png){#fig-ch19-multiple-coil-acquisition-principles}
+![Multiple-coil acquisition principles (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 12.3).](images/ch19/multiple-coil-acquisition-principles.png){#fig-ch19-multiple-coil-acquisition-principles}
 
 ### Effect of under-sampling:  IMPORTANT FOR PARALLEL IMAGING
 
@@ -86,7 +86,7 @@ date: last-modified
 
 ### Parallel imaging can achieve high resolution
 
-![Parallel imaging can achieve high resolution.](images/ch19/parallel-imaging-can-achieve-high-resolution.png){#fig-ch19-parallel-imaging-can-achieve-high-resolution}
+![Parallel imaging can achieve high resolution (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 12.6).](images/ch19/parallel-imaging-can-achieve-high-resolution.png){#fig-ch19-parallel-imaging-can-achieve-high-resolution}
 
 ### Parallel magnetic resonance imaging (pMRI) reconstruction algorithms
 

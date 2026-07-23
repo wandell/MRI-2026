@@ -21,7 +21,7 @@ One coil can transmit and receive at different times. In most human MRI systems,
 
 ## Surface Coils
 
-![Surface-coil description: alternating current in the loop generates an oscillating magnetic field that can excite the spins.](images/ch03/rf-surface-coil-description.png){#fig-rf-surface-coil-description fig-alt="Slide describing how the inductor generates an oscillating B1 field and the capacitor forms a resonant circuit tuned to the Larmor frequency."}
+![Surface-coil description: alternating current in the loop generates an oscillating magnetic field that can excite the spins (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch03/rf-surface-coil-description.png){#fig-rf-surface-coil-description fig-alt="Slide describing how the inductor generates an oscillating B1 field and the capacitor forms a resonant circuit tuned to the Larmor frequency."}
 
 ```{=html}
 <!--
@@ -49,7 +49,7 @@ The idealized behavior of capacitors and inductors can be compared as follows.
 
 ## Volume Coils and the Birdcage Design
 
-![Volume coil (birdcage): the LC circuit is repeated around the surface of a cylinder, producing more uniform spatial coverage but lower local sensitivity.](images/ch03/rf-volume-coil-birdcage.png){#fig-rf-volume-coil-birdcage fig-alt="Diagram of a birdcage volume coil showing the cylindrical geometry and LC circuit elements, alongside a photo of an actual birdcage coil."}
+![Volume coil (birdcage): the LC circuit is repeated around the surface of a cylinder, producing more uniform spatial coverage but lower local sensitivity (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch03/rf-volume-coil-birdcage.png){#fig-rf-volume-coil-birdcage fig-alt="Diagram of a birdcage volume coil showing the cylindrical geometry and LC circuit elements, alongside a photo of an actual birdcage coil."}
 
 A **volume coil** distributes conductors and capacitors around a cylinder to generate a relatively uniform $B_1$ field over a large volume. The **birdcage** design — multiple conducting rungs connected by end rings — is the standard approach. Its elements form one coupled resonant structure, rather than independent receiver channels whose signals are simply added. The coil in @fig-rf-volume-coil-birdcage uniformly excites the head.
 
@@ -61,7 +61,7 @@ At 3T, and especially at 7T and above, the RF wavelength in tissue and coupling 
 
 ## Phased-Array Coils
 
-![Phased-array coil: combines multiple independent surface coils to balance sensitivity and spatial coverage.](images/ch03/rf-phased-array-coil.png){#fig-rf-phased-array-coil fig-alt="Diagram of a phased-array coil showing multiple independent coil elements arranged around the head."}
+![Phased-array coil: combines multiple independent surface coils to balance sensitivity and spatial coverage (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch03/rf-phased-array-coil.png){#fig-rf-phased-array-coil fig-alt="Diagram of a phased-array coil showing multiple independent coil elements arranged around the head."}
 
 A phased-array coil combines multiple small, independent surface-coil elements — each with its own receiver channel — arranged to cover a larger region. Unlike a volume coil, each element detects signal from its local neighborhood with high sensitivity. The elements are designed to be decoupled so that they do not substantially interfere with one another.
 

@@ -22,8 +22,7 @@ In this section we review the relationship between the programming parameters an
 
 ## Pulse sequency programming
 
-![The main elements we control in the MR instrument.](images/ch05/pulse-sequency-programming.png){#fig-ch05-pulse-sequency-programming}
-<!-- Page 168, Pictures to Protons -->
+![The main elements we control in the MR instrument (McRobbie et al., *MRI: From Picture to Proton*, 2e, Fig. 9.1).](images/ch05/pulse-sequency-programming.png){#fig-ch05-pulse-sequency-programming}
 The instrument components we control are the signals on the RF coil transmission and the large imaging gradients. We control both the amplitudes and timing of those signals.  The steady state field ($B_0$) is not varied, though we might notice some of its imperfections and try to calibrate them out using a method called **shimming**. 
 
 

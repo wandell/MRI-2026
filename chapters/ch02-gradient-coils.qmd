@@ -49,7 +49,7 @@ The Helmholtz pair uses two loops carrying current in the **same direction**, se
 
 To produce a uniform field over a large volume, an MRI main magnet uses multiple closely spaced, coaxial solenoidal windings. Their positions and currents determine the field strength and homogeneity. A simple resistive solenoid would dissipate enormous power at MRI field strengths, which is why most clinical and research systems use superconducting windings.
 
-![A solenoid: many closely spaced turns of wire arranged around a cylindrical form.](images/ch02/b0-helmholtz-pair-diagram.png){#fig-b0-helmholtz-pair-diagram fig-alt="Slide illustrating a solenoid with many turns wrapped around a cylindrical form and field lines through its center."}
+![A solenoid: many closely spaced turns of wire arranged around a cylindrical form (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch02/b0-helmholtz-pair-diagram.png){#fig-b0-helmholtz-pair-diagram fig-alt="Slide illustrating a solenoid with many turns wrapped around a cylindrical form and field lines through its center."}
 
 For a simple solenoid, adding turns or increasing current increases the field. In an MRI magnet, the winding geometry is optimized to make $B_0$ highly uniform throughout the imaging volume.
 
