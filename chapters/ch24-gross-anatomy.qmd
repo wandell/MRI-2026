@@ -24,29 +24,29 @@ It is difficult to remember all the names of the sulci and gyri. If you work in 
 
 Neurologists and psychologists commonly use a structure-function naming scheme — frontal, parietal, temporal, and occipital lobes — which is a loose approximation with imprecise functional associations.
 
-![The four lobes: frontal, parietal, temporal, and occipital, with the central sulcus, precentral gyrus, and lateral (Sylvian) fissure labeled.](images/ch24/lobes-structural-definition.png){#fig-ch24-lobes-structural-definition fig-alt="Lateral view of a brain with the four lobes colored and labeled."}
+![The four lobes: frontal, parietal, temporal, and occipital, with the central sulcus, precentral gyrus, and lateral (Sylvian) fissure labeled (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed., Figure A.11, Part 1).](images/ch24/lobes-structural-definition.png){#fig-ch24-lobes-structural-definition fig-alt="Lateral view of a brain with the four lobes colored and labeled."}
 
 ### Lateral view
 
-![Lateral view landmarks: precentral and postcentral gyrus, central sulcus, parieto-occipital sulcus, lateral (Sylvian) fissure, and preoccipital notch.](images/ch24/lateral-view-labels.png){#fig-ch24-lateral-view-labels fig-alt="Lateral view of a brain with major gyri, sulci, and the Sylvian fissure labeled."}
+![Lateral view landmarks: precentral and postcentral gyrus, central sulcus, parieto-occipital sulcus, lateral (Sylvian) fissure, and preoccipital notch (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed., Figure A.10, Part 1).](images/ch24/lateral-view-labels.png){#fig-ch24-lateral-view-labels fig-alt="Lateral view of a brain with major gyri, sulci, and the Sylvian fissure labeled."}
 
-![Detailed labels of gyri and sulci on the lateral surface: superior, middle, and inferior frontal gyrus; pre- and postcentral gyrus; supramarginal and angular gyrus; superior, middle, and inferior temporal gyrus; lateral occipital gyri.](images/ch24/gyri-sulci-labels.png){#fig-ch24-gyri-sulci-labels fig-alt="Detailed lateral view of the brain with many gyri and sulci labeled by name."}
+![Detailed labels of gyri and sulci on the lateral surface: superior, middle, and inferior frontal gyrus; pre- and postcentral gyrus; supramarginal and angular gyrus; superior, middle, and inferior temporal gyrus; lateral occipital gyri (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed.).](images/ch24/gyri-sulci-labels.png){#fig-ch24-gyri-sulci-labels fig-alt="Detailed lateral view of the brain with many gyri and sulci labeled by name."}
 
 ### Insula
 
-![The insula lies buried within the lateral (Sylvian) fissure, between the frontal and temporal lobes.](images/ch24/insula.png){#fig-ch24-insula fig-alt="Lateral brain view with a boxed region over the Sylvian fissure, and a second panel showing the insula exposed by retracting the frontal and temporal opercula."}
+![The insula lies buried within the lateral (Sylvian) fissure, between the frontal and temporal lobes (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed., Figures A.10 Part 1 and A.11 Part 3).](images/ch24/insula.png){#fig-ch24-insula fig-alt="Lateral brain view with a boxed region over the Sylvian fissure, and a second panel showing the insula exposed by retracting the frontal and temporal opercula."}
 
 ### Medial view
 
-![Medial view landmarks: cingulate gyrus and sulcus, paracentral lobule, central sulcus, superior frontal gyrus, orbital gyri, parahippocampal gyrus, parieto-occipital sulcus, and calcarine sulcus.](images/ch24/medial-view-lobes-sulci.png){#fig-ch24-medial-view-lobes-sulci fig-alt="Medial view of the brain with lobes, gyri, and sulci labeled."}
+![Medial view landmarks: cingulate gyrus and sulcus, paracentral lobule, central sulcus, superior frontal gyrus, orbital gyri, parahippocampal gyrus, parieto-occipital sulcus, and calcarine sulcus (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed., Figure A.13, Part 2).](images/ch24/medial-view-lobes-sulci.png){#fig-ch24-medial-view-lobes-sulci fig-alt="Medial view of the brain with lobes, gyri, and sulci labeled."}
 
-![Medial view showing the corpus callosum, anterior commissure, diencephalon, brainstem (midbrain, pons, medulla), cerebellum, and spinal cord.](images/ch24/medial-view-brainstem-labels.png){#fig-ch24-medial-view-brainstem-labels fig-alt="Medial view of the brain with the corpus callosum, brainstem subdivisions, cerebellum, and spinal cord labeled."}
+![Medial view showing the corpus callosum, anterior commissure, diencephalon, brainstem (midbrain, pons, medulla), cerebellum, and spinal cord (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed., Figure A.13, Part 1).](images/ch24/medial-view-brainstem-labels.png){#fig-ch24-medial-view-brainstem-labels fig-alt="Medial view of the brain with the corpus callosum, brainstem subdivisions, cerebellum, and spinal cord labeled."}
 
-![A closer view of the diencephalon and midbrain: hypothalamus, fornix, dorsal thalamus, pineal gland, superior and inferior colliculus, anterior commissure, optic chiasm, pituitary gland, mammillary body, cerebral aqueduct, and fourth ventricle.](images/ch24/diencephalon-midbrain-labels.png){#fig-ch24-diencephalon-midbrain-labels fig-alt="Close-up medial view of the diencephalon and midbrain with many structures labeled."}
+![A closer view of the diencephalon and midbrain: hypothalamus, fornix, dorsal thalamus, pineal gland, superior and inferior colliculus, anterior commissure, optic chiasm, pituitary gland, mammillary body, cerebral aqueduct, and fourth ventricle (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed., Figure A.13, Part 3).](images/ch24/diencephalon-midbrain-labels.png){#fig-ch24-diencephalon-midbrain-labels fig-alt="Close-up medial view of the diencephalon and midbrain with many structures labeled."}
 
 ### Inferior view
 
-![Inferior view landmarks: optic chiasm, olfactory bulb and tract, mammillary body, uncus, parahippocampal gyrus, infundibular stalk, cerebral peduncles, pons, inferior olive, medullary pyramids, and cerebellum.](images/ch24/inferior-view-labels.png){#fig-ch24-inferior-view-labels fig-alt="Inferior view of the brain with many structures labeled, including the optic chiasm, olfactory tract, and brainstem."}
+![Inferior view landmarks: optic chiasm, olfactory bulb and tract, mammillary body, uncus, parahippocampal gyrus, infundibular stalk, cerebral peduncles, pons, inferior olive, medullary pyramids, and cerebellum (Purves et al., *Principles of Cognitive Neuroscience*, 2nd ed., Figure A.12).](images/ch24/inferior-view-labels.png){#fig-ch24-inferior-view-labels fig-alt="Inferior view of the brain with many structures labeled, including the optic chiasm, olfactory tract, and brainstem."}
 
 ## Model brain systems
 

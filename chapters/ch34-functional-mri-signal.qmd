@@ -30,7 +30,7 @@ The MRI scanner detects the blood oxygenation level indirectly, through its effe
 
 The physical basis is a difference between T1 and T2: oxygenated and deoxygenated blood have different magnetic susceptibilities, so R2 (= 1/T2) differs between them. When a region has more oxygenated blood, T2 is larger (slower decay); regions without a change in oxygenation stay constant. Critically, this effect is specific to T2 — it does not appreciably affect T1.
 
-![Blood oxygenation affects T2 but not T1: 1/T2 and 1/T1 relaxation rates plotted against percent oxygenated hemoglobin, showing 1/T2 decreasing substantially with oxygenation while 1/T1 stays flat.](images/ch34/t2-oxygenation-relaxation-plot.png){#fig-ch34-t2-oxygenation-relaxation-plot fig-alt="Scatter plot of relaxation rate versus percent oxygenated hemoglobin, with a steep downward trend for 1/T2 and a flat, near-zero line for 1/T1." fig-cap-location="margin"}
+![Blood oxygenation affects T2 but not T1: 1/T2 and 1/T1 relaxation rates plotted against percent oxygenated hemoglobin, showing 1/T2 decreasing substantially with oxygenation while 1/T1 stays flat (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 7.1).](images/ch34/t2-oxygenation-relaxation-plot.png){#fig-ch34-t2-oxygenation-relaxation-plot fig-alt="Scatter plot of relaxation rate versus percent oxygenated hemoglobin, with a steep downward trend for 1/T2 and a flat, near-zero line for 1/T1." fig-cap-location="margin"}
 
 ## Translating relaxation-rate changes into a measurable signal
 
