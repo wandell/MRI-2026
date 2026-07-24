@@ -11,11 +11,13 @@ date: last-modified
 ## T2 time course and T2 contrast
 
 ![T2 time course and T2 contrast.](images/ch07/t2-time-course-and-t2-contrast.png){#fig-ch07-t2-time-course-and-t2-contrast}
+The second fundamental measurement, T2, is explained by a very different underlying mechanism.  In this chapter we explain the source of this, transverse, signal.
 
 ## The net magnetization is summarized by two components
 
 ![The net magnetization is summarized by two components.](images/ch08/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch08-the-net-magnetization-is-summarized-by-two-compone}
 
+Viewed graphically (or mathematically) the T2 signal corresponds to the way the spins are moving when measured in the x-y plane (transverse).  In this case, the signal has both a length (amplitude) and a direction.  So if we are measuring with a detector at one position, there will be times when the x-y magnetization is pointed towards the RF receiver (positive) and times it is pointed away (negative).  Thus, the signal will be oscillating up and down as the x-y vector precesses around the z-axis.
 
 ## Transverse magnetization
 
@@ -31,11 +33,17 @@ date: last-modified
 
 :::
 
+@fig-ch08-transverse-magnetization-1 and @fig-ch08-transverse-magnetization-1 show the evolution of the spins in the x-y plane after the RF excitation.  Before we enter the magnet the RF pulse, the spins are randomly oriented in the x-y plane.  Even after we place a head into the B0 field, there is no preferred x-y direction.  At this point, when we measure we see no coherent RF signal.
+
+But when we apply the RF pulse, the spins do align, driven by the RF signal.  Because the spins align we do pick up an RF signal from the *coherent* transverse spins.
+
+In the second panel, as we monitor over time, the initial coherence deteriorates.  The coherence is lost and we return to the condition in which the spins are randomly oreinted and thus no signal is present.
+
 ## Transverse relaxation:  T2
 
 ![Transverse relaxation:  T2.](images/ch08/transverse-relaxation-t2.png){#fig-ch08-transverse-relaxation-t2}
 
-For the relaxation equations and a short biographical note, see the resource [Felix Bloch and the Bloch Equations](resources/felix-bloch-equations.qmd).
+The sequence of events in the panel above is repeated and summarized in @fig-ch08-fig-ch08-transverse-relaxation-t2. I have added, at the bottom, a red arrow that shows the net magnetization over time.  It starts out with no length (and thus no direction).  After excitation it is oriented and large.  As the spins become *incoherent*, the net magnetization shrinks back to zero.
 
 ## The spin de-phasing
 
@@ -51,9 +59,21 @@ For the relaxation equations and a short biographical note, see the resource [Fe
 ![Individual magnetic moments progressively de-phase, and the sum of the magnetic moments (and resulting signal) decays as a result (video; see the HTML version for the animation).](images/ch08/spin-dephasing-t2-signal-loss.png){#vid-ch08-spin-dephasing-t2-signal-loss width="70%"}
 :::
 
+When they are coherent, we say the spins are *in phase*. 
+The loss of coherence is also called *de-phasing*.  
+
+The video represents the de-phasing, but in a special way.  Remember that the net transverse magnetization is always precessing around the z-axis.  If we imagine ourselves rotating around the z-axis at the same pace, what wew would see is that magnetization is comprised of multiple vectors, pointing in different directions.  This is the de-phasing.  For this reason, the signal decays, as shown on the right.
+
 * Transverse magnetization declines as the directions of the spins (their *relative phases*) diverge, becoming incoherent
 * Vectors on the left represent individual spins
 * Blue arrow on the right represents the reduction in the net transverse magnetization as the spins de-phase (become incoherent)
+* The curve at the bottom shows how the amplitude of the vector decays over time.
+
+But do remember that this amplitude represents the swing, back and forth from positive to negative.  It is the amplitude of the oscillation as the spins go round and round the z-axis.
+
+## The Bloch Equations
+
+For a mathematical description of the relaxation equations for both T1 and T2, as well as a short biographical note, see the resource [Felix Bloch and the Bloch Equations](resources/felix-bloch-equations.qmd).
 
 ## MR: The two mechanisms of spin dephasing
 
@@ -61,9 +81,12 @@ For the relaxation equations and a short biographical note, see the resource [Fe
 ![MR: The two mechanisms of spin dephasing.](images/ch08/mr-the-two-mechanisms-of-spin-dephasing.png){#fig-ch08-mr-the-two-mechanisms-of-spin-dephasing}
 -->
 
+
 ## Two sources of transverse magnetization decay
 
 ![Two sources of transverse magnetization decay.](images/ch08/two-sources-of-transverse-magnetization-decay.png){#fig-ch08-two-sources-of-transverse-magnetization-decay}
+
+Why do the spins lose their coherence?  Glad you asked.  There are two main reasons.
 
 ## Transverse magnetization decay
 
@@ -79,7 +102,9 @@ For the relaxation equations and a short biographical note, see the resource [Fe
 
 :::
 
-## T1-weighted images: gray is darker than white
+## Comparing images based on T1 and T2
+
+### T1-weighted images: gray is darker than white
 
 ![T1-weighted images: gray is darker than white.](images/ch08/t1-weighted-images-gray-is-darker-than-white.png){#fig-ch08-t1-weighted-images-gray-is-darker-than-white}
 
@@ -91,7 +116,7 @@ Project:  UCSF
 Subject HCP350002
 Session T1s_MPR
 
-## T2-weighted images: white is darker than gray
+### T2-weighted images: white is darker than gray
 
 ![T2-weighted images: white is darker than gray.](images/ch08/t2-weighted-images-white-is-darker-than-gray.png){#fig-ch08-t2-weighted-images-white-is-darker-than-gray}
 
