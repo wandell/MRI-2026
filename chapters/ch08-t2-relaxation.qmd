@@ -88,7 +88,11 @@ For a mathematical description of the relaxation equations for both T1 and T2, a
 
 Why do the spins lose their coherence?  Glad you asked.  There are two main reasons.
 
-## Transverse magnetization decay
+## T2 and T2*
+
+Explanation and figure needed here.
+
+## Introducing R2 (and R1)
 
 ::: {.panel-tabset}
 
@@ -102,35 +106,41 @@ Why do the spins lose their coherence?  Glad you asked.  There are two main reas
 
 :::
 
-## Comparing images based on T1 and T2
+## Comparing T1 and T2 images
 
 ### T1-weighted images: gray is darker than white
 
 ![T1-weighted images: gray is darker than white.](images/ch08/t1-weighted-images-gray-is-darker-than-white.png){#fig-ch08-t1-weighted-images-gray-is-darker-than-white}
 
-Values from https://www.mdpi.com/2072-6694/14/22/5606
+It is very unusual for investigators to acquire a pure T1 or a pure T2 based image.  Usually, the images include relatively more T1 or T2, and thus they are called *T1-weighted*'* or *T2-weighted*.
 
-Images from http://fmri.ucsd.edu/Howto/3T/structure.html
+The image in @fig-ch08-t1-weighted-images-gray-is-darker-than-white is from [UCSF](http://fmri.ucsd.edu/Howto/3T/structure.html)
 
+We need to replace the T2 decay with a T1 recovery curve.
+
+<!--
 Project:  UCSF
 Subject HCP350002
 Session T1s_MPR
+-->
 
 ### T2-weighted images: white is darker than gray
 
 ![T2-weighted images: white is darker than gray.](images/ch08/t2-weighted-images-white-is-darker-than-gray.png){#fig-ch08-t2-weighted-images-white-is-darker-than-gray}
 
-Values from https://www.mdpi.com/2072-6694/14/22/5606
+Images from this [UCSF site](http://fmri.ucsd.edu/Howto/3T/structure.html).
 
-Images from http://fmri.ucsd.edu/Howto/3T/structure.html
-
+<!--
 Project:  UCSF
 Subject HCP350002
 Session T2W_SPC
+-->
 
 ## Summary of the relative signal intensities  using T1 and T2
 
 ![Summary of the relative signal intensities  using T1 and T2.](images/ch08/summary-of-the-relative-signal-intensities-using-t.png){#fig-ch08-summary-of-the-relative-signal-intensities-using-t}
+
+Values from this [pubmed paper](https://www.mdpi.com/2072-6694/14/22/5606).
 
 ## T2-weighted images measure pathologies involving fluid filled regions
 
