@@ -20,7 +20,7 @@ The second fundamental measurement, T2, is explained by a very different underly
 Viewed graphically (or mathematically) the T2 signal corresponds to the way the spins are moving when measured in the x-y plane (transverse).  In this case, the signal has both a length (amplitude) and a direction.  So if we are measuring with a detector at one position, there will be times when the x-y magnetization is pointed towards the RF receiver (positive) and times it is pointed away (negative).  Thus, the signal will be oscillating up and down as the x-y vector precesses around the z-axis.
 
 ## Transverse magnetization
-
+<!--
 ::: {.panel-tabset}
 
 ## Step 1
@@ -33,17 +33,22 @@ Viewed graphically (or mathematically) the T2 signal corresponds to the way the 
 
 :::
 
-@fig-ch08-transverse-magnetization-1 and @fig-ch08-transverse-magnetization-1 show the evolution of the spins in the x-y plane after the RF excitation.  Before we enter the magnet the RF pulse, the spins are randomly oriented in the x-y plane.  Even after we place a head into the B0 field, there is no preferred x-y direction.  At this point, when we measure we see no coherent RF signal.
+@fig-ch08-transverse-magnetization-1 and @fig-ch08-transverse-magnetization-1 show the evolution of the spins in the x-y plane after the RF excitation.  
 
-But when we apply the RF pulse, the spins do align, driven by the RF signal.  Because the spins align we do pick up an RF signal from the *coherent* transverse spins.
-
-In the second panel, as we monitor over time, the initial coherence deteriorates.  The coherence is lost and we return to the condition in which the spins are randomly oreinted and thus no signal is present.
+-->
 
 ## Transverse relaxation:  T2
 
 ![Transverse relaxation:  T2.](images/ch08/transverse-relaxation-t2.png){#fig-ch08-transverse-relaxation-t2}
 
-The sequence of events in the panel above is repeated and summarized in @fig-ch08-fig-ch08-transverse-relaxation-t2. I have added, at the bottom, a red arrow that shows the net magnetization over time.  It starts out with no length (and thus no direction).  After excitation it is oriented and large.  As the spins become *incoherent*, the net magnetization shrinks back to zero.
+
+
+
+Before we enter the magnet the RF pulse, the spins are randomly oriented in the x-y plane.  Even after we place a head into the B0 field, there is no preferred x-y direction.  At this point, when we measure we see no coherent RF signal.
+
+But when we apply the RF pulse, the spins do align, driven by the RF signal.  Because the spins align we do pick up an RF signal from the *coherent* transverse spins.
+
+The sequence of events is summarized in @fig-ch08-transverse-relaxation-t2. The red arrow below the vectors of spins shows the net magnetization over time. It starts out as a dot (zero length and zero direction). After RF excitation, the net is oriented,  large and spinning around the z-axis. As the individual spins lose their alignment, becoming *incoherent*, the net magnetization shrinks back to zero.
 
 ## The spin de-phasing
 
@@ -81,18 +86,18 @@ For a mathematical description of the relaxation equations for both T1 and T2, a
 ![MR: The two mechanisms of spin dephasing.](images/ch08/mr-the-two-mechanisms-of-spin-dephasing.png){#fig-ch08-mr-the-two-mechanisms-of-spin-dephasing}
 -->
 
-
-## Two sources of transverse magnetization decay
-
 ![Two sources of transverse magnetization decay.](images/ch08/two-sources-of-transverse-magnetization-decay.png){#fig-ch08-two-sources-of-transverse-magnetization-decay}
 
 Why do the spins lose their coherence?  Glad you asked.  There are two main reasons.
 
-## T2 and T2*
+## T2, T2' and T2*
 
-Explanation and figure needed here.
+* Spin-spin interactions (pure T2).  The spins have slightly different excitations and they interfere with one another.
 
-## Introducing R2 (and R1)
+* Local field inhomogeneity (T2'), say because of the local magnetic field around nearby molecules.
+
+
+## Inverting the Ts. R2 and R1
 
 ::: {.panel-tabset}
 
@@ -105,6 +110,9 @@ Explanation and figure needed here.
 ![Transverse magnetization decay — step 2.](images/ch08/transverse-magnetization-decay-2.png){#fig-ch08-transverse-magnetization-decay-2}
 
 :::
+The combined effect of these two T-values is called T2*.
+
+People don't like all that one over stuff, so use R1 to refer to 1 over T1, and R2 to refer to 1 over T2.  Then the equation looks simpler.  It's not.
 
 ## Comparing T1 and T2 images
 
