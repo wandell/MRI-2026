@@ -4,35 +4,43 @@ date: last-modified
 
 <!-- TEMP FILENAME: this chapter is inserted mid-part2 (after T2 Relaxation, before the MRI Summary/Spin Echo chapter). Once the full ch09-ch30 renumbering pass happens (see TODO.md), rename this file to chNN-pulse-sequences-t2-quantification.qmd and update its fig/vid labels from the `pulseseqt2-` prefix to the matching `chNN-` prefix, matching the project convention. -->
 
-# Pulse Sequences, T2 Quantification, and a Look Ahead to BOLD
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
+# Pulse Sequences
+
+## What is a pulse sequence
+
+What is a pulse sequence.
+
+T2 Quantification
+
+A Look Ahead to BOLD
 
 ## Pulse sequence diagrams
 
-A pulse sequence diagram lays out the timing of the RF pulses and gradients that produce an MR signal. The three building blocks we have covered so far — precession, recovery, and de-phasing — are the elements those diagrams combine.
-
 ![The three building blocks of a pulse sequence timing diagram: precession, recovery, and de-phasing of the net magnetization.](images/pulse-sequences-t2-quantification/pulse-sequence-diagrams-precession-recovery-dephasing.png){#fig-pulseseqt2-diagrams-overview fig-alt="Three small 3D vector diagrams labeled Precession, Recovery, and Dephasing, shown over a background photo."}
+
+A pulse sequence diagram lays out the timing of the RF pulses and gradients that produce an MR signal. The three building blocks we have covered so far — precession, recovery, and de-phasing — are the elements those diagrams combine.
 
 The timing of the RF pulses determines the weighting of a pulse sequence: T1, T2, or proton density (PD). A spin-echo diagram shows the interplay of gradients, RF transmit, and RF receive: the 90°/180° RF pulses set TE (the time to echo), the pulses repeat with period TR (the repetition time), and the gradients ($G_x$, $G_y$, $G_z$) control spatial encoding, covered in the next part of the book.
 
-![A spin-echo pulse sequence diagram: 90° and 180° RF pulses define TE; the sequence repeats with period TR; gradients ($G_x$, $G_y$, $G_z$) encode spatial position.](images/pulse-sequences-t2-quantification/pulse-sequence-diagram-spin-echo-multifactor.png){#fig-pulseseqt2-spin-echo-diagram fig-alt="Spin-echo pulse sequence diagram showing RF pulses at 90 and 180 degrees, TE and TR intervals, and three gradient channels Gx, Gy, Gz with a data-acquisition window."}
+![A spin-echo pulse sequence diagram: 90° and 180° RF pulses define TE; the sequence repeats with period TR; gradients ($G_x$, $G_y$, $G_z$) encode spatial position (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/pulse-sequences-t2-quantification/pulse-sequence-diagram-spin-echo-multifactor.png){#fig-pulseseqt2-spin-echo-diagram fig-alt="Spin-echo pulse sequence diagram showing RF pulses at 90 and 180 degrees, TE and TR intervals, and three gradient channels Gx, Gy, Gz with a data-acquisition window."}
 
 ## Choosing TE and TR to control contrast
 
 T1 and T2 differ enormously in scale — for white matter, T1 is roughly 8 times longer than T2 (about 0.83 s versus 0.11 s). Because of this difference, the same pulse-timing choices that control T2 contrast have very little effect on T1, and vice versa.
 
-![T1 recovery and T2 decay time courses for white matter, plotted on the same axes; T1 is much longer than T2.](images/pulse-sequences-t2-quantification/t1-t2-time-constants-white-matter.png){#fig-pulseseqt2-t1-t2-time-constants fig-alt="Plot comparing T1 recovery (blue) and T2 decay (red) curves for white matter over 5 seconds, with T1=0.832s and T2=0.110s labeled."}
+![T1 recovery and T2 decay time courses for white matter, plotted on the same axes; T1 is much longer than T2 (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/pulse-sequences-t2-quantification/t1-t2-time-constants-white-matter.png){#fig-pulseseqt2-t1-t2-time-constants fig-alt="Plot comparing T1 recovery (blue) and T2 decay (red) curves for white matter over 5 seconds, with T1=0.832s and T2=0.110s labeled."}
 
 Choosing the echo time (TE) controls how much T2 contrast appears between two tissues with different T2 values: the signal difference between them (green curve) peaks at a particular TE, which sets the best time to read out the signal.
 
-![Two tissues with different T2 values decay at different rates; the green curve is their difference, which peaks at the optimal TE (about 25 ms in this example).](images/pulse-sequences-t2-quantification/te-selection-t2-contrast.png){#fig-pulseseqt2-te-selection fig-alt="Transverse magnetization decay curves for two tissues with a T2-contrast difference curve peaking near TE, plotted against time since excitation."}
+![Two tissues with different T2 values decay at different rates; the green curve is their difference, which peaks at the optimal TE (about 25 ms in this example) (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/pulse-sequences-t2-quantification/te-selection-t2-contrast.png){#fig-pulseseqt2-te-selection fig-alt="Transverse magnetization decay curves for two tissues with a T2-contrast difference curve peaking near TE, plotted against time since excitation."}
 
 Choosing the repetition time (TR) similarly controls how much residual T1 contrast leaks into a T2-weighted image. There is no T1 difference between two tissues at short times (around 25 ms), but to make sure the T1 recovery doesn't contribute additional contrast, we wait roughly 2 seconds before acquiring the next repetition. A TE of about 25 ms and a TR of about 2 s together provide mostly a T2 contrast — a T2-weighted image.
 
-![T1 recovery curves for two tissues; the green T1-contrast curve is largest at short times and nearly vanishes by TR ≈ 2 s, the conclusion being that TE ≈ 25 ms and TR ≈ 2 s give a mostly T2-weighted image.](images/pulse-sequences-t2-quantification/tr-selection-t2-contrast.png){#fig-pulseseqt2-tr-selection fig-alt="Longitudinal magnetization recovery curves for two tissues with a T1-contrast difference curve, and a vertical dashed line marking TR near 2 seconds."}
+![T1 recovery curves for two tissues; the green T1-contrast curve is largest at short times and nearly vanishes by TR ≈ 2 s, the conclusion being that TE ≈ 25 ms and TR ≈ 2 s give a mostly T2-weighted image (Huettel et al., *Functional Magnetic Resonance Imaging*, 3e, Fig. 5.8).](images/pulse-sequences-t2-quantification/tr-selection-t2-contrast.png){#fig-pulseseqt2-tr-selection fig-alt="Longitudinal magnetization recovery curves for two tissues with a T1-contrast difference curve, and a vertical dashed line marking TR near 2 seconds."}
 
 Spin-echo images acquired with a short TE (10 ms) produce a T2 signal, but the size of that signal still depends on TR: the TR timing brings back some T1 contrast, and the gray/white matter contrast is larger at short TR. So a "T2 image" always carries a bit of T1 weighting as well — the two are never perfectly separable.
 

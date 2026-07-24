@@ -21,7 +21,7 @@ book:
        - chapters/ch06-macroscopic-model.qmd
        - chapters/ch07-t1-relaxation.qmd
        - chapters/ch08-t2-relaxation.qmd
-       - chapters/pulse-sequences-t2-quantification.qmd
+       - chapters/ch09-pulse-sequences.qmd
        - chapters/ch09-spin-echo.qmd
        - chapters/ch10-pulse-sequences.qmd
        - chapters/ch11-physical-mechanisms.qmd
