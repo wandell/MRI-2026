@@ -5,18 +5,15 @@ date: last-modified
 <!-- TEMP FILENAME: this chapter is inserted mid-part2 (after T2 Relaxation, before the MRI Summary/Spin Echo chapter). Once the full ch09-ch30 renumbering pass happens (see TODO.md), rename this file to chNN-pulse-sequences-t2-quantification.qmd and update its fig/vid labels from the `pulseseqt2-` prefix to the matching `chNN-` prefix, matching the project convention. -->
 
 
+# Pulse Sequences
+
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
-# Pulse Sequences
 
 ## What is a pulse sequence
 
-What is a pulse sequence.
-
-T2 Quantification
-
-A Look Ahead to BOLD
+The previous two chapters described the two relaxation signals, T1 and T2, one at a time.  An actual measurement produces neither in isolation.  What we acquire is set by the *pulse sequence*: the schedule of RF pulses and gradients, and the times at which we listen.  This chapter covers three things — how the timing of a pulse sequence determines whether an image is T1-, T2-, or PD-weighted; why a T2-weighted signal is not a quantitative measurement of T2; and a look ahead at how the T2* signal becomes the basis of BOLD fMRI.
 
 ## Pulse sequence diagrams
 

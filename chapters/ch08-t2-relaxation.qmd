@@ -10,17 +10,23 @@ date: last-modified
 
 ## T2 time course and T2 contrast
 
-![T2 time course and T2 contrast.](images/ch07/t2-time-course-and-t2-contrast.png){#fig-ch07-t2-time-course-and-t2-contrast}
+![T2 time course and T2 contrast: the transverse signal decays exponentially, with a time constant that differs across materials — roughly 90 ms for fat, 180 ms for blood, and 2000 ms for free water.](images/ch08/t2-time-course-and-t2-contrast.png){#fig-ch08-t2-time-course-and-t2-contrast}
+
 The second fundamental measurement, T2, is explained by a very different underlying mechanism.  In this chapter we explain the source of this, transverse, signal.
+
+It is worth comparing @fig-ch08-t2-time-course-and-t2-contrast with the T1 curves for the same three materials in @fig-ch07-spin-lattice-interactions.  The two families of curves are mirror images in an important sense: the longitudinal signal *recovers* toward its equilibrium value, while the transverse signal *decays* toward zero.  The materials also fall in the same rank order in both plots, but the T2 time constants are several times shorter than the T1 time constants.  That difference in scale matters later, when we choose the timing of a pulse sequence.
 
 ## The net magnetization is summarized by two components
 
 ![The net magnetization is summarized by two components.](images/ch08/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch08-the-net-magnetization-is-summarized-by-two-compone}
 
-Viewed graphically (or mathematically) the T2 signal corresponds to the way the spins are moving when measured in the x-y plane (transverse).  In this case, the signal has both a length (amplitude) and a direction.  So if we are measuring with a detector at one position, there will be times when the x-y magnetization is pointed towards the RF receiver (positive) and times it is pointed away (negative).  Thus, the signal will be oscillating up and down as the x-y vector precesses around the z-axis.
+As in @fig-ch07-the-net-magnetization-is-summarized-by-two-compone, the net magnetization separates into a component along the z-axis (longitudinal) and a component in the x-y plane (transverse).  T1 describes the longitudinal component; T2 describes the transverse one, which is boxed in this slide.
 
-## Transverse magnetization
+The transverse component is a vector *in a plane*: it has both a length (amplitude) and a direction (phase).  A receive coil sits at one position and senses only the projection of that vector onto its own axis.  As the transverse magnetization precesses around the z-axis, the projection points first toward the coil (positive) and then away from it (negative).  The measured signal therefore oscillates at the Larmor frequency.  What decays with T2 is the *amplitude* of that oscillation — the length of the transverse vector — not the oscillation itself.
+
 <!--
+## Transverse magnetization
+
 ::: {.panel-tabset}
 
 ## Step 1
@@ -33,22 +39,28 @@ Viewed graphically (or mathematically) the T2 signal corresponds to the way the 
 
 :::
 
-@fig-ch08-transverse-magnetization-1 and @fig-ch08-transverse-magnetization-1 show the evolution of the spins in the x-y plane after the RF excitation.  
+@fig-ch08-transverse-magnetization-1 and @fig-ch08-transverse-magnetization-2 show the evolution of the spins in the x-y plane after the RF excitation.
 
+TODO (Brian): this build shows field-free space / B0 field / following the RF pulse.  It overlaps with @fig-ch08-transverse-relaxation-t2 below, which makes the same point.  Either restore this build and shorten the next section, or delete the two images.
 -->
 
 ## Transverse relaxation:  T2
 
-![Transverse relaxation:  T2.](images/ch08/transverse-relaxation-t2.png){#fig-ch08-transverse-relaxation-t2}
+![Transverse relaxation:  T2. The net transverse magnetization (red arrow, bottom row) is zero before excitation, large immediately after the RF pulse, and decays back to zero as the individual spins lose their common phase.](images/ch08/transverse-relaxation-t2.png){#fig-ch08-transverse-relaxation-t2}
 
+Before the RF pulse, the spins have no common transverse direction.  This is true in field-free space, and it remains true after we place a head in the B0 field: B0 creates a preferred direction along z, but it creates no preferred direction in the x-y plane.  The individual transverse components point every which way and cancel, so there is no net transverse magnetization and the coil measures nothing.
 
+The RF pulse changes this.  It tips the spins away from the z-axis and, just as important, it leaves them precessing *together* — in phase.  Now the individual transverse components add rather than cancel, and we do measure a signal from the *coherent* transverse magnetization.
 
+The sequence of events is summarized in @fig-ch08-transverse-relaxation-t2.  The red arrow below the vectors of spins shows the net transverse magnetization over time.  It starts out as a dot (zero length, no direction).  After RF excitation the net is large and precessing around the z-axis.  Then, as the individual spins lose their common phase — becoming *incoherent* — the net transverse magnetization shrinks back to zero, here over a couple of hundred milliseconds.  The decay is exponential,
 
-Before we enter the magnet the RF pulse, the spins are randomly oriented in the x-y plane.  Even after we place a head into the B0 field, there is no preferred x-y direction.  At this point, when we measure we see no coherent RF signal.
+$$
+M_{xy}(t) = M_0\,e^{-t/T_2}
+$$
 
-But when we apply the RF pulse, the spins do align, driven by the RF signal.  Because the spins align we do pick up an RF signal from the *coherent* transverse spins.
+and T2 is its time constant.
 
-The sequence of events is summarized in @fig-ch08-transverse-relaxation-t2. The red arrow below the vectors of spins shows the net magnetization over time. It starts out as a dot (zero length and zero direction). After RF excitation, the net is oriented,  large and spinning around the z-axis. As the individual spins lose their alignment, becoming *incoherent*, the net magnetization shrinks back to zero.
+<!-- TODO (Brian): the slide text reads "follows an exponential recovery"; for the transverse component it is a decay, not a recovery.  Worth fixing in the source deck. -->
 
 ## The spin de-phasing
 
@@ -64,69 +76,76 @@ The sequence of events is summarized in @fig-ch08-transverse-relaxation-t2. The 
 ![Individual magnetic moments progressively de-phase, and the sum of the magnetic moments (and resulting signal) decays as a result (video; see the HTML version for the animation).](images/ch08/spin-dephasing-t2-signal-loss.png){#vid-ch08-spin-dephasing-t2-signal-loss width="70%"}
 :::
 
-When they are coherent, we say the spins are *in phase*. 
-The loss of coherence is also called *de-phasing*.  
+When the spins share a common phase, we say they are *in phase*, or coherent.  The loss of that common phase is called *de-phasing*.
 
-The video represents the de-phasing, but in a special way.  Remember that the net transverse magnetization is always precessing around the z-axis.  If we imagine ourselves rotating around the z-axis at the same pace, what wew would see is that magnetization is comprised of multiple vectors, pointing in different directions.  This is the de-phasing.  For this reason, the signal decays, as shown on the right.
+The video represents the de-phasing, but in a special way.  Remember that the transverse magnetization is always precessing around the z-axis, far too quickly to display.  So we imagine ourselves rotating around the z-axis at that same pace — the *rotating frame* introduced in @fig-ch07-the-rf-signal-b1-causes-the-net-magnetization-to-p.  In the rotating frame the common precession becomes invisible, and what remains visible is exactly what we care about: the individual moments fanning out relative to one another.
 
 * Transverse magnetization declines as the directions of the spins (their *relative phases*) diverge, becoming incoherent
-* Vectors on the left represent individual spins
-* Blue arrow on the right represents the reduction in the net transverse magnetization as the spins de-phase (become incoherent)
-* The curve at the bottom shows how the amplitude of the vector decays over time.
+* The colored vectors on the left represent the individual magnetic moments (spins); they begin aligned and progressively spread apart
+* The blue arrow on the right is the sum of those moments — the net transverse magnetization — which shortens as the spins de-phase
+* The curve at the bottom shows how the amplitude of that sum decays over time
 
-But do remember that this amplitude represents the swing, back and forth from positive to negative.  It is the amplitude of the oscillation as the spins go round and round the z-axis.
+But do remember what this amplitude means.  The signal in the coil swings back and forth, from positive to negative, as the transverse magnetization goes round and round the z-axis.  The decaying curve is the *envelope* of that oscillation, not the oscillation itself.  This decaying oscillation, measured after a single RF excitation, is the free induction decay (FID) introduced in @fig-ch06-the-fid-signal-quantal-description.
 
 ## The Bloch Equations
 
 For a mathematical description of the relaxation equations for both T1 and T2, as well as a short biographical note, see the resource [Felix Bloch and the Bloch Equations](resources/felix-bloch-equations.qmd).
 
-## MR: The two mechanisms of spin dephasing
+## The two mechanisms of spin de-phasing
 
 <!--
 ![MR: The two mechanisms of spin dephasing.](images/ch08/mr-the-two-mechanisms-of-spin-dephasing.png){#fig-ch08-mr-the-two-mechanisms-of-spin-dephasing}
 -->
 
-![Two sources of transverse magnetization decay.](images/ch08/two-sources-of-transverse-magnetization-decay.png){#fig-ch08-two-sources-of-transverse-magnetization-decay}
+![Two sources of transverse magnetization decay: interactions between neighboring spins (top), and differences in the local magnetic field from one position to another (bottom).](images/ch08/two-sources-of-transverse-magnetization-decay.png){#fig-ch08-two-sources-of-transverse-magnetization-decay}
 
-Why do the spins lose their coherence?  Glad you asked.  There are two main reasons.
+Why do the spins lose their coherence?  Glad you asked.  There are two main reasons, and the distinction between them matters (@fig-ch08-two-sources-of-transverse-magnetization-decay).
+
+* **Spin-spin interactions (pure T2).**  Each proton is itself a tiny magnet, so every spin precesses in a field that is slightly perturbed by its neighbors.  Because the molecules are tumbling, those perturbations fluctuate rapidly and randomly.  Each spin's precession rate wanders a little, the phase differences that accumulate are random, and coherence is lost for good.  This contribution is *irreversible*: no later pulse can undo it.
+
+* **Local field inhomogeneity (T2').**  The static field is never perfectly uniform.  Imperfections in the magnet, and — more important for the head — differences in magnetic susceptibility near the sinuses, the ear canals, and blood vessels, mean that spins at different positions sit in slightly different values of B0.  They precess at slightly different but *constant* rates, and so they fan out steadily.  This contribution is *reversible*, which is the trick behind the spin echo (@fig-ch09-pulse-sequences-spin-echo-hahn).
 
 ## T2, T2' and T2*
 
-* Spin-spin interactions (pure T2).  The spins have slightly different excitations and they interfere with one another.
-
-* Local field inhomogeneity (T2'), say because of the local magnetic field around nearby molecules.
-
-
-## Inverting the Ts. R2 and R1
-
 ::: {.panel-tabset}
 
-## Step 1
+## Combining the two decays
 
-![Transverse magnetization decay — step 1.](images/ch08/transverse-magnetization-decay-1.png){#fig-ch08-transverse-magnetization-decay-1}
+![The relationship between the T2 decay time constants: the combined (T2*) rate is the sum of the spin-spin (T2) and inhomogeneity (T2') rates.](images/ch08/transverse-magnetization-decay-1.png){#fig-ch08-transverse-magnetization-decay-1}
 
-## Step 2
+## The same relationship using rates
 
-![Transverse magnetization decay — step 2.](images/ch08/transverse-magnetization-decay-2.png){#fig-ch08-transverse-magnetization-decay-2}
+![The same relationship written with relaxation rates, $R = 1/T$.](images/ch08/transverse-magnetization-decay-2.png){#fig-ch08-transverse-magnetization-decay-2}
 
 :::
-The combined effect of these two T-values is called T2*.
 
-People don't like all that one over stuff, so use R1 to refer to 1 over T1, and R2 to refer to 1 over T2.  Then the equation looks simpler.  It's not.
+The two mechanisms act at the same time, and it is their *rates* that add, not their time constants.  The combined effect is called T2*,
+
+$$
+\frac{1}{T_2^{*}} = \frac{1}{T_2} + \frac{1}{T_2'}
+$$
+
+Because rates add, T2* is always shorter than T2.  The FID we actually measure therefore decays faster than the pure spin-spin relaxation would predict — which is why an FID by itself does not measure T2.
+
+People don't like all that one over stuff, so they use R1 to refer to 1 over T1, and R2 to refer to 1 over T2.  In that notation the relationship is just $R_2^{*} = R_2 + R_2'$.  The equation looks simpler.  It's not.
 
 ## Comparing T1 and T2 images
+
+It is very unusual for investigators to acquire a pure T1 or a pure T2 image.  Usually the image reflects relatively more of one than the other, and so we call it *T1-weighted* or *T2-weighted*.  The timing of the pulse sequence is what sets the balance, and that is the subject of the next chapter.
 
 ### T1-weighted images: gray is darker than white
 
 ![T1-weighted images: gray is darker than white.](images/ch08/t1-weighted-images-gray-is-darker-than-white.png){#fig-ch08-t1-weighted-images-gray-is-darker-than-white}
 
-It is very unusual for investigators to acquire a pure T1 or a pure T2 based image.  Usually, the images include relatively more T1 or T2, and thus they are called *T1-weighted*'* or *T2-weighted*.
+In a T1-weighted image, the signal is *larger* where T1 is *shorter*: tissue with a short T1 has recovered more of its longitudinal magnetization by the time we read the signal out.  White matter has the shorter T1 (0.65 s, versus 0.88 s for gray matter at 1.5 T; @fig-ch07-the-t1-contrast-distinguishes-gray-and-white-matte), so white matter is bright and gray matter is dark.  CSF has the longest T1 of the three and is darkest of all — look at the ventricles in the coronal image.  This is the contrast that makes T1-weighted volumes the standard anatomical image for separating gray from white matter.
 
-The image in @fig-ch08-t1-weighted-images-gray-is-darker-than-white is from [UCSF](http://fmri.ucsd.edu/Howto/3T/structure.html)
-
-We need to replace the T2 decay with a T1 recovery curve.
+The image in @fig-ch08-t1-weighted-images-gray-is-darker-than-white is from [UCSD](http://fmri.ucsd.edu/Howto/3T/structure.html).
 
 <!--
+TODO (Brian): the inset curves on this slide are the T2 decay curves carried over from the T2-weighted slide.
+They need to be replaced with the T1 recovery curves — the ones already in
+chapters/images/ch07/the-t1-contrast-distinguishes-gray-and-white-matte.png would do it.
+
 Project:  UCSF
 Subject HCP350002
 Session T1s_MPR
@@ -136,7 +155,11 @@ Session T1s_MPR
 
 ![T2-weighted images: white is darker than gray.](images/ch08/t2-weighted-images-white-is-darker-than-gray.png){#fig-ch08-t2-weighted-images-white-is-darker-than-gray}
 
-Images from this [UCSF site](http://fmri.ucsd.edu/Howto/3T/structure.html).
+T2-weighted images reverse this relationship.  Now the signal is larger where T2 is *longer*, because tissue whose transverse magnetization decays slowly still has signal left when we measure it.  At 3 T the average T2 is about 108 ms for gray matter and 78 ms for white matter, so gray matter is now the brighter of the two.  CSF, with a T2 of roughly two seconds, is brighter still.
+
+@fig-ch08-t1-weighted-images-gray-is-darker-than-white and @fig-ch08-t2-weighted-images-white-is-darker-than-gray are coronal images of the same subject, acquired in the same session.  Comparing them is the quickest way to see the point of this chapter: the anatomy is the same and the contrast is inverted, because the two acquisitions are sensitive to different physical mechanisms.
+
+Images from this [UCSD site](http://fmri.ucsd.edu/Howto/3T/structure.html).
 
 <!--
 Project:  UCSF
@@ -148,18 +171,32 @@ Session T2W_SPC
 
 ![Summary of the relative signal intensities  using T1 and T2.](images/ch08/summary-of-the-relative-signal-intensities-using-t.png){#fig-ch08-summary-of-the-relative-signal-intensities-using-t}
 
-Values from this [pubmed paper](https://www.mdpi.com/2072-6694/14/22/5606).
+The table collects the appearance of the main tissue types in the two weightings.  The row to watch is the gray/white pair: light gray and dark gray on T1, and the reverse on T2.  Notice also that bone and air are dark in both.  Their darkness has nothing to do with relaxation — they contain almost no mobile hydrogen, so there is very little magnetization to measure in the first place.  That is a proton density (PD) effect, the third of the three basic contrasts.
+
+<!--
+TODO (Brian): the Fat row of this table lists "Dark black" on T1.  Fat has the *shortest* T1 of the
+tissues here (about 180 ms, @fig-ch07-spin-lattice-interactions), so it recovers fastest and is
+normally the *brightest* thing on a T1-weighted image — scalp fat is the usual example.  The table
+looks wrong on this row, so the accompanying prose does not repeat it.  Worth checking against the
+original source before the table goes into the notes.
+-->
 
 ## T2-weighted images measure pathologies involving fluid filled regions
 
 ![T2-weighted images measure pathologies involving fluid filled regions.](images/ch08/t2-weighted-images-measure-pathologies-involving-f.png){#fig-ch08-t2-weighted-images-measure-pathologies-involving-f}
 
-Values from:  https://pubmed.ncbi.nlm.nih.gov/10232510/
+Free water has a much longer T2 than either gray or white matter (@fig-ch08-t2-time-course-and-t2-contrast).  Many pathologies — edema, inflammation, cysts, tumors, vascular malformations — raise the local water content, so they stand out as conspicuously bright regions on a T2-weighted image.  The arrow in the lower right panel marks an arteriovenous malformation (AVM).
+
+Two cautions about the tissue values quoted here.  First, the T2 of gray and white matter varies across the brain, so the averages are only a guide.  Second, and more fundamental: a T2-weighted signal level is not itself a measurement of T2, because the signal also depends on proton density and on coil sensitivity.  Turning the weighted image into a quantitative T2 map requires more than one measurement, which is the topic of the next chapter.
+
+Reference values for normal tissue at 3 T are from Wansapura et al., [NMR relaxation times in the human brain at 3.0 Tesla](https://pubmed.ncbi.nlm.nih.gov/10232510/), *J. Magn. Reson. Imaging* 9:531-538 (1999), and from Konar et al., [Quantitative relaxometry metrics for brain metastases compared to normal tissues](https://www.mdpi.com/2072-6694/14/22/5606), *Cancers* 14:5606 (2022), the source cited on the slide.
 
 ## Pulse sequence impact on tumor visibility
 
 ![Pulse sequence impact on tumor visibility: (a) coronal image of the brain showing a tumor (arrow), bright against the darker grey of normal brain tissue; (b) the same slice with a different pulse sequence, showing the tumor darker than the surrounding brain (McRobbie et al., *MRI: From Picture to Proton*, 2e, Fig. 3.1).](images/ch08/pulse-sequence-impact-on-tumor-visibility.png){#fig-ch08-pulse-sequence-impact-on-tumor-visibility}
 
+The same tumor in the same slice can be brighter or darker than the surrounding brain, depending only on the pulse sequence used to acquire the image.  Nothing about the tissue changed between the two panels; what changed is which relaxation mechanism the measurement was made sensitive to.  Choosing that weighting deliberately, rather than accidentally, is what the next chapter is about.
+
 ::: {.callout-note}
-Why the T2 measurement is not quantitative, and a preview of the T2*/BOLD signal, are covered in the next chapter (pulse sequence diagrams, T2 quantification, and a look ahead to BOLD).
+The next chapter, Pulse Sequences, shows how the timing parameters TE and TR set the T1/T2/PD weighting of an image, why a T2-weighted signal level is not a quantitative measurement of T2, and — looking ahead — how the T2* signal becomes the basis of BOLD fMRI.
 :::

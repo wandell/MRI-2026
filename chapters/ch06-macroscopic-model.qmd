@@ -67,11 +67,11 @@ We summarize the behavior of the spins by calculating the **net magnetization**,
 
 ## Video: Precession of the net magnetization
 ::: {.content-visible when-format="html"}
-![The net magnetization vector M precesses around the z-axis, like a spinning top, tracing out the precession described above.](images/ch06/precession-of-net-magnetization.mp4){#vid-ch06-precession-of-net-magnetization width="70%" loop="true" autoplay="true" muted="true"}
+![The net magnetization vector M precesses around the z-axis, like a spinning top, tracing out the precession described above.](images/ch06/precession-of-net-magnetization.mp4){#fig-ch06-precession-of-net-magnetization width="70%" loop="true" autoplay="true" muted="true"}
 :::
 
 ::: {.content-visible when-format="pdf"}
-![The net magnetization vector M precesses around the z-axis, like a spinning top (video; see the HTML version for the animation).](images/ch06/precession-of-net-magnetization.png){#fig-ch06-precession-of-net-magnetization width="70%"}
+![The net magnetization vector M precesses around the z-axis, like a spinning top (video; see the HTML version for the animation).](images/ch06/precession-of-net-magnetization.png){#vid-ch06-precession-of-net-magnetization width="70%"}
 :::
 
 :::
