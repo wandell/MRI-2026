@@ -2,6 +2,39 @@
 
 Running list of items an AI agent flagged while extracting PPTX images/videos into the Quarto chapters. Nothing here blocks rendering; these are judgment calls or minor issues worth a human look.
 
+## Editing pass over Part 1, Instrumentation (ch01-ch04) (most recent work)
+
+Prose and accuracy review of `ch01-big-iron.qmd`, `ch02-gradient-coils.qmd`, `ch03-rf-coils.qmd`, `ch04-safety.qmd`. Modest wording problems were fixed directly; everything below is flagged with a matching `<!-- TODO (Brian): ... -->` comment in the file. The book renders clean.
+
+**Three things that were actually broken, and are now fixed**
+
+- [ ] **ch04: a section heading was not rendering at all.** `## Recent Accident (Korea)` had no blank line before it, so pandoc folded it into the preceding paragraph — the rendered chapter had six sections instead of seven, and the Korea heading was invisible. Confirmed in `_book/chapters/ch04-safety.html` before and after. Fixed by adding the blank line. Worth knowing the failure mode: an ATX heading immediately after a line of text silently disappears.
+- [ ] **ch01: placeholder scaffolding text was in the rendered chapter.** The Machine Room section opened with the literal sentence "Here is the main caption that applies to the entire figure group." Replaced with real text.
+- [ ] **ch02: a figure caption described the wrong image.** The figure under "The Solenoid Design" was captioned "A multiple-turn solenoidal winding, with a Helmholtz pair shown for contrast," but the image (`magnetic-field-units-table.png`) is a photograph of a *Helmholtz pair* — the slide's own title and bullets are entirely about the Helmholtz pair. The figure has been moved up into "The Helmholtz Pair" with a correct caption, and "The Solenoid Design" now opens with the actual solenoid figure.
+
+**MAJOR — ch02 image filenames do not describe their contents**
+
+- [ ] Verified by opening every file in `images/ch02/`. The names are scrambled relative to the images, and because the crossref labels were derived from the filenames, the labels are misleading too. For example `b0-helmholtz-pair-diagram.png` is the *solenoid* slide, `magnetic-field-units-table.png` is the *Helmholtz photograph*, and `scanner-components-diagram.png` is the *magnetic field units* slide. The full mapping is in a comment at the top of `ch02-gradient-coils.qmd`. The captions and prose in the chapter are correct for the images actually displayed (after the one fix above); it is the filenames that are wrong. All 17 files are distinct — no duplicates. Renaming to match content, plus moving the labels to the `#fig-ch02-*` convention, is one mechanical pass whenever you want it.
+- [ ] **Five ch02 images are unused.** `b0-helmholtz-pair-photo.png` (a second export of the superconducting-magnet slide), `b0-solenoid-design.png` (the cryocooler slide), `gradient-coil-new-insertion.png` and `gradient-coil-removal-cni.png` (the chapter uses `cni-gradient-replacement.png`/`2` instead), and `superconducting-magnet-design.png`. That last one is the "MRI: The gradient coils" scanner cutaway labeling magnet, gradient coils, RF coil, patient, and table — the clearest single picture of how the components nest, and the chapter is missing it. Flagged in place under "Three Orthogonal Gradient Fields."
+
+**MAJOR — ch04, "The Size of Magnetic Forces" section**
+
+- [ ] The commented-out figure there is captioned "a large ferromagnetic object being pulled forcefully toward a magnet," but `safety-magnet-power.png` is the slide "Magnetic fields are powerful," showing **helium venting from a building window during a quench**. Caption and `fig-alt` both describe the wrong thing. If restored, it belongs in the quench section.
+- [ ] The embedded video in the same section is titled "Video of a Hitachi open-platform MRI scanner" in both the iframe title and the PDF fallback link — apparently left over from the Hitachi section that is commented out above it — while the section heading and prose are about projectile forces. I could not verify what `youtu.be/5z33ZcDgavY` actually shows (YouTube metadata is not fetchable from here), so the labels were left untouched. Please check the video and relabel or move it.
+
+**Smaller flags**
+
+- [ ] **Figure-label convention across all of Part 1.** Every label in ch01-ch04 omits the chapter prefix (`#fig-system-rooms-diagram`, not `#fig-ch01-system-rooms-diagram`), unlike Part 2 onward. Only one Part 1 label is cross-referenced anywhere in the book (`@fig-rf-volume-coil-birdcage`, within ch03), so a rename pass would be safe.
+- [ ] **ch01 promised a fringe-field discussion that never happens.** "We return to the main field and its fringe field in the next chapter" — ch02 never mentions the fringe field. Sentence trimmed to just the main field; the fringe field belongs with magnet shielding in ch02, and connects to the 5-gauss line, which is currently not discussed in ch01, ch02, or ch04 either.
+- [ ] **ch03: a commented-out figure points at a file that does not exist** (`rf-surface-coil-circuit.png`), so that block cannot be uncommented as written. The one unused file in `images/ch03/` is `rf-inductor-capacitor.png`, a screenshot of the capacitor-vs-inductor comparison that is already transcribed as a markdown table in the callout — correctly unused.
+- [ ] **ch04: unused `safety-overview.png`**, presumably the source of the four overview bullets. `safety-quench-description.png` is also unused, but it is just the other build step of the MR Quench slide already shown — not an error.
+- [ ] **ch04: "recently" removed from the Mountain View incident** because it goes stale. Worth dating that report and the Kaiser and Korea ones.
+- [ ] **Unit style is inconsistent across Part 1** — ch01 writes "3 T", ch02 writes "3 tesla", ch04 wrote "3T". ch03 and ch04 were normalized to "3 T" where I was already editing; the rest is untouched.
+
+**Wording fixes applied without flagging**
+
+ch01: helium-compressor paragraph no longer reads as a non-sequitur inside the chilled-water section. ch02: the Ørsted material was stated twice in consecutive paragraphs, now merged; the gradient-coil replacement sentence said the coil "was removed and then replaced," now describes what the two photos actually show; a new "## Gradient Coils" H2 was added because "The Maxwell Pair" and "Three Orthogonal Gradient Fields" were nested as H3s under "Superconducting Magnets," which put the chapter's title subject inside an unrelated section. ch03: the birdcage was said to excite the head "uniformly," which contradicts the paragraph two below it about transmit non-uniformity at 3 T and above. ch04: "A patient recently occupied a harrowing experience" → "endured"; the small-bore-scanner sentence gave homogeneity as the reason for high field rather than a consequence of the small bore; the projectile paragraph was split so that biological effects are separate from the projectile hazard, and it now notes that the magnet is never off, the transient effects of moving in the field, and SAR; "the attractive force scales with the gradient of the field" now reflects that it depends on both the field and its spatial rate of change.
+
 ## Editing pass over ch07 (T1), ch08 (T2), ch09 (Pulse Sequences) (most recent work)
 
 Items flagged during a prose/technical review of these three chapters. The chapters render clean (`quarto render`, no crossref warnings); these are content decisions or source-slide problems that need your call.

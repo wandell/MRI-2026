@@ -50,11 +50,15 @@ The walls, ceiling, floor, door, and viewing window form a continuous conducting
 
 The Faraday cage attenuates RF electromagnetic waves in both directions, but it has essentially no effect on the static main field $B_0$. The magnet's own active or passive magnetic shielding limits the **fringe field**, the region outside the scanner where the static field remains appreciable.
 
-We return to the main field and its fringe field in the next chapter.
+We return to the main field in the next chapter.
+
+<!-- TODO (Brian): this used to promise a discussion of the fringe field "in the next chapter," but ch02 never mentions the fringe field. Either add a short fringe-field section to ch02 (it belongs with active/passive magnet shielding, and it is what the 5-gauss line in the safety chapter is about) or leave this sentence as it now stands. -->
+<!-- TODO (Brian): the 5-gauss safety line is a natural link between this paragraph, ch02, and ch04. It is not currently discussed in any of the three. -->
+<!-- TODO (Brian): every figure label in Part 1 (ch01-ch04) omits the chapter prefix — e.g. #fig-system-rooms-diagram rather than #fig-ch01-system-rooms-diagram. Part 2 onward uses the #fig-chNN-* convention from the repo instructions. Only one Part 1 label is cross-referenced anywhere (@fig-rf-volume-coil-birdcage, inside ch03), so a rename pass would be safe. Say the word and I will do it. -->
 
 ## Machine Room
 
-Here is the main caption that applies to the entire figure group.
+The machine room sits behind the scanner room and holds the equipment that has to be near the magnet but not inside it. The tabs below show several views of the CNI machine room.
 
 ::: {.panel-tabset}
 ## Machine room
@@ -72,7 +76,7 @@ Here is the main caption that applies to the entire figure group.
 
 The machine room houses critical supporting infrastructure, including gradient and RF amplifiers, power supplies, cooling hardware, and penetration panels. Many cables and pipes pass between the machine room and the scanner room. Conductive cables use filtered feedthroughs, while waveguides provide RF-safe paths for appropriate connections.
 
-The tabs above show several views of the CNI machine room, including the people who keep this infrastructure operating.
+The last two tabs show the patch panel, where those connections are made, and the people who keep this infrastructure operating.
 
 ## Chilled Water Cooling
 
@@ -80,7 +84,7 @@ The tabs above show several views of the CNI machine room, including the people 
 
 A chilled-water loop removes heat from components that dissipate substantial power during scanning. Rapidly switched currents heat the gradient coils, and the gradient and RF power amplifiers also generate considerable heat.
 
-The helium compressor in the machine room supplies high-pressure helium gas to the cryocooler's **cold head**, which is mounted on the magnet. Robust thermal management prevents scanner shutdowns and component degradation.
+The machine room also holds the helium compressor, which supplies high-pressure helium gas to the cryocooler's **cold head**, mounted on the magnet. The compressor is another significant heat source, and it runs continuously — the magnet's cooling does not pause between scans. Robust thermal management prevents scanner shutdowns and component degradation.
 
 ## Liquid Helium
 

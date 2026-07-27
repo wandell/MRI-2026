@@ -29,6 +29,8 @@ One coil can transmit and receive at different times. In most human MRI systems,
 -->
 ```
 
+<!-- TODO (Brian): the commented-out figure above points at images/ch03/rf-surface-coil-circuit.png, which does not exist in images/ch03/ — so this block cannot be uncommented as written. Either re-export the surface-coil circuit slide under that name, or delete the block. (The one unused file in the folder, rf-inductor-capacitor.png, is a screenshot of the capacitor-vs-inductor comparison that is already transcribed as the table in the callout below, so it is correctly unused.) -->
+
 A **surface coil** is a conducting loop with capacitors that form a **resonant** circuit. Every real coil also has resistance and other sources of loss. The circuit is tuned to the Larmor frequency; we will return to that frequency when we discuss the free-induction-decay experiment.
 
 Surface coils provide high local sensitivity but limited spatial coverage — they work best for structures close to the coil surface.
@@ -51,13 +53,13 @@ The idealized behavior of capacitors and inductors can be compared as follows.
 
 ![Volume coil (birdcage): the LC circuit is repeated around the surface of a cylinder, producing more uniform spatial coverage but lower local sensitivity (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch03/rf-volume-coil-birdcage.png){#fig-rf-volume-coil-birdcage fig-alt="Diagram of a birdcage volume coil showing the cylindrical geometry and LC circuit elements, alongside a photo of an actual birdcage coil."}
 
-A **volume coil** distributes conductors and capacitors around a cylinder to generate a relatively uniform $B_1$ field over a large volume. The **birdcage** design — multiple conducting rungs connected by end rings — is the standard approach. Its elements form one coupled resonant structure, rather than independent receiver channels whose signals are simply added. The coil in @fig-rf-volume-coil-birdcage uniformly excites the head.
+A **volume coil** distributes conductors and capacitors around a cylinder to generate a relatively uniform $B_1$ field over a large volume. The **birdcage** design — multiple conducting rungs connected by end rings — is the standard approach. Its elements form one coupled resonant structure, rather than independent receiver channels whose signals are simply added. The coil in @fig-rf-volume-coil-birdcage excites the whole head at once, with far less variation across the volume than a surface coil.
 
 ![The birdcage design is widely used for the body transmit coil, built into the main magnet bore.](images/ch03/rf-birdcage-transmit.png){#fig-rf-birdcage-transmit fig-alt="Photo of a birdcage body coil — a large cylindrical coil with copper rungs and end rings — with text noting it is used as the built-in body coil."}
 
 The most important example is the **body coil**, which is built into the scanner. It is driven in its uniform, circularly polarized mode to provide RF excitation throughout the magnet bore.
 
-At 3T, and especially at 7T and above, the RF wavelength in tissue and coupling between the coil and patient become important. These effects can make the transmit field non-uniform and increase SAR, motivating more complex, multi-transmit driving schemes.
+At 3 T, and especially at 7 T and above, the RF wavelength in tissue and coupling between the coil and patient become important. These effects can make the transmit field non-uniform and increase SAR, motivating more complex, multi-transmit driving schemes.
 
 ## Phased-Array Coils
 
