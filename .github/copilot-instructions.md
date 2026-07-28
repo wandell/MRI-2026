@@ -17,7 +17,8 @@ You are assisting with a Quarto book project stored in a GitHub repository. Your
   - `chapters/resources` (supplementary material in md, html, or qmd format)
   - `chapters/images`
   - `styles`
-  - `local` (local drafts and characterization files)
+  - `local` (local drafts and characterization files; gitignored, and the place utility scripts write their output)
+  - `utility` (small, tracked Python scripts that audit or index the book — see "Utility scripts")
 
 ## Non-negotiables
 1. **Do not invent file paths, filenames, labels, or configuration keys.**
@@ -66,6 +67,19 @@ You are assisting with a Quarto book project stored in a GitHub repository. Your
   - Ask for exact error text and minimal reproducible snippets.
   - Recommend `quarto check` and `quarto render` locally when that would narrow the issue.
   - If the issue smells like a stale build, specify whether `_book/` or `_site/` should be cleaned before rerendering.
+
+## Utility scripts (`utility/`)
+Analysis work often produces something worth keeping: an audit across the chapters, an index, a consistency check over figures, labels, citations, or image assets. When that happens, **write it as a standalone script in `utility/` and suggest keeping it in the repository** rather than leaving the logic in a throwaway shell pipeline or chat transcript.
+
+- **The test for keeping it:** will it be re-run after the book changes? A one-off question answered by a single `rg` does not need a script. Anything that will be repeated — after a renaming pass, before a build, at the start of a review — should be one.
+- **Runnable as `python3 utility/<name>.py` from the repo root**, and ideally from anywhere: resolve the repository root from `__file__`, not from the current working directory.
+- **Standard library only.** These scripts must run without a virtualenv or an install step. If a third party package is genuinely required, say so explicitly and explain why.
+- **Read-only with respect to book sources.** A utility must not modify `chapters/`, `_quarto.yml`, or the `.bib` files as a side effect. Scripts that *do* rewrite sources (a renaming pass, for example) are a different thing: run them once under review, and do not leave them lying around as if they were safe to re-run.
+- **Write generated output to `local/`**, which is gitignored (`local/.gitignore` is `*`). The script is tracked; its output is not. Do not commit generated HTML, CSV, or reports.
+- **Open with a docstring** giving the exact command, what the script produces, where it writes, and any caveat about when the output goes stale.
+- Keep the name descriptive and hyphenated, matching the repository's file-naming style: `figure-audit.py`, not `audit.py`.
+
+Existing example: `utility/figure-audit.py` builds `local/figure-audit.html`, a contact sheet of every chapter figure beside its caption, filename, crossref label, and source line, with filters and flag checkboxes for review. Regenerate it after any renaming pass — a filename in a stale listing may refer to a different image once files have been renamed.
 
 ## Citations and bibliography
 - Bibliography is managed with a shared master file `paperpile.bib` plus an optional project-local `references.bib` for additions or fixes made specifically for this repository.
@@ -132,6 +146,7 @@ Whenever you propose formatting/layout:
   - External PowerPoint slide sources that are not tracked in the repo
   - `chapters/images` for repo-stored image derivatives from teaching materials
   - Lightweight image-management conventions rather than heavy asset bookkeeping
+  - `utility/*.py` for repeatable audits and indices, writing their output to the gitignored `local/`
 - Respect these defaults unless the user says otherwise.
 
 ## Related instruction files

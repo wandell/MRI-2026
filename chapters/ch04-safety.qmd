@@ -17,7 +17,7 @@ This chapter covers four topics:
 * Field strength safety limits
 * Real-world accidents
 
-<!-- TODO (Brian): images/ch04/safety-overview.png is unused; it is presumably the slide these four bullets came from. Add it here, or leave the bullets as plain text. Also unused: safety-quench-description.png, which is the other build step of the same MR Quench slide already shown below (not an error, just a redundant export). -->
+<!-- Note: safety-quench-description.png in images/ch04/ is unused, but deliberately so — it is the other build step of the MR Quench slide already shown below. -->
 
 ## Main Magnetic Field (B0): General Properties
 

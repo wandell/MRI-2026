@@ -9,31 +9,21 @@ date: last-modified
 ---
 
 <!--
-TODO (Brian): MAJOR — the image filenames in images/ch02/ do not describe their contents, and
-because the crossref labels were derived from the filenames, the labels are misleading too.
-Verified by opening each file:
+Note: the image filenames in images/ch02/ were renamed to match their contents (verified by
+opening each one). The old names were assigned out of order because several consecutive slides
+share a title — "Generation of a static magnetic field (B0)" covers the Helmholtz diagram, the
+Helmholtz photograph, AND the solenoid; "Energy solution: superconducting magnets" covers two more
+— so there was nothing in the titles to disambiguate them. Labels were updated to match.
 
-  scanner-components-diagram.png   is the "Magnetic field units" slide (Orsted/Tesla/Gauss)
-  magnetic-field-units-pioneers.png is the unit conversion tables
-  magnetic-field-units-examples.png is the Helmholtz pair diagram
-  magnetic-field-units-table.png    is the Helmholtz pair photograph
-  b0-helmholtz-pair-diagram.png     is the solenoid slide
-  b0-helmholtz-pair-photo.png       is the superconducting magnet slide   (UNUSED)
-  b0-solenoid-design.png            is the cryocooler / cold head slide   (UNUSED)
-  superconducting-magnet-design.png is the scanner cutaway, gradient coils (UNUSED)
-  gradient-coil-new-insertion.png   (UNUSED — chapter uses cni-gradient-replacement.png instead)
-  gradient-coil-removal-cni.png     (UNUSED — chapter uses cni-gradient-replacement2.png instead)
-
-The captions and prose in this chapter are correct for the images actually displayed (one caption
-was wrong and has been fixed — see "The Helmholtz Pair"). The files are all distinct; none are
-duplicates. Renaming them to match their content, and updating the labels to the #fig-ch02-*
-convention, would be a single mechanical pass — say the word.
+TODO (Brian): still open — Part 1 labels do not carry the chapter prefix used from Part 2 onward
+(#fig-b0-solenoid rather than #fig-ch02-b0-solenoid). Deferred so ch01-ch04 can be migrated
+together rather than leaving a mixed convention.
 -->
 
 
 ## Main Field and Gradient-Coil Overview
 
-![Magnetic-field units and the scientists whose names they bear: Ørsted, Tesla, and Gauss.](images/ch02/scanner-components-diagram.png){#fig-scanner-components-diagram fig-alt="Slide titled Magnetic field units, showing reference field strengths and portraits of Hans Ørsted, Nikola Tesla, and Carl Friedrich Gauss."}
+![Magnetic-field units and the scientists whose names they bear: Ørsted, Tesla, and Gauss.](images/ch02/magnetic-field-units-scientists.png){#fig-magnetic-field-units-scientists fig-alt="Slide titled Magnetic field units, showing reference field strengths and portraits of Hans Ørsted, Nikola Tesla, and Carl Friedrich Gauss."}
 
 Electricity and magnetism are inseparable in an MRI scanner: electric currents generate the main, gradient, and RF magnetic fields. The three scientists shown here have units named after them: the oersted (Oe), tesla (T), and gauss (G). In MRI, the main field $B_0$ is normally specified in tesla.
 
@@ -43,7 +33,7 @@ For scale, Earth's magnetic field is about 0.5 gauss, and a refrigerator magnet 
 
 ## Magnetic Field Units
 
-![Magnetic-field unit conversions for magnetic field strength ($H$) and magnetic flux density ($B$).](images/ch02/magnetic-field-units-pioneers.png){#fig-magnetic-field-units-pioneers fig-alt="Table of magnetic-field units and conversions, including oersted, ampere per meter, gauss, and tesla."}
+![Magnetic-field unit conversions for magnetic field strength ($H$) and magnetic flux density ($B$).](images/ch02/magnetic-field-unit-conversions.png){#fig-magnetic-field-unit-conversions fig-alt="Table of magnetic-field units and conversions, including oersted, ampere per meter, gauss, and tesla."}
 
 Two related magnetic field quantities describe magnetic effects:
 
@@ -60,15 +50,15 @@ where the permeability of free space is $\mu_0 = 4\pi \times 10^{-7}$ T·m/A. Wi
 
 ### The Helmholtz Pair
 
-![Helmholtz pair: two current-carrying loops separated by one radius, producing a relatively uniform field at their midpoint.](images/ch02/magnetic-field-units-examples.png){#fig-magnetic-field-units-examples fig-alt="Diagram of a Helmholtz pair showing two circular coils, their radius, separation, and magnetic field at the center."}
+![Helmholtz pair: two current-carrying loops separated by one radius, producing a relatively uniform field at their midpoint.](images/ch02/b0-helmholtz-pair-diagram.png){#fig-b0-helmholtz-pair-diagram fig-alt="Diagram of a Helmholtz pair showing two circular coils, their radius, separation, and magnetic field at the center."}
 
 The Helmholtz pair uses two loops carrying current in the **same direction**, separated by a distance equal to their radius. This geometry produces a relatively uniform field in the region between the coils. However, with only two coils the uniform region is too small to encompass a human head.
 
-![A laboratory Helmholtz pair: two coils of equal radius, separated by one radius, with the schematic shown below the photograph.](images/ch02/magnetic-field-units-table.png){#fig-magnetic-field-units-table fig-alt="Photograph of a laboratory Helmholtz pair — two coaxial copper coils on a bench — with a small Helmholtz-pair diagram shown below it."}
+![A laboratory Helmholtz pair: two coils of equal radius, separated by one radius, with the schematic shown below the photograph.](images/ch02/b0-helmholtz-pair-photo.png){#fig-b0-helmholtz-pair-photo fig-alt="Photograph of a laboratory Helmholtz pair — two coaxial copper coils on a bench — with a small Helmholtz-pair diagram shown below it."}
 
 ### The Solenoid Design
 
-![A solenoid: many closely spaced turns of wire arranged around a cylindrical form (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch02/b0-helmholtz-pair-diagram.png){#fig-b0-helmholtz-pair-diagram fig-alt="Slide illustrating a solenoid with many turns wrapped around a cylindrical form and field lines through its center."}
+![A solenoid: many closely spaced turns of wire arranged around a cylindrical form (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch02/b0-solenoid.png){#fig-b0-solenoid fig-alt="Slide illustrating a solenoid with many turns wrapped around a cylindrical form and field lines through its center."}
 
 To produce a uniform field over a large volume, an MRI main magnet uses multiple closely spaced, coaxial solenoidal windings. Their positions and currents determine the field strength and homogeneity. For a simple solenoid, adding turns or increasing current increases the field; in an MRI magnet, the winding geometry is optimized to make $B_0$ highly uniform throughout the imaging volume.
 
@@ -104,7 +94,9 @@ MRI requires three independently controlled gradient fields to encode position i
 
 All three gradient coils, along with the RF body coil, are nested concentrically inside the bore of the main magnet — the arrangement shown in @fig-gradient-coils-xyz.
 
-<!-- TODO (Brian): images/ch02/superconducting-magnet-design.png is an unused scanner-cutaway slide ("MRI: The gradient coils") that labels the magnet, gradient coils, RF coil, patient, and table. It would fit well right here, and it is the clearest single picture of how the components nest. Note the filename is wrong for its content — see the naming TODO at the top of this chapter. -->
+![A cutaway view of the scanner, showing how the components nest: the main magnet on the outside, the gradient coils inside it, the RF coil closest to the patient, and the patient table.](images/ch02/gradient-coils-scanner-cutaway.png){#fig-gradient-coils-scanner-cutaway fig-alt="Cutaway diagram of an MRI scanner labeling the magnet, gradient coils, radiofrequency coil, patient, and patient table."}
+
+@fig-gradient-coils-scanner-cutaway puts the whole instrument together. Working outward from the subject: the RF coil that transmits and receives the signal (@sec-rf-coils-overview), then the three gradient coils that encode position, then the superconducting main magnet that supplies $B_0$. Each layer of that diagram corresponds to a section of this part of the book.
 
 ::: {.callout-note title="Saddle-shaped windings"}
 An x- or y-gradient winding lies on the cylindrical surface of the bore. Its conductors run lengthwise along two sides of the cylinder and are joined by curved end sections, so the pattern resembles a saddle on a horse. A transverse gradient is commonly made from two symmetric saddle pairs (four saddle sections) placed around the bore. Their fields add to form the desired gradient while unwanted uniform and higher-order fields cancel.
@@ -123,12 +115,12 @@ For all of the high technology, some methods for adjusting the magnetic field ar
 ::: {.panel-tabset}
 
 ## Receiving the new gradient coil
-![New gradient coil delivered for insertion into the magnet bore. You can see the lines suggesting the saddle-windings.](images/ch02/cni-gradient-replacement.png){#fig-gradient-coil-new-insertion fig-alt="Photo of a large cylindrical gradient coil wrapped in plastic, being moved into position at the CNI."}
+![New gradient coil delivered for insertion into the magnet bore. You can see the lines suggesting the saddle-windings.](images/ch02/gradient-coil-new-insertion.png){#fig-gradient-coil-new-insertion fig-alt="Photo of a large cylindrical gradient coil wrapped in plastic, being moved into position at the CNI."}
 
 <!-- The gradient coils were shipped in containers that inadvertently included iron components — a significant problem given the strong magnetic field of the scanner. A winch was required to remove the unwanted ferromagnetic material from the bore before the new coils could be installed.-->
 
 ## Removing the old gradient coil
-![The main gradient coil is being removed from the CNI scanner during an upgrade to the Ultra High Performance (UHP) design.](images/ch02/cni-gradient-replacement2.png){#fig-gradient-coil-removal-cni fig-alt="Photo of the existing gradient coil being withdrawn from the scanner bore using an extraction tool."}
+![The main gradient coil is being removed from the CNI scanner during an upgrade to the Ultra High Performance (UHP) design.](images/ch02/gradient-coil-removal-cni.png){#fig-gradient-coil-removal-cni fig-alt="Photo of the existing gradient coil being withdrawn from the scanner bore using an extraction tool."}
 :::
 
 These images were taken during the Ultra-High Performance (UHP) gradient upgrade at the CNI: the new gradient coil arriving, and the old coil being withdrawn from the bore to make room for it. The installation required precise mechanical alignment within the magnet bore, as well as careful attention to the strong static field.

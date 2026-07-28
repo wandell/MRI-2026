@@ -29,7 +29,7 @@ One coil can transmit and receive at different times. In most human MRI systems,
 -->
 ```
 
-<!-- TODO (Brian): the commented-out figure above points at images/ch03/rf-surface-coil-circuit.png, which does not exist in images/ch03/ — so this block cannot be uncommented as written. Either re-export the surface-coil circuit slide under that name, or delete the block. (The one unused file in the folder, rf-inductor-capacitor.png, is a screenshot of the capacitor-vs-inductor comparison that is already transcribed as the table in the callout below, so it is correctly unused.) -->
+<!-- TODO (Brian): images/ch03/rf-surface-coil-circuit.png does exist, so the commented-out figure above can simply be uncommented if you want it. Decide whether to restore it or delete the block. (The one unused file in the folder, rf-inductor-capacitor.png, is a screenshot of the capacitor-vs-inductor comparison already transcribed as the table in the callout below, so it is correctly unused. There is also a stray rf-inductor-capacitor.pdf in the images folder that nothing uses.) -->
 
 A **surface coil** is a conducting loop with capacitors that form a **resonant** circuit. Every real coil also has resistance and other sources of loss. The circuit is tuned to the Larmor frequency; we will return to that frequency when we discuss the free-induction-decay experiment.
 
