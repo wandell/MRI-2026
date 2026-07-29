@@ -10,94 +10,81 @@ date: last-modified
 
 ## Safety Considerations Overview
 
-This chapter covers four topics:
+This chapter covers five topics:
 
-* Ferromagnetic hazards and projectile risks
-* Magnet quenching and helium venting systems
-* Field strength safety limits
+* Static-field projectile and torque hazards, including screening and access control
+* Gradient-field peripheral nerve stimulation and acoustic noise
+* RF heating and burn prevention
+* Magnet quenches and cryogen safety
 * Real-world accidents
 
 <!-- Note: safety-quench-description.png in images/ch04/ is unused, but deliberately so — it is the other build step of the MR Quench slide already shown below. -->
 
-## Main Magnetic Field (B0): General Properties
+## Main Magnetic Field ($B_0$): General Properties
 
-![B0 field properties relevant to safety: field strengths used clinically, field uniformity specifications, and field stability.](images/ch04/safety-b0-properties.png){#fig-safety-b0-properties fig-alt="Slide listing B0 safety properties: human body-size scanners at 1.5T, 3T, and a few at 9.4T; uniformity of 5 ppm over 50 cm; stability of 0.1 ppm/hour; and use of small bore magnets for animal and chemical experiments."}
+![B0 field properties relevant to safety: field strengths used clinically, field uniformity specifications, and field stability.](images/ch04/safety-b0-properties.png){#fig-ch04-safety-b0-properties fig-alt="Slide listing B0 safety properties: human body-size scanners at 1.5T, 3T, and a few at 9.4T; uniformity of 5 ppm over 50 cm; stability of 0.1 ppm/hour; and use of small bore magnets for animal and chemical experiments."}
 
-Human body-size MR scanners are most commonly operated at 1.5 T and 3 T, with a small number at 7 T and very few at 9.4 T or above. Field uniformity is typically 5 parts per million (ppm) over a 50 cm diameter spherical volume. Field stability is maintained at better than 0.1 ppm/hour (less than 1000 ppm/year). MR physicists also use small-bore systems at much higher field strengths for animal imaging and for chemical spectroscopy; a small bore makes both the high field and the necessary homogeneity easier to achieve.
+Human body-size MR scanners are most commonly operated at 1.5 T and 3 T, with a smaller number at 7 T and very few at 9.4 T or above. Field homogeneity and stability are scanner-specific specifications, normally reported in ppm over a stated diameter spherical volume. MR physicists also use small-bore systems at much higher field strengths for animal imaging and chemical spectroscopy; the smaller imaging volume makes high field and stringent homogeneity more tractable.
 
 ## Ferromagnetic Objects and Projectile Hazards
 
-![Ferromagnetic objects near MR scanners become dangerous projectiles: examples include a chair, oxygen canister, and power supply drawn into the bore.](images/ch04/safety-ferromagnetic-projectiles.png){#fig-safety-ferromagnetic-projectiles fig-alt="Four-panel figure showing a chair, oxygen canister, and power supply that have been drawn into MRI scanner bores by the static magnetic field. From Huettel et al., Functional Magnetic Resonance Imaging, 2e."}
+![Ferromagnetic objects near MR scanners become dangerous projectiles: examples include a chair, oxygen canister, and power supply drawn into the bore.](images/ch04/safety-ferromagnetic-projectiles.png){#fig-ch04-safety-ferromagnetic-projectiles fig-alt="Four-panel figure showing a chair, oxygen canister, and power supply that have been drawn into MRI scanner bores by the static magnetic field. From Huettel et al., Functional Magnetic Resonance Imaging, 2e."}
 
-The primary physical danger of working around an MRI magnet is the **projectile effect**: ferromagnetic objects experience a strong attractive force toward the magnet bore that increases rapidly as the object approaches. Common hazardous objects include oxygen canisters, IV poles, tools, scissors, and any item containing iron or steel. The magnet is always on, which is what makes this hazard so persistent: it does not switch off between scans, or overnight, or when the scanner is idle.
+The persistent static field creates two related hazards: the **projectile effect**, in which a ferromagnetic object is pulled toward the bore, and **torque**, which tends to rotate an elongated ferromagnetic object into alignment with the field. Common hazardous objects include oxygen canisters, IV poles, tools, and scissors, as well as many iron- or steel-containing items. The magnet remains at field between scans and overnight, so screening and control of people and objects entering the MR environment are essential.
 
-The field itself is a different matter. There is no known biological mechanism by which the **static** $B_0$ field damages tissue at the field strengths currently in use. Subjects moving quickly through a strong field do sometimes report transient effects — dizziness, a metallic taste, or visual flickers — which subside when they stop moving. Rapidly **switching** gradient fields can induce peripheral nerve stimulation, and RF power deposition is limited by SAR, which is why coil designs are simulated for safety (@sec-rf-coils-overview).
+When operating conditions and screening procedures are followed, temporary exposure to the MR environment has no known health hazard. The static field can nevertheless move or torque unsafe objects and implants. Subjects moving quickly through a strong field may report transient dizziness, a metallic taste, or visual flickers. Rapidly switching gradient fields can induce peripheral nerve stimulation and produce acoustic noise that requires hearing protection. RF energy can heat tissue and conductive materials; burn prevention requires attention to patient positioning, cables, conductive loops, implants, and the sequence-specific SAR limits (@sec-rf-coils-overview).
+
+## Screening, Labels, and Patient Protection
+
+Every patient, visitor, and item entering the MR environment must be screened according to site policy. Implants and devices must be positively identified and their **MR Safe**, **MR Conditional**, or **MR Unsafe** status verified. An MR Conditional device may be used only under its specified field strength, spatial-gradient, RF, and operating conditions. Padding, cable management, avoidance of skin-to-skin conductive loops, and appropriate hearing protection reduce avoidable RF-burn and acoustic-injury risks.
 
 ## Real-World Safety Incidents
 
 ### Local Example: Mountain View
 
-![News report of a projectile accident at a Mountain View MRI facility.](images/ch04/safety-local-accident.png){#fig-safety-local-accident fig-alt="Screenshot of a KTVU news article headlined 'Freak accident in Mountain View exposes MRI safety flaws', with a photo of the MRI room after an incident."}
+![News report of a projectile accident at a Mountain View MRI facility.](images/ch04/safety-local-accident.png){#fig-ch04-safety-local-accident fig-alt="Screenshot of a KTVU news article headlined 'Freak accident in Mountain View exposes MRI safety flaws', with a photo of the MRI room after an incident."}
 
-A patient endured a harrowing experience at a Mountain View imaging center — a reminder that MRI safety incidents are not confined to distant or under-resourced facilities.
+This local report illustrates that projectile incidents can occur whenever screening, access control, or object control fails.
 Reference: [KTVU report](https://www.ktvu.com/news/freak-accident-mountain-view-exposes-mri-safety-flaws)
 
 <!-- TODO (Brian): "recently" was removed because it will go stale. Worth adding the date of the KTVU report, and the same for the Kaiser Redwood City and Korea incidents below, so the examples stay anchored in time as the notes are reused across years. -->
 
 ### Redwood City (Kaiser) Example
 
-![Video still from a Kaiser Redwood City MRI safety incident.](images/ch04/safety-kaiser-accident.png){#fig-safety-kaiser-accident fig-alt="Video still showing medical equipment drawn into an MRI scanner bore, with a caption noting the MRI room remained closed and employees were following safety protocols."}
+![Video still from a Kaiser Redwood City MRI safety incident.](images/ch04/safety-kaiser-accident.png){#fig-ch04-safety-kaiser-accident fig-alt="Video still showing medical equipment drawn into an MRI scanner bore, with a caption noting the MRI room remained closed and employees were following safety protocols."}
 
 Reference: [YouTube video](https://www.youtube.com/watch?v=uDfwxoigZZk)
 
 ## Magnet Quench
 
-![Sequence of photographs showing a superconducting magnet quench event at a manufacturing facility.](images/ch04/safety-quench-sequence.png){#fig-safety-quench-sequence fig-alt="Six-panel time sequence showing a magnet quench, with helium vapor erupting from the scanner in a large white cloud."}
+![Sequence of photographs showing a superconducting magnet quench event at a manufacturing facility.](images/ch04/safety-quench-sequence.png){#fig-ch04-safety-quench-sequence fig-alt="Six-panel time sequence showing a magnet quench, with helium vapor erupting from the scanner in a large white cloud."}
 
-A superconducting magnet requires no ongoing electrical power once charged — the current flows indefinitely as long as the wire remains below its critical temperature. If the cooling system fails, the wire warms, develops resistance, generates heat, which drives further warming in a runaway process. The liquid helium rapidly converts to gas (expanding by a factor of ~700), pressure builds, and the system releases the helium through a dedicated vent pipe in an event called a **quench**.
+A superconducting magnet operating in persistent mode can maintain current without continuous electrical power to its windings, but its cryogenic support system still requires power. A **quench** is a sudden loss of superconductivity: resistance develops, stored magnetic energy is converted to heat, and the resulting heating can drive a rapid transition through the winding. Cooling failure is one possible trigger; mechanical, electrical, or other disturbances can also initiate a quench. In helium-bath systems, the deposited heat vaporizes liquid helium rapidly and can produce a large volume of cold gas.
 
-In an open space a quench is spectacular but not immediately dangerous. In an enclosed room, the escaping helium — which is inert — can displace oxygen and create an asphyxiation hazard. MRI scanner rooms are required to have helium venting systems for this reason.
+Helium is inert, but a quench can create cold-injury, pressure, oxygen-displacement, and visibility hazards. The exhaust and emergency response arrangements depend on the magnet and installation; personnel must follow the site's MR-safety and quench procedures rather than assume that a release is harmless.
 
 [Here are links to many YouTube videos of quenches, and tutorials about an MR Quench.](https://www.youtube.com/results?search_query=Controlled+MRI+Magnet+Quench)
 
+
+
+
 ## Recent Accident (Korea)
 
-![Korean news broadcast reporting an MRI accident in which a patient was struck by an oxygen canister drawn into the bore.](images/ch04/safety-recent-accident.png){#fig-safety-recent-accident fig-alt="Screenshot of a Korean KBS news broadcast showing an MRI scanner with an oxygen canister lodged in the bore."}
+![Korean news broadcast reporting an MRI accident in which a patient was struck by an oxygen canister drawn into the bore.](images/ch04/safety-recent-accident.png){#fig-ch04-safety-recent-accident fig-alt="Screenshot of a Korean KBS news broadcast showing an MRI scanner with an oxygen canister lodged in the bore."}
 
 [Aunt Minnie Article.](https://www.auntminnie.com/clinical-news/mri/article/15629448/oxygen-cylinder-kills-south-korean-man-in-mri-accident)
 
 [Korean TV report](https://news.kbs.co.kr/news/pc/view/view.do?ncd=5302666).
 
-<!--
-## Hitachi Open-Platform Scanner
-
-![Hitachi 0.7T open-platform surgical MRI scanner — an alternative geometry that reduces some access constraints.](images/ch04/safety-hitachi-open-scanner.png){#fig-safety-hitachi-open-scanner fig-alt="Photo of a Hitachi 0.7T open-platform MRI scanner with a horizontal gap between the upper and lower magnet poles, allowing lateral access to the patient."}
-
-Open-platform scanners use a vertical field geometry with a gap between the upper and lower magnet assemblies. The lower field strength (typically 0.7T or below) limits SNR compared to closed-bore systems, but the open geometry allows surgical access and is better tolerated by claustrophobic patients.
--->
 ## The Size of Magnetic Forces
 
-<!--
-TODO (Brian): MAJOR — two problems in this section.
+The forces involved near a high-field magnet are difficult to appreciate without direct experience. The displacement force on a ferromagnetic object depends on the static field and its spatial gradient; torque also depends on the object's shape and orientation. These effects can change rapidly in the fringe field, so an object that seems manageable at one location can become hazardous nearer the bore. Even experienced MRI staff must maintain strict protocols to prevent accidents.
 
-1. The commented-out figure below is captioned "a large ferromagnetic object being pulled forcefully
-   toward a magnet," but images/ch04/safety-magnet-power.png is actually the slide "Magnetic fields
-   are powerful," showing helium venting from a building window during a quench. The caption and the
-   fig-alt both describe the wrong thing. If the image is restored, it belongs in the quench section
-   above, with a caption about quench venting.
+![Hitachi 0.7T open-platform surgical MRI scanner — an alternative geometry that reduces some access constraints.](images/ch04/safety-hitachi-open-scanner.png){#fig-ch04-safety-hitachi-open-scanner fig-alt="Photo of a Hitachi 0.7T open-platform MRI scanner with a horizontal gap between the upper and lower magnet poles, allowing lateral access to the patient."}
 
-2. The video below is titled "Video of a Hitachi open-platform MRI scanner" in both the iframe title
-   and the PDF fallback link — almost certainly left over from the Hitachi section that is commented
-   out further up. It sits under a heading about magnetic forces, and the surrounding prose is about
-   projectile forces. I could not verify the video's actual content (YouTube metadata is not
-   fetchable here), so the labels have been left exactly as they are. Please check what
-   youtu.be/5z33ZcDgavY shows and relabel it, or move it to the Hitachi section if that section
-   comes back.
--->
+Many open-platform scanners use a vertical field geometry with a gap between the upper and lower magnet assemblies. Their lower field strength often reduces the available SNR under otherwise comparable conditions, but the open geometry can improve surgical access and patient tolerance. The appropriate scanner depends on the clinical task and the required image quality.
 
-<!--
-![Demonstration of magnetic field power: a large ferromagnetic object being pulled forcefully toward a magnet.](images/ch04/safety-magnet-power.png){#fig-safety-magnet-power fig-alt="Photo showing a large object being attracted to a magnet, illustrating the scale of forces involved near high-field MRI systems."}
--->
+Even relatively low-field systems can present substantial projectile and torque hazards. Safety precautions depend on the scanner's field map and the object's material, shape, and location—not on nominal field strength alone.
 
 ::: {.content-visible when-format="html"}
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5z33ZcDgavY?si=1gg_1UZY65Ur2wkT" title="Video of a Hitachi open-platform MRI scanner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -106,5 +93,3 @@ TODO (Brian): MAJOR — two problems in this section.
 ::: {.content-visible when-format="pdf"}
 [Watch the video of the Hitachi open-platform MRI scanner on YouTube.](https://www.youtube.com/watch?v=5z33ZcDgavY)
 :::
-
-The forces involved near a high-field magnet are difficult to appreciate without direct experience. The force on a ferromagnetic object depends on both the field strength and how fast the field is changing with position, so it grows very steeply as the object approaches the bore entrance — an object that feels merely heavy a few feet away can be torn out of your hands at the bore. Even experienced MRI staff must maintain strict protocols to prevent accidents.

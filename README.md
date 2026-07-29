@@ -15,14 +15,16 @@ The original teaching slide decks and their working assets are not expected to l
 - `chapters/` for lecture notes (`.qmd`)
 - `chapters/images/` for exported image derivatives used by the notes
 - `chapters/resources/` for supplementary material
-- `code/` for Matlab or Python scripts that illustrate course concepts
+- `utility/` for repository utility scripts; generated local outputs belong in `local/`
 - `styles/` for shared style assets
-- `local/` for local drafts and characterization files
+- `local/` for local drafts and characterization files (not committed to the repository)
 - `_quarto.yml` for shared HTML/PDF rendering defaults
 
 ## Images
 
-Images derived from teaching slides may be stored in `chapters/images/`.
+Images derived from the main teaching slides may be stored in `chapters/images/`.
+
+Images for additional resources are stored in chapters/resources/images/. 
 
 Current working conventions:
 

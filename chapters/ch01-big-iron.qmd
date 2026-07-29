@@ -9,12 +9,12 @@ date: last-modified
 ---
 
 <!--
-![MRI instrumentation topics: system overview, main magnetic field, and hardware components.](images/ch01/instrumentation-overview.png){#fig-instrumentation-overview fig-alt="Title slide listing three topics: MRI system overview, main magnetic field B0, and system hardware components."}
+![MRI instrumentation topics: system overview, main magnetic field, and hardware components.](images/ch01/instrumentation-overview.png){#fig-ch01-instrumentation-overview fig-alt="Title slide listing three topics: MRI system overview, main magnetic field B0, and system hardware components."}
 -->
 
 ## MRI System: Multiple Rooms and Components
 
-![Schematic of the multi-room MRI system (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 2.2).](images/ch01/system-rooms-diagram.png){#fig-system-rooms-diagram fig-alt="Diagram showing the scanner room, machine room, and console room with connections between components."}
+![Schematic of the multi-room MRI system (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 2.2).](images/ch01/system-rooms-diagram.png){#fig-ch01-system-rooms-diagram fig-alt="Diagram showing the scanner room, machine room, and console room with connections between components."}
 
 An MRI scanner is a distributed system. Its hardware includes the main magnet, gradient and RF coils, power amplifiers, control electronics, and computers that synchronize signals, record the MR response, and reconstruct images from the raw data.
 
@@ -22,19 +22,19 @@ Functional neuroimaging also requires systems to manage the behavioral experimen
 
 ## Control room
 
-![The control room for Stanford's Center for Cognitive and Neurobiological Imaging (CNI).](images/ch01/cni-control-room.png){#fig-cni-control-room fig-alt="Photo of the CNI control room showing workstations and monitors."}
+![The control room for Stanford's Center for Cognitive and Neurobiological Imaging (CNI).](images/ch01/cni-control-room.png){#fig-ch01-cni-control-room fig-alt="Photo of the CNI control room showing workstations and monitors."}
 
 Experimenters operate the scanner and monitor the subject from the **control room**. The primary operator console communicates with the scanner-control computer and displays the current scan, system status, and safety information.
 
 Secondary computers are commonly used for stimulus presentation and response recording. Academic imaging centers usually provide interfaces for external laptops to control in-bore displays, sound systems, and button boxes. Supporting reliable connections for many research groups is an important operational requirement.
 
-![View of the control room window.](images/ch01/scanner-room.png){#fig-scanner-room fig-alt="Photo of the control room; the window looks into the scanner room."}
+![View of the control room window.](images/ch01/scanner-room.png){#fig-ch01-scanner-room fig-alt="Photo of the control room; the window looks into the scanner room."}
 
 This view shows the scanner console and equipment used to connect button boxes, stimulus displays, and other devices in the scanner room. The shielded viewing window lets the operator observe the subject while preserving the room's RF shielding.
 
 ## Scanner Room
 
-![Subject being positioned in the MR scanner.](images/ch01/scanner-room-patient-table.png){#fig-scanner-room-patient-table fig-alt="Photo of a subject lying on the scanner table being positioned by a technician."}
+![Subject being positioned in the MR scanner.](images/ch01/scanner-room-patient-table.png){#fig-ch01-scanner-room-patient-table fig-alt="Photo of a subject lying on the scanner table being positioned by a technician."}
 
 The scanner room houses the magnet bore and patient table. Here, a subject is preparing to slide into the bore and adjusting a mirror that reflects a display at the far end of the magnet. Even without a display, a mirror can help a subject see out of the bore and reduce claustrophobia.
 
@@ -42,7 +42,7 @@ The cable leads to a squeeze bulb, which gives the subject a direct way to alert
 
 ## RF Shielding
 
-![Copper panels form the RF-shielded enclosure of the scanner room.](images/ch01/rf-shielding.png){#fig-rf-shielding fig-alt="Photo of copper RF shielding panels in the scanner room."}
+![Copper panels form the RF-shielded enclosure of the scanner room.](images/ch01/rf-shielding.png){#fig-ch01-rf-shielding fig-alt="Photo of copper RF shielding panels in the scanner room."}
 
 The primary purpose of the room shield is to block unwanted radiofrequency (RF) signals from entering the scanner room. External broadcasts near the proton resonance frequency — about 127.7 MHz at 3 T — can contaminate the very weak MR signal received from the body.
 
@@ -54,7 +54,6 @@ We return to the main field in the next chapter.
 
 <!-- TODO (Brian): this used to promise a discussion of the fringe field "in the next chapter," but ch02 never mentions the fringe field. Either add a short fringe-field section to ch02 (it belongs with active/passive magnet shielding, and it is what the 5-gauss line in the safety chapter is about) or leave this sentence as it now stands. -->
 <!-- TODO (Brian): the 5-gauss safety line is a natural link between this paragraph, ch02, and ch04. It is not currently discussed in any of the three. -->
-<!-- TODO (Brian): every figure label in Part 1 (ch01-ch04) omits the chapter prefix — e.g. #fig-system-rooms-diagram rather than #fig-ch01-system-rooms-diagram. Part 2 onward uses the #fig-chNN-* convention from the repo instructions. Only one Part 1 label is cross-referenced anywhere (@fig-rf-volume-coil-birdcage, inside ch03), so a rename pass would be safe. Say the word and I will do it. -->
 
 ## Machine Room
 
@@ -62,16 +61,16 @@ The machine room sits behind the scanner room and holds the equipment that has t
 
 ::: {.panel-tabset}
 ## Machine room
-![The machine room, showing gradient amplifiers and support infrastructure.](images/ch01/gradient-amplifiers.png){#fig-gradient-amplifiers fig-alt="Photo of the machine room interior showing gradient amplifiers and piping."}
+![The machine room, showing gradient amplifiers and support infrastructure.](images/ch01/gradient-amplifiers.png){#fig-ch01-gradient-amplifiers fig-alt="Photo of the machine room interior showing gradient amplifiers and piping."}
 
 ## Gradient amplifiers
-![Close-up of the gradient amplifier electronics rack.](images/ch01/gradient-amplifier-rack.png){#fig-gradient-amplifier-rack fig-alt="Close-up photo of a researcher examining the gradient amplifier electronics rack."}
+![Close-up of the gradient amplifier electronics rack.](images/ch01/gradient-amplifier-rack.png){#fig-ch01-gradient-amplifier-rack fig-alt="Close-up photo of a researcher examining the gradient amplifier electronics rack."}
 
 ## People
-![The machine room: Adam Kerr and Michael Perry at the patch panel connecting the machine room to the scanner room.](images/ch01/patch-panel.png){#fig-patch-panel fig-alt="Photo of two people standing in the machine room near the patch panel."}
+![The machine room: Adam Kerr and Michael Perry at the patch panel connecting the machine room to the scanner room.](images/ch01/patch-panel.png){#fig-ch01-patch-panel fig-alt="Photo of two people standing in the machine room near the patch panel."}
 
 ## Patch panel and waveguides
-![Waveguides and patch panel on the scanner room wall.](images/ch01/waveguides.png){#fig-waveguides fig-alt="Close-up photo of waveguides and patch panel connections."}
+![Waveguides and patch panel on the scanner room wall.](images/ch01/waveguides.png){#fig-ch01-waveguides fig-alt="Close-up photo of waveguides and patch panel connections."}
 :::
 
 The machine room houses critical supporting infrastructure, including gradient and RF amplifiers, power supplies, cooling hardware, and penetration panels. Many cables and pipes pass between the machine room and the scanner room. Conductive cables use filtered feedthroughs, while waveguides provide RF-safe paths for appropriate connections.
@@ -80,7 +79,7 @@ The last two tabs show the patch panel, where those connections are made, and th
 
 ## Chilled Water Cooling
 
-![Chilled water cooling system in the machine room.](images/ch01/chilled-water.png){#fig-chilled-water fig-alt="Photo of the chilled water pipes and cooling system in the machine room."}
+![Chilled water cooling system in the machine room.](images/ch01/chilled-water.png){#fig-ch01-chilled-water fig-alt="Photo of the chilled water pipes and cooling system in the machine room."}
 
 A chilled-water loop removes heat from components that dissipate substantial power during scanning. Rapidly switched currents heat the gradient coils, and the gradient and RF power amplifiers also generate considerable heat.
 
@@ -90,10 +89,10 @@ The machine room also holds the helium compressor, which supplies high-pressure 
 
 ::: {.panel-tabset}
 ## Multiple dewars
-![Liquid helium Dewars stored in the hallway outside the scanner room.](images/ch01/helium-dewars.png){#fig-helium-dewars fig-alt="Photo of multiple liquid helium Dewars lined up in a hallway."}
+![Liquid helium Dewars stored in the hallway outside the scanner room.](images/ch01/helium-dewars.png){#fig-ch01-helium-dewars fig-alt="Photo of multiple liquid helium Dewars lined up in a hallway."}
 
 ## Dewar closeup
-![Close-up of a liquid helium Dewar with MRI KeepCOLD Services label.](images/ch01/helium-dewar-closeup.png){#fig-helium-dewar-closeup fig-alt="Close-up photo of a liquid helium Dewar showing the cryogenic liquid warning label."}
+![Close-up of a liquid helium Dewar with MRI KeepCOLD Services label.](images/ch01/helium-dewar-closeup.png){#fig-ch01-helium-dewar-closeup fig-alt="Close-up photo of a liquid helium Dewar showing the cryogenic liquid warning label."}
 :::
 
 Dewars are large, double-walled cryogenic vessels used to transport and store liquid helium. A high vacuum between the inner and outer walls, together with radiation shielding, greatly reduces heat transfer. Their metal walls are designed to be mechanically strong while limiting heat flow to the liquid.
@@ -102,6 +101,6 @@ Liquid helium keeps the magnet windings near 4.2 K ($-269^\circ\text{C}$), below
 
 ## MRI Vendors
 
-![The three major vendors of human MRI systems: GE, Siemens, and Philips.](images/ch01/mri-vendors.png){#fig-mri-vendors fig-alt="Slide showing photos of scanners from GE, Siemens, and Philips with bullet points about the vendor landscape."}
+![The three major vendors of human MRI systems: GE, Siemens, and Philips.](images/ch01/mri-vendors.png){#fig-ch01-mri-vendors fig-alt="Slide showing photos of scanners from GE, Siemens, and Philips with bullet points about the vendor landscape."}
 
 GE HealthCare, Siemens Healthineers, and Philips are longstanding major suppliers of human MRI systems. The underlying physics is the same across platforms, but software interfaces, gradient hardware, pulse-sequence implementations, and image-reconstruction algorithms differ. These differences can introduce vendor-specific variation, so multisite studies often require explicit harmonization before data are pooled. Bruker is a major supplier of small-bore preclinical systems; other manufacturers also serve the clinical and research markets.
