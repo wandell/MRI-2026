@@ -1,0 +1,4 @@
+interface:
+  display_name: "MR Instrumentation"
+  short_description: "Review MRI hardware and safety science"
+  default_prompt: "Use $mr-instrumentation to review this MRI hardware lesson for scientific accuracy."

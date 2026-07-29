@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brain Systems"
+  short_description: "Review neuroanatomy and neurovascular science"
+  default_prompt: "Use $brain-systems to review this neuroanatomy lesson for accuracy."

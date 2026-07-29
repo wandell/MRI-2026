@@ -1,0 +1,4 @@
+interface:
+  display_name: "Functional MR Signals"
+  short_description: "Review BOLD and neurovascular signal science"
+  default_prompt: "Use $functional-mr-signals to review this BOLD fMRI lesson."

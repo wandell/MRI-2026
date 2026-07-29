@@ -1,0 +1,4 @@
+interface:
+  display_name: "MR Signals"
+  short_description: "Review MR signal science and notation"
+  default_prompt: "Use $mr-signals to review this MR signal lesson for scientific accuracy."

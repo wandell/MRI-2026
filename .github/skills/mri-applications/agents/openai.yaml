@@ -1,0 +1,4 @@
+interface:
+  display_name: "MRI Applications"
+  short_description: "Review translational MRI interpretation claims"
+  default_prompt: "Use $mri-applications to review this MRI application lesson."

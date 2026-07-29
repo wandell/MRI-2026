@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quantitative MRI"
+  short_description: "Review qMRI models and parameter claims"
+  default_prompt: "Use $quantitative-mri to review this qMRI lesson."

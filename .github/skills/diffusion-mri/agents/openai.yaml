@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diffusion MRI"
+  short_description: "Review diffusion models and tractography claims"
+  default_prompt: "Use $diffusion-mri to review this diffusion MRI lesson."

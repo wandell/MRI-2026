@@ -1,0 +1,4 @@
+interface:
+  display_name: "fMRI Data Analysis"
+  short_description: "Review fMRI models and statistical inference"
+  default_prompt: "Use $fmri-data-analysis to review this fMRI analysis lesson."

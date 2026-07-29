@@ -1,0 +1,4 @@
+interface:
+  display_name: "MR Image Formation"
+  short_description: "Review k-space and reconstruction science"
+  default_prompt: "Use $mr-image-formation to review this MRI image-formation lesson."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Neuroscience fMRI"
+  short_description: "Review retinotopy and visual fMRI science"
+  default_prompt: "Use $visual-neuroscience-fmri to review this visual fMRI lesson."
