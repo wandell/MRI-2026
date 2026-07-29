@@ -23,44 +23,43 @@ In this section we review the relationship between the programming parameters an
 ## Pulse sequency programming
 
 ![The main elements we control in the MR instrument (McRobbie et al., *MRI: From Picture to Proton*, 2e, Fig. 9.1).](images/ch05/pulse-sequency-programming.png){#fig-ch05-pulse-sequency-programming}
-The instrument components we control are the signals on the RF coil transmission and the large imaging gradients. We control both the amplitudes and timing of those signals.  The steady state field ($B_0$) is not varied, though we might notice some of its imperfections and try to calibrate them out using a method called **shimming**. 
-
+The instrument components we control are the signals on the RF coil transmission and the large imaging gradients. We control both the amplitudes and timing of the control signals. The steady state field ($B_0$) is not varied, though we often begin a scan by measuring its imperfections and compensating for them, a method called **shimming**. 
 
 ## User’s console: Adjusts pulse sequence parameters
 
 ::: {.panel-tabset}
 
-## Step 1
+## Console 1
 
 ![User’s console: Adjusts pulse sequence parameters — step 1.](images/ch05/users-console-adjusts-pulse-sequence-parameters-1.png){#fig-ch05-users-console-adjusts-pulse-sequence-parameters-1}
 
-## Step 2
+## Console 2
 
 ![User’s console: Adjusts pulse sequence parameters — step 2.](images/ch05/users-console-adjusts-pulse-sequence-parameters-2.png){#fig-ch05-users-console-adjusts-pulse-sequence-parameters-2}
 
-## Step 3
+## Console 3
 
 ![User’s console: Adjusts pulse sequence parameters — step 3.](images/ch05/users-console-adjusts-pulse-sequence-parameters-3.png){#fig-ch05-users-console-adjusts-pulse-sequence-parameters-3}
 
 :::
 
-But the programming is principally designed to control the gradients and RF signal. The orchestration of the signal amplitudes and timing is called 88pulse sequence programming**'**. The three tabs in this image show screen shots with the various parameters we set to control the actions of the pulse sequence.
+The programming is principally designed to control the gradients and the RF excitation signal. The orchestration of the signal amplitudes and timing is called **pulse sequence programming**. The three tabs in this image show screen shots with the various parameters we set to control the actions of the pulse sequence.
 
 ## MR pulse sequences
 
 ![MR pulse sequences.](images/ch05/mr-pulse-sequences.png){#fig-ch05-mr-pulse-sequences}
 
-This diagram shows a conventional way we represent the pulse sequence.  A classic sequence, called Spin Echo, is shown.  We will learn about this particular sequence later.  For now, just notice that the horizontal axis refers to time and each of the lines shows one of the parameters we control in the sequence. 
+This diagram shows a conventional way to represent the pulse sequence.  It represents the control for a classic sequence, called **Spin Echo**. We will learn about this particular sequence later.  For now, just notice that the horizontal axis refers to time, increasing from left to right. Each of the lines shows how we control one of the sequence parameters, say a gradient or the RF excite.
 
-By choosing different parameters, we measure different MR parameters that reveal different features of the substrate (brain, in our case). The pulse sequence can be adjusted to highlight certain differences and diminish others.
+By choosing different parameter timings, the RF signal we measure captures different types of MR signals. These different signals depend on different tissue properties of the substrate (brain, in our case). The pulse sequence is adjusted to highlight certain brain differences and diminish others.
 
-The MR images that we produce are not at all what you see if you look at the brain with your eye. The MR images represent magnetic resonance quantities that **WE DO NOT SEE**.  These measurements of the magnetic field determined by properties of the tissue. The images represent the otherwise invisible physical properties.
+The MR images that we produce are not at all what you see if you look at the brain with your eye. MR images are reconstructed from electrical signals detected after RF excitation. Those signals depend on tissue properties, allowing MRI to make otherwise invisible tissue differences visible.
 
 ## MR quantities (weighted)
 
 ![MR quantities (weighted).](images/ch05/mr-quantities-weighted.png){#fig-ch05-mr-quantities-weighted}
 
-An important aspect of magnetic resonance is that the same instrument can be programmed to measure different MR signals. This slide shows three images from a similar slice of a brain, obtained using three different pulse sequences. The three sequences measure different fundamental physical properties of the tissue.  
+This slide shows three images from a similar slice of a brain, obtained using three different pulse sequences. The three sequences have different sensitivity to tissue properties.
 
 <!-- 
 The slice on the left is from the Book, 5.4A
@@ -76,32 +75,40 @@ Here is a good site!
 
 ![MR pulse sequence parameter choices.](images/ch05/mr-pulse-sequence-parameter-choices.png){#fig-ch05-mr-pulse-sequence-parameter-choices}
 
-Even when using a single basic pulse sequence, altering the parameters can emphasize different physical properties of the system. In this image, the authors used a spin echo type sequence to produce the array of images at the right.  The sequence timing parameters are varied, and each set of parameters produces a different signal and thus different image. By selecting different parameters we measure different signals; these signals depend on different tissue properties.  
+Even using the same general pulse sequence (spin-echo), altering the values of the parameters evokes a signal that depends on different physical properties of the substrate. 
 
-The main point of these images is to show you that the MR instrument is quite flexible. The same instrument can be programmed to measure different aspects of the tissue under study.
+In this image array, the authors used a spin echo sequence but swept out the timing parameters (TE and TR). This is often a good idea when you are trying to understand a system. 
+
+This experiment demonstrates that the MR instrument is quite flexible. The same instrument can be programmed to measure different aspects of the tissue under study.
 
 ## To the future – and beyond
 
 ![To the future – and beyond.](images/ch05/to-the-future-and-beyond.png){#fig-ch05-to-the-future-and-beyond}
 
-Much is known about the relationship between the sequence, its parameters, and the underlying tissue.  But this field is certainly not finished.  New discoveries continue to be made and people invent new ideas about pulse sequences that enable us to measure new things.  One of the main topics of this course, measuring functional signals from the brain, was only invented thirty years ago. Many new ideas continue to emerge.
+Much is known about the relationship between the sequence, its parameters, and the underlying tissue.  But this field is certainly not fully worked out.  New discoveries continue to be made and people invent new ideas about pulse sequences that enable us to measure new things.  One of the main topics of this course, measuring functional signals from the brain, was only invented thirty years ago. Many new ideas continue to emerge. 
+
+Those ideas will be built upon the foundations that we do understand today.  That's what we start to cover in the next section.
 
 ## MR: Free induction decay
 
+<!--
 ![MR: Free induction decay.](images/ch05/mr-free-induction-decay.png){#fig-ch05-mr-free-induction-decay}
+-->
 
-In this section we cover the most basic of MR signals, a signal that is the foundation of all other magnetic resonance signals: **free induction decay**.  Nearly everything else we do will be based on understanding this signal.
 
 <!-- 
-Deal with these some more in the future teaching
+TODO (Brian):  Deal with these some more in the future teaching
 Williamson article for teaching.
 Jw teaching repository from Jon winawer
 Is Quantum Mechanics necessary for understanding Magnetic Resonance? LARS G. HANSON
 -->
 
+
 ## The free induction decay experiment
 
-::: {.panel-tabset}
+The **free induction decay** is the simplest MR signal experiment. The basic experiment and the signal we measure are fairly straightforward. We build up the experiment in the series of images in this panel.
+
+::: {.panel-tabset #fig-ch05-panel-fid}
 
 ## The substrate
 
@@ -109,41 +116,46 @@ Is Quantum Mechanics necessary for understanding Magnetic Resonance? LARS G. HAN
 
 ## The equipment
 
-![We apply an RF pulse to the substrate using an RF coil. The pulse is an oscillating signal at a particular frequency.  We then measure a voltage that comes from the substrate, using the same coil. Under the right conditions there is a signal emitted from the substrate following the RF excitation.](images/ch05/the-free-induction-decay-experiment-2.png){#fig-ch05-the-free-induction-decay-experiment-2 fig-cap-location="bottom"}
+![We apply an RF pulse to the substrate using an RF coil. The pulse is an oscillating signal at a chosen frequency. After the RF excitation, the same coil detects a voltage induced by the substrate.](images/ch05/the-free-induction-decay-experiment-2.png){#fig-ch05-the-free-induction-decay-experiment-2 fig-cap-location="bottom"}
 
 ## The signal
 
-![The voltage signal we measure is also an oscillating voltage, at the same frequency as the RF signal we applied. The response starts with a relatively high amplitude and decays over time.](images/ch05/the-free-induction-decay-experiment-3.png){#fig-ch05-the-free-induction-decay-experiment-3 fig-cap-location="bottom"}
+![The measured voltage oscillates. The response starts with a relatively high amplitude and decays over time.](images/ch05/the-free-induction-decay-experiment-3.png){#fig-ch05-the-free-induction-decay-experiment-3 fig-cap-location="bottom"}
 
 :::
-The experimental equipement and the signal from a free induction decay experiment.
 
-Remember - at this point in our understanding we are not measuring an image!  We are measuring a time varying voltage signal from a beaker of water.  It will be a little while from now before we get to the topic of how we might form an image. The following material is all about measurements from a single volume.
+We place a beaker of water, in this example, inside a uniform magnetic field. We then apply an RF pulse at a chosen frequency to the water. After the pulse, the coil detects a voltage induced by the beaker. That's it.
+
+Remember - at this point in our understanding we are not measuring an image!  We are measuring one time varying voltage signal from a beaker of water.  It will be a little while from now before we get to the topic of how we might form an image. The following material is all about measurements from a single volume.
 
 <!-- 
-
-Not sure what this means.  Maybe a YouTube video?
-
 Paul Callaghan
 Carries out a magnetic resonance experiment for free induction decay.
+Worth finding the YouTube video.  He is very good.
+Here is a link:  https://youtu.be/MPXbDDRumwM?si=qr8_dvySxb0VfQA7
+Not sure where this should go.  Could be here.  He has already defined precession.
+
+He calls the RF excitation a pre-polarizing pulse.
+
+There are many good YouTubes from him.  Here is another.  https://www.youtube.com/watch?v=o8PzreUSbVE
+
 -->
 
-## The FID signal depends on the B1 duration
+## The FID signal depends on RF-pulse duration
+
+The three images in this panel show an interesting—and surprising—aspect of the FID experiment. We hold the other experimental settings fixed and vary the duration of the RF excitation pulse. This key observation will be explained after we develop a model of the magnetic resonance experiment.
 
 ::: {.panel-tabset}
 
 ## Short
-
-![The FID signal depends on the B1 duration — step 1.](images/ch05/the-fid-signal-depends-on-the-b1-duration-1.png){#fig-ch05-the-fid-signal-depends-on-the-b1-duration-1 fig-cap-location="bottom"}
+![The FID signal depends on RF-pulse duration — step 1.](images/ch05/the-fid-signal-depends-on-the-b1-duration-1.png){#fig-ch05-the-fid-signal-depends-on-the-b1-duration-1 fig-cap-location="bottom"}
 
 ## Medium
-
 ![The middle duration RF pulse.](images/ch05/the-fid-signal-depends-on-the-b1-duration-2.png){#fig-ch05-the-fid-signal-depends-on-the-b1-duration-2 fig-cap-location="bottom"}
 
 ## Long
-
 ![The longest duration RF pulse.](images/ch05/the-fid-signal-depends-on-the-b1-duration-3.png){#fig-ch05-the-fid-signal-depends-on-the-b1-duration-3 fig-cap-location="bottom"}
 
 :::
 
-The three panels in this tabbed figure represents a surprising result of that experiment. As we increase the strength of the RF excitation pulse, from a short pulse to a longer pulse, at first the signal we measure increases ().  But then, as the RF pulse gets 
+As we increase the duration of the RF excitation pulse, from a short pulse to a longer pulse, the signal initially increases. But then, as the RF pulse gets longer, the signal decreases and can nearly disappear. Why?

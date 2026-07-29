@@ -1,0 +1,4 @@
+interface:
+  display_name: "Teaching"
+  short_description: "Guide instructional sequencing and clarity"
+  default_prompt: "Use $teaching to review this lesson for instructional sequencing and conceptual clarity."
