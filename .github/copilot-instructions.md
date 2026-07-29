@@ -1,175 +1,35 @@
-# Quarto + VSCode Agent Rules for *Human Neuroimaging with MRI: A Primer*
+# Repository Instructions
 
-You are assisting with a Quarto book project stored in a GitHub repository. Your job is to help with **formatting, cross-references, figures, citations, layout, and build/debug issues** in `.qmd` files (and associated assets like CSS/JS), in a way that keeps the project maintainable.
+This repository is a Quarto book project for *Human Neuroimaging with MRI: A Primer*.
 
-## Working assumptions
-- Project type: **Quarto book** (`_quarto.yml` at repo root or book root).
-- Repository status: this is an **early draft** of lecture notes for a course taught at Stanford by Brian Wandell and at NYU by Jonathan Winawer.
-- Author writes and edits in **VSCode**.
-- Outputs: **HTML** is the primary target for previewing and rendering. **PDF** is created rarely (towards the end of the project). Assume cross-format compatibility matters for markup/styles unless told otherwise.
-- Citations: **BibTeX** is used (not CSL-only), and references are curated using bibtex-tidy and often imported from paperpile or google scholar.
-- Workspace instruction entrypoint: keep shared Copilot instructions in `.github/copilot-instructions.md`; supporting task-specific guidance lives in `.github/instructions/`.
-- The course title at Stanford is **Human Neuroimaging with MRI: A Primer**.
-- The repo is intentionally incomplete; large amounts of material may be added quickly over the next few days.
-- PowerPoint teaching slides and their original image assets are **not stored in this GitHub repository**; they live in separate instructor-managed directories on local machines.
-- Images derived from those teaching slides may be committed under `chapters/images`, and the exact workflow for managing those assets is still evolving.
-- The repo currently includes supplemental materials and shared resources in these folders:
-  - `chapters/resources` (supplementary material in md, html, or qmd format)
-  - `chapters/images`
-  - `styles`
-  - `local` (local drafts and characterization files; gitignored, and the place utility scripts write their output)
-  - `utility` (small, tracked Python scripts that audit or index the book — see "Utility scripts")
+## Global rules
 
-## Non-negotiables
-1. **Do not invent file paths, filenames, labels, or configuration keys.**
-   - If you need to refer to a file, first locate it by reading existing project structure (or ask the user to paste relevant snippets).
-  - This matters especially for slide-derived image assets, because some source materials live outside the repository.
-2. **Do not propose “big rewrites” unless explicitly asked.**
-   - Prefer minimal diffs and localized fixes.
-3. **Always preserve existing conventions** (IDs, label prefixes, directory layout, naming style) unless there is a strong reason to change—and if so, explain why and propose a safe migration.
-4. **Be explicit about HTML vs PDF behavior.**
-   - If a technique only works in HTML (e.g., text wrap around figures), say so and provide a PDF-safe fallback.
-5. **Treat missing content as normal in this stage of the project.**
-  - Prefer making scaffolding-safe changes that do not assume the repository is complete.
+- Keep edits minimal, localized, and consistent with the existing book structure.
+- Do not invent file paths, filenames, labels, or configuration keys; verify against the repository first.
+- Preserve existing conventions for chapter files, resource files, image locations, and cross-reference prefixes.
+- Prefer Quarto-native syntax and existing project patterns over custom HTML or ad hoc formatting.
+- Be explicit about HTML-versus-PDF behavior when a change is format-specific.
+- If a build or render issue appears, ask for the relevant file and the exact error text rather than guessing.
 
-## Quarto cross-references (book-scale)
-- Use Quarto’s native crossref system (commonly `@sec-*` and `@fig-*`).
-- In this draft stage, new part and chapter `.qmd` files should normally begin with a lightweight work-in-progress scaffold:
-  ```qmd
-  ---
-  date: last-modified
-  ---
+## Repository layout
 
-  # <Chapter or Part NAME> {.unnumbered}
+- Source chapters live in `chapters/`.
+- Chapter-specific resources live in `chapters/resources/`.
+- Image assets used by the book live in `chapters/images/`.
+- Shared styles live in `styles/`.
+- Utility scripts live in `utility/` and should write generated output to `local/`.
+- Quarto configuration lives in `_quarto.yml`.
 
-  {{< include "includes/WIP-callout.qmd" >}}
+## Tooling and workflow expectations
 
-  ---
-  ```
-- Sections should normally use the project’s established `@sec-*` convention rather than inventing a new cross-reference style.
-- Figure prefixes: use stable labels (`fig-...`, `tbl-...`, `eq-...`, `sec-...`).
-- When debugging refs:
-  - Confirm the label exists and is unique.
-  - Confirm the label is attached to the correct block.
-  - Confirm the output format supports the feature (HTML vs PDF differences).
-  - If stale intermediates are suspected, recommend a clean rebuild with specific folders (`_book/` or `_site/`) and rerender the relevant document.
+- Use Quarto for rendering and debugging book content.
+- Use `rg` instead of `grep` and `fd` instead of `find` when searching the repository from the terminal.
+- Keep BibTeX-related edits consistent with the existing `paperpile.bib` and `references.bib` workflow.
 
-## Figures, sizing, placement, and margin content
-- Prefer Quarto-native figure syntax and options such as `fig-cap`, `fig-alt`, `fig-align`, `fig-width`, `fig-height`, and `out-width`.
-- Margin figures should normally use `.column-margin` when appropriate.
-- If the user wants text wrapped around a figure, be explicit that this is usually HTML/CSS-specific and not reliably portable to PDF.
-- For figure and callout examples, see `.github/instructions/quarto-tips.md`.
+## Skill activation
 
-## VSCode workflow and debugging
-- Suggestions should be actionable in VSCode (specific files and minimal diffs).
-- **CRITICAL - Tool Preferences:** When searching files in the terminal, **AI agents MUST use `rg` (ripgrep) instead of `grep`**, and **use `fd` instead of `find`**. These are faster and natively installed/preferred in this environment.
-- Debug approach:
-  - Ask for exact error text and minimal reproducible snippets.
-  - Recommend `quarto check` and `quarto render` locally when that would narrow the issue.
-  - If the issue smells like a stale build, specify whether `_book/` or `_site/` should be cleaned before rerendering.
+Use the task-specific skills in `.github/skills/` when the request matches one of these workflows:
 
-## Utility scripts (`utility/`)
-Analysis work often produces something worth keeping: an audit across the chapters, an index, a consistency check over figures, labels, citations, or image assets. When that happens, **write it as a standalone script in `utility/` and suggest keeping it in the repository** rather than leaving the logic in a throwaway shell pipeline or chat transcript.
-
-- **The test for keeping it:** will it be re-run after the book changes? A one-off question answered by a single `rg` does not need a script. Anything that will be repeated — after a renaming pass, before a build, at the start of a review — should be one.
-- **Runnable as `python3 utility/<name>.py` from the repo root**, and ideally from anywhere: resolve the repository root from `__file__`, not from the current working directory.
-- **Standard library only.** These scripts must run without a virtualenv or an install step. If a third party package is genuinely required, say so explicitly and explain why.
-- **Read-only with respect to book sources.** A utility must not modify `chapters/`, `_quarto.yml`, or the `.bib` files as a side effect. Scripts that *do* rewrite sources (a renaming pass, for example) are a different thing: run them once under review, and do not leave them lying around as if they were safe to re-run.
-- **Write generated output to `local/`**, which is gitignored (`local/.gitignore` is `*`). The script is tracked; its output is not. Do not commit generated HTML, CSV, or reports.
-- **Open with a docstring** giving the exact command, what the script produces, where it writes, and any caveat about when the output goes stale.
-- Keep the name descriptive and hyphenated, matching the repository's file-naming style: `figure-audit.py`, not `audit.py`.
-
-Existing example: `utility/figure-audit.py` builds `local/figure-audit.html`, a contact sheet of every chapter figure beside its caption, filename, crossref label, and source line, with filters and flag checkboxes for review. Regenerate it after any renaming pass — a filename in a stale listing may refer to a different image once files have been renamed.
-
-## Citations and bibliography
-- Bibliography is managed with a shared master file `paperpile.bib` plus an optional project-local `references.bib` for additions or fixes made specifically for this repository.
-- Treat `paperpile.bib` as an externally managed bibliography snapshot, not as the default place to do repository-local curation.
-- Prefer putting project-specific additions into `references.bib`.
-- The preferred VS Code setup is a workspace-local `.vscode/settings.json` that explicitly sets `xrimson.bibtex-tidy` as the default formatter for BibTeX files.
-- `bibtex-tidy` may fail silently on save when the `.bib` file has syntax errors; when formatting stops working, diagnose with `npx bibtex-tidy paperpile.bib` to get a real parse error and line number.
-
-## YAML and project configuration
-- Be conservative editing `_quarto.yml`:
-  - Only propose changes that you can justify in terms of the symptom.
-  - When recommending resource inclusion (CSS/JS), prefer Quarto-supported fields (`format: html: include-in-header`, `resources`, etc.) and match existing patterns.
-- Keep metadata aligned with the current course framing: Stanford title, both authors listed, and draft-stage assumptions.
-- Don’t introduce new dependencies unless necessary.
-
-## AI-authored prose in chapters
-- When an AI agent converts PPTX slides into `.qmd` chapters, it does not only transcribe slide text and speaker notes verbatim. It regularly writes original connective prose: transition sentences between figures, short definitions, historical/background context, and synthesis that ties a sequence of slides into a narrative.
-- This generated prose is a **first draft written in the author's voice as best the agent can approximate it**, not a direct quotation of the source deck. It should be treated as draft text requiring the same human review as any other AI-assisted writing — check it for factual accuracy, tone, and whether it says what the instructor actually wants said.
-- Slide-derived figures/captions are generally lower-risk (they come from the deck almost directly), while paragraph-level prose between figures is the highest-value thing to spot-check first.
-- See `TODO.md` at the repo root for a running list of specific things flagged for human review after each extraction pass.
-
-## Image management
-- **See `.github/instructions/pptx-to-qmd-workflow.md` for the full PPTX → PNG → `.qmd` extraction workflow** (conversion commands, slide identification, naming, build sequences, crossref labels).
-- Treat slide decks and other instructor-specific source materials as **external working files**, not default repository assets.
-- Do **not** assume PPTX files belong in the repo unless the user explicitly wants shared versioning of those source decks.
-- Repository image assets should normally be the exported derivatives actually used by the Quarto notes, stored in `chapters/images`.
-- A local alias or shortcut into `chapters/images` is an acceptable personal workflow convenience, but it should not become a required project dependency.
-- Prefer image formats based on content type:
-  - `svg` for clean vector-style schematics when export quality is verified
-  - `png` for diagrams, plots, annotations, and text-heavy slide exports
-  - `jpg` for photographic material where lossy compression is acceptable
-- Treat PowerPoint SVG export as useful but inconsistent; verify that the result stays meaningfully vector before adopting it.
-- Avoid adding process-heavy asset tracking unless the contributors ask for it; a manifest is optional, not required.
-- Use stable descriptive filenames for repo images. Prefer chapter-based names of the form `chNN-topic-description.ext` for chapter-specific figures, and reserve `partN-topic-description.ext` for images that genuinely belong to a part-level overview or divider page.
-- Favor short names tied to the book structure and concept, for example `ch02-kspace-sampling-grid.png`, `ch03-bold-signal-timeseries.svg`, or `part2-image-formation-overview.png`.
-- When proposing or generating filenames, prefer consistent, human-reviewed names over raw PowerPoint export names.
-- If AI tools help rename exported images, treat the generated names as suggestions and keep the final naming under human review.
-
-## Output-format-aware guidance
-Whenever you propose formatting/layout:
-- State whether it applies to:
-  - HTML only,
-  - PDF only,
-  - both.
-- Provide a fallback if the primary method is format-specific.
-
-## Style and communication rules
-- Be concise and technical; avoid generic advice.
-- Always include:
-  1) **Diagnosis hypothesis** (what you think is happening),
-  2) **One best fix** (minimal change),
-  3) **How to verify** (what to render/check),
-  4) **If it fails** (next most likely cause).
-- Use code fences for snippets, and keep them minimal.
-
-## Common “known project facts” (treat as defaults)
-- The project uses:
-  - Early-draft lecture notes with incomplete coverage
-  - Quarto book crossrefs
-  - `@sec-*` section references
-  - `.column-margin` for margin figures
-  - BibTeX citations
-  - VSCode as primary editor
-  - External PowerPoint slide sources that are not tracked in the repo
-  - `chapters/images` for repo-stored image derivatives from teaching materials
-  - Lightweight image-management conventions rather than heavy asset bookkeeping
-  - `utility/*.py` for repeatable audits and indices, writing their output to the gitignored `local/`
-- Respect these defaults unless the user says otherwise.
-
-## Related instruction files
-- `.github/instructions/quarto-tips.md` contains concrete Quarto syntax examples for figures, callouts, equations, videos, lists, and citations.
-- `.github/instructions/article-publish.instructions.md` covers the standalone HTML publishing workflow when the user asks to prepare or upload a talk or article.
-- `.github/instructions/pptx-to-qmd-workflow.md` is the **primary reference for converting PowerPoint teaching slides into `chapters/images/` PNGs and chapter `.qmd` files.** Read it before doing any PPTX → PNG extraction or chapter-building work. It covers: identifying slides by title (not slide number, since hidden slides shift PDF page numbers), the `soffice`/`pdftoppm` conversion pipeline, extracting slide notes via `python-pptx`, progressive-build (`panel-tabset`) handling, the `images/chNN/` naming convention, and the `#fig-chNN-*` crossref label requirements.
-
-## Safety rails for debugging
-- If a build error occurs, do not guess wildly:
-  - Request the relevant file header + failing block + full error text.
-  - If the error includes line numbers, use them.
-- Don’t suggest switching tools or frameworks (e.g., “move to WordPress”)—this repo is Quarto-based.
-
---- 
-
-### What I’m best at
-- Fixing Quarto markdown formatting issues
-- Crossref and numbering problems
-- Figure placement, margin content, and layout tweaks
-- BibTeX citation troubleshooting in Quarto
-- VSCode-centric debugging workflows for Quarto books
-
-### What I should avoid
-- Large-scale refactors without request
-- Unverifiable claims about the repo structure
-- Format-specific hacks without clearly labeling them as such
+- Quarto authoring and chapter formatting
+- PPTX slide extraction and conversion into Quarto content
+- Standalone HTML publishing and upload

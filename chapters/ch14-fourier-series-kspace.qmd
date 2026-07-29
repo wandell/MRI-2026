@@ -14,6 +14,8 @@ date: last-modified
 
 Linear models are extremely important in science and engineering.  The Fourier series is a specific example of a linear model, perhaps the most important one, where the basis functions are harmonics (sin and cos).  In this chapter we will explore the Fourier series as a linear model, and how it relates to k-space in MRI.
 
+For additional context on the historical and mathematical background of Fourier analysis, see the resource [Jean-Baptiste Fourier and the Fourier series](resources/jean-baptiste-fourier.qmd).
+
 A simple mathematical description of general linear models can be found in an [appendix of Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-01-linearsystems.html).  
 
 ## Linear models are important in science and engineering
@@ -40,46 +42,23 @@ THe special role of Fourier Series is described in this [appendix of Foundations
 
 ![The Fourier series is a linear model.](images/ch14/the-fourier-series-is-a-linear-model.png){#fig-ch14-the-fourier-series-is-a-linear-model}
 
-Why the Fourier  series were important (**From wikipedia **):
-
-"There were three important contributions in this work, one purely mathematical, two essentially physical. In mathematics, Fourier claimed that any function of a variable, whether continuous or discontinuous, can be expanded in a series of sines of multiples of the variable. Though this result is not correct without additional conditions, Fourier's observation that some discontinuous functions are the sum of infinite series was a breakthrough. The question of determining when a Fourier series converges has been fundamental for centuries. Joseph-Louis Lagrange had given particular cases of this (false) theorem, and had implied that the method was general, but he had not pursued the subject. Peter Gustav Lejeune Dirichlet was the first to give a satisfactory demonstration of it with some restrictive conditions. This work provides the foundation for what is today known as the Fourier transform."
-[Other material in the following is from](https://mathshistory.st-andrews.ac.uk/Biographies/Fourier/)
-
 ## The harmonic basis functions (sin and cos)
 
 ![The harmonic basis functions (sin and cos).](images/ch14/the-harmonic-basis-functions-sin-and-cos.png){#fig-ch14-the-harmonic-basis-functions-sin-and-cos}
 
-Sines and cosines are the harmonmic functions
+Sines and cosines are the harmonmic functions.  The curves are sines and cosines (harmonics) at matched frequencies and amplitudes.
 
 ## Linear models:  Matrix tableau representation
 
 ![Linear models:  Matrix tableau representation.](images/ch14/linear-models-matrix-tableau-representation.png){#fig-ch14-linear-models-matrix-tableau-representation}
 
-Matrices are a a clear way to visualize and think about linear models.
+Matrices are a a clear way to visualize and think about linear models.  The vector on the left is the weighted sum of the columns of the matrix on the right.  The weights applied to the columns are in the vector on the far right.
 
 ## Estimating the weights from the signal
 
 ![Estimating the weights from the signal.](images/ch14/estimating-the-weights-from-the-signal.png){#fig-ch14-estimating-the-weights-from-the-signal}
 
-Teachmri:  harmonicsFFTandImages29
-
-## History of Fourier’s publication
-
-::: {.panel-tabset}
-
-## About Fourier himself
-
-![Historical note: Fourier.](images/ch14/historical-note-fourier.png){#fig-ch14-historical-note-fourier}
-
-## Early history
-
-![History of Fourier’s publication — step 1.](images/ch14/history-of-fouriers-publication-1.png){#fig-ch14-history-of-fouriers-publication-1}
-
-## French academy
-
-![History of Fourier’s publication — step 2.](images/ch14/history-of-fouriers-publication-2.png){#fig-ch14-history-of-fouriers-publication-2}
-
-:::
+**Teachmri:**  harmonicsFFTandImages29
 
 ## 2D Fourier Transform:Sinusoidal and cosinusoidal images (Harmonic Patterns)
 
