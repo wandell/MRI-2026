@@ -8,55 +8,61 @@ date: last-modified
 
 ---
 
-## The two types of signals: Longitudinal recovery (T1)
+This chapter and the following describe two of the three basic types of MR signals:  The signals we call *T1* and *T2*.  We will describe how to measure the third type of signal, proton density (*PD*) later in the notes.
+
+<!--
+## Longitudinal recovery (T1)
 
 ![The two types of signals: Longitudinal recovery (T1).](images/ch07/the-two-types-of-signals-longitudinal-recovery-t1.png){#fig-ch07-the-two-types-of-signals-longitudinal-recovery-t1}
-
-This chapter and the next describe two of the three basic types of MR signals:  The signals we call *T1* and *T2*.  We will describe how to measure the third type of signal, proton density (*PD*), another time.  This chapter describes the T1 signal.
-
-## The RF signal (B1) causes the net magnetization to precess
 
 ![The RF signal (B1) causes the net magnetization to precess: the rotating frame and laboratory frame views (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch07/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch07-the-rf-signal-b1-causes-the-net-magnetization-to-p}
 
 In both cases, for T1 and T2, we begin the measurement process by applying a radiofrequency pulse to the substrate, as we reviewed in the previous chapter. This RF *excitation* is set to a specific temporal frequency, determined by the magnetic field strength, that will cause the *spins* (hydrogen nuclei) to *precess* around the axis of the main magnetic field - the $B_0$ field. That is what is shown in this slide.  The RF pulse causes the net magnetization to tilt over and precess.  Over time, it spins back up to its original state, aligned with the z-axis. Also see @fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1 and @fig-ch06-precession-of-net-magnetization.
+-->
 
-## The net magnetization is summarized by two components
+## Net magnetization is comprised of two components
 
 ![The net magnetization is summarized by two components.](images/ch07/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch07-the-net-magnetization-is-summarized-by-two-compone}
 
-Conceptually, without any real physical intuition yet, you can see that the net magnetization vector can be separated into two components: one is its projection onto the z-axis, which we call its *longitudinal component*.  The second is its projection onto the x-y plane, which we call its transverse component. 
+Conceptually, without any real physical intuition yet, you can see that the net magnetization vector can be separated into two components: one is its projection onto the z-axis, which we call its *longitudinal component*.  The second is its projection onto the x-y plane, its *transverse component*.
 
-Because the net magnetization is precessing around the z-axis, its direction in the x-y plane keeps changing.
+As we reviewed in the previous chapter, the net magnetization precesses around the z-axis.  As its direction in the x-y plane changes, the induced voltage in the receive coil changes.  But what is happening to the magnetization in the z-axis?  That magnetization does not produce a signal. What is it due to and how can we measure it?
+
+It was a deep insight of the physicists to understand that the source of these two components differs substantially.  Much of the value of the MR instrument arises from the fact that this one signal arises from these different causes.  That is why the MR signal is particularly versatile, and it is something you will want to remember when you think about what you are measuring in the MRI signal.
 
 ## The longitudinal component:  High- and low-stability states
 
 ![The longitudinal component:  High- and low-stability states (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.6).](images/ch07/the-longitudinal-component-high-and-low-stability.png){#fig-ch07-the-longitudinal-component-high-and-low-stability}
 
-We now start to think about the physical causes for these two components.  It was really a deep insight of the physicists to understand that the source of these two components differs substantially.  Much of the value of the MR instrument arises from the fact that this one signal arises from these different causes.  That is why the MR signal is particularly versatile, and it is something you will want to remember when you think about what you are measuring the the MRI signal.
+In the previous chapter, we noted that the precessing spins are mainly aligned with the main magnetic field (parallel), or directly opposite (anti-parallel).  A good metaphor to understand this is shown in @fig-ch07-the-longitudinal-component-high-and-low-stability.  That image shows two bars in a gravitational field.  The bar that is hanging low is in a low energy state and will stay that way unless a strong breeze comes along to move it.  The bar that is upright is in a locally low energy state - it might stay that way - but even a weak breeze might come along to move it and in that case it would drop to the low energy state.  This is a metaphor for the direction of the spin magnetic fields.  More of them are aligned parallel to the magnetic field than anti-parallel to it.
 
 ## Energy from an RF pulse changes spins between the two stable binary states
 
 ![Energy from an RF pulse changes spins between the two stable binary states (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.9).](images/ch07/energy-from-an-rf-pulse-changes-spins-between-the.png){#fig-ch07-energy-from-an-rf-pulse-changes-spins-between-the}
 
-The longitudinal signal is described as arising from a difference in the number of spins that are aligned with the main magnetic field (*parallel*), and thus in a relatively low energy state, and the number of spins that are aligned directly opposite (*anti-parallel*) to the main field.  Both of these states are relatively stable, as illustrated in the slide. It shows a bar hanging down in a gravitational field, and that is a fairly stable position.  It is also possible for the bar to be just balanced, completely opposite to the gravitational field.  That is somewhat stable, and it might stay in that position for a while.  But if the bar has any amount of tilt, the gravitational field will pull it down quickly into the low energy, default position. 
+The longitudinal signal arises from the difference in the number of spins that are aligned with the main magnetic field (*parallel*), and thus in a relatively low energy state, and the number of spins that are aligned directly opposite (*anti-parallel*) to the main field.  Both of these states are very stable compared to any other orientation.
 
-## Spin Transition and Quantum Energy
+## Spin transition and quantum energy
 
 ![Spin Transition and Quantum Energy (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.8).](images/ch07/spin-transition-and-quantum-energy.png){#fig-ch07-spin-transition-and-quantum-energy}
 
-To move a spin between two states, we require an RF photon whose energy is matched to the difference in energy between the two states;
- 
-The energy of an RF photon is $E = hv$ where $h$ is Planck’s constant and $v$ is RF frequency
+A magnetic field splits the allowed energy states of a magnetic moment. For proton spin, the energy separation between the parallel and antiparallel states increases linearly with the main field, $B_0$. This splitting is called the **Zeeman effect**.
 
-The RF pulse frequency we need to flip the spins varies with field strength, as explained by Sir Joseph Larmor. For more on Larmor and the relationship between frequency and magnetic field strength, see the resource [Joseph Larmor and his frequency](resources/joseph-larmor.qmd).
+An RF photon can change the spin state when its energy matches the separation:
 
-The energy in an RF signal at some frequency, $f$, scales with the frequency. The energy - or equivalently frequency - that is required to flips a spin between two states is proportional to field strength, just as the amount of energy to move the bar from the low hanging state to the upright state would depend on the strength of the magnetic field. In the case of electromagnetic theory, we say the energy difference between the two states differs with B0 (*Zeeman effect*).
+$$
+\Delta E = h f_L.
+$$
 
-## The Larmor frequency depends on B0 field
+Thus, a stronger $B_0$ requires a higher resonant frequency, $f_L$.
 
-![The Larmor frequency depends on B0 field: $f_L = \gamma B_0$, so the resonant frequency is 127.4 MHz at 3 T.](images/ch07/the-larmor-frequency-depends-on-b0-field-1.png){#fig-ch07-the-larmor-frequency-depends-on-b0-field-1}
+## The frequency depends on the $B_0$ field
 
-The relationship is linear: the Larmor frequency is the gyromagnetic ratio $\gamma$ (42.58 MHz/T for hydrogen) times the field strength.  At 1.5 T we excite and receive near 64 MHz, at 3 T near 127 MHz, and at 7 T near 300 MHz — all in the radio band, which is why the excitation and the receiver are radiofrequency devices.  Higher field strength means a larger energy gap between the two spin states, and so a larger population difference and a larger signal.  That is the main reason for building higher-field scanners.
+![The Larmor frequency depends on the $B_0$ field: $f_L = \gamma B_0$, so the resonant frequency is 127.4 MHz at 3 T.](images/ch07/the-larmor-frequency-depends-on-b0-field-1.png){#fig-ch07-the-larmor-frequency-depends-on-b0-field-1}
+
+The relationship between the magnetic field strength and the energy (frequency) need to change states is linear. The frequency, called *Larmor frequency*, is named after [Joseph Larmor](resources/joseph-larmor.qmd). This is the temporal frequency the RF pulse must use to impact the spins in a particular magnetic field.
+
+The Larmor frequency value is the gyromagnetic ratio $\gamma$ (42.58 MHz/T for hydrogen) times the field strength.  At 1.5 T we excite and receive near 64 MHz, at 3 T near 127 MHz, and at 7 T near 300 MHz — all in the radio band, which is why the excitation and the receiver are radiofrequency devices.  Higher field strength means a larger energy gap between the two spin states, and so a larger population difference and a larger signal.  That is the main reason for building higher-field scanners.
 
 ## Spin-lattice interactions
 
@@ -145,4 +151,3 @@ $$
 $$
 
 Note that it is the *rates* that average, not the time constants.  This is the same bookkeeping that appears in the next chapter, where the rates of two de-phasing mechanisms add to give T2*.  Fast exchange is what makes a single measured T1 interpretable as a property of tissue composition, and it is the basis of the quantitative T1 methods used later in the book.
-
