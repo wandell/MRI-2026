@@ -40,10 +40,6 @@ We summarize the ensemble by its **net magnetization**, the vector sum of its in
 
 ## An RF pulse creates transverse magnetization
 
-The transmit coil produces an RF magnetic field, $B_1$, that is transverse to $B_0$ and oscillates near the Larmor frequency. In the usual idealized description, this field applies a torque that tips $\mathbf{M}$ away from the $z$-axis, creating transverse magnetization, $M_{xy}$.
-
-![The RF field tips the net magnetization.](images/ch06/applying-the-rf-field-rotates-all-the-spins.png){#fig-ch06-applying-the-rf-field-rotates-all-the-spins}
-
 ::: {.content-visible when-format="html"}
 ![The $B_1$ field applies a torque that tips $\mathbf{M}$ away from the $z$-axis, creating transverse magnetization.](images/ch06/b1-force-creates-transverse-signal.mp4){#vid-ch06-b1-force-creates-transverse-signal width="70%" loop="true" autoplay="true" muted="true"}
 :::
@@ -52,20 +48,16 @@ The transmit coil produces an RF magnetic field, $B_1$, that is transverse to $B
 ![The $B_1$ field applies a torque that tips $\mathbf{M}$ away from the $z$-axis, creating transverse magnetization (video; see the HTML version for the animation).](images/ch06/b1-force-creates-transverse-signal.png){width="70%"}
 :::
 
-The rotating-frame and laboratory-frame descriptions show the same excitation from two useful viewpoints. In the laboratory frame, the transverse magnetization precesses rapidly about $B_0$; in a frame rotating at the Larmor frequency, a resonant $B_1$ field can appear nearly stationary.
+The transmit coil produces an RF magnetic field, $B_1$, that is transverse to $B_0$ and oscillates near the Larmor frequency. In the usual idealized description, this field applies a torque that tips $\mathbf{M}$ away from the $z$-axis, creating transverse magnetization, $M_{xy}$.
+
+
+## Rotating and laboratory frames
 
 ![The RF field, $B_1$, in the rotating-frame and laboratory-frame views (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch06/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch06-the-rf-signal-b1-causes-the-net-magnetization-to-p}
 
+The rotating-frame and laboratory-frame descriptions show the same excitation from two useful viewpoints. In the laboratory frame, the transverse magnetization precesses rapidly about $B_0$; in a frame rotating at the Larmor frequency, a resonant $B_1$ field can appear nearly stationary.
+
 ## Precession induces the receiver-coil voltage
-
-After excitation, $M_{xy}$ precesses about the main field, $B_0$. At equilibrium, the magnetization has no transverse component, so there is no corresponding oscillating voltage in the receiver coil.
-
-::::: panel-tabset
-## Image: precession of the net magnetization
-
-![Transverse net magnetization precesses about the $z$-axis.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-1.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1}
-
-## Video: precession of the net magnetization
 
 ::: {.content-visible when-format="html"}
 ![The transverse net magnetization precesses around the $z$-axis.](images/ch06/precession-of-net-magnetization.mp4){#fig-ch06-precession-of-net-magnetization width="70%" loop="true" autoplay="true" muted="true"}
@@ -74,9 +66,10 @@ After excitation, $M_{xy}$ precesses about the main field, $B_0$. At equilibrium
 ::: {.content-visible when-format="pdf"}
 ![The transverse net magnetization precesses around the $z$-axis (video; see the HTML version for the animation).](images/ch06/precession-of-net-magnetization.png){#vid-ch06-precession-of-net-magnetization width="70%"}
 :::
-:::::
 
-As the transverse net magnetization precesses, the magnetic flux through the receiver coil changes. By Faraday's law, the changing flux induces a voltage whose sign and magnitude vary over time. The receiver records this voltage as the MR signal. The transmit and receiver coils can be the same physical coil or separate coils.
+After excitation, $M_{xy}$ precesses about the main field, $B_0$. At equilibrium, the magnetization has no transverse component, so there is no corresponding oscillating voltage induced in the receiver coil.
+
+### Measuring the precessing net magnetization
 
 ::: {.content-visible when-format="html"}
 ![The precessing net magnetization induces a voltage in a receiver coil (shown here as the copper coil).](images/ch06/measuring-net-magnetization-coil.mp4){#vid-ch06-measuring-net-magnetization-coil width="70%" loop="true" autoplay="true" muted="true"}
@@ -86,15 +79,19 @@ As the transverse net magnetization precesses, the magnetic flux through the rec
 ![The precessing net magnetization induces a voltage in a receiver coil (video; see the HTML version for the animation).](images/ch06/measuring-net-magnetization-coil.png){width="70%"}
 :::
 
+As the transverse net magnetization precesses, the magnetic flux through the receiver coil changes. By Faraday's law, the changing flux induces a voltage whose sign and magnitude vary over time. The receiver records this voltage as the MR signal. The transmit and receiver coils can be the same physical coil or separate coils.
+
+### Transverse magnetization and the measured voltage
+
 ![As transverse net magnetization rotates, the changing flux through the receiver coil induces a voltage (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.16).](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-2.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-2}
 
-The induced voltage requires phase coherence among spins in the transverse ($x$-$y$) plane. Phase coherence produces a nonzero $M_{xy}$; incoherent transverse components cancel in the net magnetization.
+Phase coherence produces a nonzero transverse magnetization, $M_{xy}$. That rotating magnetization induces the time-varying voltage in the receiver coil. The receiver directly measures this voltage, whose causes must be interpreted to understand the MR signal.
 
 ## Flip angle explains the effect of RF-pulse duration
 
-The amount by which an RF pulse tips $\mathbf{M}$ is its **flip angle**, $\alpha$. For an ideal resonant hard pulse, the flip angle increases with both the $B_1$ amplitude and pulse duration. The initial transverse magnitude is proportional to $M_0\sin\alpha$.
-
 ![The FID signal depends on RF-pulse duration.](images/ch06/remember-the-fid-signal-depends-on-the-b1-duration.png){#fig-ch06-remember-the-fid-signal-depends-on-the-b1-duration}
+
+The amount by which an RF pulse tips $\mathbf{M}$ is its **flip angle**, $\alpha$. For an ideal resonant hard pulse, the flip angle increases with both the $B_1$ amplitude and pulse duration. The initial transverse magnitude is proportional to $M_0\sin\alpha$.
 
 As $\alpha$ increases from $0^\circ$ to $90^\circ$, the transverse magnetization and the initial FID voltage increase. At $90^\circ$, all of $\mathbf{M}$ is transverse and the magnitude is maximal. As the pulse continues toward $180^\circ$, the transverse magnitude falls to zero; beyond $180^\circ$, it returns with the opposite phase. This explains the pattern observed in the FID experiment.
 
