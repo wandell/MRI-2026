@@ -1,6 +1,6 @@
-## History of Fourier’s publication
+# History of Fourier’s publication {.unnumbered}
 
-## About Fourier himself
+## About Fourier
 
 ![Historical note: Fourier.](images/ch14/historical-note-fourier.png){#fig-ch14-historical-note-fourier}
 

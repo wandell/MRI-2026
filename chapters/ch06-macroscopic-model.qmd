@@ -6,164 +6,102 @@ date: last-modified
 
 {{< include "includes/WIP-callout.qmd" >}}
 
----
+------------------------------------------------------------------------
 
-## The standard MR macroscopic model
+## From the FID experiment to a model
 
-<!--
-![The standard MR macroscopic model.](images/ch06/the-standard-mr-macroscopic-model.png){#fig-ch06-the-standard-mr-macroscopic-model}
--->
+In the free-induction-decay (FID) experiment, we apply an RF pulse to a sample of water and record an oscillating voltage that decays over time. We also saw that changing the duration of the RF pulse first increases and then decreases the initial signal. This chapter develops a macroscopic model that explains both observations.
 
-:::{.callout-note title="Drawing single NMR spins"}
+The model has four steps: the main field, $B_0$, creates an equilibrium net magnetization; the RF field, $B_1$, tips it; the resulting transverse magnetization precesses; and that precession induces the voltage recorded by a receiver coil.
 
-From this paper:
-
-*Drawing single NMR spins and understanding relaxation, Mike P. Williamson, Sheffield*
-
-"How should we draw vectors to represent individual nuclear spins? Vectors in 3D space are merely a way of understanding the mathematics of quantum mechanics, which provides the “true” description of a single spin-½ nucleus. They are a useful aid to understanding, but there is no single “correct” vector representation, and the different vector models that are used have advantages and disadvantages. Here, we discuss the 2 standard vector models for a nuclear magnetic resonance spin: the up/down or alignment model and the 2-cone model, and we show how they relate to quantum mechanics. We show why both of these models are limited and discuss a third model, the uniform model, in which individual spins can be in any orientation. We demonstrate how the uniform model presents a clear and logically coherent description for spins: at equilibrium; following a 90° pulse; and during the subsequent relaxation back to equilibrium. The uniform model is fully consistent with quantum mechanics and leads to an understanding of coherence and relaxation that cannot be obtained from the other 2 models. We suggest that the uniform model is more helpful than the other 2 for most purposes."
-:::
-
-
-## Source of the MR signal: Hydrogen nuclei (spins, protons)
+## Hydrogen nuclei are the source of the MR signal
 
 ![Source of the MR signal: Hydrogen nuclei (spins, protons) (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.2).](images/ch06/source-of-the-mr-signal-hydrogen-nuclei-spins-prot.png){#fig-ch06-source-of-the-mr-signal-hydrogen-nuclei-spins-prot}
 
-People use a metaphor that the spins (protons) oscillate between one of two permissible states.  But it is may be more sensible to see the protons as distributed uniformly, as in the right image, and then when we apply the B0 field RF pulse we change the distribution to be biased. 
+The FID arises from hydrogen nuclei, primarily those in water. Each hydrogen nucleus is a proton with spin and an associated magnetic moment. Spin is a quantum-mechanical property, but a magnetic-dipole model provides useful intuition for the bulk behavior measured in MRI.
 
-The impact of the RF pulse is to rotate all of the spins. The longer we apply the pulse the more they rotate. Intuitively, this explains why the FID signal increases with the increasing amplitude or duration of the RF excitation, and then as the rotation brings returns to distribution to the original state the signal decreases.
+## The main field establishes equilibrium magnetization
 
-<!-- 
-Extra images from
-Is Quantum Mechanics Necessary for Understanding Magnetic Resonance?
-LARS G. HANSON
-Sent to me by Hongjian He
--->
+In the absence of an applied field, an ensemble of proton magnetic moments has no preferred direction, so its net magnetization is zero. Placing the sample in the main magnetic field, $B_0$, establishes a preferred longitudinal direction.
 
-## The FID signal: quantal description
+![A simplified classical depiction of a proton magnetic moment precessing about the main field, $B_0$.](images/ch06/nucleus-spin.png){#fig-ch06-nucleus-spin}
 
-![The FID signal: quantal description (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.5).](images/ch06/the-fid-signal-quantal-description.png){#fig-ch06-the-fid-signal-quantal-description}
+In the classical picture, a magnetic moment precesses about $B_0$, like a spinning top in Earth's gravitational field. This picture is an analogy, not a literal spinning charged sphere.
 
-It is very important to understand this point: The physical mechanism causing the relaxation (return of the distribution to its original state) differs between the three world axes. Relaxation along the axis defined by the direction of the main field has one type of mechanism, and relaxation in the plane perpendicular to the main field has a different type of mechanism.  Thus, we use a different metaphor for these two types of relaxation.
+![A simplified classical depiction of a magnetic moment precessing about $B_0$.](images/ch06/nucleus-precession.png){#fig-ch06-nucleus-precession width="20%"}
 
-The relaxation parallel to the main field depends on the energy difference between the spins that are in the parallel and anti-parallel two states.  And this energy difference determines the frequency of an RF signal that is needed to flip from one state to the other: **the Larmor frequency**. 
+For a single spin-$1/2$ proton, a measurement of the spin component along $B_0$ has one of two values, conventionally called parallel and antiparallel. At thermal equilibrium, there is a small excess in the lower-energy, parallel state. That excess produces the longitudinal equilibrium magnetization, $M_0$.
 
-Slightly more of the protons have their positive side (red) oriented along with the B0 field. If we add an RF pulse along the longitudinal axis at this frequency, we change the preponderance of the spins from the orange state to the blue state. Left alone, the spins will relax back along the main axis.
+![A schematic ensemble of proton magnetic moments without an applied field (left) and in the main field, $B_0$ (right). The small population excess parallel to $B_0$ produces a net magnetization, $M_0$.](images/ch06/nuclei-aligned.png){#fig-ch06-nuclei-aligned}
 
-## The net magnetization is the sum of the spins
+We summarize the ensemble by its **net magnetization**, the vector sum of its individual magnetic moments. At equilibrium, the net magnetization is $\mathbf{M}=M_0\hat{\mathbf z}$: it points along $B_0$, which defines the $z$-axis. The transverse components cancel because their phases are distributed around the axis.
+
 ![The net magnetization is the sum of the spins (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.7).](images/ch06/the-net-magnetization-is-the-sum-of-the-spins.png){#fig-ch06-the-net-magnetization-is-the-sum-of-the-spins}
 
-:::{.callout-note title="Precession"}
-The movement of a rotating proton or magnet within a magnetic field (A) is similar to the movement of a top in the earth’s gravitational field (B). In addition to their spinning motion, their axis of spin itself wobbles around a vertical axis; this motion is known as precession.
-:::
+## An RF pulse creates transverse magnetization
 
-We summarize the behavior of the spins by calculating the **net magnetization**, which is the vector sum of all the individual spins. The net magnetization vector ($\mathbf{M}$) points in the direction of the majority of the spins and has a magnitude proportional to the number of spins aligned in that direction. At equilibrium, the net magnetization points along the direction of the $B_0$ field (the zz-axis) because more spins are aligned with $B_0$ than against it.
+The transmit coil produces an RF magnetic field, $B_1$, that is transverse to $B_0$ and oscillates near the Larmor frequency. In the usual idealized description, this field applies a torque that tips $\mathbf{M}$ away from the $z$-axis, creating transverse magnetization, $M_{xy}$.
 
-## The RF signal creates a ‘precession’ signal of the net magnetization
+![The RF field tips the net magnetization.](images/ch06/applying-the-rf-field-rotates-all-the-spins.png){#fig-ch06-applying-the-rf-field-rotates-all-the-spins}
 
-::: {.panel-tabset}
-
-## Image: Precession of spins
-![The RF signal creates a ‘precession’ signal of the net magnetization — step 1.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-1.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1}
-
-## Video: Precession of the net magnetization
 ::: {.content-visible when-format="html"}
-![The net magnetization vector M precesses around the z-axis, like a spinning top, tracing out the precession described above.](images/ch06/precession-of-net-magnetization.mp4){#fig-ch06-precession-of-net-magnetization width="70%" loop="true" autoplay="true" muted="true"}
+![The $B_1$ field applies a torque that tips $\mathbf{M}$ away from the $z$-axis, creating transverse magnetization.](images/ch06/b1-force-creates-transverse-signal.mp4){#vid-ch06-b1-force-creates-transverse-signal width="70%" loop="true" autoplay="true" muted="true"}
 :::
 
 ::: {.content-visible when-format="pdf"}
-![The net magnetization vector M precesses around the z-axis, like a spinning top (video; see the HTML version for the animation).](images/ch06/precession-of-net-magnetization.png){#vid-ch06-precession-of-net-magnetization width="70%"}
+![The $B_1$ field applies a torque that tips $\mathbf{M}$ away from the $z$-axis, creating transverse magnetization (video; see the HTML version for the animation).](images/ch06/b1-force-creates-transverse-signal.png){width="70%"}
 :::
 
-:::
+The rotating-frame and laboratory-frame descriptions show the same excitation from two useful viewpoints. In the laboratory frame, the transverse magnetization precesses rapidly about $B_0$; in a frame rotating at the Larmor frequency, a resonant $B_1$ field can appear nearly stationary.
 
-## Applying the RF field rotates all the spins
+![The RF field, $B_1$, in the rotating-frame and laboratory-frame views (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch06/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch06-the-rf-signal-b1-causes-the-net-magnetization-to-p}
 
-![Applying the RF field rotates all the spins.](images/ch06/applying-the-rf-field-rotates-all-the-spins.png){#fig-ch06-applying-the-rf-field-rotates-all-the-spins}
+## Precession induces the receiver-coil voltage
 
-## The B1 signal applies a force to the net magnetization creating the transverse signal
+After excitation, $M_{xy}$ precesses about the main field, $B_0$. At equilibrium, the magnetization has no transverse component, so there is no corresponding oscillating voltage in the receiver coil.
 
-<!--
-![The B1 signal applies a force to the net magnetization creating the transverse signal.](images/ch06/the-b1-signal-applies-a-force-to-the-net-magnetiza.png){#fig-ch06-the-b1-signal-applies-a-force-to-the-net-magnetiza}
--->
+::::: panel-tabset
+## Image: precession of the net magnetization
+
+![Transverse net magnetization precesses about the $z$-axis.](images/ch06/the-rf-signal-creates-a-precession-signal-of-the-n-1.png){#fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1}
+
+## Video: precession of the net magnetization
 
 ::: {.content-visible when-format="html"}
-![The B1 field applies a torque that tilts M away from the z-axis; as M rotates (precesses), it creates a transverse (xy) magnetization.](images/ch06/b1-force-creates-transverse-signal.mp4){#vid-ch06-b1-force-creates-transverse-signal width="70%" loop="true" autoplay="true" muted="true"}
+![The transverse net magnetization precesses around the $z$-axis.](images/ch06/precession-of-net-magnetization.mp4){#fig-ch06-precession-of-net-magnetization width="70%" loop="true" autoplay="true" muted="true"}
 :::
 
 ::: {.content-visible when-format="pdf"}
-![The B1 field applies a torque that tilts M away from the z-axis, creating a transverse (xy) magnetization (video; see the HTML version for the animation).](images/ch06/b1-force-creates-transverse-signal.png){#vid-ch06-b1-force-creates-transverse-signal width="70%"}
+![The transverse net magnetization precesses around the $z$-axis (video; see the HTML version for the animation).](images/ch06/precession-of-net-magnetization.png){#vid-ch06-precession-of-net-magnetization width="70%"}
 :::
+:::::
 
-* The RF signal from the coil (B1) applies a torque that tilts the direction of the net magnetization ($M$)
-* The signal rotates around the main axis (precesses), creating a transverse (xy) magnetization
-
-The RF excitation field does have a component along the zz-axis (the direction of the B0B_0 field), but this zz-component typically does not have a significant effect on the net magnetization during MRI. Here’s why:
-
-1. RF Field Orientation and Purpose:
-The RF pulse in MRI is typically designed as a rotating magnetic field, denoted as B1B_1, in the xyxy-plane. This field is perpendicular to the B0B_0 field and is tuned to oscillate at the Larmor frequency.
-The purpose of the B1B_1 field is to cause the net magnetization vector (M\mathbf{M}) to rotate away from the zz-axis by inducing a torque in the xyxy-plane. This happens because the B1B_1 field interacts resonantly with the precessing spins.
-
-2. Components of the RF Field:
-The RF pulse is usually modeled as having two components:
-
-Transverse components (B1xB_{1x} and B1yB_{1y}): These are the primary components of the RF field, which rotate in the xyxy-plane at the Larmor frequency. These components are critical because they match the frequency of spin precession and efficiently transfer energy to the spins, causing them to tip away from the zz-axis.
-Longitudinal component (B1zB_{1z}): This is the component of the RF field along the zz-axis.
-
-3. Why the B1zB_{1z} Component is Negligible:
-Faraday Shielding and Coil Design: The RF coils used in MRI are designed to produce a strong, uniform B1xyB_{1xy} field (transverse field) while minimizing the B1zB_{1z} component. The B1zB_{1z} component is often very small compared to the transverse components and does not significantly affect the spins.
-No Resonant Interaction with the zz-Component: The B1zB_{1z} component does not effectively interact with the spins at the Larmor frequency because it is aligned with the static B0B_0 field. This alignment means that B1zB_{1z} cannot create a torque on the spins and thus does not contribute to tipping the magnetization vector.
-
-4. If B1zB_{1z} Were Significant:
-If the B1zB_{1z} component were large enough, it could potentially alter the B0B_0 field during the RF pulse, slightly shifting the Larmor frequency or introducing artifacts. However, in practice, the B1zB_{1z} component is designed to be negligible, so this effect is avoided.
-
-5. Practical Considerations:
-MRI engineers focus on maximizing the efficiency and uniformity of B1xyB_{1xy} while ensuring that B1zB_{1z} is minimal. This is achieved through careful RF coil design and the use of shielding to minimize any stray fields along the zz-axis.
-
-6. Summary:
-The B1zB_{1z} component of the RF field is generally very small and does not significantly affect the spins or the magnetization vector during MRI. The critical interaction is between the transverse components of the RF pulse (B1xyB_{1xy}) and the precessing spins, which create the coherence in the xyxy-plane and enable signal detection.
-
-Would you like to discuss RF coil design, or how B1B_1 fields are optimized to create uniform excitation?
-
-## Measuring the net magnetization
+As the transverse net magnetization precesses, the magnetic flux through the receiver coil changes. By Faraday's law, the changing flux induces a voltage whose sign and magnitude vary over time. The receiver records this voltage as the MR signal. The transmit and receiver coils can be the same physical coil or separate coils.
 
 ::: {.content-visible when-format="html"}
-![The precessing net magnetization induces a signal in a receiver coil (shown here as the copper coil), which can be the same as or different from the transmit coil.](images/ch06/measuring-net-magnetization-coil.mp4){#vid-ch06-measuring-net-magnetization-coil width="70%" loop="true" autoplay="true" muted="true"}
+![The precessing net magnetization induces a voltage in a receiver coil (shown here as the copper coil).](images/ch06/measuring-net-magnetization-coil.mp4){#vid-ch06-measuring-net-magnetization-coil width="70%" loop="true" autoplay="true" muted="true"}
 :::
 
 ::: {.content-visible when-format="pdf"}
-![The precessing net magnetization induces a signal in a receiver coil (video; see the HTML version for the animation).](images/ch06/measuring-net-magnetization-coil.png){#vid-ch06-measuring-net-magnetization-coil width="70%"}
+![The precessing net magnetization induces a voltage in a receiver coil (video; see the HTML version for the animation).](images/ch06/measuring-net-magnetization-coil.png){width="70%"}
 :::
 
-* The precessing magnetic field produces the measured electrical (RF) signal
-* The RF coil measures the electrical signal
-* The receiver coil (shown hyere as the copper coil) can be the same or different from the RF transmit (excite) coil
+![As transverse net magnetization rotates, the changing flux through the receiver coil induces a voltage (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.16).](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-2.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-2}
 
-## The RF signal (B1) causes the net magnetization to precess
+The induced voltage requires phase coherence among spins in the transverse ($x$-$y$) plane. Phase coherence produces a nonzero $M_{xy}$; incoherent transverse components cancel in the net magnetization.
 
-![The RF signal (B1) causes the net magnetization to precess: the rotating frame and laboratory frame views (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch06/the-rf-signal-b1-causes-the-net-magnetization-to-p.png){#fig-ch06-the-rf-signal-b1-causes-the-net-magnetization-to-p}
+## Flip angle explains the effect of RF-pulse duration
 
-## The receive coil measures the electrical radio frequency signal from the spins
+The amount by which an RF pulse tips $\mathbf{M}$ is its **flip angle**, $\alpha$. For an ideal resonant hard pulse, the flip angle increases with both the $B_1$ amplitude and pulse duration. The initial transverse magnitude is proportional to $M_0\sin\alpha$.
 
-::: {.panel-tabset}
+![The FID signal depends on RF-pulse duration.](images/ch06/remember-the-fid-signal-depends-on-the-b1-duration.png){#fig-ch06-remember-the-fid-signal-depends-on-the-b1-duration}
 
-## Step 1
+As $\alpha$ increases from $0^\circ$ to $90^\circ$, the transverse magnetization and the initial FID voltage increase. At $90^\circ$, all of $\mathbf{M}$ is transverse and the magnitude is maximal. As the pulse continues toward $180^\circ$, the transverse magnitude falls to zero; beyond $180^\circ$, it returns with the opposite phase. This explains the pattern observed in the FID experiment.
 
-![The receive coil measures the electrical radio frequency signal from the spins — step 1 (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.16).](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-1.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-1}
+## Relaxation makes the FID decay
 
-## Step 2
+![The FID signal: longitudinal recovery and transverse decay (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.5).](images/ch06/the-fid-signal-quantal-description.png){#fig-ch06-the-fid-signal-quantal-description}
 
-![The receive coil measures the electrical radio frequency signal from the spins — step 2 (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.16).](images/ch06/the-receive-coil-measures-the-electrical-radio-fre-2.png){#fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-2}
+After an RF excitation pulse, the magnetization is displaced from equilibrium. **Relaxation** returns it toward equilibrium. The physical processes responsible for longitudinal recovery along the $z$-axis and transverse decay in the $x$-$y$ plane differ. The next two chapters develop these processes as $T_1$ and $T_2$ relaxation.
 
-:::
-
-MR signal reception (Huettel et al., Figure 3.16): as the net magnetization rotates through the transverse plane, the amount of magnetic flux experienced by the receiver coil changes over time (A and B). The changing flux generates an electromotive force, which provides the basis for the MR signal.
-
-## Summary: Explaining why the FID signal depends on B1 duration
-
-![From earlier: The FID signal depends on the B1 duration.](images/ch06/remember-the-fid-signal-depends-on-the-b1-duration.png){#fig-ch06-remember-the-fid-signal-depends-on-the-b1-duration}
-
-Because the spins are rotated, the signal increases up to the 90 deg rotation when the spins are fully in the transverse (x-y) plane; the signal starts to decrease as the rotation moves the net magnetization to 180 deg where it has no (x-y) component.  This explains the increase and decrease in @fig-ch06-remember-the-fid-signal-depends-on-the-b1-duration. 
-
-![Applying the RF field rotates the spins, rotating the net magnetization.](images/ch06/applying-the-rf-field-rotates-all-the-spins.png){#fig-ch06-applying-the-rf-field-rotates-all-the-spins}
-
-
+For a deeper discussion of the quantum-mechanical representations used to draw individual NMR spins, see [Drawing single NMR spins](resources/drawing-single-nmr-spins.qmd).

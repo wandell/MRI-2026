@@ -21,7 +21,7 @@ book:
        - chapters/ch06-macroscopic-model.qmd
        - chapters/ch07-t1-relaxation.qmd
        - chapters/ch08-t2-relaxation.qmd
-       - chapters/ch09-pulse-sequences.qmd
+       - chapters/ch09b-pulse-sequences.qmd
        - chapters/ch09-spin-echo.qmd
        - chapters/ch10-pulse-sequences.qmd
        - chapters/ch11-physical-mechanisms.qmd
@@ -90,6 +90,7 @@ book:
     - part: "Resources"
       chapters:
        - chapters/resources/joseph-larmor.qmd
+       - chapters/resources/drawing-single-nmr-spins.qmd
        - chapters/resources/felix-bloch-equations.qmd
        - chapters/resources/erwin-hahn.qmd
        - chapters/resources/lauterbur.qmd
@@ -139,6 +140,4 @@ format:
 #    latex-clean: true
 #    math:
 #      number-equations: true
-
-
 

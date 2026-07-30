@@ -1,0 +1,25 @@
+---
+date: last-modified
+---
+
+# Drawing Single NMR Spins {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+The macroscopic model used in MRI describes the ensemble magnetization, $mathbf{M}$. It is intentionally simpler than a full quantum-mechanical description of an individual proton. The different diagrams used to depict a single NMR spin are helpful models, but none should be interpreted as a literal picture of a tiny spinning object.
+
+This resource is optional background for readers who want to examine those diagrams more closely. It is not required for using the macroscopic model in the main text.
+
+## Three useful representations
+
+The **alignment model** emphasizes that a measurement of the spin component along the main field, $B_0$, has two possible outcomes. At thermal equilibrium, a small population excess in the lower-energy state accounts for the nonzero longitudinal magnetization, $M_0$.
+
+The **two-cone model** represents a magnetic moment as precessing about $B_0$. It provides useful geometric intuition for precession, but it is not a literal trajectory of an individual quantum spin.
+
+The **uniform model** represents an ensemble with moments distributed over directions. It can be especially useful for visualizing phase coherence after excitation and the subsequent loss of coherence. As with the other models, its value is pedagogical: the quantum state, rather than a classical vector, is the underlying description of one proton.
+
+## Connection to the macroscopic model
+
+MRI receiver coils do not observe individual spins. They record a voltage induced by the time-varying **net** transverse magnetization, $M_{xy}$. The macroscopic model therefore focuses on the properties that determine that voltage: equilibrium magnetization, RF excitation, phase coherence, precession, and relaxation.
+
+Williamson compares these representations in detail and argues for their complementary teaching roles [@williamson2019-jg].
