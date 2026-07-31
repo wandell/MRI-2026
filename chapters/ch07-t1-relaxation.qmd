@@ -20,9 +20,9 @@ This chapter and the following describe two of the three basic types of MR signa
 In both cases, for T1 and T2, we begin the measurement process by applying a radiofrequency pulse to the substrate, as we reviewed in the previous chapter. This RF *excitation* is set to a specific temporal frequency, determined by the magnetic field strength, that will cause the *spins* (hydrogen nuclei) to *precess* around the axis of the main magnetic field - the $B_0$ field. That is what is shown in this slide.  The RF pulse causes the net magnetization to tilt over and precess.  Over time, it spins back up to its original state, aligned with the z-axis. Also see @fig-ch06-the-rf-signal-creates-a-precession-signal-of-the-n-1 and @fig-ch06-precession-of-net-magnetization.
 -->
 
-## Net magnetization is comprised of two components
+## Two components of net magnetization
 
-![The net magnetization is summarized by two components.](images/ch07/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch07-the-net-magnetization-is-summarized-by-two-compone}
+![The net magnetization has two components.](images/ch07/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch07-the-net-magnetization-is-summarized-by-two-compone}
 
 Conceptually, without any real physical intuition yet, you can see that the net magnetization vector can be separated into two components: one is its projection onto the z-axis, which we call its *longitudinal component*.  The second is its projection onto the x-y plane, its *transverse component*.
 
@@ -30,13 +30,13 @@ As we reviewed in the previous chapter, the net magnetization precesses around t
 
 It was a deep insight of the physicists to understand that the source of these two components differs substantially.  Much of the value of the MR instrument arises from the fact that this one signal arises from these different causes.  That is why the MR signal is particularly versatile, and it is something you will want to remember when you think about what you are measuring in the MRI signal.
 
-## The longitudinal component:  High- and low-stability states
+## Parallel and anti-parallel states
 
 ![The longitudinal component:  High- and low-stability states (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.6).](images/ch07/the-longitudinal-component-high-and-low-stability.png){#fig-ch07-the-longitudinal-component-high-and-low-stability}
 
 In the previous chapter, we noted that the precessing spins are mainly aligned with the main magnetic field (parallel), or directly opposite (anti-parallel).  A good metaphor to understand this is shown in @fig-ch07-the-longitudinal-component-high-and-low-stability.  That image shows two bars in a gravitational field.  The bar that is hanging low is in a low energy state and will stay that way unless a strong breeze comes along to move it.  The bar that is upright is in a locally low energy state - it might stay that way - but even a weak breeze might come along to move it and in that case it would drop to the low energy state.  This is a metaphor for the direction of the spin magnetic fields.  More of them are aligned parallel to the magnetic field than anti-parallel to it.
 
-## Energy from an RF pulse changes spins between the two stable binary states
+## An RF pulse changes spins between the two states
 
 ![Energy from an RF pulse changes spins between the two stable binary states (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.9).](images/ch07/energy-from-an-rf-pulse-changes-spins-between-the.png){#fig-ch07-energy-from-an-rf-pulse-changes-spins-between-the}
 
@@ -46,47 +46,70 @@ The longitudinal signal arises from the difference in the number of spins that a
 
 ![Spin Transition and Quantum Energy (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 3.8).](images/ch07/spin-transition-and-quantum-energy.png){#fig-ch07-spin-transition-and-quantum-energy}
 
-A magnetic field splits the allowed energy states of a magnetic moment. For proton spin, the energy separation between the parallel and antiparallel states increases linearly with the main field, $B_0$. This splitting is called the **Zeeman effect**.
+For proton spins the energy separation between the parallel and anti-parallel states increases linearly with the main field, $B_0$. This separation is called the **Zeeman effect**.
 
-An RF photon can change the spin state when its energy matches the separation:
+An RF excitation can change the spin state when its energy matches the separation.  The energy in the RF excitation is proportional to the frequency of the RF signal.  The constant of proportionality is Planck's constant.
 
 $$
 \Delta E = h f_L.
 $$
 
-Thus, a stronger $B_0$ requires a higher resonant frequency, $f_L$.
 
 ## The frequency depends on the $B_0$ field
 
 ![The Larmor frequency depends on the $B_0$ field: $f_L = \gamma B_0$, so the resonant frequency is 127.4 MHz at 3 T.](images/ch07/the-larmor-frequency-depends-on-b0-field-1.png){#fig-ch07-the-larmor-frequency-depends-on-b0-field-1}
 
-The relationship between the magnetic field strength and the energy (frequency) need to change states is linear. The frequency, called *Larmor frequency*, is named after [Joseph Larmor](resources/joseph-larmor.qmd). This is the temporal frequency the RF pulse must use to impact the spins in a particular magnetic field.
+Putting these two facts together, we see that a higher $B_0$ requires a higher resonant frequency, $f_L$.
+
+The relationship between the magnetic field strength and the frequency of an effective RF pulse is linear. The frequency of an effective pulse is called the *Larmor frequency*, is named after [Joseph Larmor](resources/joseph-larmor.qmd). This is the temporal frequency the RF pulse must use to impact the spins in a given magnetic field.
 
 The Larmor frequency value is the gyromagnetic ratio $\gamma$ (42.58 MHz/T for hydrogen) times the field strength.  At 1.5 T we excite and receive near 64 MHz, at 3 T near 127 MHz, and at 7 T near 300 MHz — all in the radio band, which is why the excitation and the receiver are radiofrequency devices.  Higher field strength means a larger energy gap between the two spin states, and so a larger population difference and a larger signal.  That is the main reason for building higher-field scanners.
 
 ## Spin-lattice interactions
 
+<!--
 ![Spin-lattice interactions: longitudinal recovery time courses, with T1 of roughly 180 ms for fat, 800 ms for blood, and 2500 ms for free water.](images/ch07/spin-lattice-interactions.png){#fig-ch07-spin-lattice-interactions}
+-->
 
-The energy that a spin absorbs from the RF pulse has to go somewhere before the spin can return to its low-energy, parallel state.  It is transferred to the surrounding molecular environment — the *lattice* — which is why T1 is also called *spin-lattice relaxation*.  How quickly that transfer happens depends on the environment, and this is what makes T1 a useful measure of tissue: the T1 time constants in @fig-ch07-spin-lattice-interactions range from a couple of hundred milliseconds for fat to a couple of seconds for free water.
+::: {.panel-tabset}
+
+## Axonal cross section
+
+![Water in the axonal cross-section.](images/ch07/visualization-of-the-spin-lattice-exchange-1.png){#fig-ch07-visualization-of-the-spin-lattice-exchange-1}
+
+## Hydration layer
+
+![Hydration layer.](images/ch07/visualization-of-the-spin-lattice-exchange-2.png){#fig-ch07-visualization-of-the-spin-lattice-exchange-2}
+
+:::
+
+When a spin transitions from the high energy state (anti-parallel) to the low energy state (parallel), it gives off some energy.  The energy has to go somewhere. It is transferred to the surrounding molecular environment — the *lattice*. This is why the time course of the T1 relaxation is also called *spin-lattice relaxation*. 
+
+How quickly the transfer happens depends on the tissue in the environment; this is what makes T1 a useful measure of tissue: the T1 time constants in brain range from a couple of hundred milliseconds for fat to a couple of seconds for free water.
+
+So how are we going to use MRI to measure tissue properties?  The build shows a cross-section through a single axon, with the individual wraps of myelin visible, and then a schematic of one layer of the myelin membrane: a lipid bilayer surrounded by water molecules.
+
+The MR properties of water change when it interacts with a membrane surface.  The water immediately in contact with the membrane — the *apparent hydration layer* — has an MR signal distinct from the water further away.  A model based on quantitative T1 mapping can estimate the percentage of the water in a voxel that is interacting with a membrane surface, a measure we call the apparent hydration layer fraction (aHLF).  Because it tracks total membrane surface area, aHLF is much higher in heavily myelinated white matter.
+
+<!-- TODO (Brian): the source of the myelin cross-section image is unconfirmed (it was traced only through a reverse image search).  Attribution needed before publication. -->
 
 ## Example: longitudinal relaxation
 
 ![Example: longitudinal relaxation.](images/ch07/example-longitudinal-relaxation.png){#fig-ch07-example-longitudinal-relaxation}
 
-The net magnetization is shown at several points.  The first is the magnetization in the steady B0 field.  Then, an RF pulse at the Larmor frequency is introduced.  This flips the net magnetization away from the z-axis — 90 deg in this example, so that immediately afterwards the longitudinal component is zero.  Then, over time, the longitudinal component recovers toward its steady state value,
+Let's zoom out now from the events at the level of spins to the net magnetization at the level of the beaker with many many spins. @fig-ch07-example-longitudinal-relaxation show the net magnetization is shown at several points. The first is the magnetization in the steady B0 field.  Then, an RF pulse at the Larmor frequency is introduced.  This flips the net magnetization away from the z-axis — 90 deg in this example, so that immediately afterwards the longitudinal component is zero.  Then, over time, the longitudinal component recovers toward its steady state value,
 
 $$
 M_z(t) = M_0\left(1 - e^{-t/T_1}\right)
 $$
 
-Note that this equation is the 90 deg case: it assumes the longitudinal component starts at zero.  The slide asks what would happen with a 180 deg flip angle, which starts the magnetization at $-M_0$ instead.  We take that up in the inversion recovery chapter (@fig-ch10-inversion-recovery-spin-lattice-t1-1), where the negative starting value is the point of the measurement rather than a complication.
+Note that this equation is for the 90 deg flip angle case: it assumes the longitudinal component starts at zero.  The slide asks what would happen with a 180 deg flip angle, which starts the magnetization at $-M_0$ instead.  We take that up in the inversion recovery chapter (@fig-ch10-inversion-recovery-spin-lattice-t1-1), where the negative starting value is the point of the measurement rather than a complication.
 
-## Longitudinal relaxation rate depends on your neighborhood
+## Longitudinal relaxation rates
 
 ![Longitudinal relaxation rate depends on your neighborhood: recovery curves for gray matter (T1 = 0.88 s) and white matter (T1 = 0.65 s) at 1.5 T.](images/ch07/longitudinal-relaxation-rate-depends-on-your-neigh.png){#fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh}
 
-The time course of the net magnetization depends on the environment the water is in (e.g., near gray matter or white matter). If we measure the magnetization one second after a pulse, water near gray matter will recovered less than water near white matter.  This difference in relaxation rate, which depends on the biochemical structure of the tissue, is the basis for distinguishing the components of the brain (CSF, gray matter, white matter).
+From these examples, it should be clear that the time course of the net magnetization relaxation must depend on the environment the spins are in (e.g., near gray matter or white matter). If we measure the magnetization one second after a pulse, water near gray matter will recovered less than water near white matter.  This difference in relaxation rate, which depends on the biochemical structure of the tissue, is the basis for distinguishing the components of the brain (CSF, gray matter, white matter).
 
 Within the brain the differences are small but measurable.  At 1.5 T the T1 of gray matter is about 0.88 s and of white matter about 0.65 s.  White matter, with the shorter T1, recovers faster and therefore produces the larger signal at any moment during the recovery.
 
@@ -110,37 +133,18 @@ The contrast for this particular simulation peaks around 0.8 s after the RF puls
 
 Putting the two ideas together: a longer T1 means a slower recovery, hence a smaller signal at readout, so image intensity runs *inverse* to T1.  White matter (short T1) is bright, gray matter is darker, and CSF (longest T1 of the three) is darkest.  That is the appearance of the coronal, sagittal, and axial images here, and it is why the T1-weighted volume is the standard anatomical image used to separate gray from white matter — for measuring cortical thickness, atrophy, or ventricular enlargement.
 
+<!--
 ## T2.  Delete this.
 The same reasoning, applied to the transverse component, is what produces the opposite contrast in a T2-weighted image (@fig-ch08-t2-weighted-images-white-is-darker-than-gray).
-
+-->
 
 ## Surface Interaction Rate (SIR)
 
 ![Surface Interaction Rate (SIR); portraits of Bloch and Purcell (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 1.13).](images/ch07/surface-interaction-rate-sir.png){#fig-ch07-surface-interaction-rate-sir}
 
-The T1 of *free* water is a remarkable case.  It can be derived from first principles — Bloembergen, Purcell and Pound worked it out in 1948 (BPP theory) — and the answer, about 4.3 s at room temperature, does not depend on field strength.  Yes, you should be amazed.
+The T1 of *free* water is a remarkable case. In a way, it is odd because when there is only free water that spins don't really have a great option for shedding their energy. Around them is nothing but other spins, and they won't easily absorb the extra energy. What will happen can be derived from first principles — Bloembergen, Purcell and Pound worked it out in 1948 (BPP theory) — and the answer, about 4.3 s at room temperature, does not depend on field strength.  Yes, you should be amazed.
 
-Tissue T1 values are much shorter than that (0.65-0.9 s for white and gray matter).  The water in tissue is chemically the same water; what changes is that much of it is near a macromolecular surface.  Interactions at those surfaces speed up the transfer of energy to the lattice, shortening T1.  The T1 we measure in a voxel is therefore a report on how much surface the water in that voxel encounters — which is the idea developed in the next two sections.
-
-## Visualization of the spin-lattice exchange
-
-::: {.panel-tabset}
-
-## Step 1
-
-![Visualization of the spin-lattice exchange — step 1.](images/ch07/visualization-of-the-spin-lattice-exchange-1.png){#fig-ch07-visualization-of-the-spin-lattice-exchange-1}
-
-## Step 2
-
-![Visualization of the spin-lattice exchange — step 2.](images/ch07/visualization-of-the-spin-lattice-exchange-2.png){#fig-ch07-visualization-of-the-spin-lattice-exchange-2}
-
-:::
-
-So how are we going to use MRI to measure tissue properties?  The build shows a cross-section through a single axon, with the individual wraps of myelin visible, and then a schematic of one layer of the myelin membrane: a lipid bilayer surrounded by water molecules.
-
-The MR properties of water change when it interacts with a membrane surface.  The water immediately in contact with the membrane — the *apparent hydration layer* — has an MR signal distinct from the water further away.  A model based on quantitative T1 mapping can estimate the percentage of the water in a voxel that is interacting with a membrane surface, a measure we call the apparent hydration layer fraction (aHLF).  Because it tracks total membrane surface area, aHLF is much higher in heavily myelinated white matter.
-
-<!-- TODO (Brian): the source of the myelin cross-section image is unconfirmed (it was traced only through a reverse image search).  Attribution needed before publication. -->
+The T1 values for brain tissue, which has lots of large molecules, are much shorter than the value for free water (0.65-0.9 s for white and gray matter). The water in tissue is near a macromolecular surface. Interactions between spins and those large molecules speeds up the transfer of energy, from the spins to the lattice, shortening T1. As a rough approximation, the T1 we measure in a voxel is a report on how water in the hydration layer gives up its energy to the large molecules that are nearby. 
 
 ## T1 from multiple molecules:  Fast Exchange Theory
 
@@ -155,3 +159,6 @@ $$
 $$
 
 Note that it is the *rates* that average, not the time constants.  This is the same bookkeeping that appears in the next chapter, where the rates of two de-phasing mechanisms add to give T2*.  Fast exchange is what makes a single measured T1 interpretable as a property of tissue composition, and it is the basis of the quantitative T1 methods used later in the book.
+
+This Fast Exchange Theory doesn't apply to all circumstances, and an MR physicist will enjoy little more than telling you why it won't apply in some particular case.  But stay strong.  It's a great starting place for any analysis, and when you convince yourself that it needs fixing the fix will be a discovery worth making.
+
