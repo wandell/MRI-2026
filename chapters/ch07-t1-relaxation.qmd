@@ -86,21 +86,23 @@ Note that this equation is the 90 deg case: it assumes the longitudinal componen
 
 ![Longitudinal relaxation rate depends on your neighborhood: recovery curves for gray matter (T1 = 0.88 s) and white matter (T1 = 0.65 s) at 1.5 T.](images/ch07/longitudinal-relaxation-rate-depends-on-your-neigh.png){#fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh}
 
-The time course of the net magnetization depends on the material.  So, if we measure the magnetization, say, one second after a pulse, a container with water will have recovered less than a container with lipids.  This difference, which follows from the biochemical structure of the material, is the basis for distinguishing the components of the brain (CSF, gray matter, white matter).
+The time course of the net magnetization depends on the environment the water is in (e.g., near gray matter or white matter). If we measure the magnetization one second after a pulse, water near gray matter will recovered less than water near white matter.  This difference in relaxation rate, which depends on the biochemical structure of the tissue, is the basis for distinguishing the components of the brain (CSF, gray matter, white matter).
 
-Within the brain the differences are much smaller than the fat/water differences in @fig-ch07-spin-lattice-interactions, but they are large enough to work with.  At 1.5 T the T1 of gray matter is about 0.88 s and of white matter about 0.65 s.  White matter, with the shorter T1, recovers faster and therefore produces the larger signal at any moment during the recovery.
+Within the brain the differences are small but measurable.  At 1.5 T the T1 of gray matter is about 0.88 s and of white matter about 0.65 s.  White matter, with the shorter T1, recovers faster and therefore produces the larger signal at any moment during the recovery.
 
 ## Contrast: the difference between signals
 
 ![Contrast: the difference between signals: the gray/white magnetization difference is largest around 0.8 s after the RF pulse.](images/ch07/contrast-the-difference-between-signals.png){#fig-ch07-contrast-the-difference-between-signals}
 
-What we can actually see in an image is not the signal level but the *difference* between signals — the contrast.  The two recovery curves in @fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh start together at zero and end together at $M_0$, so the difference between them must be zero at both ends and largest somewhere in between.  @fig-ch07-contrast-the-difference-between-signals plots that difference,
+What we can perceive in an image is depends not just on the signal level, but largely on the *difference* between signals at nearby locations: the image contrast.  
+
+The two recovery curves in @fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh start together at zero and end together at $M_0$, so the image contrast must be zero at both ends and largest somewhere in between.  @fig-ch07-contrast-the-difference-between-signals plots that difference,
 
 $$
 \Delta M = M_0\left(e^{-t/T_{1,G}} - e^{-t/T_{1,W}}\right)
 $$
 
-It peaks around 0.8 s after the RF pulse at 1.5 T.  This is a genuinely useful result: it tells us when to read out the signal.  Waiting too long is as bad as not waiting long enough, because both tissues have then fully recovered and there is nothing left to distinguish them.  Choosing the acquisition timing to maximize the contrast of interest is the central design problem of a pulse sequence.
+The contrast for this particular simulation peaks around 0.8 s after the RF pulse at 1.5 T.  This is a genuinely useful result: it tells us when to read out the signal.  Waiting too long is as bad as not waiting long enough, because both tissues have then fully recovered and there is nothing left to distinguish them.  Choosing the acquisition timing to maximize the contrast of interest is the central design problem of a pulse sequence.
 
 ## The T1-contrast distinguishes gray and white matter
 
@@ -108,7 +110,9 @@ It peaks around 0.8 s after the RF pulse at 1.5 T.  This is a genuinely useful r
 
 Putting the two ideas together: a longer T1 means a slower recovery, hence a smaller signal at readout, so image intensity runs *inverse* to T1.  White matter (short T1) is bright, gray matter is darker, and CSF (longest T1 of the three) is darkest.  That is the appearance of the coronal, sagittal, and axial images here, and it is why the T1-weighted volume is the standard anatomical image used to separate gray from white matter — for measuring cortical thickness, atrophy, or ventricular enlargement.
 
+## T2.  Delete this.
 The same reasoning, applied to the transverse component, is what produces the opposite contrast in a T2-weighted image (@fig-ch08-t2-weighted-images-white-is-darker-than-gray).
+
 
 ## Surface Interaction Rate (SIR)
 
