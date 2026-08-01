@@ -1,0 +1,25 @@
+---
+date: last-modified
+---
+
+# Fast Exchange Model {.unnumbered}
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+When we make measurements in brain, any voxel will contain multiple types of tissue. The spins near the different types will all combine to produce the signal.  How can we model the signal from a mixture of molecules?
+
+## T1 from multiple molecules
+
+![T1 from multiple molecules: Fast Exchange Theory (Zimmerman & Brittin, *J. Phys. Chem.*, 1957) [@zimmerman1957-fast-exchange].](images/t1-from-multiple-molecules-fast-exchange-theory.png){#fig-ch07-t1-from-multiple-molecules-fast-exchange-theory}
+
+A voxel can contain water in several environments at once: bulk free water, water near a molecular surface, and water more tightly associated with a molecule. In this simple model, surface-associated water has a shorter $T_1$ than bulk water.
+
+If water molecules exchange between these environments quickly compared with the relaxation process—the *fast-exchange* assumption—the voxel does not show a mixture of separate exponentials. Instead, it shows a single exponential recovery whose *rate* is the concentration-weighted average of the individual rates:
+
+$$
+\frac{1}{T_1(L)} = \sum_{i=1}^{n} C_i \frac{1}{T_{1,c_i}} + \left(1 - \sum_{i=1}^{n} C_i\right)\frac{1}{T_{1,f}}
+$$
+
+Here, $C_i$ is the fraction of water in environment $i$, and the remaining fraction is bulk free water. Notice that it is the *rates* that average, not the time constants. This is the same bookkeeping that appears in the next chapter, where the rates of two dephasing mechanisms add to give $T_2^*$. Fast exchange is a useful starting model for understanding why a voxel with several water environments can have one apparent $T_1$; related models are used in quantitative $T_1$ methods later in the book.
+
+Fast exchange does not apply in every situation. If exchange is slow, the recovery can contain more than one exponential and a more detailed model is needed. Still, fast exchange is a good starting place for many analyses—and discovering where it fails can be scientifically useful.

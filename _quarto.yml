@@ -94,6 +94,7 @@ book:
        - chapters/resources/felix-bloch-equations.qmd
        - chapters/resources/erwin-hahn.qmd
        - chapters/resources/lauterbur.qmd
+       - chapters/resources/fast-exchange.qmd
        - chapters/resources/jean-baptiste-fourier.qmd
        - chapters/resources/phineas-gage.qmd
        - chapters/resources/leukoencephalopathy.qmd
