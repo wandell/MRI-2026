@@ -2,7 +2,6 @@
 name: teaching
 description: Guide instructional sequencing and conceptual clarity in the book. Use when drafting, editing, or reviewing lessons, chapters, figures, callouts, or explanations for learner readiness, prerequisite order, conceptual scaffolding, and the distinction between observation, measurement, reconstruction, and model-based interpretation.
 ---
-
 # Teaching
 
 ## Instructional priorities
@@ -16,7 +15,7 @@ description: Guide instructional sequencing and conceptual clarity in the book. 
 
 ## Review and editing workflow
 
-1. Identify what learners have encountered in preceding sections and what the current section must prepare them to understand.
+1. Identify what learners have encountered in preceding chapters in that part and what the current chapter must prepare them to understand.
 2. Check that each paragraph has one instructional purpose: observation, definition, mechanism, application, or synthesis.
 3. Flag terms, mechanisms, equations, or causal claims introduced before the learner has the needed foundation.
 4. Replace premature explanation with an accurate observation-first account, then add a deliberate forward reference.
