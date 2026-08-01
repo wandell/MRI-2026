@@ -10,7 +10,13 @@ date: last-modified
 
 ## What is a pulse sequence
 
-The previous two chapters described the two relaxation signals, T1 and T2, one at a time.  An actual measurement produces neither in isolation.  What we acquire is set by the *pulse sequence*: the schedule of RF pulses and gradients, and the times at which we listen.  This chapter covers three things — how the timing of a pulse sequence determines whether an image is T1-, T2-, or PD-weighted; why a T2-weighted signal is not a quantitative measurement of T2; and a look ahead at how the T2* signal becomes the basis of BOLD fMRI.
+The previous two chapters described the two relaxation signals, T1 and T2, one at a time. An actual measurement produces neither in isolation. What we acquire is set by the *pulse sequence*: the schedule of RF pulses and gradients, and the times at which we listen. 
+
+::: {.callout-tip}
+*Recall from Chapter 5*: We saw how pulse sequences combine RF pulses and gradients. Now we'll explore how specific timing parameters (TE/TR) create different tissue weightings.
+:::
+
+This chapter covers three things — how the timing of a pulse sequence determines whether an image is T1-, T2-, or PD-weighted; why a T2-weighted signal is not a quantitative measurement of T2; and a look ahead at how the T2* signal becomes the basis of BOLD fMRI.
 
 ## Pulse sequence diagrams
 

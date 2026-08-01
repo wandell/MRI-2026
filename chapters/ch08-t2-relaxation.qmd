@@ -8,21 +8,21 @@ date: last-modified
 
 ---
 
-## T2 time course and T2 contrast
-
+<!--
 ![T2 time course and T2 contrast: the transverse signal decays exponentially, with a time constant that differs across materials — roughly 90 ms for fat, 180 ms for blood, and 2000 ms for free water.](images/ch08/t2-time-course-and-t2-contrast.png){#fig-ch08-t2-time-course-and-t2-contrast}
+-->
 
-The second fundamental measurement, T2, is explained by a very different underlying mechanism.  In this chapter we explain the source of this, transverse, signal.
-
-It is worth comparing @fig-ch08-t2-time-course-and-t2-contrast with the T1 curves for the same three materials in @fig-ch07-spin-lattice-interactions.  The two families of curves are mirror images in an important sense: the longitudinal signal *recovers* toward its equilibrium value, while the transverse signal *decays* toward zero.  The materials also fall in the same rank order in both plots, but the T2 time constants are several times shorter than the T1 time constants.  That difference in scale matters later, when we choose the timing of a pulse sequence.
+The second fundamental measurement, T2, is arises from a very different mechanism from T1.  This chapter explains the T2 relaxation.
 
 ## The net magnetization is summarized by two components
 
 ![The net magnetization is summarized by two components.](images/ch08/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch08-the-net-magnetization-is-summarized-by-two-compone}
 
-As in @fig-ch07-the-net-magnetization-is-summarized-by-two-compone, the net magnetization separates into a component along the z-axis (longitudinal) and a component in the x-y plane (transverse).  T1 describes the longitudinal component; T2 describes the transverse one, which is boxed in this slide.
+As in @fig-ch07-the-net-magnetization-is-summarized-by-two-compone, we separate the net magnetization into a component along the z-axis (longitudinal) and a component in the x-y plane (transverse). T1 describes how the longitudinal component returns to equilibrium after an RF pulse. T2, which is boxed in this slide, describes how the transverse component returns to equilibirum.
 
-The transverse component is a vector *in a plane*: it has both a length (amplitude) and a direction (phase).  A receive coil sits at one position and senses only the projection of that vector onto its own axis.  As the transverse magnetization precesses around the z-axis, the projection points first toward the coil (positive) and then away from it (negative).  The measured signal therefore oscillates at the Larmor frequency.  What decays with T2 is the *amplitude* of that oscillation — the length of the transverse vector — not the oscillation itself.
+Like the longitudinal component, we describe the transverse component as a vector.  But this vector is dynamically rotating *in a plane*.  Thus, it has both a changing length (amplitude) and a changing direction. Remember from the prior chapters, this rotating vector is the only signal we measure in an MR experiment. 
+
+A receive coil sits at one position and senses only the projection of that vector onto its own axis (@fig-ch06-the-receive-coil-measures-the-electrical-radio-fre-2). As the transverse magnetization precesses around the z-axis, the projection points first toward the coil (positive) and then away from it (negative).  The measured signal oscillates at the Larmor frequency as the vector rotates. The *amplitude* of that oscillation decays over time.  The time constant of the day of the transverse vector is T2.
 
 <!--
 ## Transverse magnetization
@@ -47,6 +47,7 @@ TODO (Brian): this build shows field-free space / B0 field / following the RF pu
 ## Transverse relaxation:  T2
 
 ![Transverse relaxation:  T2. The net transverse magnetization (red arrow, bottom row) is zero before excitation, large immediately after the RF pulse, and decays back to zero as the individual spins lose their common phase.](images/ch08/transverse-relaxation-t2.png){#fig-ch08-transverse-relaxation-t2}
+
 
 Before the RF pulse, the spins have no common transverse direction.  This is true in field-free space, and it remains true after we place a head in the B0 field: B0 creates a preferred direction along z, but it creates no preferred direction in the x-y plane.  The individual transverse components point every which way and cancel, so there is no net transverse magnetization and the coil measures nothing.
 
@@ -78,14 +79,16 @@ and T2 is its time constant.
 
 When the spins share a common phase, we say they are *in phase*, or coherent.  The loss of that common phase is called *de-phasing*.
 
-The video represents the de-phasing, but in a special way.  Remember that the transverse magnetization is always precessing around the z-axis, far too quickly to display.  So we imagine ourselves rotating around the z-axis at that same pace — the *rotating frame* introduced in @fig-ch07-the-rf-signal-b1-causes-the-net-magnetization-to-p.  In the rotating frame the common precession becomes invisible, and what remains visible is exactly what we care about: the individual moments fanning out relative to one another.
+
+
+The video represents the de-phasing, but in a special way.  Remember that the transverse magnetization is always precessing around the z-axis, far too quickly to display.  So we imagine ourselves rotating around the z-axis at that same pace — the *rotating frame*.  If we do not rotate around at the precession frequency, we say we are in the *lab frame*. In the rotating frame the common precession becomes invisible, and what remains visible is exactly what we care about: the individual moments fanning out relative to one another.
 
 * Transverse magnetization declines as the directions of the spins (their *relative phases*) diverge, becoming incoherent
 * The colored vectors on the left represent the individual magnetic moments (spins); they begin aligned and progressively spread apart
 * The blue arrow on the right is the sum of those moments — the net transverse magnetization — which shortens as the spins de-phase
 * The curve at the bottom shows how the amplitude of that sum decays over time
 
-But do remember what this amplitude means.  The signal in the coil swings back and forth, from positive to negative, as the transverse magnetization goes round and round the z-axis.  The decaying curve is the *envelope* of that oscillation, not the oscillation itself.  This decaying oscillation, measured after a single RF excitation, is the free induction decay (FID) introduced in @fig-ch06-the-fid-signal-quantal-description.
+But do remember what this amplitude means.  The signal in the coil swings back and forth, from positive to negative, as the transverse magnetization goes round and round the z-axis.  The decaying curve is the *envelope* of that oscillation, not the oscillation itself.  This decaying oscillation, measured after a single RF excitation, is the free induction decay (FID) introduced in @@fig-ch05-panel-fid.
 
 ## The Bloch Equations
 
@@ -135,7 +138,7 @@ It is very unusual for investigators to acquire a pure T1 or a pure T2 image.  U
 
 ### T1-weighted images: gray is darker than white
 
-![T1-weighted images: gray is darker than white.](images/ch08/t1-weighted-images-gray-is-darker-than-white.png){#fig-ch08-t1-weighted-images-gray-is-darker-than-white}
+![T1-weighted images: gray is darker than white.](images/ch08/t1-weighted-images-gray-is-darker-than-white.png){#fig-ch08-t1-weighted-images-gray-is-darker-than-white width="75%"}
 
 In a T1-weighted image, the signal is *larger* where T1 is *shorter*: tissue with a short T1 has recovered more of its longitudinal magnetization by the time we read the signal out.  White matter has the shorter T1 (0.65 s, versus 0.88 s for gray matter at 1.5 T; @fig-ch07-the-t1-contrast-distinguishes-gray-and-white-matte), so white matter is bright and gray matter is dark.  CSF has the longest T1 of the three and is darkest of all — look at the ventricles in the coronal image.  This is the contrast that makes T1-weighted volumes the standard anatomical image for separating gray from white matter.
 
@@ -153,7 +156,7 @@ Session T1s_MPR
 
 ### T2-weighted images: white is darker than gray
 
-![T2-weighted images: white is darker than gray.](images/ch08/t2-weighted-images-white-is-darker-than-gray.png){#fig-ch08-t2-weighted-images-white-is-darker-than-gray}
+![T2-weighted images: white is darker than gray.](images/ch08/t2-weighted-images-white-is-darker-than-gray.png){#fig-ch08-t2-weighted-images-white-is-darker-than-gray width="75%"}
 
 T2-weighted images reverse this relationship.  Now the signal is larger where T2 is *longer*, because tissue whose transverse magnetization decays slowly still has signal left when we measure it.  At 3 T the average T2 is about 108 ms for gray matter and 78 ms for white matter, so gray matter is now the brighter of the two.  CSF, with a T2 of roughly two seconds, is brighter still.
 
@@ -167,11 +170,27 @@ Subject HCP350002
 Session T2W_SPC
 -->
 
-## Summary of the relative signal intensities  using T1 and T2
+## Summary of the relative signal intensities using T1 and T2
 
-![Summary of the relative signal intensities  using T1 and T2.](images/ch08/summary-of-the-relative-signal-intensities-using-t.png){#fig-ch08-summary-of-the-relative-signal-intensities-using-t}
+::: {.column-margin}
+**Key:**  
+- **Bright/White**: High signal  
+- **Light Gray**: Moderate signal  
+- **Dark Gray**: Low signal  
+- **Black**: Signal void
+:::
 
-The table collects the appearance of the main tissue types in the two weightings.  The row to watch is the gray/white pair: light gray and dark gray on T1, and the reverse on T2.  Notice also that bone and air are dark in both.  Their darkness has nothing to do with relaxation — they contain almost no mobile hydrogen, so there is very little magnetization to measure in the first place.  That is a proton density (PD) effect, the third of the three basic contrasts.
+| Tissue / Structure       | T1-Weighted Appearance | T2-Weighted Appearance | Physical Basis |
+|--------------------------|------------------------|------------------------|----------------|
+| **Fat**                  | Bright (White)         | Intermediate           | Short T1 (~180 ms), Moderate T2 |
+| **White Matter**         | Light Gray             | Dark Gray              | T1: 650 ms @ 1.5T, T2: 78 ms @ 3T |
+| **Gray Matter**           | Dark Gray              | Light Gray             | T1: 880 ms @ 1.5T, T2: 108 ms @ 3T |
+| **CSF/Free Water**       | Black                  | Bright (White)         | Long T1 (>2000 ms), Long T2 (~2000 ms) |
+| **Bone/Air**             | Black (Signal Void)    | Black (Signal Void)    | No mobile protons |
+
+*Reference values from Wansapura et al. (1999) and Konar et al. (2022)*
+
+The table collects the appearance of the main tissue types in the two weightings. The row to watch is the gray/white pair: light gray and dark gray on T1, and the reverse on T2. Notice also that bone and air are dark in both. Their darkness has nothing to do with relaxation — they contain almost no mobile hydrogen, so there is very little magnetization to measure in the first place. That is a proton density (PD) effect, the third of the three basic contrasts.
 
 <!--
 TODO (Brian): the Fat row of this table lists "Dark black" on T1.  Fat has the *shortest* T1 of the
@@ -197,6 +216,8 @@ Reference values for normal tissue at 3 T are from Wansapura et al., [NMR relaxa
 
 The same tumor in the same slice can be brighter or darker than the surrounding brain, depending only on the pulse sequence used to acquire the image.  Nothing about the tissue changed between the two panels; what changed is which relaxation mechanism the measurement was made sensitive to.  Choosing that weighting deliberately, rather than accidentally, is what the next chapter is about.
 
+<!--
 ::: {.callout-note}
 The next chapter, Pulse Sequences, shows how the timing parameters TE and TR set the T1/T2/PD weighting of an image, why a T2-weighted signal level is not a quantitative measurement of T2, and — looking ahead — how the T2* signal becomes the basis of BOLD fMRI.
 :::
+-->

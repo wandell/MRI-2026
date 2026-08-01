@@ -81,15 +81,19 @@ In this image array, the authors used a spin echo sequence but swept out the tim
 
 This experiment demonstrates that the MR instrument is quite flexible. The same instrument can be programmed to measure different aspects of the tissue under study.
 
+::: {.callout-note}
+*Looking ahead*: In Chapter 9b, we'll explore specific pulse sequence implementations like spin echo and learn how timing parameters (TE/TR) create different tissue weightings.
+:::
+
 ## To the future – and beyond
 
 ![To the future – and beyond.](images/ch05/to-the-future-and-beyond.png){#fig-ch05-to-the-future-and-beyond}
 
-Much is known about the relationship between the sequence, its parameters, and the underlying tissue.  But this field is certainly not fully worked out.  New discoveries continue to be made and people invent new ideas about pulse sequences that enable us to measure new things.  One of the main topics of this course, measuring functional signals from the brain, was only invented thirty years ago. Many new ideas continue to emerge. 
+Much is known about the relationship between the sequence, its parameters, and the underlying tissue. But this field is certainly not fully worked out. New discoveries continue to be made and people invent new ideas about pulse sequences that enable us to measure new things. One of the main topics of this course, measuring functional signals from the brain, was only invented thirty years ago. Many new ideas continue to emerge.
 
-Those ideas will be built upon the foundations that we do understand today.  That's what we start to cover in the next section.
+Those ideas will be built upon the foundations that we do understand today. The most fundamental observation, is the free induction decay (FID) experiment. We introduce the  experiment the next section.
 
-## MR: Free induction decay
+## Free induction decay
 
 <!--
 ![MR: Free induction decay.](images/ch05/mr-free-induction-decay.png){#fig-ch05-mr-free-induction-decay}
@@ -98,15 +102,11 @@ Those ideas will be built upon the foundations that we do understand today.  Tha
 
 <!-- 
 TODO (Brian):  Deal with these some more in the future teaching
-Williamson article for teaching.
 Jw teaching repository from Jon winawer
 Is Quantum Mechanics necessary for understanding Magnetic Resonance? LARS G. HANSON
 -->
 
-
-## The free induction decay experiment
-
-The **free induction decay** is the simplest MR signal experiment. The basic experiment and the signal we measure are fairly straightforward. We build up the experiment in the series of images in this panel.
+The **free induction decay** is the simplest MR signal experiment. The idea of the experiment is built up in the series of images in this panel.
 
 ::: {.panel-tabset #fig-ch05-panel-fid}
 

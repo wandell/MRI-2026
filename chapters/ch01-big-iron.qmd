@@ -48,12 +48,9 @@ The primary purpose of the room shield is to block unwanted radiofrequency (RF) 
 
 The walls, ceiling, floor, door, and viewing window form a continuous conducting enclosure, usually made with copper or aluminum. Electrical cables pass through filtered penetration panels; nonconductive connections can use waveguides designed to block RF transmission. Together these components make a *Faraday cage*.
 
-The Faraday cage attenuates RF electromagnetic waves in both directions, but it has essentially no effect on the static main field $B_0$. The magnet's own active or passive magnetic shielding limits the **fringe field**, the region outside the scanner where the static field remains appreciable.
+The Faraday cage attenuates RF electromagnetic waves in both directions, but it has essentially no effect on the static main field $B_0$. The magnet's own active or passive magnetic shielding limits the **fringe field** (the region outside the scanner where the static field remains appreciable, typically extending several meters and requiring 5-gauss safety demarcation lines in scanner facilities).
 
 We return to the main field in the next chapter.
-
-<!-- TODO (Brian): this used to promise a discussion of the fringe field "in the next chapter," but ch02 never mentions the fringe field. Either add a short fringe-field section to ch02 (it belongs with active/passive magnet shielding, and it is what the 5-gauss line in the safety chapter is about) or leave this sentence as it now stands. -->
-<!-- TODO (Brian): the 5-gauss safety line is a natural link between this paragraph, ch02, and ch04. It is not currently discussed in any of the three. -->
 
 ## Machine Room
 
