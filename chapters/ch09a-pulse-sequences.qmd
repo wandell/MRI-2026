@@ -8,13 +8,13 @@ date: last-modified
 
 ---
 
-## What is a pulse sequence
-
-The previous two chapters described the two relaxation signals, T1 and T2, one at a time. An actual measurement produces neither in isolation. What we acquire is set by the *pulse sequence*: the schedule of RF pulses and gradients, and the times at which we listen. 
+## The impact of pulse sequence parameters
 
 ::: {.callout-tip}
 *Recall from Chapter 5*: We saw how pulse sequences combine RF pulses and gradients. Now we'll explore how specific timing parameters (TE/TR) create different tissue weightings.
 :::
+
+The previous two chapters described the two relaxation signals, T1 and T2, one at a time. An actual measurement produces neither in isolation. What we acquire is set by the *pulse sequence*: the schedule of RF pulses and gradients, and the times at which we listen. 
 
 This chapter covers three things — how the timing of a pulse sequence determines whether an image is T1-, T2-, or PD-weighted; why a T2-weighted signal is not a quantitative measurement of T2; and a look ahead at how the T2* signal becomes the basis of BOLD fMRI.
 
@@ -28,7 +28,7 @@ The timing of the RF pulses determines the weighting of a pulse sequence: T1, T2
 
 ![A spin-echo pulse sequence diagram: 90° and 180° RF pulses define TE; the sequence repeats with period TR; gradients ($G_x$, $G_y$, $G_z$) encode spatial position (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch09b/pulse-sequence-diagram-spin-echo-multifactor.png){#fig-ch09b-spin-echo-diagram fig-alt="Spin-echo pulse sequence diagram showing RF pulses at 90 and 180 degrees, TE and TR intervals, and three gradient channels Gx, Gy, Gz with a data-acquisition window."}
 
-## Choosing TE and TR to control contrast
+## Choosing TE and TR to control tissue contrast
 
 T1 and T2 differ enormously in scale — for white matter, T1 is roughly 8 times longer than T2 (about 0.83 s versus 0.11 s). Because of this difference, the same pulse-timing choices that control T2 contrast have very little effect on T1, and vice versa.
 

@@ -21,8 +21,8 @@ book:
        - chapters/ch06-macroscopic-model.qmd
        - chapters/ch07-t1-relaxation.qmd
        - chapters/ch08-t2-relaxation.qmd
-       - chapters/ch09b-pulse-sequences.qmd
-       - chapters/ch09-spin-echo.qmd
+       - chapters/ch09a-pulse-sequences.qmd
+       - chapters/ch09b-spin-echo.qmd
        - chapters/ch10-pulse-sequences.qmd
        - chapters/ch11-physical-mechanisms.qmd
     - part: chapters/part3-imageformation.qmd

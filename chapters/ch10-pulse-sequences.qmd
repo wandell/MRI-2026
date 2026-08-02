@@ -2,13 +2,11 @@
 date: last-modified
 ---
 
-# Inversion recovery pulse sequence
+# Inversion recovery
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
-
-**Introduce spin-lattice terminology**
 
 ## Measuring the T1 time constant: 
 
@@ -42,13 +40,13 @@ $$
 M_z(t) = M_0\left(1 - 2e^{-t/T_1}\right)
 $$
 
-The factor of 2 is the only difference.  Because the magnetization has to climb all the way from $-M_0$ to $+M_0$, it passes through zero on the way, at $t = T_1 \ln 2 \approx 0.69\,T_1$.  That zero crossing is what makes the sequence useful: choosing the inversion time TI so that a particular tissue is passing through zero suppresses that tissue entirely, which is what FLAIR does with CSF.
-
-There is one more wrinkle.  A 180 deg pulse produces no transverse magnetization, so it generates no signal by itself.  That is why the sequence needs the second, 90 deg pulse: it tips whatever longitudinal magnetization has recovered during TI into the transverse plane, where we can measure it.  The measured signal is therefore a snapshot of the T1 recovery at time TI.
+The factor of 2 is the only difference. It means that at $t=0$ the signal is $-M_0$. 
 
 ## Combining inversion recovery and Hahn spin-echo
 
 ![Combining inversion recovery and Hahn spin-echo.](images/ch10/combining-inversion-recovery-and-hahn-spin-echo.png){#fig-ch10-combining-inversion-recovery-and-hahn-spin-echo}
+
+A 180 deg pulse produces no transverse magnetization, so it generates no signal by itself.  That is why the sequence needs the second, 90 deg pulse: it tips whatever longitudinal magnetization has recovered during TI into the transverse plane, where we can measure it.  The measured signal is therefore a snapshot of the T1 recovery at time TI.
 
 <!--
 ## Thursday of the 2nd week
@@ -66,9 +64,11 @@ There is one more wrinkle.  A 180 deg pulse produces no transverse magnetization
 :::
 -->
 
-## The signal magnitude formation when for 180 deg flip
+## The signal magnitude over time
 
-![The signal magnitude formation when for 180 deg flip.](images/ch10/the-signal-magnitude-formation-when-for-180-deg-fl.png){#fig-ch10-the-signal-magnitude-formation-when-for-180-deg-fl}
+![The signal magnitude formation over time, for a 180 deg flip.](images/ch10/the-signal-magnitude-formation-when-for-180-deg-fl.png){#fig-ch10-the-signal-magnitude-formation-when-for-180-deg-fl}
+
+Because the magnetization has to climb all the way from $-M_0$ to $+M_0$, it passes through zero on the way.  That time will be $t = T_1 \ln 2 \approx 0.69\,T_1$. The presence of the zero-crossing makes the sequence particularly useful: choosing the inversion time TI so that a particular tissue is passing through zero suppresses that tissue entirely.
 
 The graphs above plot $M_z$ itself, with the values before the zero crossing shown as negative.  But we measure only the *magnitude* of the signal, which is always positive.  Taking the absolute value folds the negative part of the recovery upward, so the measured curve descends to zero at $t = T_1 \ln 2$ and then climbs again — the V shape on the right.  The position of that null is a direct read on T1, and tissues with different T1 values null at different inversion times.
 
