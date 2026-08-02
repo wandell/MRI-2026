@@ -96,26 +96,25 @@ Original method by Look Locker
 
 ::: {.panel-tabset}
 
-## Step 1
+## FLAIR image
 
 ![T1-FLAIR (Fluid attenuated inversion recovery) — step 1.](images/ch10/t1-flair-fluid-attenuated-inversion-recovery-1.png){#fig-ch10-t1-flair-fluid-attenuated-inversion-recovery-1}
 
-## Step 2
+## Signal Equation
 
 ![T1-FLAIR (Fluid attenuated inversion recovery) — step 2.](images/ch10/t1-flair-fluid-attenuated-inversion-recovery-2.png){#fig-ch10-t1-flair-fluid-attenuated-inversion-recovery-2}
 
 :::
 
-Add the derivation of this.  I remember seeing it somewhere.  Maybe in the tutorial?
-
-## Inversion recovery can be combined with a spin-echo T2 – not pure T1
-
-![Inversion recovery can be combined with a spin-echo T2 – not pure T1.](images/ch10/inversion-recovery-can-be-combined-with-a-spin-ech.png){#fig-ch10-inversion-recovery-can-be-combined-with-a-spin-ech}
-
-## Fluid attenuated inversion recovery (FLAIR)
+Add the derivation of the signal equation.  I remember seeing it somewhere.  Maybe in the tutorial?
 
 ![Fluid attenuated inversion recovery (FLAIR).](images/ch10/fluid-attenuated-inversion-recovery-flair.png){#fig-ch10-fluid-attenuated-inversion-recovery-flair}
 
-::: {.callout-note}
-Pulse sequence diagrams, TE/TR selection, why the T2 measurement is not quantitative, and a preview of the T2*/BOLD signal are covered in the next chapter (Pulse Sequences, T2 Quantification, and a Look Ahead to BOLD).
-:::
+Why someone might want a FLAIR image.
+
+## Combing inversion recovery with spin-echo
+
+![Inversion recovery can be combined with a spin-echo T2 – not pure T1.](images/ch10/inversion-recovery-can-be-combined-with-a-spin-ech.png){#fig-ch10-inversion-recovery-can-be-combined-with-a-spin-ech}
+
+A mixture of T1 and T2 types of signals results.  Say more here.
+
