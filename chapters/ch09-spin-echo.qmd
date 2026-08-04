@@ -13,6 +13,12 @@ date: last-modified
 ![Pulse sequences: Spin echo (Hahn). The hare-and-tortoise analogy shows how a 180° refocusing pulse reverses phase coherence: fast ("hare") and slow ("tortoise") spins that have dephased by TE/2 are flipped and return into phase at time TE (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 5.10).](images/ch09/pulse-sequences-spin-echo-hahn.png){#fig-ch09-pulse-sequences-spin-echo-hahn}
 -->
 
+In our last two chapters, we explored T1 and T2 relaxation separately. But in real MR experiments, you'll typically see both effects mixed together!
+
+The magic happens in what we call the "pulse sequence" - the carefully timed dance of RF pulses and gradients that determines how these relaxation effects combine.
+
+In this chapter, we'll dive into one of MRI's most important tricks: the spin echo. You'll see how we use multiple RF pulses to isolate the T2 signal in a simple experiment that's as elegant as the FID we started with.
+
 ## The RF pulse sequence up to now (FID)
 
 ![The RF pulse sequence up to now (FID).](images/ch09/the-rf-pulse-sequence-up-to-now-fid.png){#fig-ch09-the-rf-pulse-sequence-up-to-now-fid}
