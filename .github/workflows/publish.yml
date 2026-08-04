@@ -1,0 +1,67 @@
+name: Publish book to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+# Allow the workflow to publish to Pages via OIDC.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Supersede an earlier build of the same ref; deploys get their own
+# serialised group on the job below so a publish is never cancelled midway.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      # The book is pure markdown -- the {.matlab} blocks in ch09a are
+      # display-only (leading dot = class, not an engine), so no R, Python,
+      # or Jupyter runtime is needed here.
+      - name: Render book
+        run: quarto render
+
+      # _book is ~500 MB, almost all images and video, so the upload is slow.
+      # Only the canonical repository's main branch needs it: pull requests
+      # stop at the render check, and a fork has nothing to publish to.
+      - uses: actions/upload-pages-artifact@v5
+        if: github.ref == 'refs/heads/main' && !github.event.repository.fork
+        with:
+          path: _book
+
+  # Publish only from main on the canonical repository. Everywhere else --
+  # every fork, and every pull request -- the build above still runs as a
+  # render check, but nothing is published.
+  #
+  # Both clauses are needed. The ref check excludes pull requests, which it
+  # must do alone: on a pull_request event github.event.repository is the base
+  # repository, so the fork check would not catch them. The fork check excludes
+  # a fork's own main branch, where the ref check passes.
+  #
+  # Forking this repository and wanting Pages on your own copy? Drop the
+  # second clause.
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && !github.event.repository.fork
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
