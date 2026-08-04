@@ -12,6 +12,7 @@ This repository is a Quarto book project for *Human Neuroimaging with MRI: A Pri
 - Prefer Quarto-native syntax and existing project patterns over custom HTML or ad hoc formatting.
 - Be explicit about HTML-versus-PDF behavior when a change is format-specific.
 - If a build or render issue appears, ask for the relevant file and the exact error text rather than guessing.
+- Keep LaTeX math syntax (`$...$` and `$$...$$`) and Quarto inline code/cross-references (`@fig-*`, `@eq-*`, `@sec-*`) completely intact unless explicitly asked to modify them. Do not convert LaTeX math into raw text or HTML entities.
 
 ## Repository layout
 
@@ -33,6 +34,7 @@ This repository is a Quarto book project for *Human Neuroimaging with MRI: A Pri
 - Use Quarto for rendering and debugging book content.
 - Use `rg` instead of `grep` and `fd` instead of `find` when searching the repository from the terminal.
 - Keep BibTeX-related edits consistent with the existing `paperpile.bib` and `references.bib` workflow.
+- When searching the repository, prefer using `rg` and `fd` commands in read-only terminal passes to inspect context before editing files.
 
 ## Skill activation
 
