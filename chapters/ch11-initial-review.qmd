@@ -1,0 +1,76 @@
+---
+date: last-modified
+---
+
+# Initial review
+
+{{< include "includes/WIP-callout.qmd" >}}
+
+---
+
+At this point, we have covered a lot of introductory material. If you look back over the previous ten chapters, you should feel proud: nearly all of this was unfamiliar territory when the course began, and you can now follow it.
+
+* the MR instrumentation (@fig-ch01-system-rooms-diagram),
+* the fundamental experiment, the free induction decay or FID (@fig-ch05-the-free-induction-decay-experiment-3),
+* a model that explains the physical sources of the T1 and T2 signals (@fig-ch06-the-fid-signal-quantal-description), and
+* spin echo and inversion recovery, pulse sequences that let us isolate and measure the T1 and T2 signals separately (@fig-ch09-spin-echo-hahn; @fig-ch10-combining-inversion-recovery-and-hahn-spin-echo).
+
+The notes in this chapter are a summary you can use as a resource to remember the main points from the initial section of the class. You can also use the search bar on the left side of the page: type in a term such as "T2" or "spin echo" and jump straight to the chapter where it was introduced.
+
+The next section of the class covers the ideas that have enabled us to move beyond measuring the signal from a single mass to making MR measurements of entire images or even entire volumes. The ability to make these spatially resolved MR measurements, knowing what signal comes from where, is crucial for transforming MR from a scientific field into a mainstay of clinical medicine.
+
+## The MR instrumentation
+
+* The control room (@fig-ch01-cni-control-room)
+* The scanner room (@fig-ch01-scanner-room-patient-table)
+* The RF coils (@sec-rf-coils-overview)
+* The gradients (@fig-ch02-gradient-coils-xyz)
+* Liquid helium dewars (@fig-ch01-helium-dewars)
+* Safety (@fig-ch04-safety-ferromagnetic-projectiles)
+
+## The model and the terminology
+
+* B0 - The strong, steady magnetic field that aligns the spins and creates the net magnetization (@fig-ch06-nuclei-aligned)
+* Tesla (T) - The unit of magnetic field strength (also Gauss) (@fig-ch02-magnetic-field-units-scientists)
+* B1 (RF) - The electromagnetic signal that evokes the MR signal (@fig-ch06-the-rf-signal-b1-causes-the-net-magnetization-to-p)
+* Longitudinal magnetization (@fig-ch07-example-longitudinal-relaxation)
+* Transverse magnetization (@fig-ch08-transverse-relaxation-t2)
+* Net magnetization - the vector sum of all the individual spins; it is what the scanner actually measures (@fig-ch06-the-net-magnetization-is-the-sum-of-the-spins)
+* T1 relaxation (@fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh)
+* T2, T2*, T2' relaxation (@fig-ch08-transverse-magnetization-decay-1)
+
+<!--
+## MRI terminology
+
+To understand the instrument and the signals, we have explored new ideas, we have introduced many new terms. Here is a brief summary.
+
+![MRI terms.](images/ch09/mri-terms-we-have-covered.png){#fig-ch09-mri-terms-we-have-covered}
+-->
+
+## Mechanisms that influence the bulk magnetization
+
+![The physical sources of T1 recovery and T2 decay differ!.](images/ch11/the-physical-sources-of-t1-recovery-and-t2-decay-d.png){#fig-ch11-the-physical-sources-of-t1-recovery-and-t2-decay-d}
+
+* Spin-lattice, the mechanism behind T1 recovery (@fig-ch07-visualization-of-the-spin-lattice-exchange-1)
+* Spin-spin, the mechanism behind T2 decay (@fig-ch08-two-sources-of-transverse-magnetization-decay)
+
+An important principle is that we have working models of the MR signal.  These models tell us that we can use the MRI system to learn about different aspects of the substrate we are measuring.  This is very important when it comes to making measurements of the brain.
+
+* Spin echo (@fig-ch09-spin-echo-hahn)
+* Inversion recovery (@fig-ch10-inversion-recovery-spin-lattice-t1-1)
+* Multi-echo
+
+![There are multiple mechanisms that can influence the bulk magnetization.](images/ch11/there-are-multiple-mechanisms-that-can-influence-t.png){#fig-ch11-there-are-multiple-mechanisms-that-can-influence-t}
+
+## Signals we will cover in the future
+
+* **Proton density** - Truly a fundamental measure; how much water is present
+* **fMRI/BOLD** - Builds on T2*
+* **Diffusion** - How the water mis moving
+* **qMRI** - Quantitative MRI - an attempt to stay with units 
+* **MR Spectroscopy** - A method measure molecules that are not water (chemical shift imaging)
+* **Dictionary methods** - An idea about how to speed up scans
+
+## Next up
+
+**How do we measure an entire image or volume?**
