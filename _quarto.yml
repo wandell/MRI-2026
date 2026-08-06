@@ -23,7 +23,7 @@ book:
        - chapters/ch08-t2-relaxation.qmd
        - chapters/ch09-spin-echo.qmd
        - chapters/ch10-inversion-recovery.qmd
-       - chapters/ch11-initial-review.qmd
+       - chapters/ch11-intermediate-summary.qmd
     - part: chapters/part3-imageformation.qmd
       chapters:
        - chapters/ch12-image-formation-principles.qmd
