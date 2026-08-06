@@ -21,6 +21,7 @@ This repository is a Quarto book project for *Human Neuroimaging with MRI: A Pri
 - Image assets used by the book live in `chapters/images/`.
 - Shared styles live in `styles/`.
 - Utility scripts live in `utility/` and should write generated output to `local/`.
+- Published MATLAB tutorial HTML lives in `code/`. The runnable `.m`/`.mlx` source, data, and utility functions live in the separate `teachmri` GitHub repository and are not versioned here — see `.github/skills/matlab-evaluation/SKILL.md` for the publish workflow.
 - Quarto configuration lives in `_quarto.yml`.
 
 ## Image assets
@@ -43,3 +44,4 @@ Use the task-specific skills in `.github/skills/` when the request matches one o
 - Quarto authoring and chapter formatting
 - PPTX slide extraction and conversion into Quarto content
 - Standalone HTML publishing and upload
+- MATLAB tutorial evaluation and publishing (`code/`, `teachmri` repo)
