@@ -45,3 +45,7 @@ talks/2026-London/2026-London-Dai.pptx
 
 # Local workspace files
 FOV-2025-Quarto.code-workspace
+
+# Symlinks to instructor-managed teachmri assets, machine-specific
+/code/data
+/code/utility

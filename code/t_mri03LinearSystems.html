@@ -1,0 +1,1082 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>LINEAR SYSTEMS: Superposition, convolution, harmonics</title>
+<meta name="generator" content="MATLAB 26.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2026-08-06">
+<meta name="DC.source" content="t_mri03LinearSystems.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  html body { font-size:14px; }
+h1 { font-size:1.6em; }
+h2 { font-size:1.3em; margin-top:28px; }
+.content { max-width:900px; margin:0 auto; padding:30px; line-height:148%; }
+pre, code { font-size:13px; line-height:1.35; }
+pre.codeinput {
+  font-size:13px; border-radius:4px;
+  box-shadow:0 1px 3px rgba(0,0,0,.08); }
+pre.codeoutput {
+  font-size:13px; border-left:3px solid #6aaadd;
+  background:#f0f6fb; padding-left:14px; }
+img, video { display:block; margin:20px auto; }
+video { width:512px; max-width:100%; height:auto; }
+span.keyword { color:#0070c1 }
+span.comment { color:#2e7d32 }
+span.string  { color:#7b3f9e }
+pre.language-matlab {
+  font-size:13px; background:#f7f7f7; padding:10px;
+  border:1px solid #d3d3d3; border-left:3px solid #5aaa7a;
+  border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+code, tt { font-family:Menlo,Monaco,Consolas,"Courier New",monospace;
+  background:#efefef; padding:2px 5px; border-radius:3px;
+  font-size:0.88em; color:#333; }
+pre code, pre tt { background:none; padding:0; border-radius:0; font-size:inherit; }
+</style>
+</head>
+<body>
+<div class="content">
+<h1>LINEAR SYSTEMS: Superposition, convolution, harmonics</h1>
+<!--introduction-->
+<p>An introduction to the basic ideas of linear systems theory, focusing on the tools of shift-invariant linear systems. We introduce the ideas of superposition, shift-invariance, and impulse response functions. These ideas are fundametal to many methods and analyses used in functional neuroimaging and throughout engineering and science.</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#5">What is linear system theory</a>
+</li>
+<li>
+<a href="#6">The principle of superposition</a>
+</li>
+<li>
+<a href="#7">The hemodynamic response function (HRF)</a>
+</li>
+<li>
+<a href="#8">Read and plot a hemodynamic response function (HRF)</a>
+</li>
+<li>
+<a href="#11">Simple forward calculation</a>
+</li>
+<li>
+<a href="#12">Plot the stimulus and output of a linear system with the SPM HRF</a>
+</li>
+<li>
+<a href="#13">Event-related design</a>
+</li>
+<li>
+<a href="#14">Working towards the block design</a>
+</li>
+<li>
+<a href="#15">Two events close in time</a>
+</li>
+<li>
+<a href="#16">Three events</a>
+</li>
+<li>
+<a href="#17">A block</a>
+</li>
+<li>
+<a href="#19">Different input levels</a>
+</li>
+<li>
+<a href="#20">Convolution interpreted from the output side</a>
+</li>
+<li>
+<a href="#22">Multiple events</a>
+</li>
+<li>
+<a href="#27">The importance of harmonics</a>
+</li>
+<li>
+<a href="#29">Thought Questions</a>
+</li>
+</ul>
+</div>
+<div>
+<ul>
+<li>Class: Psych 204B</li>
+<li>Tutorial: Linear Systems</li>
+<li>Author: Wandell</li>
+<li>Date: 3.31.04</li>
+<li>Duration: 30 minutes</li>
+<li>Copyright: Stanford University, Brian Wandell</li>
+</ul>
+</div>
+<p>This tutorial has a lot of reading at the front.</p>
+<div>
+<ul>
+<li>Checked: 10/13/09 JW</li>
+<li>Checked: 10/13/10 BW</li>
+<li>Checked: 01/06/24 Ryan Yan</li>
+</ul>
+</div>
+<h2 id="5">What is linear system theory</h2>
+<p>Linear systems theory is a method of characterizing certain types of common systems. A system is something that has an input and an output, and thus we can think of it as a function</p>
+<p>
+<img src="data:image/png;base64,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" alt="$$Out = L(In)$$"></p>
+<p>For example, the system might be a lens that takes an image as an input and produces another image as an output. Or, this system may be a biological system that takes metabolic activity in the brain as input and delivers the the BOLD response as output.</p>
+<p>Characterizing the input-output properties of a system by exhaustive measurements is usually impossible. When a system qualifies as a <b>linear system</b>, it is possible to use the responses to a small set of inputs to predict the response to any input. This makes it possible to characterize the system completely.</p>
+<h2 id="6">The principle of superposition</h2>
+<p>Not all systems can be described using linear systems theory. To use linear methods to describe a system, it must satisfy the basic principle of superposition. In words the principle is this:</p>
+<p>If the response to input A is Ra, and the response to input B is Rb, then the response to the sum of A and B (A+B) is the sum of the responses: Ra + Rb.</p>
+<p>In equation form this is</p>
+<p>
+<img src="data:image/png;base64,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" alt="$\begin{array}{l}\textrm{If}\;\;\;\;\;\;L\left(a\right)=R_a \\\textrm{and}\;\;L\left(b\right)=R_b ,\\\textrm{then}\;L\left(a+b\right)=R_a +R_b \end{array}$"> Homogeneity There is a simple consequence of superposition that is often labeled the principle of homogeneity. Suppose that the inputs are equal, namely, a = b. It is easy to see that</p>
+<p>
+<img src="data:image/png;base64,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" alt="$$L\left(2a\right)=L\left(a+a\right)={L\left(a\right)+L\left(a\right)\;=\;2R}_a$$"></p>
+<p>In general, if s is any scalar, a linear system will satisfy the rule:</p>
+<p>
+<img src="data:image/png;base64,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" alt="$L\left(\textrm{sa}\right)={\textrm{sR}}_a$"> General linear systems An enormous number of physical systems satisfy superposition over a meaningful range of inputs. Linear systems theory is a basic tool used throughout engineering, physics, and statistical modeling.</p>
+<p>General linear systems are represented using the core idea of linear algebra, such as matrix multiplication. If a system is linear, that means for an input, x, we can calculate the output, y, as a matrix multiplication</p>
+<p>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAANCAIAAAC/ygC8AAAAB3RJTUUH6ggGEhkiP9IZuwAAAzVJREFUOI3FVD1LK1sUPXuSExWZgdHJPAPKWASNMCYGP1EbY2VA26CIImjlD7BIoYIIFop2YmEStHRAjRqiKKaIH1gZA1MIQYX4kWihkJiYycwt5r55QYUL93J5qzpnsfdea++zOUj5O0gkEvPz8+l0+peRBEIIIaRetDP6A6jpFxcXHo8nEol8KqgJaeRPBwAAACoLAH/iAAAkSQoGg29vb4IgfCqoChWSuqmpqVgsdnx8/Pz8zHHc6+vrwcEBy7IlJSW/Ia8oCgCcnZ3d3d3Z7fbd3V2Hw8EwDEIom81ub28LgvD4+KjX6z0eTyKRMJvNeoSQJEmBQEAUxWAwmMlklpaWSktLHQ6HWi6bzS4uLt7f3+t0usJWcrlca2trf38/QRCFPELo6Oiou7ub4zhBEDY3NycmJhRFKSoqqq+vX1hYEEWRJMmrqyuXy4Ux1k1OTjIMY7Va19bWeJ7neT6VSvE8bzQa1YqKory8vFAUZTKZWJb951+wLMtxHMdx2jxVx9fX14FAoK+vr6ys7PLyMhwOO51OiqIURSkvL6+pqVlfXxdFcW5urrq6WlEUvarBcZzZbD49PW1oaAAAi8WiNYQxdjqd366nTqcrHICKw8PDZDLp9XoJgiAIIh6P7+3tjY6OqhY7Oztra2uj0ajBYFDj9VpmW1vb+fm53+9vbm4mCEJtCCGUyWTcbvfNzQ3GWPMBAB8fH11dXePj45oJAEgmk9FodHZ2tqqqSpbl9/f3sbGxjY0Nl8tFkiRCKBwOsyxL0/TMzMzy8jIA/OegpaVlZWWlo6OjsbERFewqxnhoaCidTqu2NDFZlhmG+fQEgiCQJFlXV6eSFEX19PRMT09vbW0NDg7G43Gfz+d2u2Ox2MjIiM/nGx4e1mvJRqPRbrcPDAx8HbXNZvv6BIVQK5ycnIRCIYqiIpGI1WpFCD08PDw9Pdlstv39/crKylAoVFxcbDKZJElqamra2dmhaRq0tlZXVy0WS3t7uzb/QoFvhT+F5XI5dTYAgDFGCOXzeUmSMMayLOfzeQBQl0P7lyRJgtvbW7/fbzAYKioqent7v8r/bRCpVMrr9dI0/b/II4R+ALKtAadSW/YWAAAAAElFTkSuQmCC" alt="$y=\textrm{Ax}$"> A shift-invariant linear system (convolutional) In this tutorial, we explain the intuition behind a special type of linear system: <b>a shift-invariant linear system.</b> These principles are used in functional neuroimaging. Nearly every field that uses linear systems theory develops its own terminology (jargon) to describe the ideas of linear systems theory usiing the terms in that field. We also make that connection.</p>
+<h2 id="7">The hemodynamic response function (HRF)</h2>
+<p>A time varying stimuli can be thought of as a series of impulses at different levels. We can approximate any complex stimulus as if it were simply the sum of a number of shifted and scaled impulses. In neuroimaging, the hemodynamic response function (HRF) is the impulse response function.</p>
+<p>A shift-invariant linear system is a special case when the system responds in the same way to a given impulse, no matter when the impulse occurs in time. That is, it doesn't matter what happened just before the impulse or what happens just after the impulse. The response to the impulse will be the same.</p>
+<p>The significance of the principle of superposition is this: If we know the impulse response function, we can predict the response to any stimulus (combinations of impulses). We compute the response to each impulse and then add up all the results.</p>
+<p>A remarkable feature of a shift-invariant linear (SIL) system is this: <b>To characterize shift-invariants linear (SIL) systems, we only need to measure the way the system responds to an impulse of a particular intensity.</b> That is enough to let us predict how the system will respond to all other stimuli.</p>
+<p>The analysis of BOLD using linear systems presupposes that the responses are shift-invariant linear systems. Testiing the principle of superposition In neuroimaging, the principles of superposition and shift invariance are essential to the ideas used in statistical analysis based on the general linear model (GLM) and in the analysis of rapid event-related designs. The underlying assumption is the same as linear systems: if you have two neural (or cognitive) events A and B occurring one after the other, then the BOLD response of A and the BOLD response of B will be identical (but B will be shifted in time with respect to A) and thus total BOLD signal after these two events is a sum of two independent responses shifted in time:</p>
+<p>BOLD (A+B) = BOLD(A) + BOLD(B)</p>
+<p>Next, we do some simple calculations with a model of the relationship between the stimulus and BOLD response.</p>
+<pre class="codeinput">set(0, <span class="string">'DefaultLineLineWidth'</span>, 2);
+</pre>
+<h2 id="8">Read and plot a hemodynamic response function (HRF)</h2>
+<p>This is the default HRF from the famous SPM (Statistical Parameter Mapping) package.</p>
+<pre class="codeinput">TR = 1;         <span class="comment">% TR of 1 sec</span>
+[hrf,p]  = spm_hrf(TR);
+hrfTimes = 0:p(7);   <span class="comment">%Individual time samples of the HRF</span>
+
+figure;
+plot(hrfTimes,hrf)
+xlabel(<span class="string">'Time (sec)'</span>); ylabel(<span class="string">'HRF level'</span>);
+grid <span class="string">on</span>; title(<span class="string">'SPM HRF'</span>)
+</pre>
+<pre class="codeoutput error">Undefined function 'spm_hrf' for input arguments of type 'double'.
+
+Error in t_mri03LinearSystems (line 120)
+[hrf,p]  = spm_hrf(TR);
+           ^^^^^^^^^^^</pre>
+<p>The default SPM HRF has an undershoot (negative region) towards the end. The sum of the all the term of the HRF is 1, which is important.</p>
+<pre class="codeinput">sum(hrf)
+</pre>
+<p>This means that the HRF will preserve the mean value of the input signal.</p>
+<h2 id="11">Simple forward calculation</h2>
+<p>Let's create an stimulus that is an impulse.</p>
+<pre class="codeinput">
+<span class="comment">% Let's imagine that each step is 0.1 sec (100 ms).</span>
+tSteps = p(7)*10;
+stimTimes = (1:tSteps)*0.1;
+
+hrf = interp1(hrfTimes,hrf,stimTimes);
+
+<span class="comment">% We create one stimulus with an impulse event at time 1 sec</span>
+time1 = find(stimTimes == 1);
+stim1 = zeros(1,tSteps);
+stim1(time1) = 1;
+
+<span class="comment">% A second stimulus with an event at time 2 sec</span>
+time2 = find(stimTimes == 2);
+stim2 = zeros(1,tSteps);
+stim2(time2) = 1;
+</pre>
+<h2 id="12">Plot the stimulus and output of a linear system with the SPM HRF</h2>
+<p>We plot the two stimuli and then compute the expected BOLD response by using <b>convolution</b> of the stimulus with the HRF. Convolution is a mathematical operation that implements the superposition principle for a shift-invariant linear system. Each moment of the stimulus is an input, and the scaled and shifted HRF is added to the output. It is often written as an integral</p>
+<p>
+<img src="data:image/png;base64,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" alt="$$O(t) = \int H(u)S(t-u) du$$"></p>
+<p>and sometimes using this notation</p>
+<p>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAALCAIAAABH1sIzAAAAB3RJTUUH6ggGEhkjSNUpLQAABJJJREFUSImdVV0ou18cP+d5NpuhNkNPzYW3R9Jq8j7kJSJLaxQpr1Eu5uUKc6FcuSArL+VGLriQlLjBTGmJaJNceImYNq8xmoWN5/Gc/8X5/9f+M/Xr97n6ds73fL6f8z2fcw5ECAEAEEIQwtvb2/n5+YuLi+jo6KampujoaDwO/goPDw9GoxEh5Ha7aZouLi42m81HR0cAgODgYLVaHRIS8odUWIbT6ZyamrLZbHK5nM/np6SkEHgaQjg7O9vQ0EBRVG9vL0mSarX6+PgYQoi39xeIjIzkOK69vX1vb4+maQAATdNLS0sDAwMSiUQkEgVUGbAchNDtdjc0NNzc3HR3d4eEhAwPDwsEAsBxHEJIr9fHx8ebzWb0H4qKipqbmxFCOAGDC4Tv72/fHG8mQmhxcZGiqMPDQ4TQ9/c3QkilUlVVVaEfwFQ/Yy/Vzs5OVFTU+fk5Huzu7n58fCQghBsbG4ODg11dXRkZGVgKAEAikVitVo/H4+scGAgEQfzmrrW1NZqm5XI5AIAgCKvVenR0VFBQgNvs110IoV6vN5lMOPajCg4OhhAuLi7itfX19VKplMey7OjoaExMTF1dHa4BIfz8/HS5XBzHMQwjFAqx7Z6enmZmZliW9aNmGCYvL6+wsND3kkAIXS7XycmJWCw2m80ej0coFG5vb39+fiqVSj9lHo/HZDKVlpZaLJa4uDir1fry8pKenu6lAgAoFIqKiorh4eGoqKiWlhaFQgEA4B0cHOzv73d0dEilUm8/bDbb5eVlWlpaWFiYr8qHhweGYfxO4+vry+l0+qrB2zg7O7u6utJoNFtbWwzD8Hi8+fl5mqYTExO9mnDm29ubXq9fWFhISEiw2+2jo6MqlSo9Pd23HQRBjIyMPD4+6nQ6iURSWVmJEALj4+Ph4eGrq6vYYdidk5OTYrF4bm7Oa7ufzg5odN94bGwsNjbWZrPhwa+vr5ycnLa2toDJHo9nZGQkJiampKRkb2/Pj5xhGJZlEUL39/dKpTIzM9PhcCCEeCRJYpcDADiOI0nS5XJNT0/n5uZWV1fjJuEe3N3d6fV63HvvKeHel5eXq9Vq9P/n1WQyJSQkyGQyjuMIgtjf3z89Pe3s7PSzDfZYS0sLn8/XaDSRkZE6na6mpkar1eIqEMKVlZWsrCyKoiiK6unp0Wq119fXUqmUl5mZSZKk3W7Pzs7GO9HpdHw+f3x8nMfjYUFYE5/Pl8lkLMv61WYYJjQ01M82Dofj/Py8vr6eJEn8DOzu7oaHh+fm5oIfCAoKqq2tLSsr02q1+fn5KpXq/f3dN8FgMERERFAUBQAQCARisRjHACHU39+fkZFhNBp3dnZaW1sbGxvv7u7+xC2/weVy9fX1iUSirq4up9PJsqzBYEhOTo6NjV1eXmYY5reFQ0NDm5ubfoMsy6pUqtLS0vX1dYPBkJ+fPzExgeX96wGj0bi5uSmTyZRKJb7sKNAviwJ9Jb7ng/H8/Hx8fCwSidxud1JSkkQisVgsOIfjuNTUVIFAEJDZe5W9MQDg4+Pj4OBALBYbDIbX19fy8vKcnBw89Q/rQow/7Pm9wwAAAABJRU5ErkJggg==" alt="$$O = H*S$$"></p>
+<p>Throughout we use the circular convolution. Ask me about that in class.</p>
+<pre class="codeinput">figure;
+subplot(2,2,1); plot(stimTimes,stim1,<span class="string">'b-'</span>);
+title(<span class="string">'Stim 1'</span>)
+xlabel (<span class="string">'time [s]'</span>)
+
+<span class="comment">% Compute the impact of the HRF</span>
+bold1 = cconv(stim1,hrf,tSteps);
+subplot(2,2,2); plot(stimTimes,bold1,<span class="string">'r-'</span>)
+title(<span class="string">'BOLD(stim1)'</span>)
+xlabel (<span class="string">'time [s]'</span>)
+
+<span class="comment">% Second stimulus and output</span>
+subplot(2,2,3);  plot(stimTimes,stim2,<span class="string">'b-'</span>);
+title(<span class="string">'Stim 2'</span>)
+xlabel(<span class="string">'time[s]'</span>)
+
+bold2 = cconv(stim2,hrf,tSteps);
+subplot(2,2,4); plot(stimTimes,bold2,<span class="string">'r-'</span>);
+title(<span class="string">'BOLD(stim2)'</span>);
+xlabel(<span class="string">'time[s]'</span>)
+</pre>
+<h2 id="13">Event-related design</h2>
+<p>Suppose a subject sees stimulus 1 and then and then later stimulus 2. According to the principle of superposition the output should be the sum of the individual events. Thus, we can compute the output by convolution of the sum of the two stimuli.</p>
+<pre class="codeinput">
+<span class="comment">% Here is the sum</span>
+stim3 = stim1 + stim2;
+
+figure
+subplot(3,1,1); plot(stimTimes,stim3,<span class="string">'bo-'</span>); hold;
+title(<span class="string">'Stim 1 + Stim 2'</span>)
+xlabel (<span class="string">'time [s]'</span>)
+
+<span class="comment">% Calculating the output using the superposition principle</span>
+BOLD3 = bold1(1:tSteps) + bold2(1:tSteps);
+
+subplot(3,1,2); plot(stimTimes,BOLD3);
+xlabel (<span class="string">'time [s]'</span>); ylabel(<span class="string">'% signal change'</span>)
+title(<span class="string">'Summed responses'</span>)
+
+<span class="comment">% This is the predicted response by convolution</span>
+bold3 = cconv(stim3,hrf,tSteps);
+subplot(3,1,3);
+plot(stimTimes,bold3)
+xlabel (<span class="string">'time [s]'</span>)
+ylabel(<span class="string">'% signal change'</span>)
+title(<span class="string">'Convolution with stim 3'</span>)
+</pre>
+<h2 id="14">Working towards the block design</h2>
+<p>We start with blocks of two brief events that are separated in time. We then examine how the number of events and the spacing between events affects the predicted bold signal.</p>
+<pre class="codeinput">
+<span class="comment">% 1st evetSteps at time 1</span>
+time1 = (stimTimes == 1);
+stim1=zeros(1,tSteps);  stim1(time1)=1;
+
+<span class="comment">% 1st evetSteps at time2</span>
+time2 = (stimTimes == 3);
+stim2 = zeros(1,tSteps);  stim2(time2) =1 ;
+
+stim4 = stim1 + stim2;
+
+<span class="comment">% stimulus</span>
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim4,<span class="string">'b-'</span>);
+title(<span class="string">'Stimulus'</span>); xlabel (<span class="string">'time [s]'</span>)
+
+<span class="comment">% BOLD</span>
+bold1 = cconv(stim4,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);
+ylabel(<span class="string">'% signal'</span>); xlabel (<span class="string">'time [s]'</span>)
+title(<span class="string">' BOLD response'</span>)
+</pre>
+<h2 id="15">Two events close in time</h2>
+<p>Next, we move the two events closer in time</p>
+<pre class="codeinput">
+<span class="comment">% Move the 2nd event at 2 sec.</span>
+time2 = (stimTimes == 2);
+stim2 = zeros(1,tSteps); stim2(time2) = 1 ;
+
+stim5 = stim1 + stim2;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim5,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); title(<span class="string">'Stimulus'</span>);
+
+bold1 = cconv(stim5,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); ylabel(<span class="string">'% signal'</span>);
+
+<span class="comment">% Add the underlying responses</span>
+hold <span class="string">on</span>;
+bold1 = cconv(stim1,hrf,tSteps); plot(stimTimes,bold1,<span class="string">'k:'</span>);
+bold2 = cconv(stim2,hrf,tSteps); plot(stimTimes,bold2,<span class="string">'k:'</span>);
+</pre>
+<h2 id="16">Three events</h2>
+<p>All close in time</p>
+<pre class="codeinput">
+<span class="comment">% 3rd event at 1.5 sec</span>
+time3 = (stimTimes == 1.5);
+stim3 = zeros(1,tSteps);
+stim3(time3) = 1;
+stim6 = stim1 + stim2 + stim3;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim6,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+title(<span class="string">'Stimulus'</span>);
+
+bold1 = cconv(stim6,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid <span class="string">on</span>;
+ylabel(<span class="string">'% signal'</span>); xlabel (<span class="string">'time [s]'</span>)
+
+<span class="comment">% The underlying responses</span>
+hold <span class="string">on</span>;
+bold1 = cconv(stim1,hrf,tSteps); plot(stimTimes,bold1,<span class="string">'k:'</span>);
+bold2 = cconv(stim2,hrf,tSteps); plot(stimTimes,bold2,<span class="string">'k:'</span>);
+bold3 = cconv(stim3,hrf,tSteps); plot(stimTimes,bold3,<span class="string">'k:'</span>);
+</pre>
+<h2 id="17">A block</h2>
+<p>Now we calculate for a stimulus that is on continuously for 2 seconds (time 1 sec to time 3 sec)</p>
+<pre class="codeinput">time7 = (stimTimes &gt; 1 &amp; stimTimes &lt; 3);
+stim7 = zeros(1,tSteps);
+stim7(time7) = 1;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim7,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+title(<span class="string">'Block stimulus'</span>); set(gca,<span class="string">'ylim'</span>,[-0.1 1.1]);
+
+bold1 = cconv(stim7,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid <span class="string">on</span>;
+ylabel(<span class="string">'% signal'</span>); xlabel (<span class="string">'time [s]'</span>); set(gca,<span class="string">'ylim'</span>,[-1 8]);
+</pre>
+<p>Compare the y-axis on this BOLD response with the y-axis on the previous graphs. Keeping the stimulus on longer increases the level. Let's check that by setting the stimulus</p>
+<pre class="codeinput">time7 = (stimTimes &gt; 1 &amp; stimTimes &lt; 5);
+stim7 = zeros(1,tSteps);
+stim7(time7) = 1;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim7,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+title(<span class="string">'Block stimulus'</span>); set(gca,<span class="string">'ylim'</span>,[-0.1 1.1]);
+
+bold1 = cconv(stim7,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid <span class="string">on</span>;
+ylabel(<span class="string">'% signal'</span>); xlabel (<span class="string">'time [s]'</span>); set(gca,<span class="string">'ylim'</span>,[-1 8]);
+</pre>
+<h2 id="19">Different input levels</h2>
+<p>We are calculating the BOLD response as a series of impulse responses from the stimulus. At each moment in time that the stimulus is on, we add in the impulse response. For all of the examples, we treated the stimulus input value as 1.</p>
+<p>Suppose that we have two stimuli, and the two stimuli are not equally effective. Perhaps the second stimulus is only half as effective as the first one. How would we represent that, and what would the predicted response be?</p>
+<pre class="codeinput">
+<span class="comment">% This is the first stimulus with effectiveness 1</span>
+time1 = (stimTimes &gt; 1 &amp; stimTimes &lt;= 2);
+stim1 = zeros(1,tSteps);
+stim1(time1) = 1;
+
+<span class="comment">% The second stimulus is delayed and has half the effectiveness</span>
+time2 = stimTimes &gt; 8 &amp; stimTimes &lt; 9;
+stim2 = zeros(1,tSteps);
+stim2(time2) = 0.5;
+
+<span class="comment">% The sum of the stimuli</span>
+figure;
+subplot(2,1,1)
+plot(stimTimes,stim1 + stim2,<span class="string">'b-'</span>);
+grid <span class="string">on</span>;
+title(<span class="string">'Block stimulus'</span>); set(gca,<span class="string">'ylim'</span>,[-0.1 1.1]);
+
+<span class="comment">% The BOLD responses</span>
+subplot(2,1,2)
+bold1 = cconv(stim1 + stim2,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid <span class="string">on</span>;
+ylabel(<span class="string">'% signal'</span>); xlabel (<span class="string">'time [s]'</span>); set(gca,<span class="string">'ylim'</span>,[-1 8]);
+</pre>
+<h2 id="20">Convolution interpreted from the output side</h2>
+<p>We have been calculating how the stimulus at a moment in time contributes to output values at different times. Now, let's consider the system from the perspective of the output. At each moment in time, which of the input signals contributed to the output?</p>
+<p>To visualize this, let's plot the contributing impulse responses.</p>
+<pre class="codeinput">
+<span class="comment">% First event at 1 sec</span>
+time1 = (stimTimes == 1);
+stim1 = zeros(1,tSteps);
+stim1(time1) = 1;
+
+<span class="comment">% Second event at 5 sec</span>
+time2 = (stimTimes == 5);
+stim2 = zeros(1,tSteps);
+stim2(time2) = 1 ;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim1 + stim2,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); title(<span class="string">'Stimulus'</span>);
+
+subplot(2,1,2);
+bold1 = cconv(stim1 + stim2,hrf,tSteps);
+plot(stimTimes,bold1); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); ylabel(<span class="string">'% signal'</span>);
+
+<span class="comment">% Show the individual contributions</span>
+hold <span class="string">on</span>;
+bold1 = cconv(stim1,hrf,tSteps); plot(stimTimes,bold1,<span class="string">'k:'</span>);
+bold2 = cconv(stim2,hrf,tSteps); plot(stimTimes,bold2,<span class="string">'k:'</span>);
+</pre>
+<p>The output at 5 sec is due entirely to the stimulus at 1 sec. The output at 8 sec, however, is caused by a combination of the signal at 1 sec and 5 sec. And the output at 15 sec has a positive contribution from the stimulus at 5 sec and a negative contribution from the stimulus at 1 sec.</p>
+<h2 id="22">Multiple events</h2>
+<p>Now suppose we have an event every second for the first five seconds. Let's draw the picture</p>
+<pre class="codeinput">stim = zeros(1,tSteps);
+<span class="keyword">for</span> ii=1:5
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = 1;
+<span class="keyword">end</span>
+figure;
+subplot(3,1,1);
+plot(stimTimes, stim,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); title(<span class="string">'Stimulus'</span>);
+</pre>
+<p>Now add in the individual stimuli. The dotted curves add up to the red curve.</p>
+<pre class="codeinput">subplot(3,1,2);
+bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,<span class="string">'r-'</span>);
+hold <span class="string">on</span>;
+<span class="keyword">for</span> ii=1:5
+    stim = zeros(1,tSteps);
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = 1;
+    bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,<span class="string">'k:'</span>);
+<span class="keyword">end</span>
+<span class="comment">% Zoom in on the time axis</span>
+grid <span class="string">on</span>; xlabel(<span class="string">'Time (s)'</span>)
+</pre>
+<p>Let's zooms in on the contributing responses. At each moment in time we are adding in some one of the terms from the HRF, but shifted in time.</p>
+<pre class="codeinput">subplot(3,1,3)
+hold <span class="string">on</span>;
+<span class="keyword">for</span> ii=1:5
+    stim = zeros(1,tSteps);
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = 1;
+    bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,<span class="string">'k:'</span>);
+<span class="keyword">end</span>
+grid <span class="string">on</span>; xlabel(<span class="string">'Time (s)'</span>)
+</pre>
+<p>Finally, let's suppose the stimuli aren't all the same. Some are bigger and some are smaller.</p>
+<pre class="codeinput">effect = (5:-1:1)/5;   <span class="comment">% The 5 stimuli</span>
+stim = zeros(1,tSteps);
+<span class="keyword">for</span> ii=1:5
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = effect(ii);
+<span class="keyword">end</span>
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); title(<span class="string">'Stimulus'</span>);
+
+subplot(2,1,2);
+bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,<span class="string">'r-'</span>);
+hold <span class="string">on</span>;
+<span class="keyword">for</span> ii=1:5
+    stim = zeros(1,tSteps);
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = effect(ii);
+    bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,<span class="string">'k:'</span>);
+<span class="keyword">end</span>
+<span class="comment">% Zoom in on the time axis</span>
+grid <span class="string">on</span>; xlabel(<span class="string">'Time (s)'</span>)
+</pre>
+<p>If we think of the stimulus as a continuous function then we would have multiple contributions. That idea is expressed in the convolution formula:</p>
+<p>
+<img src="data:image/png;base64,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" alt="$$O(t) = \int H(u)S(t-u) du$$"></p>
+<p>The output at each moment in time is a weighted sum of a shifted copy of the stimulus. The weights are the impulse response <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAANCAIAAADaJ/LDAAAAB3RJTUUH6ggGEhkjSNUpLQAAAz5JREFUOI2VUjtMMlsQnrOwuBDfxsQIwajsmojGoBgRY4yFpZrY2VgQazt7S7WSUGlhQkts1IICIijE+IyPuGh8oAQEQxZDQJ6H3XOLc++fm9xb/P80M9/MN9/MmRxECAGA19fXUChECMEYT0xMmM1mr9ebSqVkWRYEYWpqCgAQQvF43O/3Ly4uchwH/xghBCF0enr69PTkcDhokqFOr9cnEonV1dVsNqvX6xFCHR0dW1tbBwcHRqORikYiEafTOTY2xnEcIYQu9Et6fHw8n89vb29TyFCn1WplWe7t7V1eXm5paQEAjuMYhpmbm+vp6UEI5XI5p9M5MzPT399PxyCEfi1LbWVl5fLy0ufzIYQYSqpUKuFweHh4uK2tja5wcXFRKBRGR0cp3NvbK5fL09PTAIAxjkQiXq83kUgghGKxWCgUqtVqCKGFhQWXy6UoipoOfH5+jsViRqPR4/FUq1WGYfb393me7+7upkLBYFAQBI1GAwAMwwSDwd3dXbfbbTAYXC5XOp2enJwEALPZnEwmb25u/r7v9fW1oig2m41lWZ1Ol81mRVG0WCzNzc0AUCgU4vE4fYqiKCqVSqPRGAwGQRDi8fjR0REVBYCGhgaWZe/u7tQUBwIBk8nkcDjUajUAHB8fA4DNZqNVRVEwxiqVih4NAK6urgYHB1mWdbvd+Xx+ZGSEMlUqFcuykiQxCCFJkkRRtFqtarValmUACIfDOp1uaGiIsjmOa21t/fn5obqSJEWjUZvNdn9/f3JyYjKZurq6aCPGuFKp6PV6BgDOz88/Pj7sdjsdmMlkfD4fz/OdnZ1UV6fTDQwMJJNJCt/e3orF4vf399nZWXt7e1NTk9/vL5VKAJDJZDDGVquVEUXx8PDQYrHc3t7mcjlJknZ2drRarVarDQQCiqLQfzo7O/v+/p5KpQCgrq6usbHx8fFxfn5eEASMMc/z9fX19IB2u72vrw+q1WqlUpFluVQqybJcq9VoUK1Wy+Uy+ZdtbGysr6/TOJvN1mo1QkipVCoWizQZjUaXlpZisRghBMhvW7FY3Nzc9Hg8/1v9/PxcW1t7eHgghCiK8ge6tOHl5QVj/N/S19dXOp2mHELIX/WrUXnTK+fnAAAAAElFTkSuQmCC" alt="$H(u)$"> and this is the stimulus, constantly shifting in time <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAANCAIAAABZ48v4AAAAB3RJTUUH6ggGEhkjSNUpLQAAA6RJREFUOI2tVE1IOlsUv46OPrAyE0GRVkEhofTlps99RbiIvgPbJJNtW0WLhKCklm6SoIJQaFPQx2qECrEoCSEVtUBN05osk2oQ5859i/t/EvV/8f7xfovLOXfOued3zplzBAghAAAAgKbp3d3diooKvV6fy+UmJycRQgKB4P7+3uVyTU9PC4VC8D8Bv+x2uxOJhMlkwirgeR4h5HQ6W1pajo6OIpHIwMAARVEIIYTQ9fU1RVHBYBAhBCHEl9jlT8HzfMkRCxDCxcVFh8OBb35R6evrGx8fx3Y0Ta+trSGEWJYdGho6PDws8Ugmkzab7Qc8PnEqyRDCsbExmqYRQr+oWCyWurq6i4sLhNDDw8Pd3R1CaHV11Wg0lhLyeDzd3d1GozEWi31N9ys+2rAs6/P59vb2np6eEELhcPjk5AR/2tnZ6e3t5XmewM2jKEoikVAU5ff7lUqlWq0GABwcHDQ3N5e6G4/HQ6FQW1sby7IfGy/4F3yy2d7enp+fx6rVat3a2sKyTqe7vb29vLwUYZ/6+nq73W42my0Wi9PprK6uzufzmUxGpVJhHgRBaDSaqqqqiYkJhUKB8I8GQDabPT09JQjiY2Ce56VSaWtrq1gsxu4SiYTnea1WK5fLA4GAx+NZWVnBxjKZjCRJv98vKhQKr6+vCoWivb3dZrOZzeb19fW5ublisQghJEmyFICm6ZqamhIPfGYyGZfLhUOWACFUqVQGg0EsFmMzjuPOz89HR0cBAHa7nSTJpqYmbCwUCkmSZBhGFIvFvF6vyWTieb6np0en0yUSCUy2rKwsn8/j8gIAzs7OjEbjx5oDALRarcPh+DquAoFAIpGU1JubG4ZhOjo6jo+PfT6fXq9XqVQQQqFQWCwWC4WCRqMh0un0xsYGwzAEQSSTSYZhurq6AAAikaihoSEUCuF3o9FoKpXiOM7r9eKS4BgEQfz1O3zkAQDw+/1SqTQYDAaDQaVSKZPJ9vf3IYQAAIZhOI4zGAwihmE0Gs3y8rJarQ4EAv39/YODg9h/eHh4Zmbm+flZLpcXCoXKysr39/fGxsZSSf47ysvLSZKMRqNTU1N+vz+Xy+l0OtxWt9vd2dlZW1sL8vk8hPDl5SUQCKTT6U/Tv7CwYLVa8QLIZrOlLfengBDiMUYIvb29sSyL5UgkMjIykkqlEELgm/2DEOI4bmlpaXNz82cMvkc8Hp+dnQ2HwzjuZyq/xdXV1c+W/fdIJpOPj4/on/z/Bh4qHyacbJJ5AAAAAElFTkSuQmCC" alt="$S(t-u)$">.</p>
+<h2 id="27">The importance of harmonics</h2>
+<p>Harmonics (sinusoids and cosinusoids) play a very important role in shift-invariant linear systems. The reason is simple: If you put a harmonic at some frequency into the system, the response will be a harmonic at the same frequency. The response may have a different amplitude, or be shifted in phase, but it will still be a harmonic at the input frequency.</p>
+<p>Here is a calulcation using a sinusoidal input stimulus.</p>
+<pre class="codeinput">freq = 1/4;  <span class="comment">% Choose freq = 1/N where N = 2^integer</span>
+stim = cos(2*pi*freq*stimTimes);
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim,<span class="string">'b-'</span>); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); title(<span class="string">'Stimulus'</span>);
+
+subplot(2,1,2);
+bold1 = cconv(hrf,stim,tSteps);
+plot(stimTimes,bold1); grid <span class="string">on</span>;
+xlabel (<span class="string">'time [s]'</span>); ylabel(<span class="string">'% signal'</span>);
+</pre>
+<p>Notice that if we put a harmonic in, we measure a harmonic as the result. The amplitude and phase of the harmonic will depend on the HRF. (We have to be careful about choosing the frequency, there can be sampling artifacts).</p>
+<h2 id="29">Thought Questions</h2>
+<p>QUESTION 1 Researchers presented a subject with an image of a face and measured the hemodynamic response to this image. Then they showed the same stimulus again and found that the response peaked at the same time, but the amplitude of response was half the amplitude of the first presentation. Is the response for the second presentation expected from a linear system? Explain. QUESTION 2 Researchers presented stimuli in 2 blocks. In the first block they presented flashing checkboards at a rate of 1Hz for 10 seconds. In the second block they presented flashing checkerboards at a rate of 1hz for 20 seconds. How will the amplitude and/or duration of the block-response change between conditions? Explain. QUESTION 3 Researchers presented stimuli in 2 conditions. In the first condition they presented a tone for 1 second, waited for 8 seconds, and presented a second tone for 1 second. In the second condition, they presented a tone for 1 second, waited 1 second, and presented a second tone for 1 second. How will the response differ in amplitude and/or duration between the two conditions? A plot/graph will be useful in explaining the answer.</p>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2026a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% LINEAR SYSTEMS: Superposition, convolution, harmonics
+% An introduction to the basic ideas of linear  systems theory, focusing on 
+% the tools of shift-invariant linear systems. We introduce the ideas of superposition,  
+% shift-invariance,  and impulse response functions. These ideas are fundametal 
+% to many methods and analyses used in functional neuroimaging and throughout  
+% engineering and science.
+%% 
+% * Class:     Psych 204B
+% * Tutorial:  Linear Systems
+% * Author:    Wandell
+% * Date:       3.31.04
+% * Duration:   30 minutes
+% * Copyright:  Stanford University, Brian Wandell
+%% 
+% This tutorial has a lot of reading at the front.
+%% 
+% * Checked: 10/13/09 JW
+% * Checked: 10/13/10 BW
+% * Checked: 01/06/24 Ryan Yan
+%% 
+% 
+%% What is linear system theory
+% Linear systems theory is a method of characterizing certain types of common 
+% systems. A system is something that has an input and an output, and thus we 
+% can think of it as a function 
+% 
+% $$Out = L(In)$$
+% 
+% For example, the system might be a lens that takes an image as an input and 
+% produces another image as an output. Or, this system may be a biological system 
+% that takes metabolic activity in the brain as input and delivers the the BOLD 
+% response as output.
+% 
+% Characterizing the input-output properties of a system by exhaustive measurements 
+% is usually impossible. When a system qualifies as a *linear system*, it is possible 
+% to use the responses to a small set of inputs to predict the response to any 
+% input. This makes it possible to characterize the system completely.
+%% The principle of superposition
+% Not all systems can be described using linear systems theory. To use linear 
+% methods to describe a system, it must satisfy the basic principle of superposition. 
+% In words the principle is this: 
+% 
+% If the response to input A is Ra, and the response to input B is Rb, then 
+% the response to the sum of A and B (A+B) is the sum of the responses: Ra + Rb. 
+% 
+% In equation form this is
+% 
+% $$\begin{array}{l}\textrm{If}\;\;\;\;\;\;L\left(a\right)=R_a \\\textrm{and}\;\;L\left(b\right)=R_b 
+% ,\\\textrm{then}\;L\left(a+b\right)=R_a +R_b \end{array}$$
+% Homogeneity
+% There is a simple consequence of superposition that is often labeled the principle 
+% of homogeneity.  Suppose that the inputs are equal, namely, a = b.  It is easy 
+% to see that 
+% 
+% $$L\left(2a\right)=L\left(a+a\right)={L\left(a\right)+L\left(a\right)\;=\;2R}_a$$
+% 
+% In general, if s is any scalar, a linear system will satisfy the rule:
+% 
+% $$L\left(\textrm{sa}\right)={\textrm{sR}}_a$$
+% General linear systems
+% An enormous number of physical systems satisfy superposition over a meaningful 
+% range of inputs. Linear systems theory is a basic tool used throughout engineering, 
+% physics, and statistical modeling. 
+% 
+% General linear systems are represented using the core idea of linear algebra, 
+% such as matrix multiplication.  If a system is linear, that means for an input, 
+% x, we can calculate the output, y, as a matrix multiplication
+% 
+% $$y=\textrm{Ax}$$
+% A shift-invariant linear system (convolutional)
+% In this tutorial, we explain the intuition behind a special type of linear 
+% system: *a shift-invariant linear system.* These principles are used in functional 
+% neuroimaging. Nearly every field that uses linear systems theory develops its 
+% own terminology (jargon) to describe the ideas of linear systems theory usiing 
+% the terms in that field. We also make that connection.
+%% The hemodynamic response function (HRF) 
+% A time varying stimuli can be thought of as a series of impulses at different 
+% levels. We can approximate any complex stimulus as if it were simply the sum 
+% of a number of shifted and scaled impulses.  In neuroimaging, the hemodynamic 
+% response function (HRF) is the impulse response function. 
+% 
+% A shift-invariant linear system is a special case when the system responds 
+% in the same way to a given impulse, no matter when the impulse occurs in time. 
+% That is, it doesn't matter what happened just before the impulse or what happens 
+% just after the impulse. The response to the impulse will be the same.
+% 
+% The significance of the principle of superposition is this: If we know the 
+% impulse response function, we can predict the response to any stimulus (combinations 
+% of impulses).  We compute the response to each impulse and then add up all the 
+% results.
+% 
+% A remarkable feature of a shift-invariant linear (SIL) system is this: *To 
+% characterize shift-invariants linear (SIL) systems, we only need to measure 
+% the way the system responds to an impulse of a particular intensity.* That is 
+% enough to let us predict how the system will respond to all other stimuli.
+% 
+% The analysis of BOLD using linear systems presupposes that the responses are 
+% shift-invariant linear systems.  
+% Testiing the principle of superposition
+% In neuroimaging, the principles of  superposition and shift invariance are 
+% essential to the ideas used in statistical analysis based on the general linear 
+% model (GLM) and in the analysis of rapid event-related designs. The underlying 
+% assumption is the same as linear systems:  if you have two neural (or cognitive) 
+% events A and B occurring one after the other, then the BOLD response of A and 
+% the BOLD response of B  will be identical (but B will be shifted in time with 
+% respect to A) and thus total BOLD signal after these two events is a sum of 
+% two independent responses shifted in time:
+% 
+% BOLD (A+B) = BOLD(A) + BOLD(B)
+% 
+% Next, we do some simple calculations with a model of the relationship between 
+% the stimulus and BOLD response.
+
+set(0, 'DefaultLineLineWidth', 2);
+%% Read and plot a hemodynamic response function (HRF)
+% This is the default HRF from the famous SPM (Statistical Parameter Mapping) 
+% package.
+
+TR = 1;         % TR of 1 sec
+[hrf,p]  = spm_hrf(TR);
+hrfTimes = 0:p(7);   %Individual time samples of the HRF
+
+figure;
+plot(hrfTimes,hrf)
+xlabel('Time (sec)'); ylabel('HRF level');
+grid on; title('SPM HRF')
+%% 
+% The default SPM HRF has an undershoot (negative region) towards the end. The 
+% sum of the all the term of the HRF is 1, which is important.  
+
+sum(hrf)
+%% 
+% This means that the HRF will preserve the mean value of the input signal.
+%% Simple forward calculation
+% Let's create an stimulus that is an impulse.  
+
+% Let's imagine that each step is 0.1 sec (100 ms).
+tSteps = p(7)*10;
+stimTimes = (1:tSteps)*0.1;
+
+hrf = interp1(hrfTimes,hrf,stimTimes);
+
+% We create one stimulus with an impulse event at time 1 sec
+time1 = find(stimTimes == 1);
+stim1 = zeros(1,tSteps);
+stim1(time1) = 1;
+
+% A second stimulus with an event at time 2 sec
+time2 = find(stimTimes == 2);
+stim2 = zeros(1,tSteps);
+stim2(time2) = 1;
+%% Plot the stimulus and output of a linear system with the SPM HRF
+% We plot the two stimuli and then compute the expected BOLD response by using 
+% *convolution* of the stimulus with the HRF. Convolution is a mathematical operation 
+% that implements the superposition principle for a shift-invariant linear system. 
+% Each moment of the stimulus is an input, and the scaled and shifted HRF is added 
+% to the output. It is often written as an integral
+% 
+% $$O(t) = \int H(u)S(t-u) du$$
+% 
+% and sometimes using this notation
+% 
+% $$O = H*S$$
+% 
+% Throughout we use the circular convolution. Ask me about that in class.
+
+figure;
+subplot(2,2,1); plot(stimTimes,stim1,'b-');
+title('Stim 1')
+xlabel ('time [s]')
+
+% Compute the impact of the HRF
+bold1 = cconv(stim1,hrf,tSteps);
+subplot(2,2,2); plot(stimTimes,bold1,'r-')
+title('BOLD(stim1)')
+xlabel ('time [s]')
+
+% Second stimulus and output
+subplot(2,2,3);  plot(stimTimes,stim2,'b-');
+title('Stim 2')
+xlabel('time[s]')
+
+bold2 = cconv(stim2,hrf,tSteps);
+subplot(2,2,4); plot(stimTimes,bold2,'r-');
+title('BOLD(stim2)');
+xlabel('time[s]')
+%% Event-related design
+% Suppose a subject sees stimulus 1 and then and then later stimulus 2. According 
+% to the principle of superposition the output should be the sum of the individual 
+% events. Thus, we can compute the output by convolution of the sum of the two 
+% stimuli.  
+
+% Here is the sum
+stim3 = stim1 + stim2;
+
+figure
+subplot(3,1,1); plot(stimTimes,stim3,'bo-'); hold;
+title('Stim 1 + Stim 2')
+xlabel ('time [s]')
+
+% Calculating the output using the superposition principle
+BOLD3 = bold1(1:tSteps) + bold2(1:tSteps);
+
+subplot(3,1,2); plot(stimTimes,BOLD3);
+xlabel ('time [s]'); ylabel('% signal change')
+title('Summed responses')
+
+% This is the predicted response by convolution
+bold3 = cconv(stim3,hrf,tSteps);
+subplot(3,1,3);
+plot(stimTimes,bold3)
+xlabel ('time [s]')
+ylabel('% signal change')
+title('Convolution with stim 3')
+%% Working towards the block design
+% We start with blocks of two brief events that are separated in time. We then 
+% examine how the number of events and the spacing between events affects the 
+% predicted bold signal.
+
+% 1st evetSteps at time 1
+time1 = (stimTimes == 1);
+stim1=zeros(1,tSteps);  stim1(time1)=1;
+
+% 1st evetSteps at time2
+time2 = (stimTimes == 3);
+stim2 = zeros(1,tSteps);  stim2(time2) =1 ;
+
+stim4 = stim1 + stim2;
+
+% stimulus
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim4,'b-');
+title('Stimulus'); xlabel ('time [s]')
+
+% BOLD
+bold1 = cconv(stim4,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);
+ylabel('% signal'); xlabel ('time [s]')
+title(' BOLD response')
+%% Two events close in time
+% Next, we move the two events closer in time
+
+% Move the 2nd event at 2 sec.
+time2 = (stimTimes == 2);
+stim2 = zeros(1,tSteps); stim2(time2) = 1 ;
+
+stim5 = stim1 + stim2;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim5,'b-'); grid on;
+xlabel ('time [s]'); title('Stimulus');
+
+bold1 = cconv(stim5,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1); grid on;
+xlabel ('time [s]'); ylabel('% signal');
+
+% Add the underlying responses
+hold on;
+bold1 = cconv(stim1,hrf,tSteps); plot(stimTimes,bold1,'k:');
+bold2 = cconv(stim2,hrf,tSteps); plot(stimTimes,bold2,'k:');
+%% Three events 
+% All close in time
+
+% 3rd event at 1.5 sec
+time3 = (stimTimes == 1.5);
+stim3 = zeros(1,tSteps);
+stim3(time3) = 1;
+stim6 = stim1 + stim2 + stim3;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim6,'b-'); grid on;
+title('Stimulus');
+
+bold1 = cconv(stim6,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid on;
+ylabel('% signal'); xlabel ('time [s]')
+
+% The underlying responses
+hold on;
+bold1 = cconv(stim1,hrf,tSteps); plot(stimTimes,bold1,'k:');
+bold2 = cconv(stim2,hrf,tSteps); plot(stimTimes,bold2,'k:');
+bold3 = cconv(stim3,hrf,tSteps); plot(stimTimes,bold3,'k:');
+%% A block
+% Now we calculate for a stimulus that is on continuously for 2 seconds (time 
+% 1 sec to time 3 sec)
+
+time7 = (stimTimes > 1 & stimTimes < 3);
+stim7 = zeros(1,tSteps);
+stim7(time7) = 1;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim7,'b-'); grid on;
+title('Block stimulus'); set(gca,'ylim',[-0.1 1.1]);
+
+bold1 = cconv(stim7,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid on;
+ylabel('% signal'); xlabel ('time [s]'); set(gca,'ylim',[-1 8]);
+%% 
+% Compare the y-axis on this BOLD response with the y-axis on the previous graphs.  
+% Keeping the stimulus on longer increases the level.  Let's check that by setting 
+% the stimulus 
+
+time7 = (stimTimes > 1 & stimTimes < 5);
+stim7 = zeros(1,tSteps);
+stim7(time7) = 1;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim7,'b-'); grid on;
+title('Block stimulus'); set(gca,'ylim',[-0.1 1.1]);
+
+bold1 = cconv(stim7,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid on;
+ylabel('% signal'); xlabel ('time [s]'); set(gca,'ylim',[-1 8]);
+%% Different input levels
+% We are calculating the BOLD response as a series of impulse responses from 
+% the stimulus. At each moment in time that the stimulus is on, we add in the 
+% impulse response. For all of the examples, we treated the stimulus input value 
+% as 1.  
+% 
+% Suppose that we have two stimuli, and the two stimuli are not equally effective. 
+% Perhaps the second stimulus is only half as effective as the first one. How 
+% would we represent that, and what would the predicted response be?
+
+% This is the first stimulus with effectiveness 1
+time1 = (stimTimes > 1 & stimTimes <= 2);
+stim1 = zeros(1,tSteps);
+stim1(time1) = 1;
+
+% The second stimulus is delayed and has half the effectiveness
+time2 = stimTimes > 8 & stimTimes < 9;
+stim2 = zeros(1,tSteps);
+stim2(time2) = 0.5;
+
+% The sum of the stimuli
+figure;
+subplot(2,1,1)
+plot(stimTimes,stim1 + stim2,'b-');
+grid on;
+title('Block stimulus'); set(gca,'ylim',[-0.1 1.1]);
+
+% The BOLD responses
+subplot(2,1,2)
+bold1 = cconv(stim1 + stim2,hrf,tSteps);
+subplot(2,1,2);
+plot(stimTimes,bold1);grid on;
+ylabel('% signal'); xlabel ('time [s]'); set(gca,'ylim',[-1 8]);
+%% Convolution interpreted from the output side
+% We have been calculating how the stimulus at a moment in time contributes 
+% to output values at different times. Now, let's consider the system from the 
+% perspective of the output. At each moment in time, which of the input signals 
+% contributed to the output?
+% 
+% To visualize this, let's plot the contributing impulse responses.
+
+% First event at 1 sec
+time1 = (stimTimes == 1);
+stim1 = zeros(1,tSteps);
+stim1(time1) = 1;
+
+% Second event at 5 sec
+time2 = (stimTimes == 5);
+stim2 = zeros(1,tSteps);
+stim2(time2) = 1 ;
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim1 + stim2,'b-'); grid on;
+xlabel ('time [s]'); title('Stimulus');
+
+subplot(2,1,2);
+bold1 = cconv(stim1 + stim2,hrf,tSteps);
+plot(stimTimes,bold1); grid on;
+xlabel ('time [s]'); ylabel('% signal');
+
+% Show the individual contributions
+hold on;
+bold1 = cconv(stim1,hrf,tSteps); plot(stimTimes,bold1,'k:');
+bold2 = cconv(stim2,hrf,tSteps); plot(stimTimes,bold2,'k:');
+%% 
+% The output at 5 sec is due entirely to the stimulus at 1 sec.  The output 
+% at 8 sec, however, is caused by a combination of the signal at 1 sec and 5 sec.  
+% And the output at 15 sec has a positive contribution from the stimulus at 5 
+% sec and a negative contribution from the stimulus at 1 sec.  
+% 
+% 
+% 
+% 
+%% Multiple events
+% Now suppose we have an event every second for the first five seconds. Let's 
+% draw the picture
+
+stim = zeros(1,tSteps);
+for ii=1:5
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = 1;
+end
+figure;
+subplot(3,1,1);
+plot(stimTimes, stim,'b-'); grid on;
+xlabel ('time [s]'); title('Stimulus');
+
+%% 
+% Now add in the individual stimuli. The dotted curves add up to the red curve.
+
+subplot(3,1,2);
+bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,'r-');
+hold on;
+for ii=1:5
+    stim = zeros(1,tSteps);
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = 1;
+    bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,'k:');
+end
+% Zoom in on the time axis
+grid on; xlabel('Time (s)')
+
+%% 
+% Let's  zooms in on the contributing responses.  At each moment in time we 
+% are adding in some one of the terms from the HRF, but shifted in time.
+
+subplot(3,1,3)
+hold on;
+for ii=1:5
+    stim = zeros(1,tSteps);
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = 1;
+    bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,'k:');
+end
+grid on; xlabel('Time (s)')
+%% 
+% Finally, let's suppose the stimuli aren't all the same.  Some are bigger and 
+% some are smaller.
+
+effect = (5:-1:1)/5;   % The 5 stimuli
+stim = zeros(1,tSteps);
+for ii=1:5
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = effect(ii);
+end
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim,'b-'); grid on;
+xlabel ('time [s]'); title('Stimulus');
+
+subplot(2,1,2);
+bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,'r-');
+hold on;
+for ii=1:5
+    stim = zeros(1,tSteps);
+    thisTime = find(stimTimes == ii);
+    stim(thisTime) = effect(ii);
+    bold = cconv(stim,hrf,tSteps); plot(stimTimes,bold,'k:');
+end
+% Zoom in on the time axis
+grid on; xlabel('Time (s)')
+%% 
+% If we think of the stimulus as a continuous function then we would have multiple 
+% contributions. That idea is expressed in the convolution formula:
+% 
+% $$O(t) = \int H(u)S(t-u) du$$
+% 
+% The output at each moment in time is a weighted sum of a shifted copy of the 
+% stimulus. The weights are the impulse response $H(u)$ and this is the stimulus, 
+% constantly shifting in time $S(t-u)$.
+%% The importance of harmonics
+% Harmonics (sinusoids and cosinusoids) play a very important role in shift-invariant 
+% linear systems. The reason is simple: If you put a harmonic at some frequency 
+% into the system, the response will be a harmonic at the same frequency. The 
+% response may have a different amplitude, or be shifted in phase, but it will 
+% still be a harmonic at the input frequency.
+% 
+% Here is a calulcation using a sinusoidal input stimulus. 
+
+freq = 1/4;  % Choose freq = 1/N where N = 2^integer
+stim = cos(2*pi*freq*stimTimes);
+
+figure;
+subplot(2,1,1);
+plot(stimTimes, stim,'b-'); grid on;
+xlabel ('time [s]'); title('Stimulus');
+
+subplot(2,1,2);
+bold1 = cconv(hrf,stim,tSteps);
+plot(stimTimes,bold1); grid on;
+xlabel ('time [s]'); ylabel('% signal');
+%% 
+% Notice that if we put a harmonic in, we measure a harmonic as the result. 
+% The amplitude and phase of the harmonic will depend on the HRF.  (We have to 
+% be careful about choosing the frequency, there can be sampling artifacts).  
+%% Thought Questions
+% QUESTION 1
+% Researchers presented a subject with an image of a face and measured the hemodynamic 
+% response to this image. Then they showed the same stimulus again and found that 
+% the response peaked at the same time, but the amplitude of response was half 
+% the amplitude of the first presentation. Is the response for the second presentation 
+% expected from a linear system? Explain. 
+% QUESTION 2
+% Researchers presented stimuli in 2 blocks. In the first block they presented 
+% flashing checkboards at a rate of 1Hz for 10 seconds. In the second block they 
+% presented flashing checkerboards at a rate of 1hz for 20 seconds. How will the 
+% amplitude and/or duration of the block-response change between conditions? Explain.
+% QUESTION 3
+% Researchers presented stimuli in 2 conditions. In the first condition they 
+% presented a tone for 1 second, waited for 8 seconds, and presented a second 
+% tone for 1 second. In the second condition, they presented a tone for 1 second, 
+% waited 1 second, and presented a second tone for 1 second. How will the response 
+% differ in amplitude and/or duration between the two conditions? A plot/graph 
+% will be useful in explaining the answer.
+% 
+%
+##### SOURCE END #####
+-->
+</body>
+</html>

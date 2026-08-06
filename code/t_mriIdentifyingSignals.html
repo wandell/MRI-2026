@@ -1,0 +1,960 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Identifying MR Signals</title>
+<meta name="generator" content="MATLAB 26.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2026-08-06">
+<meta name="DC.source" content="t_mriIdentifyingSignals.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  html body { font-size:14px; }
+h1 { font-size:1.6em; }
+h2 { font-size:1.3em; margin-top:28px; }
+.content { max-width:900px; margin:0 auto; padding:30px; line-height:148%; }
+pre, code { font-size:13px; line-height:1.35; }
+pre.codeinput {
+  font-size:13px; border-radius:4px;
+  box-shadow:0 1px 3px rgba(0,0,0,.08); }
+pre.codeoutput {
+  font-size:13px; border-left:3px solid #6aaadd;
+  background:#f0f6fb; padding-left:14px; }
+img, video { display:block; margin:20px auto; }
+video { width:512px; max-width:100%; height:auto; }
+span.keyword { color:#0070c1 }
+span.comment { color:#2e7d32 }
+span.string  { color:#7b3f9e }
+pre.language-matlab {
+  font-size:13px; background:#f7f7f7; padding:10px;
+  border:1px solid #d3d3d3; border-left:3px solid #5aaa7a;
+  border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+code, tt { font-family:Menlo,Monaco,Consolas,"Courier New",monospace;
+  background:#efefef; padding:2px 5px; border-radius:3px;
+  font-size:0.88em; color:#333; }
+pre code, pre tt { background:none; padding:0; border-radius:0; font-size:inherit; }
+</style>
+</head>
+<body>
+<div class="content">
+<h1>Identifying MR Signals</h1>
+<!--introduction-->
+<p>This tutorial introduces the student to considerations faced by fMRI investigators in distinguishing signals, which we want to measure, from noise, which we don't particularly care to measure. The noise can come from a variety of different areas, which will be discussed in lecture. Among the topics that are covered are:</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#4">Dealing with drift noise</a>
+</li>
+<li>
+<a href="#6">Question 1</a>
+</li>
+<li>
+<a href="#7">Contrast-to-Noise Ratios (CNR)</a>
+</li>
+<li>
+<a href="#8">Simulations</a>
+</li>
+<li>
+<a href="#11">QUESTION 2</a>
+</li>
+<li>
+<a href="#12">Averaging, spatially and temporally, to enhance CNR</a>
+</li>
+<li>
+<a href="#14">QUESTION 3</a>
+</li>
+</ul>
+</div>
+<div>
+<ol>
+<li>Dealing with signal drift</li>
+<li>Contrast - to - noise ratios (CNR);</li>
+<li>Averaging, spatially and temporally, to enhance CNR</li>
+</ol>
+</div>
+<p>We use data taken from an fMRI scanning session. The session consists of several scans used to localize regions of interest involved in different aspects of vision.</p>
+<p>For this week, we're only going to consider a small piece of this data: the time series taken from several voxels located in the subject's right area MT. Area MT (also known as V5 ) is a visual area that is highly responsive to moving stimuli.</p>
+<p>The scan from which the data are taken is an MT localizer scan, in which the subject saw alternating periods of moving and static stimuli. The stimulus was a series of concentric circles. For 16 seconds, the circles would stay still, then for the next 16 seconds they would move rapidly in and out, then be static, then move, etc.</p>
+<p>Each 16-second period is referred to as a <b>block</b>. Because there are only two types of blocks in this scan, which alternate, this design is sometimes referred to as an ABAB block design. Each pair of two blocks is called a cycle. The scan consisted of six cycles, each 32 seconds long, for a total of 192 seconds.</p>
+<p>('Cycle' refers to the idea that, after a 32-second cycle the stimulus is in the same state as at the beginning of the cycle. We're interested in finding brain regions whose activation also returns to the same activity level at the same point in a cycle. But this is an aside which we'll explore later.)</p>
+<div>
+<ul>
+<li>
+<b>Class</b>: Psych 204A</li>
+<li>
+<b>Tutorial</b>: Identifying MR Signals</li>
+<li>
+<b>Author</b>: Rory Sayres/Kalanit Grill-Spector</li>
+<li>
+<b>Date</b>: 04/19/2004</li>
+<li>
+<b>Duration</b>: 45 minutes</li>
+<li>
+<b>Author:</b> Rory Sayres</li>
+</ul>
+</div>
+<h2 id="4">Dealing with drift noise</h2>
+<pre class="codeinput">
+<span class="comment">% Let's load the sample data. As mentioned above, this</span>
+<span class="comment">% data comes from an MT localizer that lasted 192 seconds,</span>
+<span class="comment">% and consisted of six cycles of alternating static/motion:</span>
+load <span class="string">sampleData</span>;
+
+<span class="comment">% the data is contained in a matrix, in which the rows represent time</span>
+<span class="comment">% frames and columns represent different voxels. Let's look at the</span>
+<span class="comment">% size of our data matrix, using the 'whos' command.</span>
+<span class="comment">% (An aside: 'who' is a matlab command to show what variables you've</span>
+<span class="comment">% defined; 'whos' is a more sophisticated command that shows the</span>
+<span class="comment">% class of variable, size, and memory taken by each one.)</span>
+whos
+
+<span class="comment">% you should see a table listing an entry 'data': that's our matrix.</span>
+<span class="comment">% Notice there are 96 rows. This scan had a TR of 2 seconds, so each</span>
+<span class="comment">% row represents a 2-second time frame. Each column is the time</span>
+<span class="comment">% course for the whole scan from a different voxel. Let's</span>
+<span class="comment">% plot some of these time courses!</span>
+figure; set(gcf,<span class="string">'Name'</span>,<span class="string">'Data Time Courses'</span>);
+
+<span class="comment">% First, let's plot the data from one voxel:</span>
+subplot(2,2,1);
+t = 2:2:192; <span class="comment">% time points for each MR frame</span>
+plot(t,data(:,1));
+xlabel(<span class="string">'Time, secs'</span>); ylabel(<span class="string">'Raw MR values'</span>);
+title(<span class="string">'Data from one voxel'</span>);
+</pre>
+<pre class="codeoutput error">Error using load
+Unable to find file or directory "sampleData".
+
+Error in t_mriIdentifyingSignals (line 48)
+load sampleData;
+^^^^</pre>
+<p>What do you see? First, you may wonder what the y axis represents in this plot. This data is taken straight from the P*.7.mag files that are created at the scanner, after reconstructing the frequency- and phase-encoded signals into an MR image (review the MR Imaging and BasicMR tutorials if you're confused about this). So, these values represent rather arbitrary units, which depend on many different factors that are subject to change from session to session, and even from voxel to voxel. To get a sense of how the raw signal can vary, let's plot all 21 voxels in this sample data:</p>
+<pre class="codeinput">figure;  set(gcf,<span class="string">'Name'</span>,<span class="string">'Data Time Courses'</span>);
+subplot(1,2,1);
+cla;
+plot(t,data);
+xlabel(<span class="string">'Time, secs'</span>); ylabel(<span class="string">'Raw MR values'</span>);
+title(<span class="string">'Data from 21 voxels'</span>);
+
+<span class="comment">% notice how the time courses from different voxels</span>
+<span class="comment">% can be shifted by very large amounts from one another?</span>
+<span class="comment">% what we're interested in is the variations in the</span>
+<span class="comment">% overall signal that are caused by our varying</span>
+<span class="comment">% experimental conditions.</span>
+<span class="comment">%</span>
+<span class="comment">% There are many ways to account</span>
+<span class="comment">% for these shifts; one of the simplest ways to do this</span>
+<span class="comment">% is to convert to a percent signal change. We can do</span>
+<span class="comment">% this by dividing the time course of each voxel</span>
+<span class="comment">% by the mean intensity for that voxel:</span>
+dc = mean(data); <span class="comment">% dc is our estimate for the baseline offset</span>
+data = data ./ (ones(size(data,1),1)*dc);
+
+<span class="comment">% now, the mean of each time course is 1;</span>
+<span class="comment">% we'll subtract this away to set the mean to</span>
+<span class="comment">% 0 -- meaning zero signal change away from</span>
+<span class="comment">% the mean MR intensity:</span>
+data = data - 1;
+
+<span class="comment">% and to get percent, we multiply by 100:</span>
+data = 100 .* data;
+
+<span class="comment">% let's look at the time courses now:</span>
+subplot(1,2,2);
+cla;
+plot(data);
+xlabel(<span class="string">'Time, secs'</span>); ylabel(<span class="string">'Percent Signal Change'</span>);
+title(<span class="string">'Data from 21 voxels'</span>);
+
+<span class="comment">% note that the time courses are much more comparable</span>
+<span class="comment">% now.</span>
+<span class="comment">%</span>
+<span class="comment">% (Also, an aside: we set 0 percent signal to mean</span>
+<span class="comment">% no deviation from the mean for the whole time</span>
+<span class="comment">% course for that voxel. There are other ways</span>
+<span class="comment">% to do this; for instance, many analyses will</span>
+<span class="comment">% set 0 percent signal to mean the mean value of</span>
+<span class="comment">% a particular null or baseline condition to which</span>
+<span class="comment">% other conditions are compared. We could do that here,</span>
+<span class="comment">% treating the non-moving stimulus condition as</span>
+<span class="comment">% a baseline and comparing it to motion -- but we'll</span>
+<span class="comment">% keep things simpler for now.)</span>
+
+<span class="comment">% Now that we've gotten the difference between raw</span>
+<span class="comment">% signals and percent signal change, we can go back</span>
+<span class="comment">% to looking at the time series from one voxel. Let's</span>
+<span class="comment">% re-plot this voxel as percent signal:</span>
+figure;  subplot(2,2,2);
+cla;
+plot(t,data(:,1));
+xlabel(<span class="string">'Time, secs'</span>); ylabel(<span class="string">'Percent Signal Change'</span>);
+title(<span class="string">'Data from one voxel'</span>);
+
+<span class="comment">% Signal drift</span>
+<span class="comment">% You may have noted,  maybe before anything else, that the signal cycles up</span>
+<span class="comment">% and down six times. We're slowly getting to that. But first, you may notice</span>
+<span class="comment">% something else that may be  troubling: the signal 'droops' towards the end of</span>
+<span class="comment">% the scan. This change over time is known as *signal drift*, and is caused by</span>
+<span class="comment">% the scanner hardware, rather than the brain itself.</span>
+<span class="comment">%</span>
+<span class="comment">% Therefore, it's something to take into account when identifying signals.</span>
+<span class="comment">%</span>
+<span class="comment">% There are many strategies to deal with signal drift. We'll talk about a few.</span>
+<span class="comment">% First, there's a linear trend removal: we assume that the drift can be described</span>
+<span class="comment">% by a simple line, and subtract our estimate of that drift.</span>
+
+<span class="comment">% We'll use the function detrendTSeries to</span>
+<span class="comment">% do this (edit detrendTSeries to see how</span>
+<span class="comment">% the model is implemented):</span>
+detrendedData1 = detrendTSeries(data,-1); <span class="comment">% -1 means linear trend removal</span>
+
+subplot(2,2,3);
+plot(t,detrendedData1(:,1));
+xlabel(<span class="string">'Time, secs'</span>); ylabel(<span class="string">'Percent Signal Change'</span>);
+title(<span class="string">'Linear Trend removal'</span>);
+
+<span class="comment">% notice how the drooping is gone?</span>
+
+<span class="comment">% There are other, more sophisticated detrending</span>
+<span class="comment">% options that have come up to deal with baseline</span>
+<span class="comment">% drift, which doesn't always drift linearly. One</span>
+<span class="comment">% form of drift which sometimes occurs is slow</span>
+<span class="comment">% baseline drift: the drift goes up and down at</span>
+<span class="comment">% a very slow rate, for instance one cycle per minute.</span>
+<span class="comment">% We can also try removing this estimated drift.</span>
+<span class="comment">% Note that this is a form of high-pass filter.</span>
+detrendedData2 = detrendTSeries(data,1,16);
+
+<span class="comment">% the 1 means do a low-frequency drift removal,</span>
+<span class="comment">% and the 16 gives the period of the estimated</span>
+<span class="comment">% drift.</span>
+subplot(2,2,4);
+plot(t,detrendedData2(:,1));
+xlabel(<span class="string">'Time, secs'</span>); ylabel(<span class="string">'Percent Signal Change'</span>);
+title(<span class="string">'High-pass Trend removal'</span>);
+
+<span class="comment">% Notice this doesn't do much more than linear trend</span>
+<span class="comment">% removal for this case. (It can help for other</span>
+<span class="comment">% experimental designs and scans, though.)</span>
+
+<span class="comment">% Now, we plot the Fourier spectrum of</span>
+<span class="comment">% different frequency energies in the data, to give a</span>
+<span class="comment">% sense of where the low-frequency drift is</span>
+<span class="comment">% we take the absolute value of the fft of the data</span>
+absFFT = 2*abs(fft(data)) / length(data);
+nFrames = size(data,1); <span class="comment">% the # of temporal frames: 92</span>
+xfreq = 1:nFrames/2; <span class="comment">% the different frequencies we'll plot</span>
+subplot(2,2,3);
+plot(xfreq,absFFT(2:(nFrames/2)+1));
+hold <span class="string">on</span>, plot(xfreq(5:7),absFFT(6:8),<span class="string">'r'</span>); <span class="comment">% stimulus-driven signal</span>
+xlabel(<span class="string">'Frequency, cycles per scan'</span>)
+ylabel(<span class="string">'FFT Units'</span>);
+title(<span class="string">'No detrending'</span>)
+
+absFFT2 = 2*abs(fft(detrendedData2)) / length(detrendedData2);
+subplot(2,2,4);
+plot(xfreq,absFFT2(2:(nFrames/2)+1));
+hold <span class="string">on</span>, plot(xfreq(5:7),absFFT(6:8),<span class="string">'r'</span>); <span class="comment">% stimulus-driven signal</span>
+xlabel(<span class="string">'Frequency, cycles per scan'</span>)
+ylabel(<span class="string">'FFT Units'</span>);
+title(<span class="string">'High-pass Trend removal'</span>)
+</pre>
+<h2 id="6">Question 1</h2>
+<p>(a) Where did the fourier transform change as a result of the trend removal and why?</p>
+<p>(b) Why would this help signal drift, but not, e.g. pulse / respiratory artifacts?</p>
+<p>(c) Why, for a 192-second scan, would six cycles, but not three cycles or forty cycles, be useful for experimental design? Can you think of any potential drawbacks?</p>
+<p>
+<b>(Extra Credit)</b> Try using detrendTSeries to perform quadratic detrending on the data (assume the trend is a quadratic function), and compare it to the other two types of detrending.</p>
+<h2 id="7">Contrast-to-Noise Ratios (CNR)</h2>
+<p>Now we move on to the periodicities we've noted in the data. We note that the main fluctuation occurs six times over the course, the same as the number of times the stimulus varied between static and moving. We believe this fluctuation represents the motion-selective signal from MT.</p>
+<p>However, you may recall generating predicted hemodynamic responses during the linear systems tutorial -- those predicted responses were much cleaner than what we see here. There's a certain amount of noise. This can come from many sources, including both the instrumentation and the brain itself, which we discuss more fully in class.</p>
+<p>Before we can come up with plans of dealing with this noise, we first want a quantitative way to describe how much noise there is relative to the signal we want to measure. We'll use the well-known measurement of signal-to-noise ratio, or in this case, contrast-to-noise ratio (CNR). (Note that the Huettel book calls this quantity functional SNR; it's also referred to as functional CRN or dynamic CNR).</p>
+<p>As its name suggests, CNR is a ratio, measuring the size of the signal we measure relative to the variance in its measurement.</p>
+<pre class="codeinput">
+<span class="comment">% First, let's make some plots to get</span>
+<span class="comment">% some sense of the variance.</span>
+figure;  set(gcf,<span class="string">'Name'</span>,<span class="string">'Contrast to Noise'</span>);
+
+<span class="comment">% We'll take the time course from the first voxel, after</span>
+<span class="comment">% detrending. We'll plot the data from each cycle</span>
+<span class="comment">% separately:</span>
+voxtc = detrendedData2(:,1);
+
+numCycles = 6;
+framesPerCycle = 16;
+voxtc = reshape(voxtc,[framesPerCycle numCycles]);
+
+subplot(1,2,1);
+plot(repmat(2:2:32,[numCycles 1])',voxtc);
+xlabel(<span class="string">'Time during cycle, sec'</span>); ylabel(<span class="string">'Percent Signal Change'</span>);
+title(<span class="string">'Indiviudal Cycles'</span>)
+axis <span class="string">tight</span>
+
+<span class="comment">% you can see there is variance between different trials.</span>
+<span class="comment">% A frequent way to display this is by plotting standard</span>
+<span class="comment">% deviations or standard errors over the mean time course:</span>
+subplot(1,2,2);
+hold <span class="string">on</span>
+patch([16 16 32 32],[-5 -4.7 -4.7 -5],<span class="string">'k'</span>);
+errorbar(2:2:32,mean(voxtc'),std(voxtc'));
+xlabel(<span class="string">'Time during cycle, sec'</span>); ylabel(<span class="string">'Percent Signal Change'</span>);
+title(<span class="string">'Mean Cycle + Std Dev'</span>)
+axis <span class="string">tight</span>
+hold <span class="string">off</span>
+
+<span class="comment">% I've added a black bar at the bottom indicating when the motion</span>
+<span class="comment">% stimulus was shown. Now, to calculate CNR, we want to measure the</span>
+<span class="comment">% difference in signal during this time relative to the baseline</span>
+<span class="comment">% condition (when the static stimulus was shown), and divide</span>
+<span class="comment">% by the standard deviation during the baseline condition:</span>
+staticFrames = 1:8;
+motionFrames = 9:16;
+staticValues = voxtc(staticFrames,:);
+motionValues = voxtc(motionFrames,:);
+
+signal = mean(motionValues(:)) - mean(staticValues(:));
+noise = std(staticValues(:));
+
+CNR = signal/noise
+
+text(3,3,sprintf(<span class="string">'CNR: %2.2f'</span>,CNR));
+
+<span class="comment">% another way to express the signal to noise is in decibels,</span>
+<span class="comment">% which are defined as 20 * the log base 10 of the ratio:</span>
+CNRdb = 20 * log10(CNR)
+
+text(3,2.5,sprintf(<span class="string">'(=%2.2f dB)'</span>,CNRdb));
+
+<span class="comment">% (and yes, these are the same decibels as used in sound --</span>
+<span class="comment">% decibels are a log scale of the intensity of a sound.)</span>
+
+<span class="comment">% (Note also that right now we're including the transition</span>
+<span class="comment">% times between blocks when the hemodynamic response rises</span>
+<span class="comment">% and falls. If we'd calculated only during times we'd</span>
+<span class="comment">% consider the signal to have reached steady state, the</span>
+<span class="comment">% CNR would be higher.)</span>
+</pre>
+<h2 id="8">Simulations</h2>
+<p>To get a sense of how noise affects the signal, let's take some fake data and add varying levels of noise to it.</p>
+<pre class="codeinput">
+<span class="comment">% We'll construct a pulse which specifies when the motion</span>
+<span class="comment">% signal is on</span>
+cycle = [zeros(1,8) ones(1,8)];
+pulse = repmat(cycle,[1 numCycles]);
+
+<span class="comment">% And we'll take a gamma function hrf:</span>
+hrf = heeger_hrf(2:2:16);
+
+<span class="comment">% Let's plot both the function and the hrf:</span>
+figure;  set(gcf,<span class="string">'Name'</span>,<span class="string">'Fake data set with noise'</span>);
+subplot(5,2,1);
+plot(t,pulse,<span class="string">'k'</span>);
+axis([0 200 -2 2]);
+xlabel(<span class="string">'Time, sec'</span>); ylabel(<span class="string">'Motion'</span>);
+title(<span class="string">'Stimulus'</span>);
+
+subplot(5,2,2);
+plot(2:2:16,hrf,<span class="string">'r'</span>);
+axis([0 18 -0.4 0.4]);
+xlabel(<span class="string">'Time, sec'</span>); ylabel(<span class="string">'% Signal'</span>);
+title(<span class="string">'Ideal HRF'</span>);
+</pre>
+<p>Now we convolve to get an estimate of the ideal response to the stimulus, with no noise, and calculate the CNR (we'll use the calcCNR function, which does the same calculation we did above):</p>
+<pre class="codeinput">y0 = conv(pulse,hrf);
+
+CNR = calcCNR(y0(:,4:99));
+
+subplot(3,2,3);
+plot(2:2:2*length(y0),y0);
+axis([0 210 -0.4 0.8]);
+xlabel(<span class="string">'Time, sec'</span>); ylabel(<span class="string">'% Signal'</span>);
+title(<span class="string">'Ideal Signal'</span>);
+text(5,-0.2,sprintf(<span class="string">'CNR: %2.2f dB'</span>,CNR));
+</pre>
+<p>(Note that the zero point for this data represents the mean value during the baseline period, rather than the overall mean, as was discussed earlier. Always remember to check what the experiments set as the zero point when reading fMRI studies!)</p>
+<pre class="codeinput">
+<span class="comment">% Now let's add varying levels of noise and</span>
+<span class="comment">% calculate the CNR in each case:</span>
+noiseLevels = [.1 .2 .5];
+<span class="keyword">for</span> i = 1:3
+    noise = noiseLevels(i) * randn(size(y0));
+    y1 = y0 + noise;
+
+    CNR = calcCNR(y1(:,4:99));
+
+    subplot(3,2,i+3);
+	plot(2:2:2*length(y1),y1);
+	axis([0 210 -0.4 0.8]);
+    <span class="keyword">if</span> i &gt; 1    xlabel(<span class="string">'Time, sec'</span>);    <span class="keyword">end</span>
+    <span class="keyword">if</span> i==2     ylabel(<span class="string">'% Signal'</span>);     <span class="keyword">end</span>
+    <span class="keyword">if</span> i==1	    title(<span class="string">'Signal with Noise Added'</span>);   <span class="keyword">end</span>
+	text(5,-0.2,sprintf(<span class="string">'CNR: %2.2f dB'</span>,CNR));
+<span class="keyword">end</span>
+</pre>
+<h2 id="11">QUESTION 2</h2>
+<p>(a) In the 4th subplot, you'll note that the CNR, as expressed in decibels, is negative. What does this signify?</p>
+<p>(b) What is the difference between this CNR measure, and signal-to-hoise as described in the Huettel book?</p>
+<h2 id="12">Averaging, spatially and temporally, to enhance CNR</h2>
+<p>Now we can describe how well we've identified a signal relative to noise -- now how can we reduce the noise?</p>
+<p>There are many different approaches being taken for this. We'll just describe one that is commonly used -- averaging the data, both spatially across voxels and temporally across scans, to achieve a higher contrast-to-noise ratio.</p>
+<p>First, let's average across voxels. We've already looked at the differences across time courses from different voxels in our sample data. Let's look at them again, separately for each voxel, for the first ten voxels. For each time course we'll calculate the CNR for that voxel alone:</p>
+<pre class="codeinput">figure;  set(gcf,<span class="string">'Name'</span>,<span class="string">'Single Voxel Time Courses'</span>);
+<span class="keyword">for</span> i = 1:10
+    subplot(5,2,i);
+    plot(t,detrendedData2(:,i));
+    set(gca,<span class="string">'XTick'</span>,[]);
+
+    <span class="comment">% calculate the CNR for this voxel</span>
+    voxtc = detrendedData2(:,i);
+    CNRdb = calcCNR(voxtc);
+    title(sprintf(<span class="string">'CNR: %2.2f dB'</span>,CNRdb));
+
+
+    <span class="keyword">if</span> i==5             ylabel(<span class="string">'Percent Signal Change'</span>);    <span class="keyword">end</span>
+    <span class="keyword">if</span> i==9 | i==10
+        xlabel(<span class="string">'Time, sec'</span>);
+        set(gca,<span class="string">'XTick'</span>,[0 100 200]);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% Now we'll average across these ten voxels, and compute the CNR:</span>
+figure;  set(gcf,<span class="string">'Name'</span>,<span class="string">'Averaging Across Voxels'</span>);
+<span class="comment">% subplot(2,1,1);</span>
+avgtc = mean(detrendedData2(:,1:10)');
+plot(avgtc);
+avgtc = reshape(avgtc,[framesPerCycle numCycles]);
+
+<span class="comment">% We'll calculate the CNR of this average time course:</span>
+staticValues = avgtc(staticFrames,:);
+motionValues = avgtc(motionFrames,:);
+signal = mean(motionValues(:)) - mean(staticValues(:));
+noise = std(staticValues(:));
+CNRdb = 20 * log10(signal/noise);
+text(5,4,sprintf(<span class="string">'CNR: %2.2f dB'</span>,CNRdb));
+
+title(<span class="string">'Averaging Across 10 voxels'</span>)
+</pre>
+<p>The <b>temporal averaging</b> can be done across different scans of the same type, which unfortunately isn't available for this data set. But we can view the repeated cycles as being the same idea -- increasing the number of observations, so as to improve our estimate of the signal relative to the noise.</p>
+<h2 id="14">QUESTION 3</h2>
+<p>(a) Think of an instance in which spatial averaging would cause a reduction in the CNR.</p>
+<p>(b) Think of an instance in which temporal averaging would cause a reduction in the CNR.</p>
+<p>
+<b>END</b>
+</p>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2026a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Identifying MR Signals
+% This tutorial introduces the student to considerations faced by fMRI investigators 
+% in distinguishing signals, which we want to measure, from noise, which we don't 
+% particularly care to measure. The noise can come from a variety of different 
+% areas, which will be discussed in lecture. Among the topics that are covered 
+% are:
+%% 
+% # Dealing with signal drift 
+% # Contrast - to - noise ratios (CNR);
+% # Averaging, spatially and temporally, to enhance CNR
+%% 
+% We use data taken from an fMRI scanning session. The session consists of several 
+% scans used to localize regions of interest involved in different aspects of 
+% vision.
+% 
+% For this week, we're only going to consider a small piece of this data: the 
+% time series taken from several voxels located in the subject's right area MT. 
+% Area MT (also known as V5 ) is a visual area that is highly responsive to moving 
+% stimuli. 
+% 
+% The scan from which the data are taken is an MT localizer scan, in which the 
+% subject saw alternating periods of moving and static stimuli. The stimulus was  
+% a series of concentric circles. For 16 seconds, the circles would stay still, 
+% then for the next 16 seconds they would move rapidly in and out, then be static, 
+% then move, etc.
+% 
+% Each 16-second period is referred to as a *block*. Because there are only 
+% two types of blocks in this scan, which alternate, this design is sometimes 
+% referred to as an ABAB block design. Each pair of two blocks is called a cycle. 
+% The scan consisted of six cycles, each 32 seconds long, for a total of 192 seconds.
+% 
+% ('Cycle' refers to the idea that, after a 32-second  cycle the stimulus is 
+% in the same state as at the beginning of the cycle. We're interested in finding 
+% brain regions whose activation also returns to the same activity level at the 
+% same point in a cycle. But this is an aside which we'll explore later.)
+%% 
+% * *Class*:     Psych 204A
+% * *Tutorial*:  Identifying MR Signals
+% * *Author*:   Rory Sayres/Kalanit Grill-Spector
+% * *Date*:        04/19/2004
+% * *Duration*: 45 minutes
+% * *Author:*    Rory Sayres
+%% Dealing with drift noise
+
+% Let's load the sample data. As mentioned above, this
+% data comes from an MT localizer that lasted 192 seconds,
+% and consisted of six cycles of alternating static/motion:
+load sampleData;
+
+% the data is contained in a matrix, in which the rows represent time 
+% frames and columns represent different voxels. Let's look at the 
+% size of our data matrix, using the 'whos' command.
+% (An aside: 'who' is a matlab command to show what variables you've
+% defined; 'whos' is a more sophisticated command that shows the 
+% class of variable, size, and memory taken by each one.)
+whos
+
+% you should see a table listing an entry 'data': that's our matrix.
+% Notice there are 96 rows. This scan had a TR of 2 seconds, so each 
+% row represents a 2-second time frame. Each column is the time
+% course for the whole scan from a different voxel. Let's 
+% plot some of these time courses!
+figure; set(gcf,'Name','Data Time Courses');
+
+% First, let's plot the data from one voxel:
+subplot(2,2,1); 
+t = 2:2:192; % time points for each MR frame
+plot(t,data(:,1));
+xlabel('Time, secs'); ylabel('Raw MR values');
+title('Data from one voxel');
+%% 
+% What do you see? First, you may wonder what the y axis represents in this 
+% plot. This data is taken straight from the P*.7.mag files that are created at 
+% the scanner, after reconstructing the frequency- and phase-encoded signals into 
+% an MR image (review the MR Imaging and BasicMR tutorials if you're confused 
+% about this). So, these values represent rather arbitrary units, which depend 
+% on many different factors that are subject to change from session to session, 
+% and even from voxel to voxel. To get a sense of how the raw signal can vary, 
+% let's plot all 21 voxels in this sample data:
+
+figure;  set(gcf,'Name','Data Time Courses');
+subplot(1,2,1);
+cla;
+plot(t,data);
+xlabel('Time, secs'); ylabel('Raw MR values');
+title('Data from 21 voxels');
+
+% notice how the time courses from different voxels
+% can be shifted by very large amounts from one another?
+% what we're interested in is the variations in the 
+% overall signal that are caused by our varying 
+% experimental conditions. 
+%
+% There are many ways to account 
+% for these shifts; one of the simplest ways to do this 
+% is to convert to a percent signal change. We can do 
+% this by dividing the time course of each voxel 
+% by the mean intensity for that voxel:
+dc = mean(data); % dc is our estimate for the baseline offset
+data = data ./ (ones(size(data,1),1)*dc);
+
+% now, the mean of each time course is 1;
+% we'll subtract this away to set the mean to 
+% 0 REPLACE_WITH_DASH_DASH meaning zero signal change away from 
+% the mean MR intensity:
+data = data - 1;
+
+% and to get percent, we multiply by 100:
+data = 100 .* data;
+
+% let's look at the time courses now:
+subplot(1,2,2);
+cla;
+plot(data);
+xlabel('Time, secs'); ylabel('Percent Signal Change');
+title('Data from 21 voxels');
+
+% note that the time courses are much more comparable
+% now. 
+%
+% (Also, an aside: we set 0 percent signal to mean
+% no deviation from the mean for the whole time 
+% course for that voxel. There are other ways 
+% to do this; for instance, many analyses will
+% set 0 percent signal to mean the mean value of 
+% a particular null or baseline condition to which
+% other conditions are compared. We could do that here,
+% treating the non-moving stimulus condition as 
+% a baseline and comparing it to motion REPLACE_WITH_DASH_DASH but we'll
+% keep things simpler for now.) 
+
+% Now that we've gotten the difference between raw
+% signals and percent signal change, we can go back 
+% to looking at the time series from one voxel. Let's 
+% re-plot this voxel as percent signal:
+figure;  subplot(2,2,2);
+cla;
+plot(t,data(:,1));
+xlabel('Time, secs'); ylabel('Percent Signal Change');
+title('Data from one voxel');
+
+% Signal drift
+% You may have noted,  maybe before anything else, that the signal cycles up 
+% and down six times. We're slowly getting to that. But first, you may notice 
+% something else that may be  troubling: the signal 'droops' towards the end of 
+% the scan. This change over time is known as *signal drift*, and is caused by 
+% the scanner hardware, rather than the brain itself. 
+% 
+% Therefore, it's something to take into account when identifying signals.
+% 
+% There are many strategies to deal with signal drift. We'll talk about a few. 
+% First, there's a linear trend removal: we assume that the drift can be described 
+% by a simple line, and subtract our estimate of that drift. 
+
+% We'll use the function detrendTSeries to 
+% do this (edit detrendTSeries to see how
+% the model is implemented):
+detrendedData1 = detrendTSeries(data,-1); % -1 means linear trend removal
+
+subplot(2,2,3); 
+plot(t,detrendedData1(:,1));
+xlabel('Time, secs'); ylabel('Percent Signal Change');
+title('Linear Trend removal');
+
+% notice how the drooping is gone? 
+
+% There are other, more sophisticated detrending
+% options that have come up to deal with baseline
+% drift, which doesn't always drift linearly. One
+% form of drift which sometimes occurs is slow 
+% baseline drift: the drift goes up and down at
+% a very slow rate, for instance one cycle per minute.
+% We can also try removing this estimated drift. 
+% Note that this is a form of high-pass filter.
+detrendedData2 = detrendTSeries(data,1,16); 
+
+% the 1 means do a low-frequency drift removal,
+% and the 16 gives the period of the estimated
+% drift.
+subplot(2,2,4);
+plot(t,detrendedData2(:,1));
+xlabel('Time, secs'); ylabel('Percent Signal Change');
+title('High-pass Trend removal');
+
+% Notice this doesn't do much more than linear trend
+% removal for this case. (It can help for other 
+% experimental designs and scans, though.)
+
+% Now, we plot the Fourier spectrum of 
+% different frequency energies in the data, to give a
+% sense of where the low-frequency drift is
+% we take the absolute value of the fft of the data
+absFFT = 2*abs(fft(data)) / length(data); 
+nFrames = size(data,1); % the # of temporal frames: 92
+xfreq = 1:nFrames/2; % the different frequencies we'll plot
+subplot(2,2,3);
+plot(xfreq,absFFT(2:(nFrames/2)+1));
+hold on, plot(xfreq(5:7),absFFT(6:8),'r'); % stimulus-driven signal
+xlabel('Frequency, cycles per scan')
+ylabel('FFT Units');
+title('No detrending')
+
+absFFT2 = 2*abs(fft(detrendedData2)) / length(detrendedData2); 
+subplot(2,2,4);
+plot(xfreq,absFFT2(2:(nFrames/2)+1));
+hold on, plot(xfreq(5:7),absFFT(6:8),'r'); % stimulus-driven signal
+xlabel('Frequency, cycles per scan')
+ylabel('FFT Units');
+title('High-pass Trend removal')
+%% Question 1
+% (a) Where did the fourier transform change as a result of the trend removal 
+% and why?
+% 
+% (b) Why would this help signal drift, but not, e.g. pulse / respiratory artifacts?
+% 
+% (c) Why, for a 192-second scan, would six cycles, but not three cycles or 
+% forty cycles, be useful for experimental design? Can you think of any potential 
+% drawbacks?
+% 
+% *(Extra Credit)* Try using detrendTSeries to perform quadratic detrending 
+% on the data (assume the trend is a quadratic function), and compare it to the 
+% other two types of detrending.
+%% Contrast-to-Noise Ratios (CNR)
+% Now we move on to the periodicities we've noted in the data. We note that 
+% the main fluctuation occurs six times over the course, the same as the number 
+% of times the stimulus varied between static and moving. We believe this fluctuation 
+% represents the motion-selective signal from MT.
+% 
+% However, you may recall generating predicted hemodynamic responses during 
+% the linear systems tutorial REPLACE_WITH_DASH_DASH those predicted responses were much cleaner than 
+% what we see here. There's a certain amount of noise. This can come from many 
+% sources, including both the instrumentation and the brain itself, which we discuss 
+% more fully in class.
+% 
+% Before we can come up with plans of dealing with this noise, we first want 
+% a quantitative way to describe how much noise there is relative to the signal 
+% we want to measure. We'll use the well-known measurement of signal-to-noise 
+% ratio, or in this case, contrast-to-noise ratio (CNR). (Note that the Huettel 
+% book calls this quantity functional SNR; it's also referred to as functional 
+% CRN or dynamic CNR).
+% 
+% As its name suggests, CNR is a ratio, measuring the size of the signal we 
+% measure relative to the variance in its measurement. 
+
+% First, let's make some plots to get
+% some sense of the variance. 
+figure;  set(gcf,'Name','Contrast to Noise');
+
+% We'll take the time course from the first voxel, after
+% detrending. We'll plot the data from each cycle
+% separately:
+voxtc = detrendedData2(:,1);
+
+numCycles = 6; 
+framesPerCycle = 16;
+voxtc = reshape(voxtc,[framesPerCycle numCycles]);
+
+subplot(1,2,1);
+plot(repmat(2:2:32,[numCycles 1])',voxtc);
+xlabel('Time during cycle, sec'); ylabel('Percent Signal Change');
+title('Indiviudal Cycles')
+axis tight
+
+% you can see there is variance between different trials.
+% A frequent way to display this is by plotting standard
+% deviations or standard errors over the mean time course:
+subplot(1,2,2);
+hold on
+patch([16 16 32 32],[-5 -4.7 -4.7 -5],'k');
+errorbar(2:2:32,mean(voxtc'),std(voxtc'));
+xlabel('Time during cycle, sec'); ylabel('Percent Signal Change');
+title('Mean Cycle + Std Dev')
+axis tight
+hold off
+
+% I've added a black bar at the bottom indicating when the motion
+% stimulus was shown. Now, to calculate CNR, we want to measure the
+% difference in signal during this time relative to the baseline
+% condition (when the static stimulus was shown), and divide
+% by the standard deviation during the baseline condition:
+staticFrames = 1:8; 
+motionFrames = 9:16;
+staticValues = voxtc(staticFrames,:);
+motionValues = voxtc(motionFrames,:);
+
+signal = mean(motionValues(:)) - mean(staticValues(:));
+noise = std(staticValues(:));
+
+CNR = signal/noise
+
+text(3,3,sprintf('CNR: %2.2f',CNR));
+
+% another way to express the signal to noise is in decibels,
+% which are defined as 20 * the log base 10 of the ratio:
+CNRdb = 20 * log10(CNR)
+
+text(3,2.5,sprintf('(=%2.2f dB)',CNRdb));
+
+% (and yes, these are the same decibels as used in sound REPLACE_WITH_DASH_DASH
+% decibels are a log scale of the intensity of a sound.)
+
+% (Note also that right now we're including the transition
+% times between blocks when the hemodynamic response rises
+% and falls. If we'd calculated only during times we'd 
+% consider the signal to have reached steady state, the 
+% CNR would be higher.)
+%% Simulations
+% To get a sense of how noise affects the signal, let's take some fake data 
+% and add varying levels of noise to it. 
+
+% We'll construct a pulse which specifies when the motion
+% signal is on
+cycle = [zeros(1,8) ones(1,8)];
+pulse = repmat(cycle,[1 numCycles]);
+
+% And we'll take a gamma function hrf:
+hrf = heeger_hrf(2:2:16);
+
+% Let's plot both the function and the hrf:
+figure;  set(gcf,'Name','Fake data set with noise');
+subplot(5,2,1); 
+plot(t,pulse,'k');
+axis([0 200 -2 2]);
+xlabel('Time, sec'); ylabel('Motion');
+title('Stimulus');
+
+subplot(5,2,2);
+plot(2:2:16,hrf,'r');
+axis([0 18 -0.4 0.4]);
+xlabel('Time, sec'); ylabel('% Signal');
+title('Ideal HRF');
+
+%% 
+% Now we convolve to get an estimate of the ideal response to the stimulus, 
+% with no noise, and calculate the CNR (we'll use the calcCNR function, which 
+% does the same calculation we did above):
+
+y0 = conv(pulse,hrf);
+
+CNR = calcCNR(y0(:,4:99));
+
+subplot(3,2,3);
+plot(2:2:2*length(y0),y0);
+axis([0 210 -0.4 0.8]);
+xlabel('Time, sec'); ylabel('% Signal');
+title('Ideal Signal');
+text(5,-0.2,sprintf('CNR: %2.2f dB',CNR));
+
+%% 
+% (Note that the zero point for this data represents the mean value during the 
+% baseline period, rather than the overall mean, as was discussed earlier. Always 
+% remember to check what the experiments set as the zero point when reading fMRI 
+% studies!)
+
+% Now let's add varying levels of noise and 
+% calculate the CNR in each case:
+noiseLevels = [.1 .2 .5];
+for i = 1:3
+    noise = noiseLevels(i) * randn(size(y0));
+    y1 = y0 + noise;
+
+    CNR = calcCNR(y1(:,4:99));
+    
+    subplot(3,2,i+3);
+	plot(2:2:2*length(y1),y1);
+	axis([0 210 -0.4 0.8]);
+    if i > 1    xlabel('Time, sec');    end
+    if i==2     ylabel('% Signal');     end
+    if i==1	    title('Signal with Noise Added');   end
+	text(5,-0.2,sprintf('CNR: %2.2f dB',CNR));
+end
+%% QUESTION 2
+% (a) In the 4th subplot, you'll note that the CNR, as expressed in decibels, 
+% is negative. What does this signify?
+% 
+% (b) What is the difference between this CNR measure, and signal-to-hoise as 
+% described in the Huettel book?
+%% Averaging, spatially and temporally, to enhance CNR
+% Now we can describe how well we've identified a signal relative to noise REPLACE_WITH_DASH_DASH 
+% now how can we reduce the noise? 
+% 
+% There are many different approaches being taken for this. We'll just describe 
+% one that is commonly used REPLACE_WITH_DASH_DASH averaging the data, both spatially across voxels 
+% and temporally across scans, to achieve a higher contrast-to-noise ratio.
+% 
+% First, let's average across voxels. We've already looked at the differences 
+% across time courses from different voxels in our sample data. Let's look at 
+% them again, separately for each voxel, for the first ten voxels. For each time 
+% course we'll calculate the CNR for that voxel alone:
+
+figure;  set(gcf,'Name','Single Voxel Time Courses');
+for i = 1:10
+    subplot(5,2,i);
+    plot(t,detrendedData2(:,i));
+    set(gca,'XTick',[]);
+    
+    % calculate the CNR for this voxel
+    voxtc = detrendedData2(:,i);
+    CNRdb = calcCNR(voxtc);
+    title(sprintf('CNR: %2.2f dB',CNRdb));
+
+    
+    if i==5             ylabel('Percent Signal Change');    end
+    if i==9 | i==10     
+        xlabel('Time, sec');                
+        set(gca,'XTick',[0 100 200]);
+    end
+end
+
+% Now we'll average across these ten voxels, and compute the CNR:
+figure;  set(gcf,'Name','Averaging Across Voxels');
+% subplot(2,1,1);
+avgtc = mean(detrendedData2(:,1:10)');
+plot(avgtc);
+avgtc = reshape(avgtc,[framesPerCycle numCycles]);
+
+% We'll calculate the CNR of this average time course:
+staticValues = avgtc(staticFrames,:);
+motionValues = avgtc(motionFrames,:);
+signal = mean(motionValues(:)) - mean(staticValues(:));
+noise = std(staticValues(:));
+CNRdb = 20 * log10(signal/noise);
+text(5,4,sprintf('CNR: %2.2f dB',CNRdb));
+
+title('Averaging Across 10 voxels')
+%% 
+% The *temporal averaging* can be done across different scans of the same type, 
+% which unfortunately isn't available for this data set. But we can view the repeated 
+% cycles as being the same idea REPLACE_WITH_DASH_DASH increasing the number of observations, so as 
+% to improve our estimate of the signal relative to the noise.
+%% QUESTION 3
+% (a) Think of an instance in which spatial averaging would cause a reduction 
+% in the CNR. 
+% 
+% (b) Think of an instance in which temporal averaging would cause a reduction 
+% in the CNR. 
+% 
+% 
+% 
+% *END*
+##### SOURCE END #####
+-->
+</body>
+</html>

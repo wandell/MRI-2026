@@ -1,9 +1,45 @@
 ---
 name: matlab-evaluation
-description: Use this when running, testing, or evaluating Matlab .m scripts on this machine — locating the Matlab binary, setting up toolbox paths for non-interactive sessions, and invoking batch evaluation. Activate for Matlab test runs, tutorial verification in code/, or iePublish HTML generation.
+description: Use this when running, testing, or evaluating Matlab .m scripts on this machine — locating the Matlab binary, setting up toolbox paths for non-interactive sessions, and invoking batch evaluation. Activate for Matlab test runs, tutorial verification in the teachmri repo, or iePublish HTML generation for code/.
 ---
 
 # Matlab Evaluation Workflow
+
+## Where MATLAB tutorial code lives
+
+Tutorial source (`.m`/`.mlx`), the data they load, and the teaching utility
+functions (e.g. `mrvNewGraphWin`) live in the separate `teachmri` GitHub
+repository — **not** in this book repo:
+
+- Repo: `~/Documents/MATLAB/teach/teachmri` (remote: `vistalab/teachmri`)
+- Tutorials: `teachmri/tutorials/*.m`
+- Data: `teachmri/tutorials/data/`
+- Utilities: `teachmri/utility/`
+- Batch runner: `teachmri/tutorials/run_all_tutorials.sh`
+- Publisher: `teachmri/tutorials/publish_tutorials.sh`
+
+This book repo's `code/` directory holds only the **published, self-contained
+HTML** — one file per tutorial, with figures and any movies already embedded
+as base64 (see the "Embedded Movies" section of isetcam's
+`publishing-tutorials-examples` skill for the movie-marker mechanism).
+Nothing runnable is distributed from `code/`; readers who want the source
+are pointed to the `teachmri` GitHub repository instead.
+
+Workflow for a tutorial change:
+
+1. Edit and verify the tutorial inside `teachmri/tutorials/` — run it with
+   `-batch` (see below) or `run_all_tutorials.sh`, iterating until it's clean.
+2. Publish it to self-contained HTML with `teachmri/tutorials/publish_tutorials.sh`,
+   or a one-off `iePublish('tutorialName.m')` call run from inside
+   `teachmri/tutorials/`. `iePublish` writes the HTML next to the source, i.e.
+   into `teachmri/tutorials/`, not into this repo.
+3. Copy just the resulting `.html` file into this repo's `code/` directory.
+   Do not copy the `.m`/`.mlx` source, data, or utility functions here —
+   they stay in `teachmri`.
+
+Do not recreate `code/data` or `code/utility` symlinks/copies pointing at
+`teachmri` — that was an earlier approach (see repo history) that added
+complexity without benefit once the source moved out of this repo entirely.
 
 ## Finding Matlab
 
@@ -22,7 +58,7 @@ ls /Applications | rg -i '^MATLAB_R'
 - Use `-batch`, not `-r`, for evaluation. `-batch` runs headless (no splash, no desktop), still processes Matlab's normal startup files, exits automatically when the statement finishes, and — critically — returns a non-zero exit code and prints the error to stderr if the statement throws. `-r` requires an explicit `exit`/`quit` call and manual `try/catch` to avoid hanging or masking failures.
 
 ```bash
-/Applications/MATLAB_R2026a.app/bin/matlab -batch "run('code/t_mri01MR.m')"
+/Applications/MATLAB_R2026a.app/bin/matlab -batch "run('t_mri01MR.m')"
 echo "exit: $?"
 ```
 
@@ -60,11 +96,13 @@ which functionName    % Shows path resolution
 - `Operation terminated by user during` → Blocking call (pause/input) without timeout
 
 ### Path Setup Example
+Run from inside `teachmri/tutorials/` so `iePublish` writes the HTML next to the source:
 ```bash
+cd ~/Documents/MATLAB/teach/teachmri/tutorials
 /Applications/MATLAB_R2026a.app/bin/matlab -batch "\
 addpath(genpath('~/Documents/MATLAB/isetcam')); \
-addpath(genpath('~/Documents/MATLAB/teach/teachmri/utility')); \
-iePublish('code/t_mri01MR.m')"
+addpath('~/Documents/MATLAB/teach/teachmri/utility'); \
+iePublish('t_mri01MR.m')"
 ```
 
 ### Important Notes
@@ -75,24 +113,26 @@ iePublish('code/t_mri01MR.m')"
 ## Working directory
 
 - `-batch` inherits the shell's current working directory as Matlab's `pwd`; it does not `cd` into the repo or the script's folder automatically.
-- Some tutorials, and `iePublish` itself, resolve relative paths and write output relative to `pwd`. Launch from — or explicitly `cd` to — whichever directory the script assumes (usually the repo root for this project).
+- Some tutorials, and `iePublish` itself, resolve relative paths and write output relative to `pwd`. For teachmri tutorials, launch from — or explicitly `cd` to — `teachmri/tutorials/`, since that's where the source, `data/`, and (after publishing) the HTML all live.
 
-## Typical flow for this repo's tutorials (`code/*.m`)
+## Typical flow for a teachmri tutorial (`teachmri/tutorials/*.m`)
 
 1. Identify which toolbox, if any, the tutorial needs.
-2. Confirm it runs cleanly:
+2. Confirm it runs cleanly, from inside `teachmri/tutorials/`:
 
 ```bash
-/Applications/MATLAB_R2026a.app/bin/matlab -batch "addpath(genpath('~/Documents/MATLAB/<toolbox>')); run('code/<tutorial>.m')"
+cd ~/Documents/MATLAB/teach/teachmri/tutorials
+/Applications/MATLAB_R2026a.app/bin/matlab -batch "addpath(genpath('~/Documents/MATLAB/<toolbox>')); run('<tutorial>.m')"
 ```
 
-3. Once it runs cleanly, publish it to a self-contained HTML file with `iePublish` (from isetcam):
+3. Once it runs cleanly, publish it to a self-contained HTML file with `iePublish` (from isetcam), still from inside `teachmri/tutorials/`:
 
 ```bash
-/Applications/MATLAB_R2026a.app/bin/matlab -batch "addpath(genpath('~/Documents/MATLAB/isetcam')); iePublish('code/<tutorial>.m')"
+/Applications/MATLAB_R2026a.app/bin/matlab -batch "addpath(genpath('~/Documents/MATLAB/isetcam')); iePublish('<tutorial>.m')"
 ```
 
-4. `iePublish` writes the HTML next to the source `.m` file. Confirm the output landed where expected and that figures embedded correctly before treating the conversion as done.
+4. `iePublish` writes the HTML next to the source `.m` file, i.e. into `teachmri/tutorials/`. Confirm the output landed where expected and that figures (and any embedded movies) rendered correctly.
+5. Copy the resulting `.html` file into this book repo's `code/` directory. This is the only file that belongs in this repo — leave the `.m` source, data, and utility functions in `teachmri`.
 
 ## Best Practices & Warnings
 
