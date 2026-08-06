@@ -1,0 +1,209 @@
+Running t_mri01MR_Extra.m...
+✅ t_mri01MR_Extra.m completed successfully
+----------------------------------------
+Running t_mri01MR.m...
+Hydrogen Larmor frequency
+ 63.8700 MHz at 1.5 TeslaRatio of high (anti-parallel) to low (parallel) energy state dipoles:
+  9.999898e-01Net magnetization 1.000000
+Net magnetization (0 deg) 0.989621
+Net magnetization (180deg) 0.631969
+✅ t_mri01MR.m completed successfully
+----------------------------------------
+Running t_mri01MRSignalEquations.m...
+
+meanGRSig =
+
+    0.7529
+
+
+meanGSSig =
+
+    0.1447
+
+Gray matter mean signal ratio (GE/SMS) 5.204428
+White matter mean signal ratio (GE/SMS) 3.772262
+White T1 sensitivity (100 ms):  GE 0.964183  ;  SMS 0.885026White T2* sensitivity (5 ms):  GE 1.020426  ;  SMS 1.008121Gray T1 sensitivity (100 ms):  GE 0.961315  ;  SMS 0.921007Gray T2* sensitivity (5 ms):  GE 1.010929 ; SMS 1.004357✅ t_mri01MRSignalEquations.m completed successfully
+----------------------------------------
+Running t_mri02Imaging.m...
+✅ t_mri02Imaging.m completed successfully
+----------------------------------------
+Running t_mri02ImagingMultipleBeakers.m...
+✅ t_mri02ImagingMultipleBeakers.m completed successfully
+----------------------------------------
+Running t_mri03LinearSystems.m...
+{Unrecognized function or variable 'spm_hrf'.
+
+Error in t_mri03LinearSystems (line 120)
+[hrf,p]  = spm_hrf(TR);
+^^^^^^^^^^^^^^^^^^^^^^^
+Error in run (line 100)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+❌ t_mri03LinearSystems.m failed
+----------------------------------------
+Running t_mri04Diffusion.m...
+
+ans =
+
+    2.9892
+
+
+Dt =
+
+    1.8239    0.0308
+    0.0308    2.0372
+
+
+estimatedADC =
+
+    1.8195    2.0415
+
+
+principalDiffusionDirection =
+
+    0.1402    0.9901
+
+✅ t_mri04Diffusion.m completed successfully
+----------------------------------------
+Running t_mri05Visualization.m...
+{Error using load
+Unable to find file or directory "visualization.mat".
+
+Error in t_mri05Visualization (line 16)
+load visualization.mat
+^^^^
+Error in run (line 100)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+❌ t_mri05Visualization.m failed
+----------------------------------------
+Running t_mri06DiffusionSignal.m...
+
+spinFreq =
+
+   127740000
+
+
+spinFreq =
+
+   1.0e+08 *
+
+   1.277399659360000
+   1.277399659360000
+   1.277399659360000
+   1.277399659360000
+   1.277399659360000
+   1.277399829680000
+   1.277399829680000
+   1.277399829680000
+   1.277399829680000
+   1.277399829680000
+   1.277400000000000
+   1.277400000000000
+   1.277400000000000
+   1.277400000000000
+   1.277400000000000
+   1.277400170320000
+   1.277400170320000
+   1.277400170320000
+   1.277400170320000
+   1.277400170320000
+   1.277400340640000
+   1.277400340640000
+   1.277400340640000
+   1.277400340640000
+   1.277400340640000
+
+
+relativeSpinFreq =
+
+  -34.0640
+  -34.0640
+  -34.0640
+  -34.0640
+  -34.0640
+  -17.0320
+  -17.0320
+  -17.0320
+  -17.0320
+  -17.0320
+         0
+         0
+         0
+         0
+         0
+   17.0320
+   17.0320
+   17.0320
+   17.0320
+   17.0320
+   34.0640
+   34.0640
+   34.0640
+   34.0640
+   34.0640
+
+✅ t_mri06DiffusionSignal.m completed successfully
+----------------------------------------
+Running t_mriEventRelated.m...
+✅ t_mriEventRelated.m completed successfully
+----------------------------------------
+Running t_mriGLM.m...
+{Error using load
+Unable to find file or directory "./data/tSeriesV1.mat".
+
+Error in t_mriGLM (line 40)
+load('./data/tSeriesV1.mat')
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in run (line 100)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+❌ t_mriGLM.m failed
+----------------------------------------
+Running t_mriIdentifyingSignals.m...
+{Error using load
+Unable to find file or directory "sampleData".
+
+Error in t_mriIdentifyingSignals (line 48)
+load sampleData;
+^^^^
+Error in run (line 100)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+❌ t_mriIdentifyingSignals.m failed
+----------------------------------------
+Running t_mriT1T2.m...
+
+T2contrast =
+
+    0.1164
+
+
+T1contrast =
+
+    0.0208
+
+✅ t_mriT1T2.m completed successfully
+----------------------------------------
+Running t_mriTensors.m...
+Saved as ellipsoid.png in current dir
+max diff between ADC and predicetd ADC: 4.44089e-16
+{Error using whitebg
+Too many input arguments.
+
+Error in t_mriTensors (line 243)
+whitebg(gcf,'white')
+^^^^^^^^^^^^^^^^^^^^
+Error in run (line 100)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+❌ t_mriTensors.m failed
+----------------------------------------
+Running t_mriTutFourier.m...
+✅ t_mriTutFourier.m completed successfully
+----------------------------------------
