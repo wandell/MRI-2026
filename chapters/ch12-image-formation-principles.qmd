@@ -13,11 +13,11 @@ date: last-modified
 ![Magnetic Resonance Imaging:  Principles of image formation.](images/ch12/magnetic-resonance-imaging-principles-of-image-for.png){#fig-ch12-magnetic-resonance-imaging-principles-of-image-for}
 -->
 
-We now ask how we can create images from the MR signal.  The ability to create an image, not just measuring the bulk signal, is what makes MR so valuable for clinical usage.  We can literally create a signal based on different types of MR contrast inside the head.
+The ability to create an image, not just measuring the bulk signal, is what makes MR so valuable for clinical usage.  We can literally create a signal based on different types of MR contrast inside the head.  
 
-The insights about how to create an image, and particularly how to create an image of MR contrasts relatively quickly, are wonderful and important set of new scientific insights. It is here that the **imaging gradients** become the central actors. 
+But how? The insights about how to create an image, and particularly how to create an image of MR contrasts relatively quickly, are wonderful and important set of new scientific insights. It is here that the **imaging gradients** become the central actors. 
 
-We begin by identifying a simple way to understand how we might localize, based on what you already know of the Larmor frequency. The story becomes increasingly interesting - and a bit more complex.  None of it is too hard for for someone with just a little bit of math (linear algebra) to understand.
+We begin by identifying a simple way to understand how we might localize, in principle. You will see the idea based on what you already know of the Larmor frequency. As we go deeper, however, the story becomes a bit more complex and interesting. The ideas are not too hard for for someone with just a little bit of math (linear algebra) to understand.  It just takes a little getting used to.
 
 <!--
 ## Controlling magnetic field gradients to resolve spatial position
@@ -31,70 +31,68 @@ To move a spin between two states, we require an RF photon whose energy is match
 
 ![Using a gradient to resolve the spatial locations of two beakers of water.](images/ch12/using-a-gradient-to-resolve-the-spatial-locations.png){#fig-ch12-using-a-gradient-to-resolve-the-spatial-locations}
 
-If we have two beakers of water next to one another, and we put them both in a uniform field, the signal we measure will be the sum of the two signals from the two beakers.  Physicists are fortunate that so many central phenomena are added.  The signal amplitude will just scale with the number of breakers.
+Suppose we have two beakers of water next to one another, and we put them in a uniform field, the bulk signal we measure will be the sum of the signals from the two beakers.  **IMHO**: Physicists are fortunate that so many phenomena are additive.  
 
 ## Magnetic gradients can help us resolve spatial signals
 
 ![Magnetic gradients can help us resolve spatial signals.](images/ch12/magnetic-gradients-can-help-us-resolve-spatial-sig.png){#fig-ch12-magnetic-gradients-can-help-us-resolve-spatial-sig}
 
-What will happen if we put the beakers in a magnetic field that changes over space (a spatial gradient)?  
+What will we measure if we create a magnetic field that changes over space (a spatial gradient), so that the two beakers are in different magnetic field levels?  
 
-First, notice that the Larmor frequency for the two beakers would differ.  So, to make sure we evoke a FID signalfrom both beakers, we would have to excite with a broad range of frequencies.
+First, notice that the Larmor frequency for the two beakers would differ.  So, to make sure we evoke a FID signal from both beakers, we would have to excite with a broader range of frequencies, covering their different Larmor frequencies.
 
-Similarly, the Larmor frequency of the emitted signals will differ; a lower frequency will be emitted from the beaker in the lower magnetic field.  
+Similarly, the Larmor frequency of the emitted signals will differ; a lower frequency will be emitted from the beaker in the lower magnetic field.  So the measurements will be the sum of the two FID signals at the two different frequencies. Those lucky physicists and their additive systems!  
 
-## Magnetic gradients are used to resolve spatial locations
+## Using temporal frequencies to resolve spatial locations
 
 ![Magnetic gradients are used to resolve spatial locations.](images/ch12/magnetic-gradients-are-used-to-resolve-spatial-loc.png){#fig-ch12-magnetic-gradients-are-used-to-resolve-spatial-loc}
 
-What we measure, will be the sum of the two signals.  Those lucky physicists and their additive phenomena!  The graph on the left of @fig-ch12-magnetic-gradients-are-used-to-resolve-spatial-loc shows the sum of the signals, as they vary over time.  This is the representation we have been using up to now.
+The graph on the left of @fig-ch12-magnetic-gradients-are-used-to-resolve-spatial-loc shows the sum of the signals, as they vary over time.  This is the representation we have been using up to now.
 
 The graph on the right represents the signal in a different way. The signal is transformed into a **temporal frequency** representation.  The horizontal axis represents the different frequency components, and the vertical axis is the amplitude of each of the components.  (We will ignore phase for now).  Notice that in this representation, there are two peaks.  One is the Larmor frequency for the beaker in the lower magnetic field, and the second peak for the second beaker.
 
-The signals at the different frequencies come from different locations.  We have some spatial resolution!
+The signals at the different frequencies come from different locations. We are using temporal frequency analysis to resolve spatial position!
 
-## Magnetic gradients resolve spatial locations
+## Magnetic gradients: when the substrate differs
 
-![Magnetic gradients resolve spatial locations.](images/ch12/magnetic-gradients-resolve-spatial-locations.png){#fig-ch12-magnetic-gradients-resolve-spatial-locations}
+![Magnetic gradients resolve spatial locations.](images/ch12/ch12-two-beakers.png){#fig-ch12-magnetic-gradients-resolve-spatial-locations}
 
-What if the substance in the beakers differs?
+In our first example, the two beakers have the same content.  What if the amount of the water in the beakers differs?  In that case, the FID amplitude might differ.  The Larmor frequency, however, should be the same.
 
 ## Magnetic gradients are used to resolve spatial signals
 
-::: {.panel-tabset}
+![Magnetic gradients are used to resolve spatial signals — step 2.](images/ch12/ch12-beakerarray.png){#fig-ch12-magnetic-gradients-are-used-to-resolve-spatial-sig-2}
 
-## Step 1
+If we have an array of beakers with different amounts of water, the amplitude at each frequency tells us how much water there is at each position!
 
-![Magnetic gradients are used to resolve spatial signals — step 1.](images/ch12/magnetic-gradients-are-used-to-resolve-spatial-sig-1.png){#fig-ch12-magnetic-gradients-are-used-to-resolve-spatial-sig-1}
-
-## Step 2
-
-![Magnetic gradients are used to resolve spatial signals — step 2.](images/ch12/magnetic-gradients-are-used-to-resolve-spatial-sig-2.png){#fig-ch12-magnetic-gradients-are-used-to-resolve-spatial-sig-2}
-
-:::
+The purpose of this simple example is to introduce the idea that using magnetic field gradients can provide us with information about different locations in space.  The information is contained in the nature of the signal. We will develop these ideas quite a bit further in the next sections, using more advanced tools.  But the essential idea - spatial gradients enable us to resolve spatial position from the temporal signal - is with us for good.
 
 ## Image formation: the gradients
 
+<!--
 ![Image formation: the gradients.](images/ch12/image-formation-the-gradients.png){#fig-ch12-image-formation-the-gradients}
+-->
+
+Given the importance of gradients, we should have some words and pictures to describe them.  The sequence of panels here describe the terms we use to describe gradients.
 
 ## Representing the gradient
 
-::: {.panel-tabset}
 
-## Step 1
+## The basic representation
 
 ![Representing the gradient — step 1.](images/ch12/representing-the-gradient-1.png){#fig-ch12-representing-the-gradient-1}
 
-## Step 2
+## Showing the gradient across time and space
 
 ![Representing the gradient — step 2.](images/ch12/representing-the-gradient-2.png){#fig-ch12-representing-the-gradient-2}
 
-## Step 3
+## Rapidly turning it on and off
 
 ![Representing the gradient — step 3.](images/ch12/representing-the-gradient-3.png){#fig-ch12-representing-the-gradient-3}
 
-## Step 4
+But we kept the area under the curve the same.
+
+## Gradients have positive and negative slopes
 
 ![Representing the gradient — step 4.](images/ch12/representing-the-gradient-4.png){#fig-ch12-representing-the-gradient-4}
 
-:::
