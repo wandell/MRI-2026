@@ -16,9 +16,13 @@ date: last-modified
 
 ![Schematic of the multi-room MRI system (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 2.2).](images/ch01/system-rooms-diagram.png){#fig-ch01-system-rooms-diagram fig-alt="Diagram showing the scanner room, machine room, and console room with connections between components."}
 
-An MRI scanner is a distributed system. Its hardware includes the main magnet, gradient and RF coils, power amplifiers, control electronics, and computers that synchronize signals, record the MR response, and reconstruct images from the raw data.
+An MRI scanner is really a system, made up of many different sections. The hardware includes the main magnet, equipment for creating magnetic field gradients, radio frequency (RF) coils, power amplifiers, control electronics, and computers.
 
-Functional neuroimaging also requires systems to manage the behavioral experiment. These are usually supplied by the research laboratory rather than the scanner vendor, and they present stimuli, record responses, and often monitor physiology such as respiration and heart rate. Their timing must be synchronized with the MR acquisition.
+All these different components must communicate with one another, and their signals must be both accurate and synchronized. When you purchase an MRI scanner, you are really purchasing a system that spans several groups of instruments in different rooms.
+
+Functional neuroimaging, one application of MRI, further requires systems that manage behavioral experiments. These systems are usually supplied by the research laboratory or specialized vendors. These present stimuli, record responses, and often monitor physiology such as respiration and heart rate. The timing of these systems must also be synchronized with the MR acquisition.
+
+Let's take a tour of the different parts of the system you would see at Stanford's Center for Cognitive and Neurobiological Imaging (CNI).
 
 ## Control room
 
@@ -36,25 +40,27 @@ This view shows the scanner console and equipment used to connect button boxes, 
 
 ![Subject being positioned in the MR scanner.](images/ch01/scanner-room-patient-table.png){#fig-ch01-scanner-room-patient-table fig-alt="Photo of a subject lying on the scanner table being positioned by a technician."}
 
-The scanner room houses the magnet bore and patient table. Here, a subject is preparing to slide into the bore and adjusting a mirror that reflects a display at the far end of the magnet. Even without a display, a mirror can help a subject see out of the bore and reduce claustrophobia.
+The main magnet - big iron! - is in the scanner room. The magnet has a large bore where the patient table enters. Here, a subject is preparing to slide into the bore.  He is adjusting a mirror that reflects an image from a display at the far end of the magnet. Even without a display, a mirror is often desirable so that the subject can see out of the bore to reduce claustrophobia.
 
-The cable leads to a squeeze bulb, which gives the subject a direct way to alert the operator or stop the scan if needed.
+The cable he is holding leads to a squeeze bulb, which gives the subject a direct way to alert the operator or stop the scan if needed.
 
-## RF Shielding
+## Radio frequency (RF) Shielding
 
 ![Copper panels form the RF-shielded enclosure of the scanner room.](images/ch01/rf-shielding.png){#fig-ch01-rf-shielding fig-alt="Photo of copper RF shielding panels in the scanner room."}
 
-The primary purpose of the room shield is to block unwanted radiofrequency (RF) signals from entering the scanner room. External broadcasts near the proton resonance frequency — about 127.7 MHz at 3 T — can contaminate the very weak MR signal received from the body.
+The scanner room has several forms of shielding for magnetic and radiofrequency fields.
+
+The primary purpose of the shielding is to prevent unwanted radiofrequency (RF) signals from entering the scanner room. External broadcasts near the proton resonance frequency — about 127.7 MHz at 3 T — can contaminate the very weak MR signal received from the body.
 
 The walls, ceiling, floor, door, and viewing window form a continuous conducting enclosure, usually made with copper or aluminum. Electrical cables pass through filtered penetration panels; nonconductive connections can use waveguides designed to block RF transmission. Together these components make a *Faraday cage*.
 
-The Faraday cage attenuates RF electromagnetic waves in both directions, but it has essentially no effect on the static main field $B_0$. The magnet's own active or passive magnetic shielding limits the **fringe field** (the region outside the scanner where the static field remains appreciable, typically extending several meters and requiring 5-gauss safety demarcation lines in scanner facilities).
+The Faraday cage attenuates RF electromagnetic waves in both directions, but it has essentially no effect on the static main field $B_0$.
 
-We return to the main field in the next chapter.
+The magnet's own active or passive magnetic shielding limits the **fringe field** (the region outside the scanner where the static field remains appreciable). This field typically extends several meters, and scanner facilities mark locations where it reaches 5 gauss (0.5 mT) or another locally specified safety threshold.
 
 ## Machine Room
 
-The machine room sits behind the scanner room and holds the equipment that has to be near the magnet but not inside it. The tabs below show several views of the CNI machine room.
+The machine room sits adjacent to the scanner room. It contains equipment that has to be near the magnet but is kept outside the scanner room because of space, heat, noise, and electromagnetic-interference constraints.
 
 ::: {.panel-tabset}
 ## Machine room
@@ -69,6 +75,8 @@ The machine room sits behind the scanner room and holds the equipment that has t
 ## Patch panel and waveguides
 ![Waveguides and patch panel on the scanner room wall.](images/ch01/waveguides.png){#fig-ch01-waveguides fig-alt="Close-up photo of waveguides and patch panel connections."}
 :::
+
+These panel tabs show several views of the CNI machine room.
 
 The machine room houses critical supporting infrastructure, including gradient and RF amplifiers, power supplies, cooling hardware, and penetration panels. Many cables and pipes pass between the machine room and the scanner room. Conductive cables use filtered feedthroughs, while waveguides provide RF-safe paths for appropriate connections.
 
@@ -92,9 +100,11 @@ The machine room also holds the helium compressor, which supplies high-pressure 
 ![Close-up of a liquid helium Dewar with MRI KeepCOLD Services label.](images/ch01/helium-dewar-closeup.png){#fig-ch01-helium-dewar-closeup fig-alt="Close-up photo of a liquid helium Dewar showing the cryogenic liquid warning label."}
 :::
 
-Dewars are large, double-walled cryogenic vessels used to transport and store liquid helium. A high vacuum between the inner and outer walls, together with radiation shielding, greatly reduces heat transfer. Their metal walls are designed to be mechanically strong while limiting heat flow to the liquid.
+Liquid helium is essential for the operation of many superconducting MRI scanners. It is delivered in large **dewars**.
 
-Liquid helium keeps the magnet windings near 4.2 K ($-269^\circ\text{C}$), below the critical temperature of niobium-titanium (NbTi) wire. Many modern MRI scanners use a cryocooler (cold head) to recondense helium vapor, minimizing boil-off and reducing the need for cryogen refills.
+Dewars are large, double-walled cryogenic vessels used to transport and store liquid helium. A high vacuum between the inner and outer walls, together with radiation shielding, greatly reduces heat transfer. Their walls are designed to be mechanically strong while limiting heat flow to the liquid.
+
+Liquid helium keeps the magnet windings near 4.2 K ($-269^\circ\text{C}$), below the critical temperature of niobium-titanium (NbTi) wire. Many modern MRI scanners use a cryocooler, whose **cold head** is mounted on the magnet, to recondense helium vapor. This minimizes boil-off and reduces the need for cryogen refills.
 
 ## MRI Vendors
 

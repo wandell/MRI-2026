@@ -12,11 +12,11 @@ date: last-modified
 
 ![Magnetic-field units and the scientists whose names they bear: Ørsted, Tesla, and Gauss.](images/ch02/magnetic-field-units-scientists.png){#fig-ch02-magnetic-field-units-scientists fig-alt="Slide titled Magnetic field units, showing reference field strengths and portraits of Hans Ørsted, Nikola Tesla, and Carl Friedrich Gauss."}
 
-Electricity and magnetism are inseparable in an MRI scanner: electric currents generate the main, gradient, and RF magnetic fields. The three scientists shown here have units named after them: the oersted (Oe), tesla (T), and gauss (G). In MRI, the main field $B_0$ is normally specified in tesla.
+Electricity and magnetism are inseparable in an MRI scanner: electric currents generate the main, gradient, and RF magnetic fields. You will hear about these signals and their measurement units whenever you read about MR experiments. Several important units of electricity and magnetism are named after the three scientists in the slide: Oersted (Oe), Tesla (T), and Gauss (G). 
 
 The connection between electricity and magnetism was first demonstrated by the Danish physicist Hans Christian Ørsted in 1820, when he showed that a current-carrying wire deflected a compass needle placed beneath it — the experiment sketched at the lower right of the slide. Gauss developed mathematical foundations for describing magnetic fields, and Tesla applied these principles in practical electromagnetic devices.
 
-For scale, Earth's magnetic field is about 0.5 gauss, and a refrigerator magnet is roughly 200 gauss. Most clinical MRI systems operate at 1.5 or 3 tesla; higher-field human systems, such as 7 T and 9.4 T, are used primarily for research, although 7 T has limited clinical use.
+In MRI, the main field $B_0$ is normally specified in tesla. For scale, Earth's magnetic field is about 0.5 gauss, and a refrigerator magnet is roughly 200 gauss. Most clinical MRI systems operate at 1.5 or 3 tesla; higher-field human systems, such as 7 T and 9.4 T, are used primarily for research, although 7 T has limited clinical use.
 
 ## Magnetic Field Units
 
@@ -31,7 +31,11 @@ In free space, these quantities are related by:
 
 $$B = \mu_0 H$$
 
-where the permeability of free space is $\mu_0 = 4\pi \times 10^{-7}$ T·m/A. Within magnetic materials, magnetization also contributes to $B$. MRI conventionally reports $B_0$ in tesla; $1\ \text{T} = 10{,}000\ \text{G}$.
+where the permeability of free space is $\mu_0 = 4\pi \times 10^{-7}$ T·m/A.   Look at the units.  You can see that the constant converts the units of **H** into the units of **B**.
+
+Within magnetic materials, magnetization also contributes to $B$, so the scalar relating them depends on the material.
+
+MRI conventionally reports $B_0$ in tesla; $1\ \text{T} = 10{,}000\ \text{G}$.
 
 ## Generating the Static Magnetic Field ($B_0$)
 
@@ -47,27 +51,29 @@ where the permeability of free space is $\mu_0 = 4\pi \times 10^{-7}$ T·m/A. Wi
 
 :::
 
-The Helmholtz pair uses two loops carrying current in the **same direction**, separated by a distance equal to their radius. This geometry produces a relatively uniform field in the region between the coils. A pair can be made large enough to surround a human head, but this simple geometry cannot achieve the stringent homogeneity required throughout an MRI imaging volume.
+A simple way to create a magnetic field is to run current through a pair of wires. The simplest example is the **Helmholtz pair**, which uses two loops carrying current in the **same direction**, separated by a distance equal to their radius. This geometry produces a relatively uniform field in the region between the coils. A pair can be made large enough to surround a human head, but this simple geometry cannot achieve the stringent homogeneity required throughout an MRI imaging volume.
 
 ### The Solenoid Design
 
 ![A solenoid: many closely spaced turns of wire arranged around a cylindrical form (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch02/b0-solenoid.png){#fig-ch02-b0-solenoid fig-alt="Slide illustrating a solenoid with many turns wrapped around a cylindrical form and field lines through its center."}
 
-To produce a uniform field over a large volume, an MRI main magnet uses multiple, carefully positioned coaxial windings.
+To produce a more uniform field over a large volume, an MRI main magnet uses multiple, carefully positioned coaxial windings.  Starting with two, and then going to many, is something you will see again and again in engineering design and practice.
 
-The number, placement, and current of the windings determine the field strength and homogeneity. For a simple solenoid, adding turns or increasing current increases the field; in an MRI magnet, the winding geometry is optimized to make $B_0$ highly uniform throughout the imaging volume.
-
-If a comparable magnet were wound with a conventional resistive conductor such as copper, maintaining an MRI-strength field would dissipate enormous power. Superconducting magnet technology permits persistent current to flow with negligible DC resistance while the conductor remains below its critical temperature, magnetic-field, and current limits.
+The number, placement, and current of the loops (usually called **windings*) determine the magnetic field strength and its uniformity (homogeneity). Adding windings or increasing current through the windings increases the field; in an MRI magnet, the winding geometry is optimized to make $B_0$ highly uniform throughout the imaging volume.
 
 ## Superconducting Magnets
 
 ![Superconducting magnet winding: niobium-titanium (NbTi) wire wound onto a cylindrical former.](images/ch02/superconducting-magnet-material.png){#fig-ch02-superconducting-magnet-material fig-alt="Slide titled Energy solution: superconducting magnets, showing NbTi wire being wound onto a glass-reinforced polymer former."}
 
-The resistive-power problem is addressed with **superconducting wire**. MRI magnets commonly use niobium-titanium (NbTi) wire wound into multiple coils and kept below its critical temperature, typically near 4 Kelvin in a helium cryostat. In persistent mode, a superconducting switch closes the circuit after the magnet is ramped to field, allowing the current to circulate with essentially no resistive loss. The cryogenic system still requires power to maintain the low temperature.
+If an MR magnet windings were made with conventional resistive conductor, such as copper, maintaining an MRI-strength magnetic field would dissipate enormous power. MR scanners are only practical because superconducting technology permits persistent current to flow with negligible resistance.  The key is to achieving this state is that the conductor must remain below its critical temperature, magnetic-field, and current limits.
 
-Liquid helium is the traditional primary cryogen. Thermal shields and vacuum insulation reduce the heat reaching the helium vessel; older magnet designs sometimes used liquid nitrogen as an additional, relatively inexpensive thermal shield.
+The **superconducting wire** in MRI magnets is commonly niobium-titanium (NbTi) wire.  It is wound into multiple loops and kept below its critical temperature, typically near 4 Kelvin in a liquid helium cryostat. A superconducting switch closes the circuit after the magnet is ramped to field, allowing the current to circulate round and roun through the windings, with essentially no resistance and thus no loss. The cryogenic system requires power to maintain the low temperature, but it requires no power to run the massive current through the windings.
+
+
 
 ![Cryocooler (cold head) operation: recondensing boiled-off helium to minimize consumption.](images/ch02/superconducting-magnet-cryocooler.png){#fig-ch02-superconducting-magnet-cryocooler fig-alt="Diagram of the cryocooler system alongside the cryostat cross-section showing thermal shields."}
+
+Liquid helium is the traditional primary cryogen. Thermal shields and vacuum insulation reduce the heat reaching the helium vessel; older magnet designs sometimes used liquid nitrogen as an additional, relatively inexpensive thermal shield.
 
 Many modern superconducting MR systems use a **cryocooler** (cold head) to remove heat from the cryostat. In a recondensing system, the cold head condenses helium vapor back into liquid, greatly reducing helium loss and the need for refills. The cryocooler operates with a separate, closed helium-gas cycle that alternately compresses and expands the gas to create a cold stage near 4 K.
 

@@ -14,18 +14,13 @@ date: last-modified
 ![Fundamental MR measurements.](images/ch05/fundamental-mr-measurements.png){#fig-ch05-fundamental-mr-measurements}
 -->
 
-In this section we review the relationship between the programming parameters and the physical measurements of magnetic resonance we measure. Finally, we describe how these parameters appear in the images we produce.
-
-* Pulse sequence programming
-* Fundamental MR parameters
-* Image contrast
-
-## Pulse sequency programming
-
 ![The main elements we control in the MR instrument (McRobbie et al., *MRI: From Picture to Proton*, 2e, Fig. 9.1).](images/ch05/pulse-sequency-programming.png){#fig-ch05-pulse-sequency-programming}
-The instrument components we control are the signals on the RF coil transmission and the large imaging gradients. We control both the amplitudes and timing of the control signals. The steady state field ($B_0$) is not varied, though we often begin a scan by measuring its imperfections and compensating for them, a method called **shimming**. 
 
-## User’s console: Adjusts pulse sequence parameters
+In this section we introduce the first critical experiment of magnetic resonance, **Free Induction Decay (FID)**. To understand this experiment, we only concern ourselves with two parts of the instrument: the main magnetic field and the radio frequency coils. Only in later chapters will we explain the control of the imaging gradients. 
+
+But I want you to see where we are headed. So before I describe the FID, let's have a look at the console, where a user sits down to set up the parameters for an MRI experiment. We are going to build up our understanding from the very simple FID experiment to a system that can make an extraordinary range of measurements.
+
+## User’s console
 
 ::: {.panel-tabset}
 
@@ -43,7 +38,7 @@ The instrument components we control are the signals on the RF coil transmission
 
 :::
 
-The programming is principally designed to control the gradients and the RF excitation signal. The orchestration of the signal amplitudes and timing is called **pulse sequence programming**. The three tabs in this image show screen shots with the various parameters we set to control the actions of the pulse sequence.
+At the console, the user defines a program that controls the RF signal and the imaging gradients. The orchestration of these signals, both their amplitudes and timing, is called **pulse sequence programming**. The three tabs in this image show screen shots with the various parameters we set to control the actions of the pulse sequence.
 
 ## MR pulse sequences
 
@@ -75,7 +70,7 @@ Here is a good site!
 
 ![MR pulse sequence parameter choices.](images/ch05/mr-pulse-sequence-parameter-choices.png){#fig-ch05-mr-pulse-sequence-parameter-choices}
 
-Even using the same general pulse sequence (spin-echo), altering the values of the parameters evokes a signal that depends on different physical properties of the substrate. 
+Altering the values of the parameters evokes a signal that depends on different physical properties of the substrate. 
 
 In this image array, the authors used a spin echo sequence but swept out the timing parameters (TE and TR). This is often a good idea when you are trying to understand a system. 
 
@@ -106,7 +101,7 @@ Jw teaching repository from Jon winawer
 Is Quantum Mechanics necessary for understanding Magnetic Resonance? LARS G. HANSON
 -->
 
-The **free induction decay** is the simplest MR signal experiment. The idea of the experiment is built up in the series of images in this panel.
+
 
 ::: {.panel-tabset #fig-ch05-panel-fid}
 
@@ -123,6 +118,8 @@ The **free induction decay** is the simplest MR signal experiment. The idea of t
 ![The measured voltage oscillates. The response starts with a relatively high amplitude and decays over time.](images/ch05/the-free-induction-decay-experiment-3.png){#fig-ch05-the-free-induction-decay-experiment-3 fig-cap-location="bottom"}
 
 :::
+
+We are now ready for the **free induction decay** measurement, the simplest MR signal experiment. The idea of the experiment is built up in the series of images in this panel.
 
 We place a beaker of water, in this example, inside a uniform magnetic field. We then apply an RF pulse at a chosen frequency to the water. After the pulse, the coil detects a voltage induced by the beaker. That's it.
 
