@@ -2,33 +2,35 @@
 date: last-modified
 ---
 
-# Linear Models and the Fourier Series
+# Image formation and Fourier Series (k-space)
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-## Linear models and the Fourier Series (k-space)
+## Linear models are important in science and engineering
 
+<!--
 ![Linear models and the Fourier Series (k-space).](images/ch14/linear-models-and-the-fourier-series-k-space.png){#fig-ch14-linear-models-and-the-fourier-series-k-space}
+-->
 
-Linear models are extremely important in science and engineering.  The Fourier series is a specific example of a linear model, perhaps the most important one, where the basis functions are harmonics (sin and cos).  In this chapter we will explore the Fourier series as a linear model, and how it relates to k-space in MRI.
+Linear models are extremely important in science and engineering. There are many ways linear models arise in practice, and we will see several examples in this class. In fact, they are present in almost every class I teach [including this Appendix in the Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-01-linearsystems.html).  
+
+ The Fourier series is a specific example of a linear model, and many engineers consider it to be the most important one.  It has a central role in magnetic resonance imaging. In this chapter we will introduce the Fourier series and start to explain how it relates to k-space in MRI.
 
 For additional context on the historical and mathematical background of Fourier analysis, see the resource [Jean-Baptiste Fourier and the Fourier series](resources/jean-baptiste-fourier.qmd).
 
-A simple mathematical description of general linear models can be found in an [appendix of Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-01-linearsystems.html).  
-
-## Linear models are important in science and engineering
+## What is a linear model?
 
 ![The definition of a linear model.](images/ch14/linear-models-are-important-in-science-and-enginee.png){#fig-ch14-linear-models-are-important-in-science-and-enginee}
 
-A linear model is a linear combination of basis functions.  The signal is expressed as the weighted sum of other functions that look just like the signal.  We call these the basis functions $B_i$. 
+A linear model is a re-expressing a series of measurements. The set of measurements might be set of values measured over time (time series) or a set of points measured across space.  
 
-Different weights are used to describe different signals, but the basis functions remain the same. 
+Instead of expressing the vector of measurements in the form they were acquired, we express them as the weighted sum of a fixed set of other vectors. These other vectors are potential signals we might have measured.  We call these vectors the basis functions $B_i$ of the linear model.  We weights we apply to these basis vectors to match the measurements are the new description of the signal.  Each signal is now represented by these weights with respect to the new basis.
 
-Linear models are important because they are simple to understand and interpret, and they can often provide a good approximation to more complex relationships between variables.
+Linear models are valuable because they can help us understand properties of the measurement, or how a system acts on signal. 
 
-In the example shown here the signal is exactly predicted as the weighted sum of basis functions.  In general, though we may choose a set of basis functions that approximates the signal
+In the example shown in the slide, the measured signal, $S(t)$ is exactly equal to the weighted sum of the basis functions $B_i(t)$.  In general, people we use a linear model whose basis functions do a reasonable job of just approximating the measured signal,
 
 $S(t) \approx \sum_{i=1}^{k=N} a_i B_i(t)$
 
@@ -36,17 +38,19 @@ $S(t) \approx \sum_{i=1}^{k=N} a_i B_i(t)$
 
 ![The Fourier series is a linear model – the basis functions are harmonics.](images/ch14/the-fourier-series-is-a-linear-model-the-basis-fun.png){#fig-ch14-the-fourier-series-is-a-linear-model-the-basis-fun}
 
-THe special role of Fourier Series is described in this [appendix of Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-02-spaceinvariance.html).  
+Sines and cosines are called **harmonmic** functions. 
 
-## The Fourier series is a linear model
+One way to express the Fourier series is as the weighted sum of sines and cosines over a range of different frequencies. 
 
-![The Fourier series is a linear model.](images/ch14/the-fourier-series-is-a-linear-model.png){#fig-ch14-the-fourier-series-is-a-linear-model}
-
-## The harmonic basis functions (sin and cos)
+Another way is to use a trigonometric relationships that many of you learned in high school, to rewrite the sum of a sine and cosine as sine with some amplitude, $a_f$ and phase $\phi_f$ that  depends on the weights of the sine and cosine. 
 
 ![The harmonic basis functions (sin and cos).](images/ch14/the-harmonic-basis-functions-sin-and-cos.png){#fig-ch14-the-harmonic-basis-functions-sin-and-cos}
 
-Sines and cosines are the harmonmic functions.  The curves are sines and cosines (harmonics) at matched frequencies and amplitudes.
+This slide shows examples of the harmonics, where you can see the impact of changing the frequency. Changing the phase shifts the harmonic right or left on with respect to the horizontal axis.
+
+![The Fourier series is a linear model.](images/ch14/the-fourier-series-is-a-linear-model.png){#fig-ch14-the-fourier-series-is-a-linear-model}
+
+The special role of Fourier Series is described in this [appendix of Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-02-spaceinvariance.html).  
 
 ## Linear models:  Matrix tableau representation
 
@@ -118,9 +122,11 @@ In the Fourier Transform representation of a real-valued image, the values of th
 
 ![How do you calculate the Fourier coefficient?.](images/ch14/how-do-you-calculate-the-fourier-coefficient.png){#fig-ch14-how-do-you-calculate-the-fourier-coefficient}
 
-We need to explain the inner product around here.
+Do we need to explain the inner product around here?
 
 Maybe some more examples, or a video around here.
+
+
 
 
 

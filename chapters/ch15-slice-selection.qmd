@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Slice Selection and Gradient Echo Sequences
+# Slice Selection
 
 {{< include "includes/WIP-callout.qmd" >}}
 
@@ -35,25 +35,3 @@ date: last-modified
 ## The RF pulse can change slice thickness and location
 
 ![The RF pulse can change slice thickness and location (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch15/the-rf-pulse-can-change-slice-thickness-and-locati.png){#fig-ch15-the-rf-pulse-can-change-slice-thickness-and-locati}
-
-## Gradient echo sequences
-
-### Gradient Echo sequence
-
-![Gradient Echo sequence.](images/ch15/gradient-echo-sequence.png){#fig-ch15-gradient-echo-sequence}
-
-### Gradient echo sequence (move to previous section next year)
-
-![Gradient echo sequence (move to previous section next year).](images/ch15/gradient-echo-sequence-move-to-previous-section-ne.png){#fig-ch15-gradient-echo-sequence-move-to-previous-section-ne}
-
-### Why create echoes with gradients instead of a 180° pulse?
-
-![Why create echoes with gradients instead of a 180° pulse?.](images/ch15/why-create-echoes-with-gradients-instead-of-a-180.png){#fig-ch15-why-create-echoes-with-gradients-instead-of-a-180}
-
-### Gradient echo parameters and T1/T2*
-
-![Gradient echo parameters and T1/T2*.](images/ch15/gradient-echo-parameters-and-t1t2.png){#fig-ch15-gradient-echo-parameters-and-t1t2}
-
-### Summary
-
-![Summary.](images/ch15/summary.png){#fig-ch15-summary}
