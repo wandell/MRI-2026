@@ -14,15 +14,10 @@ date: last-modified
 *Recall from Chapter 5*: We saw how pulse sequences combine RF pulses and gradients. Now we'll explore how specific timing parameters (TE/TR) create different tissue weightings.
 :::
 
-The previous two chapters described the two relaxation signals, T1 and T2, one at a time. A typical MR measurement produces a mixture of these effects. 
-
-The specific mixture is determined by the *pulse sequence*: the schedule of RF pulses and gradients, and the times at which we listen. 
-
-We haven't yet described image formation and the application of the imaging gradients.  That will have to wait a bit, but I am sure you believe me that these gradients will play a big role. In this chapter, just accept that these gradients will play out over time.
-
 This chapter covers three things — 
 
-* How the timing of a pulse sequence determines whether an image is T1-, T2-, or PD-weighted; 
+* How the timing of a pulse sequence determines whether an image is T1-, T2-, or PD-weighted;
+* The gradient echo pulse sequence 
 * Why a T2-weighted signal is not a quantitative measurement of T2; and 
 * A look ahead at how the T2* signal becomes the basis of BOLD fMRI.
 
@@ -71,6 +66,28 @@ Spin-echo images acquired with a short TE (10 ms) produce a T2 signal, but the s
 ### Gradient echo parameters and T1/T2*
 
 ![Gradient echo parameters and T1/T2*.](images/ch15/gradient-echo-parameters-and-t1t2.png){#fig-ch15-gradient-echo-parameters-and-t1t2}
+
+## Discussion about quantification
+
+Why measuring with real units would be really a good thing.  If we could always do it, I would.
+
+### Why is the T2 measurement not quantitative?
+
+A raw T2-weighted signal is not, by itself, a quantitative measurement of T2. The measured transverse magnetization follows $M_{xy} = M_0 e^{-t/T_2}$, and when we measure across different positions in the brain, the absolute starting level $M_0$ differs from place to place — mainly because of proton density (PD) and coil inhomogeneities (in both excitation and reception). In the example below, the signal level at 32 ms differs between three locations with different $M_0$, even though the T2 time constant is the same at all three.
+
+![Why the T2 measurement is not quantitative: transverse magnetization curves for three locations with different $M_0$ (small, medium, large PD) but the same T2; the signal level at any fixed time depends on both, not on T2 alone. The identical issue affects T1 recovery, $M_z = M_0(1-e^{-t/T_1})$.](images/ch09b/why-t2-not-quantitative-pd-effect.png){#fig-ch09b-why-not-quantitative fig-alt="Three T2 decay curves for small, medium, and large proton density, all decaying at the same rate but starting from different levels, with the T2 signal equation shown."}
+
+Multiple spin echoes make the problem concrete: repeating the 180° refocusing pulse produces a train of echoes whose peak amplitudes decay with the true T2 time constant, but the absolute height of that decay curve — its intercept — still depends on the position-dependent $M_0$.
+
+::: {.content-visible when-format="html"}
+![Multiple spin echoes: the peaks of successive echoes decay with T2, while the absolute starting amplitude ($M_0$) varies with position because of PD and coil inhomogeneities.](images/ch09b/why-t2-not-quantitative-multiple-echoes.mp4){#vid-ch09b-multiple-echoes width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Multiple spin echoes: the peaks of successive echoes decay with T2, while the absolute starting amplitude ($M_0$) varies with position (video; see the HTML version for the animation).](images/ch09b/why-t2-not-quantitative-multiple-echoes.png){#vid-ch09b-multiple-echoes width="70%"}
+:::
+
+Measuring T2 *quantitatively* therefore requires separating out the $M_0$ term — for example by fitting the decay across several echo times and reporting the fitted time constant, rather than reading off a single-TE signal level.
 
 ## A quick look ahead: the T2*/BOLD signal
 
