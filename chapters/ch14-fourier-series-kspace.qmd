@@ -36,7 +36,7 @@ $$
 s(t) \approx \sum_{i=1}^{k=N} a_i B_i(t)
 $$
 
-## The Fourier series is a linear model – the basis functions are harmonics
+## The Fourier series is a linear model – the basis functions are harmonics {#sec-fourier-series}
 
 ![The Fourier series is a linear model – the basis functions are harmonics.](images/ch14/the-fourier-series-is-a-linear-model-the-basis-fun.png){#fig-ch14-the-fourier-series-is-a-linear-model-the-basis-fun}
 
