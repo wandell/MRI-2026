@@ -76,17 +76,20 @@ The product of the matrix and the vector is computed by scaling (multiplying) th
 When we represent a signal in the frequency domain, we describe it as a weighted sum of sinusoids—the Fourier basis functions. When you return the representation to the standard time domain $s(t)$, you are performing a change of basis. What are the implicit basis functions of this time-domain representation?
 :::
 
-## 2D Fourier Transform:Sinusoidal and cosinusoidal images (Harmonic Patterns)
+## Fourier Transforms and Images
 
 ![2D Fourier Transform: Sinusoidal and cosinusoidal images (Harmonic Patterns).](images/ch14/2d-fourier-transformsinusoidal-and-cosinusoidal-im.png){#fig-ch14-2d-fourier-transformsinusoidal-and-cosinusoidal-im}
 
-We are used to thinking of sines and cosines as functions.  It is also possible to represent them as images, with the requirement that the image mean value is a positive number.  In that case the sines and cosines remain positive, a requirement to be an image.
+It was a significant step to extend the basic ideas of the Fourier Transform - which was originally about one-dimensional signals - into the domain of images, which are two-dimensional. This extension happened in several different fields at different times.
 
-<!--
-**Note sure where to include this**
+::: {.callout-note title="Image contrast"}
+There is also one subtlety in moving from abstract functions to images: there are no negative light intensities. Yet, sines and cosine all vary around zero. So what is a harmonic function as an image?  
 
-In the Fourier Transform representation of a real-valued image, the values of the negative frequencies are related to the values of the positive frequencies in a specific way. This relationship stems from the properties of real-valued functions and the symmetry of the Fourier Transform. Here's how it works:1. Real-valued images and conjugate symmetry:A real-valued image means that its intensity values are real numbers, not complex numbers. This property translates to a specific behavior in the Fourier domain: conjugate symmetry.Conjugate symmetry implies that for every complex number F(k) corresponding to a positive frequency k in the Fourier Transform, the complex conjugate F(-k) will be the corresponding value at the negative frequency -k. In other words:Re[F(k)] = Re[F(-k)]Im[F(k)] = -Im[F(-k)]where Re() and Im() represent the real and imaginary parts of a complex number, respectively.2. Implications for intensity values:Since the absolute value of a complex number represents its magnitude, we can infer from the conjugate symmetry that:|F(k)| = |F(-k)|This means that the magnitude (absolute value) of a frequency component in the Fourier Transform is the same at both the positive and negative frequencies.However, the phase of the complex numbers will be different for positive and negative frequencies due to the sign difference in the imaginary part. This difference in phase doesn't affect the intensity of the image information and can often be ignored in image analysis.3. Practical observations:In real-world images, some components might not perfectly exhibit perfect conjugate symmetry due to noise or imperfect data acquisition. However, the general principle of matching magnitudes between positive and negative frequencies holds true in most cases.To summarize:In a real-valued image, the magnitude of a frequency component in the Fourier Transform is the same at both the positive and negative frequencies.The phase of these components will be different, but this difference doesn't affect the intensity information in the image.Understanding this relationship can be helpful when interpreting and analyzing MRI images in the Fourier domain.I hope this explanation clarifies the connection between positive and negative frequencies in the Fourier Transform of a real-valued image! Feel free to ask if you have any further questions about this or other aspects of MRI image formation.
--->
+In some ways this is a small matter, because the solution is easy.  We think of images as varying around a positive mean.  Thus no image is a pure harmonic; it is always a sum of a constant (the mean intensity) plus the variation around the mean.  This is the idea of image contrast (the image value contrasts with the mean value).  
+
+:::
+
+
 
 ## Harmonics – 1D
 
@@ -138,7 +141,18 @@ Do we need to explain the inner product around here?
 
 Maybe some more examples, or a video around here.
 
+::: {.callout-note title="Fourier Transform of images"}
 
+| Era / Field | Core Contribution | Key Figures |
+| --- | --- | --- |
+| **Microscopy & Diffraction** | Physical realization that lenses execute a 2D spatial Fourier transform | Abbe, Zernike, Maréchal |
+| **Fourier Optics** | Adapting 1D signal/communications concepts to 2D image signals | O'Neill, Leith, VanderLugt, Goodman |
+| **Digital Image Processing** | Developing 2D-separable DFT/FFT algorithms for digital images | Cooley & Tukey, Lohmann, Rosenfeld, Pratt |
 
+:::
 
+**Note sure where to include this**
 
+These are some notes that I think the students should be able to lookup.
+
+In the Fourier Transform representation of a real-valued image, the values of the negative frequencies are related to the values of the positive frequencies in a specific way. This relationship stems from the properties of real-valued functions and the symmetry of the Fourier Transform. Here's how it works:1. Real-valued images and conjugate symmetry:A real-valued image means that its intensity values are real numbers, not complex numbers. This property translates to a specific behavior in the Fourier domain: conjugate symmetry.Conjugate symmetry implies that for every complex number F(k) corresponding to a positive frequency k in the Fourier Transform, the complex conjugate F(-k) will be the corresponding value at the negative frequency -k. In other words:Re[F(k)] = Re[F(-k)]Im[F(k)] = -Im[F(-k)]where Re() and Im() represent the real and imaginary parts of a complex number, respectively.2. Implications for intensity values:Since the absolute value of a complex number represents its magnitude, we can infer from the conjugate symmetry that:|F(k)| = |F(-k)|This means that the magnitude (absolute value) of a frequency component in the Fourier Transform is the same at both the positive and negative frequencies.However, the phase of the complex numbers will be different for positive and negative frequencies due to the sign difference in the imaginary part. This difference in phase doesn't affect the intensity of the image information and can often be ignored in image analysis.3. Practical observations:In real-world images, some components might not perfectly exhibit perfect conjugate symmetry due to noise or imperfect data acquisition. However, the general principle of matching magnitudes between positive and negative frequencies holds true in most cases.To summarize:In a real-valued image, the magnitude of a frequency component in the Fourier Transform is the same at both the positive and negative frequencies.The phase of these components will be different, but this difference doesn't affect the intensity information in the image.Understanding this relationship can be helpful when interpreting and analyzing MRI images in the Fourier domain.I hope this explanation clarifies the connection between positive and negative frequencies in the Fourier Transform of a real-valued image! Feel free to ask if you have any further questions about this or other aspects of MRI image formation.
