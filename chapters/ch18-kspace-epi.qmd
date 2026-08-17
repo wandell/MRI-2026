@@ -40,24 +40,6 @@ A,1,4,6,721:96,23:138
 
 :::
 
-## Echo Planar Imaging - Mansfeld
-
-![Echo Planar Imaging - Mansfeld.](images/ch18/echo-planar-imaging-mansfeld.png){#fig-ch18-echo-planar-imaging-mansfeld}
-
-FIGURE 1. A, Conventional acquisition of fully sampled kspace, resulting in a full FOV image after Fourier transformation.B, Undersampled acquisition (R = 2), resulting in a reduced FOV (FOV/2) with aliasing artifacts. Solid lines indicateacquired k-space lines, dashed lines indicate nonacquired kspace lines.59
-
-## Introduction
-
-![Introduction.](images/ch18/introduction.png){#fig-ch18-introduction}
-
-The coil image at a position u is a combination of the coil sensitivity, Sij, and the brain substrate points, pj.61
-
-## Science 1991 – The beginning of EPI explosion
-
-![Science 1991 – The beginning of EPI explosion.](images/ch18/science-1991-the-beginning-of-epi-explosion.png){#fig-ch18-science-1991-the-beginning-of-epi-explosion}
-
-Notice that we have more coil measurements, I, than we have unknown substrate values, p.  If we know the coil sensitivities, we can solve this set of linear equations.63
-
 ## An EPI pulse sequence (A) and its k-space trajectory (B).
 
 ![An EPI pulse sequence (A) and its k-space trajectory (B) (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch18/an-epi-pulse-sequence-a-and-its-k-space-trajectory.png){#fig-ch18-an-epi-pulse-sequence-a-and-its-k-space-trajectory}

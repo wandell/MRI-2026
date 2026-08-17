@@ -27,9 +27,9 @@ book:
     - part: chapters/part3-imageformation.qmd
       chapters:
        - chapters/ch12-image-formation-principles.qmd
-       - chapters/ch14-fourier-series-kspace.qmd
        - chapters/ch15-slice-selection.qmd
        - chapters/ch17-imaging-within-slice.qmd
+       - chapters/ch14-fourier-series-kspace.qmd
        - chapters/ch18-kspace-epi.qmd
        - chapters/ch19-pulse-sequences.qmd
        - chapters/ch20-image-quality.qmd
@@ -96,6 +96,7 @@ book:
        - chapters/resources/lauterbur.qmd
        - chapters/resources/fast-exchange.qmd
        - chapters/resources/jean-baptiste-fourier.qmd
+       - chapters/resources/mansfeld-epi.qmd
        - chapters/resources/phineas-gage.qmd
        - chapters/resources/leukoencephalopathy.qmd
        - chapters/resources/developmental-hemispherectomy.qmd

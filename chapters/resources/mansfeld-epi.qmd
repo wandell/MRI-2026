@@ -1,0 +1,21 @@
+---
+date: last-modified
+---
+
+{{< include "../includes/WIP-callout.qmd" >}}
+
+# Mansfeld and EPI {.unnumbered}
+
+{{< video https://www.youtube.com/watch?v=s6Pok5DjF1M >}}
+
+## Introduction
+
+![Introduction.](images/introduction.png){#fig-ch18-introduction}
+
+The coil image at a position u is a combination of the coil sensitivity, Sij, and the brain substrate points, pj.61
+
+## Science 1991 – The beginning of EPI explosion
+
+![Science 1991 – The beginning of EPI explosion.](images/science-1991-the-beginning-of-epi-explosion.png){#fig-ch18-science-1991-the-beginning-of-epi-explosion}
+
+Notice that we have more coil measurements, I, than we have unknown substrate values, p.  If we know the coil sensitivities, we can solve this set of linear equations.

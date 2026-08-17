@@ -2,18 +2,11 @@
 date: last-modified
 ---
 
-# Paul Lauterbur and the First MR Image {.unnumbered}
+# Paul Lauterbur {.unnumbered}
 
 {{< include "../includes/WIP-callout.qmd" >}}
 
 Paul Lauterbur introduced the idea of using spatial gradients in the magnetic field to localize the MR signal, the insight that made magnetic resonance imaging possible. This resource collects the historical material on Lauterbur and his 1973 *Nature* paper; the principles of gradient encoding are developed in the main text.
-
-## Historical note: Paul Lauterbur
-
-<!--
-![Historical note: Paul Lauterbur.](images/lauterbur-historical-note.png){#fig-lauterbur-historical-note}
--->
-
 
 ![Historical note: Paul Lauterbur.](images/paul-lauterbur.png){#fig-lauterbur-historical-note}
 
@@ -21,17 +14,10 @@ In 1972, Lauterbur had a novel idea: if the strength of the magnetic field were 
 
 ## The Lauterbur *Nature* (1973) paper: First MR image
 
-::: {.panel-tabset}
-
-## Step 1
-
 ![The Lauterbur Nature (1973) paper: First MR image — step 1.](images/lauterbur-nature-1973-paper-1.png){#fig-lauterbur-nature-1973-paper-1}
 
-## Step 2
 
 ![The Lauterbur Nature (1973) paper: First MR image — step 2.](images/lauterbur-nature-1973-paper-2.png){#fig-lauterbur-nature-1973-paper-2}
-
-:::
 
 ## From the 1973 *Nature* paper
 

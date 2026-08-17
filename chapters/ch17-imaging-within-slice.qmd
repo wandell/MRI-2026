@@ -34,7 +34,13 @@ date: last-modified
 
 ## The pendula are swinging at a range of temporal frequencies
 
-![The pendula are swinging at a range of temporal frequencies.](images/ch17/the-pendula-are-swinging-at-a-range-of-temporal-fr.png){#fig-ch17-the-pendula-are-swinging-at-a-range-of-temporal-fr}
+::: {.content-visible when-format="html"}
+![The pendula are swinging at a range of temporal frequencies.](images/ch17/Pendula-MR-Gradients.mov){#vid-ch17-pendula-mr-gradients width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![The pendula are swinging at a range of temporal frequencies (video; see the HTML version for the animation).](images/ch17/the-pendula-are-swinging-at-a-range-of-temporal-fr.png){#vid-ch17-pendula-mr-gradients width="70%"}
+:::
 
 ## Gradients control spin orientations across space
 

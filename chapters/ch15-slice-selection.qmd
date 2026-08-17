@@ -9,12 +9,21 @@ date: last-modified
 ---
 
 ## Image formation: Slice selection
-
+<!--
 ![Image formation: Slice selection.](images/ch15/image-formation-slice-selection.png){#fig-ch15-image-formation-slice-selection}
+-->
 
-## A gradient sets Larmor frequency for a slice
+Many MR pulse sequencies acquire image data by measuring from one plane (slice) at a time.  This is the idea, which builds on the principles from the example with the beakers.
+
+## Image gradient and slice selection
 
 ![A gradient sets Larmor frequency for a slice (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch15/a-gradient-sets-larmor-frequency-for-a-slice.png){#fig-ch15-a-gradient-sets-larmor-frequency-for-a-slice}
+
+We use the imaging gradient o vary the magnetic field across one of the three dimensions of the brain. In the case illustrated here, it is from front to back (anterior to posterior).
+
+Just like the case of the series of beakers, the Larmor frequency will differ across space.  We can set an RF pulse frequency that will excite the spins in one slice through the brain, but not the others.
+
+Similarly the emissions from that slice will be at the Larmor frequency for that slice.
 
 ## A pulse sequence for slice selection
 
