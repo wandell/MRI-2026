@@ -14,11 +14,11 @@ date: last-modified
 ![Linear models and the Fourier Series (k-space).](images/ch14/linear-models-and-the-fourier-series-k-space.png){#fig-ch14-linear-models-and-the-fourier-series-k-space}
 -->
 
-Linear models are extremely important in science and engineering. There are many ways linear models arise in practice, and we will see several examples in this class. In fact, they are present in almost every class I teach [including this Appendix in the Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-01-linearsystems.html).  
+Linear models are extremely important in science and engineering. There are many ways linear models arise in practice, and we will see several examples in this class. Linear models are used in almost every class I teach, which is why they are [included in this Appendix of my book on the Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-01-linearsystems.html).  
 
- The Fourier series is a specific example of a linear model, and many engineers consider it to be the most important one.  It has a central role in magnetic resonance imaging. In this chapter we will introduce the Fourier series and start to explain how it relates to k-space in MRI.
+ The Fourier series is a specific example of a linear model; many engineers consider it to be the most important one. There is no doubt that it is the most important one in magnetic resonance imaging. This chapter introduces the Fourier series and starts to explain its important in MRI.
 
-For additional context on the historical and mathematical background of Fourier analysis, see the resource [Jean-Baptiste Fourier and the Fourier series](resources/jean-baptiste-fourier.qmd).
+The [historical and mathematical background of Fourier analysis](resources/jean-baptiste-fourier.qmd), as well as the life of Jean-Baptiste Fourier, is quite interesting.
 
 ## What is a linear model?
 
@@ -30,9 +30,11 @@ Instead of expressing the vector of measurements in the form they were acquired,
 
 Linear models are valuable because they can help us understand properties of the measurement, or how a system acts on signal. 
 
-In the example shown in the slide, the measured signal, $S(t)$ is exactly equal to the weighted sum of the basis functions $B_i(t)$.  In general, people we use a linear model whose basis functions do a reasonable job of just approximating the measured signal,
+In the example shown in the slide, the measured signal, $s(t)$ is exactly equal to the weighted sum of the basis functions $B_i(t)$.  In general, people we use a linear model whose basis functions do a reasonable job of just approximating the measured signal,
 
-$S(t) \approx \sum_{i=1}^{k=N} a_i B_i(t)$
+$$
+s(t) \approx \sum_{i=1}^{k=N} a_i B_i(t)
+$$
 
 ## The Fourier series is a linear model – the basis functions are harmonics
 
@@ -52,17 +54,27 @@ This slide shows examples of the harmonics, where you can see the impact of chan
 
 The special role of Fourier Series is described in this [appendix of Foundations of Image Systems Engineering](https://wandell.github.io/FISE-git/chapters/appendix-02-spaceinvariance.html).  
 
-## Linear models:  Matrix tableau representation
+## Matrix tableau representation
 
-![Linear models:  Matrix tableau representation.](images/ch14/linear-models-matrix-tableau-representation.png){#fig-ch14-linear-models-matrix-tableau-representation}
+![Matrix tableau representation of a signal, $s(t)$.](images/ch14/linear-models-matrix-tableau-representation.png){#fig-ch14-linear-models-matrix-tableau-representation}
 
-Matrices are a a clear way to visualize and think about linear models.  The vector on the left is the weighted sum of the columns of the matrix on the right.  The weights applied to the columns are in the vector on the far right.
+Matrices are a a clear way to visualize and think about linear models. I am fond of the visual summary of matrices called the **matrix tableau**.   The idea is illustrated in @fig-ch14-linear-models-matrix-tableau-representation.  
 
-## Estimating the weights from the signal
+The vector on the left $s(t)$ is the measurement at sample times, $t_i$. The big matrix on the right has all of the basis functions in the columns.  These are potential signals, also sampled at times $t_i$.  The weights are in the column vector at the right $a_i$.
+
+The product of the matrix and the vector is computed by scaling (multiplying) the first column by $a_1$, the second column by $a_2$, and so forth and then adding together all of those scaled columns.
+
+## Estimating the Fourier weights from the signal
 
 ![Estimating the weights from the signal.](images/ch14/estimating-the-weights-from-the-signal.png){#fig-ch14-estimating-the-weights-from-the-signal}
 
+
 **Teachmri:**  harmonicsFFTandImages29
+
+
+::: {.callout-note title="Point basis"}
+When we represent a signal in the frequency domain, we describe it as a weighted sum of sinusoids—the Fourier basis functions. When you return the representation to the standard time domain $s(t)$, you are performing a change of basis. What are the implicit basis functions of this time-domain representation?
+:::
 
 ## 2D Fourier Transform:Sinusoidal and cosinusoidal images (Harmonic Patterns)
 
