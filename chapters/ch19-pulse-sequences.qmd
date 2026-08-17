@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# Pulse Sequences
+# More Pulse Sequences (Diagrams, Gradient echo, fMRI)
 
 {{< include "includes/WIP-callout.qmd" >}}
 

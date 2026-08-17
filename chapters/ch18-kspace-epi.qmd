@@ -2,7 +2,7 @@
 date: last-modified
 ---
 
-# K-Space Traversal and Echo Planar Imaging
+# Traversing K-Space (Echo Planar Imaging)
 
 {{< include "includes/WIP-callout.qmd" >}}
 

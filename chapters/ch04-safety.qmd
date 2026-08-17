@@ -53,7 +53,7 @@ Reference: [KTVU report](https://www.ktvu.com/news/freak-accident-mountain-view-
 
 ![Video still from a Kaiser Redwood City MRI safety incident.](images/ch04/safety-kaiser-accident.png){#fig-ch04-safety-kaiser-accident fig-alt="Video still showing medical equipment drawn into an MRI scanner bore, with a caption noting the MRI room remained closed and employees were following safety protocols."}
 
-Reference: [YouTube video](https://www.youtube.com/watch?v=uDfwxoigZZk)
+{{< video https://www.youtube.com/watch?v=uDfwxoigZZk >}}
 
 ## Magnet Quench
 
