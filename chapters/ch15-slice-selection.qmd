@@ -8,39 +8,76 @@ date: last-modified
 
 ---
 
-## Image formation: Slice selection
+## Slice selection
 <!--
 ![Image formation: Slice selection.](images/ch15/image-formation-slice-selection.png){#fig-ch15-image-formation-slice-selection}
 -->
 
-Many MR pulse sequencies acquire image data by measuring from one plane (slice) at a time.  This is the idea, which builds on the principles from the example with the beakers.
+Many MR pulse sequences measure the signal from one plane (slice) at a time. The way they do this, called **slice selection** builds on the principles from the example with the beakers.
 
-## Image gradient and slice selection
+## Selecting by the image gradient
 
 ![A gradient sets Larmor frequency for a slice (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch15/a-gradient-sets-larmor-frequency-for-a-slice.png){#fig-ch15-a-gradient-sets-larmor-frequency-for-a-slice}
 
-We use the imaging gradient o vary the magnetic field across one of the three dimensions of the brain. In the case illustrated here, it is from front to back (anterior to posterior).
+The imaging gradient varies the magnetic field across one of the three dimensions of the brain. In the case illustrated in @fig-ch15-a-gradient-sets-larmor-frequency-for-a-slice, the variation is from front (anterior) to back (posterior).
 
-Just like the case of the series of beakers, the Larmor frequency will differ across space.  We can set an RF pulse frequency that will excite the spins in one slice through the brain, but not the others.
+The image gradient causes the Larmor frequency to differ across space. This means by choosing the RF pulse frequency, we can excite the spins in one slice and not the others.
 
-Similarly the emissions from that slice will be at the Larmor frequency for that slice.
+Just as for the beakers, emissions from the slice will be at the Larmor frequency.
 
 ## A pulse sequence for slice selection
 
 ![A pulse sequence for slice selection (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch15/a-pulse-sequence-for-slice-selection.png){#fig-ch15-a-pulse-sequence-for-slice-selection}
 
-## Slice selection
+We are going to be building up to pulse sequence diagrams.  The slice selection part of a pulse sequence is shown in @fig-ch15-a-pulse-sequence-for-slice-selection.  
 
-![Slice selection.](images/ch15/slice-selection.png){#fig-ch15-slice-selection}
+The z-gradient is turned on and the RF pulse is applied.  Later, I will explain why we continue to extend the gradient in time, but reverse its direction.
 
-## Slice selection pulses:  how wide will the slice be?
+## Slice selection: animation
+
+::: {.content-visible when-format="html"}
+![Slice selection.](images/ch15/MRI_Slice%20Selection.mp4){#vid-ch15-slice-selection width="70%" loop="true" autoplay="true" muted="true"}
+:::
+
+::: {.content-visible when-format="pdf"}
+![Slice selection (video; see the HTML version for the animation).](images/ch15/slice-selection.png){#vid-ch15-slice-selection width="70%"}
+:::
+
+## Designing the RF pulse
 
 ![Slice selection pulses:  how wide will the slice be? (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch15/slice-selection-pulses-how-wide-will-the-slice-be.png){#fig-ch15-slice-selection-pulses-how-wide-will-the-slice-be}
 
-## Slice thickness and location depend on the gradient and the pulse
+There are many details to consider about the RF pulse itself.  Remember that a perfect harmonic lasts forever, but the RF pulse we deliver must happen over a fairly short period of time. Thus, the pulse will have some amplitude over a range of temporal frequencies, not just at a single frequency.
 
+If we turn the pulse on sharply (upper left), then it will have amplitude spread across the frequencies as in the upper right.  Thus, we would have some excitation from regions that are spread away from the slice we are targeting.
+
+If we bring the RF pulse on as in the lower left, the frequencies will be more compact, as in the lower right.  Thus the spins in will be excited from mostly within a single narrow slice.
+
+::: {.callout-note title="Check your intuition"}
+Thinking about RF pulse design is important and will come up again later.  You might ask yourself what would happen if we made an RF pulse that is the sum of two frequencies that are quite different?
+:::
+
+## Choosing a different slice
+
+What determines which slice will be selected?  
+
+::: {.panel-tabset}
+## High frequency
 ![Slice thickness and location depend on the gradient and the pulse (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch15/slice-thickness-and-location-depend-on-the-gradien.png){#fig-ch15-slice-thickness-and-location-depend-on-the-gradien}
 
-## The RF pulse can change slice thickness and location
 
+## Low frequency
 ![The RF pulse can change slice thickness and location (after Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch15/the-rf-pulse-can-change-slice-thickness-and-locati.png){#fig-ch15-the-rf-pulse-can-change-slice-thickness-and-locati}
+:::
+
+## Slice thickness
+
+What determines the slice thickness?  
+
+One factor is what we just described: the range of temporal frequencies are in the RF pulse.  If the range is wider, the slice will be thicker.
+
+::: {.callout-note title="Check your intuition"}
+A second factor is the gradient slope.  Try drawing a picture in which you have the same RF range, but the gradient is steeper.  What will the impact on slice thickness be?
+:::
+
+
