@@ -8,21 +8,21 @@ date: last-modified
 
 ---
 
-## Image formation: Imaging within the slice
+## Reminder about spins
 <!--
 ![Image formation: Imaging within the slice.](images/ch17/image-formation-imaging-within-the-slice.png){#fig-ch17-image-formation-imaging-within-the-slice}
 -->
 
 ![Transverse relaxation:  As the spins rotate their impact on the coil varies.](images/ch17/transverse-relaxation-as-the-spins-rotate-their-im.png){#fig-ch17-transverse-relaxation-as-the-spins-rotate-their-im}
 
-Now, just a quick reminder about that transverse signal we measure.  We apply the RF pulse at the Larmor frequency, and the spins align for a bit and then they de-align over time.
+Now, just a quick reminder about that transverse signal we measure.  We apply the RF pulse at the Larmor frequency, and the spin together (coherently) for some time, but they become less coherent over time.  That is the T2 decay.
 
-## Spin orientations 
+## The FID signal 
 
 ![K-space.](images/ch17/k-space.png){#fig-ch17-k-space}
 As the spins rotate their impact on the coil varies, driving the voltage up and down to create the oscillation we measure.
 
-## The impact of the gradient on the spins
+## The gradient and the spins
 
 <!--
 ## Initial insight: Magnetic gradients produce different temporal signals
@@ -48,7 +48,9 @@ Two locations, at different magnetic field levels, will spin at different Larmor
 ![MRI X gradient: spatially varying spin orientations produce a spatial harmonic (video; see the HTML version for the animation).](images/ch17/gradients-control-spin-orientations-across-space.png){#vid-ch17-mri-x-gradient width="70%"}
 :::
 
-This video illustrates the spatial weighting pattern of the spin orientations when we apply the magnetic field gradient across the image slice.  The individual spins are produce a temporal harmonic, and the pattern across space is a spatial harmonic.
+This video illustrates the impact of applying an imaging gradient on the spins.
+
+Notice that the spin orientations change with respect to one another systematically.  Each is rotating at its own Larmor frequency. Because the frequencies differ, we introduce a pattern of orientations across space.  The pattern is a spatial harmonic.  Each column contributes to the overall signal, therefore, differently.  Some contribute negatively (they are pointing away from the coil) and others positively (they are pointing towards the coil).
 
 ## Visualing oscillations: pendula
 
@@ -60,13 +62,17 @@ This video illustrates the spatial weighting pattern of the spin orientations wh
 ![The pendula are swinging at a range of temporal frequencies (video; see the HTML version for the animation).](images/ch17/the-pendula-are-swinging-at-a-range-of-temporal-fr.png){#vid-ch17-pendula-mr-gradients width="70%"}
 :::
 
-I like this visualization.  You can see that the pendula are oscillating at different frequencies, just like the spins are pointing towards and away from the RF coil at different frequencies.  So the total contribution will be changing over time.  
+I like this visualization the spatial pattern that arises from different temporal frequencies. 
 
-This visualization, like the movie, shows the weighting **across space**.  It is a sinusoid, just like oscillations in time produce a sinusoid.  
+The balls are oscillating at different frequencies because the string lengths differ. Over time, they spatial pattern across the balls differs, because their frequency of oscillation differ. 
+
+This visualization, like the movie, shows the weighting **across space**.  The spatial pattern is a sinusoid because the temporal patterns are sinusoidal oscillations.
 
 ## The spatial weighting:  First moment in time
 
-The spatial weighting changes in time.  You can see that in the various videos, and here we step through the weightings.
+The idea is important, so I am repeating it once more.
+
+In these two panels, I compare the weightings at two times.
 
 ::: {.panel-tabset}
 
@@ -83,7 +89,9 @@ The spatial weighting changes in time.  You can see that in the various videos, 
 ![The spatial weighting at two moments in time.](images/ch17/the-spatial-weighting-at-two-moments-in-time.png){#fig-ch17-the-spatial-weighting-at-two-moments-in-time}
 -->
 
-## Fourier encoding:  the magnetization is weighted by different spatial harmonics
+## The magnetization is weighted by different spatial harmonics
+
+And it is so important, that I illustrate the spatial weighting once more, this time with a fancier graphic.
 
 ::: {.panel-tabset}
 

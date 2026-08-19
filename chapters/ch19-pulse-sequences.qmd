@@ -2,17 +2,13 @@
 date: last-modified
 ---
 
-# More Pulse Sequences (Diagrams, Gradient echo, fMRI)
+# More Pulse Sequences
 
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
 
-## The impact of pulse sequence parameters
-
-::: {.callout-tip}
-*Recall from Chapter 5*: We saw how pulse sequences combine RF pulses and gradients. Now we'll explore how specific timing parameters (TE/TR) create different tissue weightings.
-:::
+## Pulse sequence parameters
 
 This chapter covers three things — 
 
@@ -26,14 +22,19 @@ This chapter covers three things —
 <!--
 ![The three building blocks of a pulse sequence timing diagram: precession, recovery, and de-phasing of the net magnetization.](images/ch09b/pulse-sequence-diagrams-precession-recovery-dephasing.png){#fig-ch09b-diagrams-overview fig-alt="Three small 3D vector diagrams labeled Precession, Recovery, and Dephasing, shown over a background photo."}
 -->
+We have now reached the point in the class where we have multiple experimental parameter: the RF pulse and the imaging gradients and their relative timing.  We need to keep track of all of them.
 
-A pulse sequence diagram lays out the timing of the RF pulses and gradients that produce an MR signal. The three building blocks we have covered so far — precession, recovery, and de-phasing — are the elements those diagrams combine.
 
-The timing of the RF pulses determines the weighting of a pulse sequence: T1, T2, or proton density (PD). A spin-echo diagram shows the interplay of gradients, RF transmit, and RF receive: the 90°/180° RF pulses set TE (the time to echo), the pulses repeat with period TR (the repetition time), and the gradients ($G_x$, $G_y$, $G_z$) control spatial encoding, covered in the next part of the book.
 
 ![A spin-echo pulse sequence diagram: 90° and 180° RF pulses define TE; the sequence repeats with period TR; gradients ($G_x$, $G_y$, $G_z$) encode spatial position (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e).](images/ch09b/pulse-sequence-diagram-spin-echo-multifactor.png){#fig-ch09b-spin-echo-diagram fig-alt="Spin-echo pulse sequence diagram showing RF pulses at 90 and 180 degrees, TE and TR intervals, and three gradient channels Gx, Gy, Gz with a data-acquisition window."}
 
+A **pulse sequence diagram** is the way we describe the timing of the RF pulses and gradients. Figure @fig-ch09b-spin-echo-diagram has several different lines, each describing the behavior of a different factor over time:  The RF pulse, and the three gradients. There are various shorthands that are used to describe the factors, and we will introduce these as we go through different pulse sequences.
+
+Perhaps the first items to notice are the TE value - which describes the time between the RF excitation pulse and when we start to read the signal (DAQ), and TR which describes the time between repetitions of the sequence. The sequence is repeated because we read out multiple times from the excitation of a slice.
+
 ## Choosing TE and TR to control tissue contrast
+
+The timing of the RF pulses determines the weighting of a pulse sequence: T1, T2, or proton density (PD). A spin-echo diagram shows the interplay of gradients, RF transmit, and RF receive: the 90°/180° RF pulses set TE (the time to echo), the pulses repeat with period TR (the repetition time), and the gradients ($G_x$, $G_y$, $G_z$) control spatial encoding, covered in the next part of the book.
 
 T1 and T2 differ enormously in scale — for white matter, T1 is roughly 8 times longer than T2 (about 0.83 s versus 0.11 s). Because of this difference, the same pulse-timing choices that control T2 contrast have very little effect on T1, and vice versa.
 
