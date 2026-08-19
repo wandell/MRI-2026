@@ -1,0 +1,315 @@
+::: {.content-visible when-format="html"}
+
+<!-- No caption here. This include is wrapped in a Quarto figure div in
+     ch10-inversion-recovery.qmd, which supplies the caption so the figure
+     is numbered and cross-referenceable like every other figure in the
+     book. Adding a <p class="caption"> back would double it up. -->
+
+<!-- Relies on figures.css, plotly-cartesian.min.js, qmrust_wasm.js (from
+     includes/fig-t1-equations.qmd) and data-t1map.js + ir-shared.js (from
+     includes/fig-ir-mag-vs-signal.qmd), all of which appear earlier in ch10. -->
+
+<div class="qmrust-figure">
+
+<p id="f-status" hidden style="font-size:12px;color:#a11;margin:0 0 10px"></p>
+
+<div style="display:flex;flex-wrap:nowrap;gap:16px;align-items:flex-start;overflow-x:auto">
+  <div id="f-curves" style="flex:1 1 430px;min-width:400px"></div>
+  <div id="f-maps"   style="flex:0 0 250px"></div>
+</div>
+
+<!-- Keep every line here indented by at most three spaces. Markdown treats four
+     leading spaces as an indented code block, which turns these controls into a
+     <pre> of escaped tags instead of real inputs. -->
+<div class="qmrust-controls">
+ <div class="row">
+  <label for="f-ti">TI = <b><span id="f-tival">0.60</span> s</b></label>
+  <input id="f-ti" type="range" min="0" max="5" step="0.01" value="0.60">
+ </div>
+ <div class="row">
+  <label for="f-te">TE = <b><span id="f-teval">8</span> ms</b></label>
+  <input id="f-te" type="range" min="0" max="250" step="1" value="8">
+ </div>
+ <div class="row btns">
+  <button id="f-null" type="button">Null CSF + T2-weight</button>
+  <span id="f-readout"></span>
+ </div>
+</div>
+
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var TNR = "Times New Roman";
+  var CFGP = { showLink: false, displayModeBar: false, responsive: true };
+
+  /* Signal model. With a 90 deg excitation the general inversion recovery
+     equation loses its denominator (cos 90 = 0) and reduces to the grouped form
+     the chapter derives, times the spin-echo factor:
+
+         S = C exp(-TE/T2) (1 - 2 exp(-TI/T1) + exp(-(TR-TE)/T1))
+
+     The recovery term uses TR - TE, not TR, to match eq-ch10-null-general in
+     the chapter, which for a spin-echo readout writes it as TR - TE_last. This
+     figure reads out a single echo, so the last echo is the only echo and
+     TE_last = TE.
+
+     qMRust evaluates the TI-dependent part (1 - 2 exp(-TI/T1)) through its
+     inversion_recovery forward model with a = 1, b = -2. The exp(-(TR-TE)/T1)
+     term and the exp(-TE/T2) scale are added per voxel afterwards. Keeping them
+     out of the table is what lets TE stay instant: fold TE into the table and
+     every TE step would mean rebuilding it with ~110 qMRust calls.
+
+     T2 = T1/10 throughout, and lesion voxels get T1 x 1.1 and T2 x 2 -- the
+     convention the qMRLab class example uses to build this phantom. */
+  var T2_RATIO = 0.10, LES_T1 = 1.1, LES_T2 = 2.0;
+
+  /* Two lesion sites, chosen offline as the most separated pair of solidly
+     white-matter voxels lying 3-7 px from the ventricles in this map. Flat
+     index is x*ny + y. */
+  var LESIONS = [{ x: 41, y: 82, r: 2.6 }, { x: 78, y: 40, r: 2.6 }];
+
+  /* TR is fixed. It is not a contrast control the reader is being asked to
+     design here, and rebuilding the qMRust table on every change made it the
+     one sluggish slider. 10 s is the usual T2-FLAIR value and the one the
+     chapter quotes. */
+  var TR = 10;
+  var TE_T2W = 150;                 // TE the preset jumps to, in ms
+
+  var TI_MAX = 5, NTI = 400;
+  var NLUT = 260, NBIN = 110;
+  var T1_LO = 0.05, T1_HI = 5.5;
+
+  var TE_MAX = 0.25, NTE = 300;     // seconds, for the T2 decay panel
+
+  var lutTi = IR.linspace(0.001, TI_MAX, NLUT);
+  var tiGrid = IR.linspace(0.001, TI_MAX, NTI);
+  var teGrid = IR.linspace(0.0, TE_MAX, NTE);
+  var map = null, lesion = null, T2map = null;
+  var lut = null;                       // TI-dependent table, built once
+  var TISSUE = null;
+
+  function buildPhantom() {
+    map = IR.loadT1Map();
+    var n = map.T1map.length, ny = map.ny;
+    lesion = new Uint8Array(n);
+    LESIONS.forEach(function (L) {
+      for (var dx = -4; dx <= 4; dx++) {
+        for (var dy = -4; dy <= 4; dy++) {
+          if (dx * dx + dy * dy > L.r * L.r) { continue; }
+          var x = L.x + dx, y = L.y + dy, v = x * ny + y;
+          if (v < 0 || v >= n || !map.mask[v]) { continue; }
+          var t = map.T1map[v];
+          if (t > 0.70 && t < 1.15) { lesion[v] = 1; }   // only replace white matter
+        }
+      }
+    });
+    // Effective T1/T2 per voxel after the lesion substitution.
+    T2map = new Float64Array(n);
+    for (var v = 0; v < n; v++) {
+      if (!map.mask[v] || !(map.T1map[v] > 0)) { continue; }
+      var t1 = map.T1map[v], t2 = t1 * T2_RATIO;
+      if (lesion[v]) { t1 *= LES_T1; t2 *= LES_T2 * LES_T1; }
+      map.T1map[v] = t1;
+      T2map[v] = t2;
+    }
+    var wm = 0.90, gm = 1.35, csf = 4.00;
+    /* Colours are pinned per tissue rather than left to Plotly's colourway.
+       The two panels are eight traces in one figure, so index-assigned colours
+       would give the same tissue a different colour above and below. */
+    TISSUE = [
+      { label: "White matter", T1: wm,           T2: wm * T2_RATIO,                    c: "#1f77b4" },
+      { label: "Grey matter",  T1: gm,           T2: gm * T2_RATIO,                    c: "#ff7f0e" },
+      { label: "CSF",          T1: csf,          T2: csf * T2_RATIO,                   c: "#2ca02c" },
+      { label: "Lesion",       T1: wm * LES_T1,  T2: wm * T2_RATIO * LES_T2 * LES_T1,  c: "#d62728" }
+    ];
+  }
+
+  /** (1 - 2 e^-TI/T1) over a T1 x TI grid, via qMRust. TE-independent, so this
+      is built once and both sliders read out of it. */
+  function buildLut() {
+    var cfg = IR.recipe(lutTi, "complex");
+    var table = new Float64Array(NBIN * NLUT);
+    for (var b = 0; b < NBIN; b++) {
+      var T1 = T1_LO + (T1_HI - T1_LO) * (b + 0.5) / NBIN;
+      table.set(IR.forward(cfg, T1, 1.0, -2.0), b * NLUT);
+    }
+    lut = table;
+  }
+  function bracket(T1, tiIdx, TE) {
+    var b = Math.floor((T1 - T1_LO) / (T1_HI - T1_LO) * NBIN);
+    return lut[Math.max(0, Math.min(NBIN - 1, b)) * NLUT + tiIdx] +
+           Math.exp(-(TR - TE) / T1);
+  }
+  function tiIndex(ti) {
+    var k = Math.round((ti - lutTi[0]) / (lutTi[1] - lutTi[0]));
+    return Math.max(0, Math.min(NLUT - 1, k));
+  }
+
+  /** Nulling condition of the chapter: TI = T1 ln(2 / (1 + e^-TR/T1)). */
+  function tiNull(T1, TR) { return T1 * Math.log(2 / (1 + Math.exp(-TR / T1))); }
+
+  function state() {
+    return { TR: TR,
+             TI: parseFloat($("f-ti").value),
+             TE: parseFloat($("f-te").value) / 1000 };
+  }
+
+  function image(s) {
+    var k = tiIndex(s.TI), out = new Array(map.T1map.length);
+    for (var v = 0; v < map.T1map.length; v++) {
+      var t1 = map.T1map[v];
+      if (!map.mask[v] || !Number.isFinite(t1) || t1 <= 0) { out[v] = null; continue; }
+      out[v] = Math.abs(bracket(t1, k, s.TE) * Math.exp(-s.TE / T2map[v]));
+    }
+    return out;
+  }
+
+  /** Signal for one tissue at (TI, TE). */
+  function sig(T1, T2, TI, TE, TRv) {
+    return Math.abs((1 - 2 * Math.exp(-TI / T1) + Math.exp(-(TRv - TE) / T1)) *
+                    Math.exp(-TE / T2));
+  }
+
+  /* Two stacked panels sharing one legend. The top is the inversion recovery the
+     chapter has been drawing all along, signal against TI at the chosen TE. The
+     bottom is the T2 decay that follows the excitation, signal against TE at the
+     chosen TI -- the axis the reader has to move as well, and the one that
+     actually separates lesion from white matter. Each panel carries a dotted
+     line at the value the other panel is being evaluated at. */
+  function drawCurves(s) {
+    var traces = [];
+    TISSUE.forEach(function (t, i) {
+      var y = new Array(NTI);
+      for (var k = 0; k < NTI; k++) { y[k] = sig(t.T1, t.T2, tiGrid[k], s.TE, s.TR); }
+      traces.push({ x: tiGrid, y: y, mode: "lines", name: t.label, text: t.label,
+                    hoverinfo: "x+y+text", legendgroup: t.label,
+                    line: { color: t.c }, xaxis: "x", yaxis: "y" });
+    });
+    TISSUE.forEach(function (t) {
+      var y = new Array(NTE);
+      for (var k = 0; k < NTE; k++) { y[k] = sig(t.T1, t.T2, s.TI, teGrid[k], s.TR); }
+      traces.push({ x: teGrid.map(function (v) { return v * 1000; }), y: y, mode: "lines",
+                    name: t.label, text: t.label, hoverinfo: "x+y+text",
+                    legendgroup: t.label, showlegend: false,
+                    line: { color: t.c }, xaxis: "x2", yaxis: "y2" });
+    });
+    var nullCsf = tiNull(4.00, s.TR - s.TE);
+    traces.push({ x: [nullCsf], y: [0], mode: "markers", name: "CSF null",
+                  marker: { size: 11, color: "rgba(0,0,0,0)",
+                            line: { color: "#333", width: 1.6 } },
+                  xaxis: "x", yaxis: "y",
+                  hovertemplate: "CSF null at TI = %{x:.2f} s<extra></extra>" });
+
+    Plotly.react("f-curves", traces, {
+      width: 430, height: 500, margin: { l: 58, r: 8, b: 48, t: 10 },
+      xaxis:  IR.axis({ domain: [0, 1], anchor: "y",
+                        title: { text: "Inversion Time – TI (s)",
+                                 font: { family: TNR, size: 14 } } }),
+      yaxis:  IR.axis({ domain: [0.58, 1], anchor: "x", range: [0, 1.05],
+                        title: { text: "|S|", font: { family: TNR, size: 14 } } }),
+      xaxis2: IR.axis({ domain: [0, 1], anchor: "y2",
+                        title: { text: "Echo Time – TE (ms)",
+                                 font: { family: TNR, size: 14 } } }),
+      yaxis2: IR.axis({ domain: [0, 0.42], anchor: "x2", range: [0, 1.05],
+                        title: { text: "|S|", font: { family: TNR, size: 14 } } }),
+      legend: { x: 1, y: 1, xanchor: "right", yanchor: "top",
+                font: { family: TNR, size: 11 }, bgcolor: "rgba(255,255,255,0.75)" },
+      shapes: [
+        { type: "line", x0: s.TI, x1: s.TI, xref: "x", yref: "y",
+          y0: 0, y1: 1.05, line: { color: "#444", width: 1.5, dash: "dot" } },
+        { type: "line", x0: s.TE * 1000, x1: s.TE * 1000, xref: "x2", yref: "y2",
+          y0: 0, y1: 1.05, line: { color: "#444", width: 1.5, dash: "dot" } }
+      ],
+      plot_bgcolor: "white", paper_bgcolor: "white"
+    }, CFGP);
+  }
+
+  function drawMap(s) {
+    var blank = { showgrid: false, zeroline: false, showticklabels: false, ticks: "" };
+    var z = image(s), hi = 0;
+    for (var i = 0; i < z.length; i++) { if (z[i] > hi) { hi = z[i]; } }
+    if (!(hi > 0)) { hi = 1; }
+    Plotly.react("f-maps", [{
+      type: "heatmap", z: IR.cropGrid(IR.grid(z, map.nx, map.ny, 0, 1), map.bbox),
+      colorscale: [[0, "rgb(0,0,0)"], [1, "rgb(255,255,255)"]],
+      zmin: 0, zmax: hi,
+      colorbar: { title: { text: "|S|", side: "top", font: { family: TNR, size: 13 } },
+                  thickness: 7, len: 0.72 },
+      hovertemplate: "|S| = %{z:.3f}<extra></extra>"
+    }], {
+      width: 250, height: 330, margin: { t: 30, r: 2, b: 6, l: 2 },
+      annotations: [{ text: "TI = " + s.TI.toFixed(2) + " s, TE = " +
+                            Math.round(s.TE * 1000) + " ms",
+                      x: 0.5, y: 1.10, xref: "paper", yref: "paper",
+                      showarrow: false, font: { family: TNR, size: 15 } }],
+      xaxis: Object.assign({ domain: [0, 0.88] }, blank),
+      yaxis: Object.assign({ domain: [0, 1], scaleanchor: "x" }, blank),
+      plot_bgcolor: "white", paper_bgcolor: "white"
+    }, CFGP);
+  }
+
+  /* Lesion-to-white-matter separation, and how dark the fluid is -- the two
+     numbers the class example asks the reader to trade off.
+
+     The separation is expressed as a fraction of the brightest tissue in the
+     image, not as (les-wm)/(les+wm). That normalised form is badly misleading
+     here: at the opening TI of 0.60 s white matter is close to its own null, so
+     white matter and lesion are 0.027 and 0.091 and the normalised contrast
+     reads 56% -- while both are nearly black against CSF at 0.63, which is what
+     sets the display window. Visibility depends on the difference relative to
+     the range the image is actually stretched over, so that is what is
+     reported. */
+  function readout(s) {
+    var q = function (t) { return sig(t.T1, t.T2, s.TI, s.TE, s.TR); };
+    var wm = q(TISSUE[0]), les = q(TISSUE[3]), csf = q(TISSUE[2]), gm = q(TISSUE[1]);
+    var span = Math.max(wm, les, csf, gm, 1e-6);
+    $("f-readout").innerHTML =
+      "lesion vs white matter <b>" + (100 * Math.abs(les - wm) / span).toFixed(0) +
+      "%</b> of image range · CSF <b>" + csf.toFixed(3) + "</b>";
+  }
+
+  function redraw() {
+    var s = state();
+    $("f-tival").textContent = s.TI.toFixed(2);
+    $("f-teval").textContent = Math.round(s.TE * 1000);
+    drawCurves(s); drawMap(s); readout(s);
+  }
+
+  function fail(msg, e) {
+    var el = $("f-status"); el.textContent = msg; el.hidden = false;
+    if (e) { console.error(e); }
+  }
+
+  window.addEventListener("load", function () {
+    if (typeof Plotly === "undefined") { fail("Plotly failed to load."); return; }
+    wasm_bindgen({ module_or_path: "interactive/qmrust_wasm_bg.wasm" }).then(function () {
+      setTimeout(function () {
+        buildPhantom();
+        buildLut();
+        redraw();
+        // Both are pure lookups against the precomputed table, so they can
+        // track the drag.
+        $("f-ti").addEventListener("input", redraw);
+        $("f-te").addEventListener("input", redraw);
+        // Both halves of the answer at once: TI on the CSF null, and a TE long
+        // enough that the lesion actually separates from white matter.
+        $("f-null").addEventListener("click", function () {
+          $("f-te").value = String(TE_T2W);
+          $("f-ti").value = tiNull(4.00, TR - TE_T2W / 1000).toFixed(2);
+          redraw();
+        });
+      }, 20);
+    }).catch(function (e) { fail("qMRust failed to start: " + e, e); });
+  });
+})();
+</script>
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Interactive figure — available in the HTML edition only.*
+:::

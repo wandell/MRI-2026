@@ -1,5 +1,10 @@
 project:
   type: book
+  # The interactive figures in ch10 load these by path from JavaScript, and the
+  # .wasm path only ever appears inside a JS string, so Quarto's resource
+  # scanner cannot see them and will not copy them without this.
+  resources:
+    - chapters/interactive/
 
 book:
   title: "Human Neuroimaging with MRI: A Primer"
