@@ -1,0 +1,47 @@
+::: {.content-visible when-format="html"}
+
+<!-- No caption here. This include is wrapped in a Quarto figure div in
+     ch10-inversion-recovery.qmd, which supplies the caption so the figure
+     is numbered and cross-referenceable like every other figure in the
+     book. Adding a <p class="caption"> back would double it up. -->
+
+<link rel="stylesheet" href="interactive/figures.css">
+
+<div class="qmrust-figure">
+<div id="fig23"></div>
+<div class="panel" id="f23panel" hidden>
+  <div><label>TR (s)</label><input id="f23tr" type="number" step="0.5" value="5.0"></div>
+  <div><label>T<sub>1</sub> start (s)</label><input id="f23t1start" type="number" step="0.05" value="0.25"></div>
+  <div><label>T<sub>1</sub> step (s)</label><input id="f23t1step" type="number" step="0.05" value="0.25"></div>
+  <div><label>T<sub>1</sub> values</label><input id="f23t1count" type="number" step="1" value="20"></div>
+  <div><label>TI points</label><input id="f23n" type="number" step="100" value="1000"></div>
+  <div class="figstatus" id="f23status"></div>
+</div>
+</div>
+
+<script src="interactive/plotly-cartesian.min.js"></script>
+<script src="interactive/qmrust_wasm.js"></script>
+<script src="interactive/app-ir.js"></script>
+<script>
+/* Boot the qmrust WebAssembly engine and build figure 2.3 only. app-ir.js does not
+   self-start: it registers [id, build, panelId, buttonId, statusId] tuples into
+   window.QMRUST_FIGURES and defines QMRUST_WIRE_PANEL. Unlike the MyST build, no
+   DOM-injection or MutationObserver is needed -- Quarto emits static HTML with
+   stable ids, so a single load handler is enough. */
+window.addEventListener("load", function () {
+  var entry = (window.QMRUST_FIGURES || []).filter(function (f) { return f[0] === "2.3"; })[0];
+  if (!entry) { console.error("qmrust: figure 2.3 was not registered"); return; }
+  if (typeof Plotly === "undefined") { console.error("qmrust: Plotly failed to load"); return; }
+  wasm_bindgen({ module_or_path: "interactive/qmrust_wasm_bg.wasm" })
+    .then(function () {
+      entry[1]();
+    })
+    .catch(function (e) { console.error("qmrust: engine failed to start", e); });
+});
+</script>
+
+:::
+
+::: {.content-visible when-format="pdf"}
+*Interactive figure — available in the HTML edition only.*
+:::
