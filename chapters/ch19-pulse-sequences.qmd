@@ -146,7 +146,7 @@ title('signal decay');
 
 ![The active-minus-rest signal difference from the same simulation: small in absolute size, but relatively flat (constant) from about 25-60 ms, giving a usable readout window.](images/ch09b/bold-t2star-curves-difference-quantitative.png){#fig-ch09b-bold-curves-difference fig-alt="Plot of the active-minus-rest signal difference over 200 ms, rising then falling, relatively flat between about 30 and 65 ms."}
 
-```{.matlab filename="bold_t2star_signal_difference.m"}
+```{.matlab filename="code/bold_t2star_signal_difference.m"}
 % look at difference between active and rest
 figure; hold on;
 plot(x,exp(-x./te_active)-exp(-x./te_rest),'r-');
