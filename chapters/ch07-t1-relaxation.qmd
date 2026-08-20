@@ -116,6 +116,23 @@ $$
 
 Note that this equation is for the 90 deg flip angle case: it assumes the longitudinal component starts at zero.  The slide asks what would happen with a 180 deg flip angle, which starts the magnetization at $-M_0$ instead.  We take that up in the inversion recovery chapter (@fig-ch10-inversion-recovery-spin-lattice-t1-1), where the negative starting value is the point of the measurement rather than a complication.
 
+::: {.callout-note title="T1 relaxation"}
+### Typical $T_1$ Relaxation Times (in seconds)
+
+| Tissue | At 1.5 Tesla | At 3.0 Tesla |
+| :--- | :--- | :--- |
+| Gray Matter (GM) | ~0.88 s (range: 0.85 – 0.95 s) | ~1.20 s - 1.35 s |
+| White Matter (WM) | ~0.65 s (range: 0.60 – 0.75 s) | ~0.83 s - 0.86 s |
+| CSF | ~4.0 s | ~4.3 s |
+:::
+
+Try plugging the different $T_1$ relaxation times for gray matter, white matter, and CSF into the slider below to see how each tissue's longitudinal magnetization curve behaves and recovers over time.   
+
+{{< include includes/ch07-fig-t1-recover.qmd >}}
+
+As you will see, there is not a huge difference in the recovery rate between gray and white matter.  But it is enough so that we can create an image where the two types of brain differ. 
+
+
 ## Longitudinal relaxation rates
 
 ![Longitudinal relaxation rate depends on your neighborhood: recovery curves for gray matter (T1 = 0.88 s) and white matter (T1 = 0.65 s) at 1.5 T.](images/ch07/longitudinal-relaxation-rate-depends-on-your-neigh.png){#fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh}

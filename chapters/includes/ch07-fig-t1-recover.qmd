@@ -1,0 +1,50 @@
+::: {style="width: 80%; margin: 0 auto;"}
+
+```{ojs}
+//| echo: false
+viewof t1_val = Inputs.range([0.1, 4.0], {value: 0.88, step: 0.05, label: "T₁ relaxation time (seconds)"})
+```
+
+```{ojs}
+//| echo: false
+t1_data = {
+  const points = [];
+  for (let t = 0; t <= 6; t += 0.02) {
+    points.push({
+      time: t,
+      intensity: 1 - Math.exp(-t / t1_val)
+    });
+  }
+  return points;
+}
+
+Plot.plot({
+  grid: true,
+  width: width,
+  height: 400,
+  y: {
+    domain: [0, 1.1],
+    label: "Longitudinal Magnetization (Mz / M0)"
+  },
+  x: {
+    domain: [0, 6],
+    label: "Time (seconds)"
+  },
+  marks: [
+    Plot.line(t1_data, {x: "time", y: "intensity", stroke: "#2e7d32", strokeWidth: 3}),
+    Plot.ruleX([t1_val], {stroke: "#d32f2f", strokeDasharray: "4,4"}),
+    Plot.ruleY([1 - Math.exp(-1)], {stroke: "#d32f2f", strokeDasharray: "4,4"}),
+    Plot.dot([{time: t1_val, intensity: 1 - Math.exp(-1)}], {x: "time", y: "intensity", fill: "#d32f2f", r: 6}),
+    Plot.text([{time: t1_val, intensity: 1 - Math.exp(-1)}], {
+      x: "time", 
+      y: "intensity", 
+      text: d => `t = T₁ (${d.time.toFixed(2)}s, ~63.2% recovery)`, 
+      dy: -15, 
+      dx: 10,
+      textAnchor: "start",
+      fontSize: 12,
+      fill: "#d32f2f"
+    })
+  ]
+})
+```
