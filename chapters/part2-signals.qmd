@@ -8,4 +8,12 @@ date: last-modified
 
 ---
 
-The free induction decay experiment is explained.
+This part of the course develops the physical model behind every MR measurement, starting from a single voltage recorded from a beaker of water and ending with the pulse sequences used to control what that voltage reflects.
+
+We begin with the free induction decay (FID): apply a radiofrequency pulse to a sample sitting in the main field, and the coil that produced the pulse detects a voltage that oscillates and decays. The next chapter develops the macroscopic model that explains this experiment — the main field, $B_0$, creates an equilibrium magnetization; the RF field, $B_1$, tips it away from equilibrium by an amount set by the flip angle; the resulting transverse magnetization precesses and induces the measured voltage; and relaxation returns the magnetization toward equilibrium, by two physically distinct routes.
+
+Those two routes are $T_1$ and $T_2$ relaxation, each given its own chapter. $T_1$ (spin-lattice) relaxation describes how the longitudinal component recovers, at a rate set by how efficiently a spin's excess energy transfers to its molecular surroundings; $T_2$ (spin-spin) relaxation describes how the transverse component decays as individual spins lose their common phase, separating further into an irreversible spin-spin contribution and a reversible field-inhomogeneity contribution that together produce the faster-decaying $T_2^*$. $T_1$ and $T_2$ are two of the three basic sources of MR image contrast, and these chapters show how their different tissue values make gray matter, white matter, and CSF appear bright or dark depending on which relaxation process an image is weighted toward.
+
+The following two chapters turn these relaxation mechanisms into working pulse sequences. Spin echo uses a second, 180° RF pulse to reverse the reversible dephasing and recover a signal — the Hahn echo — well after the FID itself has vanished, making it possible to measure the pure $T_2$ decay directly. Inversion recovery instead inverts the longitudinal magnetization outright and reads it out after a chosen delay; it is the reference method for measuring $T_1$, and, through its FLAIR variant, a way to null a chosen tissue — typically CSF — directly in a clinical image.
+
+The part closes with a review chapter that consolidates the instrumentation, the macroscopic model, and the $T_1$/$T_2$/spin-echo/inversion-recovery material into a single reference summary, before the book turns, in the next part, to how these single-voxel measurements are extended into images.

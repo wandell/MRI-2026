@@ -7,3 +7,15 @@ date: last-modified
 {{< include "includes/WIP-callout.qmd" >}}
 
 ---
+
+This part of the course is about visual neuroscience, mainly as studied using fMRI. The organizing question throughout is how the visual field comes to be represented in cortex — not once, but many times over — and what the cortex does with those representations once they exist.
+
+We begin with the evidence that vision is a construction rather than a direct readout of the world: illusions such as Shepard's "Turning the Tables," Lotto and Purves's lightness displays, and the rotating hollow-mask face show that perception can diverge sharply from the physical stimulus, reflecting an inference the visual system draws from context rather than a transparent measurement of it.
+
+Having established that cortex constructs a representation, the next chapter asks a more basic, historical question: whether a "visual cortex" exists at all, and where. The answer runs through a 19th-century priority dispute between Ferrier and Munk, confirmation in human patients by Henschen, and the first systematic maps of the visual field onto V1, drawn independently by Inouye and Holmes from soldiers' gunshot wounds in the Russo-Japanese and First World Wars. The chapter closes by tracing the subcortical route the signal takes to get there — the optic chiasm, the layered lateral geniculate nucleus, and the disproportionate expansion of cortex relative to its thalamic input.
+
+V1 turned out to be only the first of many such maps. The following chapter follows the discovery of additional maps, beginning with electrode recordings in rabbit and cat, extending — laboriously — into primate, and arriving finally at fMRI, whose spatial resolution made it practical to measure a dozen or more human visual field maps directly, using traveling-wave stimuli that sweep systematically through eccentricity and polar angle.
+
+With a whole catalog of maps in hand, the next chapter turns to how they relate to one another, working through three organizing principles in turn: two large processing streams for object and spatial vision, a graded hierarchy of feedforward and feedback connections, and clusters of neighboring maps that share a common eccentricity representation.
+
+The part closes by asking whether cortex is organized by more than retinotopy alone — whether some regions are specialized for particular categories of visual content. Reading provides the historical test case, from 19th-century connectionist accounts of alexia through Kanwisher's fMRI localization of the fusiform face area and related category-selective regions for places, words, and body parts, which sit alongside, and in places overlap, the retinotopic maps described earlier.
