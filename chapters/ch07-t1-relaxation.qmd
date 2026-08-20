@@ -82,21 +82,15 @@ where $\gamma$ is the gyromagnetic ratio (42.58 MHz/T for hydrogen). At 1.5 T we
 ![Spin-lattice interactions: longitudinal recovery time courses, with T1 of roughly 180 ms for fat, 800 ms for blood, and 2500 ms for free water.](images/ch07/spin-lattice-interactions.png){#fig-ch07-spin-lattice-interactions}
 -->
 
-::: {.panel-tabset}
-
-## Axonal cross section
-
 ![Water in the axonal cross-section.](images/ch07/visualization-of-the-spin-lattice-exchange-1.png){#fig-ch07-visualization-of-the-spin-lattice-exchange-1}
-
-## Hydration layer
-
-![Hydration layer.](images/ch07/visualization-of-the-spin-lattice-exchange-2.png){#fig-ch07-visualization-of-the-spin-lattice-exchange-2}
-
-:::
 
 When a spin transitions from the high-energy state (anti-parallel) to the low-energy state (parallel), it gives off some energy. The energy has to go somewhere, so it is transferred to the surrounding molecular environment—the *lattice*. This is why $T_1$ relaxation is also called *spin-lattice relaxation*.
 
 How quickly this transfer happens depends on the local molecular environment. This is what makes $T_1$ useful: in tissues in and around the brain, values range from a few hundred milliseconds for fat to several seconds for free water.
+
+## Hydration layer
+
+![Hydration layer.](images/ch07/visualization-of-the-spin-lattice-exchange-2.png){#fig-ch07-visualization-of-the-spin-lattice-exchange-2}
 
 How do these molecular interactions relate to MRI measurements? The panels show a cross-section through a single axon, with individual myelin wraps visible, and then a schematic of one myelin-membrane layer: a lipid bilayer surrounded by water molecules.
 
@@ -104,9 +98,9 @@ The MR properties of water change when it interacts with a membrane surface. The
 
 <!-- TODO (Brian): the source of the myelin cross-section image is unconfirmed (it was traced only through a reverse image search).  Attribution needed before publication. -->
 
-## Example: longitudinal relaxation
+## Longitudinal net magnetization recovery (T1)
 
-![Example: longitudinal relaxation.](images/ch07/example-longitudinal-relaxation.png){#fig-ch07-example-longitudinal-relaxation}
+![Longitudinal net magnetization recovery (T1).](images/ch07/example-longitudinal-relaxation.png){#fig-ch07-example-longitudinal-relaxation}
 
 Let's zoom out from individual spins to a beaker containing many spins. @fig-ch07-example-longitudinal-relaxation shows the net magnetization at several points. It begins at equilibrium in the $B_0$ field. A resonant RF pulse then tips it 90 degrees away from the $z$-axis, so that $M_z=0$ immediately afterward. Over time, the longitudinal component recovers toward its equilibrium value,
 
@@ -177,6 +171,6 @@ Once we recognize that $T_1$ depends on the local molecular environment, we can 
 
 The $T_1$ of free water is long because there are no nearby large molecules to absorb the excess energy efficiently. Freely moving water molecules have relatively few effective ways to pass that energy to their surroundings. Near a membrane or other macromolecule, the interaction is stronger, so the energy transfer is more efficient and $T_1$ becomes shorter. BPP theory explains why the $T_1$ of bulk free water is about 4.3 s at room temperature and is approximately independent of $B_0$ over the usual MRI field range [@bloembergen1948-relaxation]. Yes, you should be amazed.
 
-The $T_1$ values for brain tissue, which contains many large molecules and membranes, are much shorter than the value for free water (0.65–0.9 s for white and gray matter at 1.5 T). Much of the water in tissue is near a macromolecular surface. Interactions between water and those large molecules can make energy transfer to the surrounding environment more efficient, shortening $T_1$. As a rough approximation, a voxel's $T_1$ reflects how water interacts with its molecular environment; it does not isolate exchange in a **hydration layer**.  For this reason, when properly accounting for other instrumental factors we can hope to measure the **surface interaction rate (SIR)** from the $T_1$ measurements [@mezer2013-mtv].
+The $T_1$ values for brain tissue, which contains many large molecules and membranes, are much shorter than the value for free water (0.65–0.9 s for white and gray matter at 1.5 T). Much of the water in tissue is near a macromolecular surface. Interactions between water and those large molecules can make energy transfer to the surrounding environment more efficient, shortening $T_1$. As a rough approximation, a voxel's $T_1$ reflects how water interacts with its molecular environment; it does not isolate exchange in a hydration layer.  For this reason, when properly accounting for other instrumental factors we can hope to measure the **surface interaction rate (SIR)** from the $T_1$ measurements [@mezer2013-mtv].
 
 
