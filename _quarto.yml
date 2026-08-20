@@ -114,6 +114,7 @@ book:
 bibliography:
   - paperpile.bib
   - references.bib
+csl: apa.csl
 
 crossref:
   chapters: true
@@ -147,4 +148,3 @@ format:
 #    latex-clean: true
 #    math:
 #      number-equations: true
-

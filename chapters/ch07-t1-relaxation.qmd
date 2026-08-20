@@ -74,7 +74,7 @@ $$
 f_L = \gamma B_0,
 $$
 
-where $\gamma$ is the gyromagnetic ratio (42.58 MHz/T for hydrogen). At 1.5 T we excite and receive near 64 MHz, at 3 T near 127 MHz, and at 7 T near 300 MHz—all in the radio band. Higher field strength means a larger energy gap between the two spin states, a larger equilibrium population difference, and generally a larger MR signal. This is one important reason for building higher-field scanners.
+where $\gamma$ is the gyromagnetic ratio (42.58 MHz/T for hydrogen). At 1.5 T we excite and receive near 64 MHz, at 3 T near 127 MHz, and at 7 T near 300 MHz—all in the radio band. Higher field strength means a larger energy gap between the two spin states, a larger equilibrium population difference, and—other factors being equal—generally a larger MR signal. This is one important reason for building higher-field scanners.
 
 ## Spin-lattice interactions
 
@@ -96,9 +96,9 @@ where $\gamma$ is the gyromagnetic ratio (42.58 MHz/T for hydrogen). At 1.5 T we
 
 When a spin transitions from the high-energy state (anti-parallel) to the low-energy state (parallel), it gives off some energy. The energy has to go somewhere, so it is transferred to the surrounding molecular environment—the *lattice*. This is why $T_1$ relaxation is also called *spin-lattice relaxation*.
 
-How quickly the transfer happens depends on the tissue around the spins. This is what makes $T_1$ useful: in brain tissue, values range from a few hundred milliseconds for fat to several seconds for free water.
+How quickly this transfer happens depends on the local molecular environment. This is what makes $T_1$ useful: in tissues in and around the brain, values range from a few hundred milliseconds for fat to several seconds for free water.
 
-So how are we going to use MRI to measure tissue properties?  The build shows a cross-section through a single axon, with the individual wraps of myelin visible, and then a schematic of one layer of the myelin membrane: a lipid bilayer surrounded by water molecules.
+How do these molecular interactions relate to MRI measurements? The panels show a cross-section through a single axon, with individual myelin wraps visible, and then a schematic of one myelin-membrane layer: a lipid bilayer surrounded by water molecules.
 
 The MR properties of water change when it interacts with a membrane surface. The water immediately in contact with the membrane—the *apparent hydration layer*—has different relaxation behavior from water farther away. A model based on quantitative $T_1$ and proton-density mapping can estimate the apparent fraction of water interacting with membrane surfaces, which we will call the apparent hydration-layer fraction (aHLF) [@mezer2013-mtv]. This is an indirect, model-based estimate; in white matter, it is expected to be higher where membrane surface area and myelin are greater.
 
@@ -114,7 +114,9 @@ $$
 M_z(t) = M_0\left(1 - e^{-t/T_1}\right)
 $$
 
-Note that this equation is for the 90 deg flip angle case: it assumes the longitudinal component starts at zero.  The slide asks what would happen with a 180 deg flip angle, which starts the magnetization at $-M_0$ instead.  We take that up in the inversion recovery chapter (@fig-ch10-inversion-recovery-spin-lattice-t1-1), where the negative starting value is the point of the measurement rather than a complication.
+This equation is for the 90° flip-angle case: it assumes that the longitudinal component starts at zero. The slide asks what would happen after a 180° flip angle, which starts the magnetization at $-M_0$ instead. We take that up in the inversion recovery chapter (@fig-ch10-inversion-recovery-spin-lattice-t1-1), where the negative starting value is central to the measurement.
+
+## Longitudinal relaxation times
 
 ::: {.callout-note title="T1 relaxation"}
 ### Typical $T_1$ Relaxation Times (in seconds)
@@ -126,113 +128,25 @@ Note that this equation is for the 90 deg flip angle case: it assumes the longit
 | CSF | ~4.0 s | ~4.3 s |
 :::
 
-Try plugging the different $T_1$ relaxation times for gray matter, white matter, and CSF into the slider below to see how each tissue's longitudinal magnetization curve behaves and recovers over time.   
+Use the controls below to compare the longitudinal-recovery curves for gray matter, white matter, and CSF. At a fixed readout time, tissue with a shorter $T_1$ has recovered more longitudinal magnetization. The gray- and white-matter difference is small, but it can contribute to image contrast. If the readout is too early or too late, their difference is small.
 
-::: {style="width: 80%; margin: 0 auto; overflow: visible; font-size: 1.1rem;"}
+{{< include includes/ch07-fig-t1-recover.qmd >}}
 
-```{ojs}
-//| echo: false
-viewof t1_val = Inputs.range([0.1, 4.0], {value: 0.88, step: 0.05, label: "T₁ relaxation time (seconds)"})
-```
-
-```{ojs}
-//| echo: false
-viewof readout_time = Inputs.number([0, 6], {value: 1, step: 0.1, label: "Readout time (seconds)"})
-```
-
-```{ojs}
-//| echo: false
-t1_data = {
-  const points = [];
-  for (let t = 0; t <= 6; t += 0.02) {
-    points.push({
-      time: t,
-      magnetization: 1 - Math.exp(-t / t1_val)
-    });
-  }
-  return points;
-}
-
-readout_marker = [{
-  time: readout_time,
-  magnetization: 1 - Math.exp(-readout_time / t1_val)
-}]
-
-Plot.plot({
-  grid: false,
-  width: width,
-  height: 500,
-  marginLeft: 170,
-  marginRight: 32,
-  marginBottom: 100,
-  style: {
-    color: "#1f1f1f",
-    fontSize: "20px",
-    fontWeight: 500,
-    fontFamily: "system-ui, sans-serif"
-  },
-  y: {
-    domain: [0, 1.1],
-    axis: null
-  },
-  x: {
-    domain: [0, 6],
-    axis: null
-  },
-  marks: [
-    Plot.gridX({strokeOpacity: 0.15}),
-    Plot.gridY({strokeOpacity: 0.15}),
-    Plot.axisY({
-      label: "Normalized magnetization",
-      labelAnchor: "center",
-      labelArrow: "none",
-      fill: "#1f1f1f",
-      fontSize: 26,
-      fontWeight: 500
-    }),
-    Plot.axisX({
-      label: "Time after 90° excitation (s)",
-      labelAnchor: "center",
-      labelArrow: "none",
-      fill: "#1f1f1f",
-      fontSize: 26,
-      fontWeight: 500
-    }),
-    Plot.line(t1_data, {x: "time", y: "magnetization", stroke: "#2e7d32", strokeWidth: 3}),
-    Plot.ruleX([readout_time], {stroke: "#d32f2f", strokeDasharray: "4,4"}),
-    Plot.dot(readout_marker, {x: "time", y: "magnetization", fill: "#d32f2f", r: 6}),
-    Plot.text(readout_marker, {
-      x: "time",
-      y: "magnetization",
-      text: d => `At ${d.time.toFixed(1)} s: M_z / M_0 = ${d.magnetization.toFixed(3)}`,
-      dy: readout_marker[0].magnetization > 0.85 ? 24 : -22,
-      dx: readout_time > 3.7 ? -12 : 12,
-      textAnchor: readout_time > 3.7 ? "end" : "start",
-      fontSize: 20,
-      fontWeight: "bold",
-      fill: "#d32f2f"
-    })
-  ]
-})
-```
-:::
-
-As you will see, there is not a huge difference in the recovery rate between gray and white matter.  But it is enough so that we can create an image where the two types of brain differ. 
-
-
-## Longitudinal relaxation rates
+## Why $T_1$ values differ
 
 ![Longitudinal relaxation rate depends on your neighborhood: recovery curves for gray matter (T1 = 0.88 s) and white matter (T1 = 0.65 s) at 1.5 T.](images/ch07/longitudinal-relaxation-rate-depends-on-your-neigh.png){#fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh}
 
-The recovery depends on the environment around the spins—for example, gray matter versus white matter. One second after the pulse, gray matter has recovered less longitudinal magnetization than white matter because its $T_1$ is longer. This difference in recovery, which reflects tissue chemistry and structure, gives us contrast between CSF, gray matter, and white matter.
+The $T_1$ time constant depends on the molecular environment around the spins, which differs between gray matter and white matter. These differences in tissue chemistry and structure can contribute to contrast among CSF, gray matter, and white matter; the brightness in an image also depends on the pulse sequence and readout timing.
 
-Within the brain, the differences are small but measurable. At 1.5 T, the $T_1$ of gray matter is about 0.88 s and the $T_1$ of white matter about 0.65 s. In this simplified comparison, with the same equilibrium magnetization, white matter recovers faster and produces the larger signal during recovery.
+Thus, $T_1$ is a measurable MR parameter that indirectly reflects the local molecular environment rather than directly measuring a particular tissue constituent.
 
-## Contrast: the difference between signals
+## Image contrast
 
 ![Contrast: the difference between signals: the gray/white magnetization difference is largest around 0.8 s after the RF pulse.](images/ch07/contrast-the-difference-between-signals.png){#fig-ch07-contrast-the-difference-between-signals}
 
-An image does not show signal level alone. Nearby tissues are distinguished largely by the *difference* between their signals—the image contrast.
+An image maps reconstructed signal values to displayed intensities. Image contrast is the difference in intensity between nearby tissues. A signal level has little meaning in isolation; spatial differences in intensity make edges and tissue boundaries visible.
+
+## Calculating the contrast
 
 The two normalized recovery curves in @fig-ch07-longitudinal-relaxation-rate-depends-on-your-neigh start together at zero and end together at $M_0$. In this equal-$M_0$ simulation, the difference is therefore zero at both ends and largest somewhere in between. @fig-ch07-contrast-the-difference-between-signals plots that difference,
 
@@ -244,11 +158,11 @@ Here, $G$ and $W$ denote gray and white matter.
 
 The contrast for this particular simulation peaks around 0.8 s after the RF pulse at 1.5 T. This is a useful result: it tells us when to read out the signal in this simple experiment. Waiting too long is as bad as not waiting long enough, because both tissues have then nearly recovered to the same value. Choosing acquisition timing to emphasize a contrast of interest is a central design problem for a pulse sequence.
 
-## The T1-contrast distinguishes gray and white matter
+## The T1-contrast: white is brighter than gray
 
 ![The T1-contrast distinguishes gray and white matter.](images/ch07/the-t1-contrast-distinguishes-gray-and-white-matte.png){#fig-ch07-the-t1-contrast-distinguishes-gray-and-white-matte}
 
-Putting the two ideas together: a longer $T_1$ means slower recovery and therefore a smaller signal at readout, when the other factors are held fixed. In this example, white matter (short $T_1$) is bright, gray matter is darker, and CSF (longest $T_1$ of the three) is darkest. This is the appearance of the images here, and it is why $T_1$-weighted volumes are widely used to separate gray matter from white matter and to measure cortical thickness, atrophy, or ventricular enlargement.
+Putting the two ideas together: a longer $T_1$ means slower recovery and therefore less longitudinal magnetization at readout, when the other factors are held fixed. In this simplified example, white matter (short $T_1$) is bright, gray matter is darker, and CSF (the longest $T_1$ of the three) is darkest. Actual image brightness is sequence- and acquisition-dependent, but $T_1$-weighted volumes are widely used to distinguish gray matter from white matter and to support estimates of cortical thickness, atrophy, and ventricular enlargement.
 
 <!--
 ## T2.  Delete this.
@@ -259,6 +173,10 @@ The same reasoning, applied to the transverse component, is what produces the op
 
 ![Surface Interaction Rate (SIR); portraits of Bloch and Purcell (Huettel et al., *Functional Magnetic Resonance Imaging*, 2e, Fig. 1.13).](images/ch07/surface-interaction-rate-sir.png){#fig-ch07-surface-interaction-rate-sir}
 
+Once we recognize that $T_1$ depends on the local molecular environment, we can cautiously relate a measurement to properties of cells and molecules in the brain. This model-based reasoning—from MR parameters to tissue properties—is an important part of quantitative MRI. We do not merely report the values; we use them to test hypotheses about the underlying biochemistry.
+
 The $T_1$ of free water is long because there are no nearby large molecules to absorb the excess energy efficiently. Freely moving water molecules have relatively few effective ways to pass that energy to their surroundings. Near a membrane or other macromolecule, the interaction is stronger, so the energy transfer is more efficient and $T_1$ becomes shorter. BPP theory explains why the $T_1$ of bulk free water is about 4.3 s at room temperature and is approximately independent of $B_0$ over the usual MRI field range [@bloembergen1948-relaxation]. Yes, you should be amazed.
 
-The $T_1$ values for brain tissue, which contains many large molecules and membranes, are much shorter than the value for free water (0.65–0.9 s for white and gray matter at 1.5 T). Much of the water in tissue is near a macromolecular surface. Interactions between the water and those large molecules speed up the transfer of energy to the surrounding environment, shortening $T_1$. As a rough approximation, the $T_1$ we measure in a voxel tells us how efficiently water in the hydration layer exchanges energy with nearby molecules.
+The $T_1$ values for brain tissue, which contains many large molecules and membranes, are much shorter than the value for free water (0.65–0.9 s for white and gray matter at 1.5 T). Much of the water in tissue is near a macromolecular surface. Interactions between water and those large molecules can make energy transfer to the surrounding environment more efficient, shortening $T_1$. As a rough approximation, a voxel's $T_1$ reflects how water interacts with its molecular environment; it does not isolate exchange in a **hydration layer**.  For this reason, when properly accounting for other instrumental factors we can hope to measure the **surface interaction rate (SIR)** from the $T_1$ measurements [@mezer2013-mtv].
+
+

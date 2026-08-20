@@ -73,7 +73,11 @@ wasm_bindgen({ module_or_path: "interactive/qmrust_wasm_bg.wasm" })
 When multiple interactive figures appear on the same chapter page:
 - `qmrust_wasm.js` declares `let wasm_bindgen` at the top level. Loading this file a second time on the same page triggers a JavaScript `SyntaxError` (redeclaration in global lexical scope) which will halt subsequent scripts.
 - Only load shared libraries (`plotly-cartesian.min.js`, `qmrust_wasm.js`, `figures.css`) in the first figure on a page, or share state through common helper modules like `chapters/interactive/ir-shared.js`.
-- Wrap figure scripts in immediately invoked function expressions (IIFEs) `(function () { "use strict"; ... })();` to avoid polluting the global namespace.
+- Wrap conventional `<script>` figure scripts in immediately invoked function expressions (IIFEs) `(function () { "use strict"; ... })();` to avoid polluting the global namespace. OJS chunks have a reactive dependency graph instead: use distinct, acyclic declarations rather than an IIFE with local variables.
+
+### 5. OJS Includes and Reactive Controls
+- Keep OJS figures modular in shortcode includes by default. In Quarto 1.5.x, each included OJS fence can produce an `OJS block count mismatch` warning because source-line reporting is unreliable after expansion. The figure can still run, so normally accept this non-fatal warning; place the OJS fences directly in the consuming chapter only when accurate OJS source locations are more important than modular organization.
+- Each `viewof` control must have a unique identifier. Defining `viewof t1` twice, for example, creates an invalid reactive definition rather than a replacement control.
 
 ---
 
