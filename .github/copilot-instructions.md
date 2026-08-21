@@ -34,7 +34,7 @@ This repository is a Quarto book project for *Human Neuroimaging with MRI: A Pri
 
 - Use Quarto for rendering and debugging book content.
 - Use `rg` instead of `grep` and `fd` instead of `find` when searching the repository from the terminal.
-- Keep BibTeX-related edits consistent with the existing `paperpile.bib` and `references.bib` workflow.
+- Keep BibTeX-related edits consistent with the existing `paperpile.bib` and `references.bib` workflow — see `.github/skills/bib-crossref-indexing/SKILL.md` for how these two files divide responsibility and stay in sync with the shared master library used by the other book projects.
 - When searching the repository, prefer using `rg` and `fd` commands in read-only terminal passes to inspect context before editing files.
 
 ## Skill activation
@@ -45,3 +45,5 @@ Use the task-specific skills in `.github/skills/` when the request matches one o
 - PPTX slide extraction and conversion into Quarto content
 - Standalone HTML publishing and upload
 - MATLAB tutorial evaluation and publishing (`code/`, `teachmri` repo)
+- Bibliography file coordination — adding sources, syncing `paperpile.bib` from the shared master, or diagnosing a broken citation (`bib-crossref-indexing`)
+- Backward-pointing chapter cross-references for a review/recap chapter (`crossref-indexing`)
