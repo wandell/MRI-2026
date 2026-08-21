@@ -14,6 +14,8 @@ date: last-modified
 
 The second fundamental measurement, T2, is arises from a very different mechanism from T1.  This chapter explains the T2 relaxation.
 
+(For a mathematical description of the relaxation equations for both T1 and T2, as well as a short biographical note, see the resource [Felix Bloch and the Bloch Equations](resources/felix-bloch-equations.qmd).)
+
 ## The net magnetization is summarized by two components
 
 ![The net magnetization is summarized by two components.](images/ch08/the-net-magnetization-is-summarized-by-two-compone.png){#fig-ch08-the-net-magnetization-is-summarized-by-two-compone}
@@ -89,10 +91,6 @@ The video represents the de-phasing, but in a special way.  Remember that the tr
 * The curve at the bottom shows how the amplitude of that sum decays over time
 
 But do remember what this amplitude means.  The signal in the coil swings back and forth, from positive to negative, as the transverse magnetization goes round and round the z-axis.  The decaying curve is the *envelope* of that oscillation, not the oscillation itself.  This decaying oscillation, measured after a single RF excitation, is the free induction decay (FID) introduced in @@fig-ch05-panel-fid.
-
-## The Bloch Equations
-
-For a mathematical description of the relaxation equations for both T1 and T2, as well as a short biographical note, see the resource [Felix Bloch and the Bloch Equations](resources/felix-bloch-equations.qmd).
 
 ## The two mechanisms of spin de-phasing
 

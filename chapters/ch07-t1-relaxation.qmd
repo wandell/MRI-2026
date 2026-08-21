@@ -10,6 +10,7 @@ date: last-modified
 
 This chapter and the next describe two of the three basic sources of MR contrast: $T_1$ and $T_2$ relaxation. We will describe how to measure the third, proton density (*PD*), later in the notes.
 
+(For a mathematical description of the relaxation equations for both T1 and T2, as well as a short biographical note, see the resource [Felix Bloch and the Bloch Equations](resources/felix-bloch-equations.qmd).)
 <!--
 ## Longitudinal recovery (T1)
 
