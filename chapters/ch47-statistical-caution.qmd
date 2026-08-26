@@ -6,7 +6,7 @@ date: last-modified
 
 {{< include "includes/WIP-callout.qmd" >}}
 
----
+------------------------------------------------------------------------
 
 The preceding chapters built up the machinery of the general linear model and signal detection theory. This chapter steps back and asks why caution is required when applying that machinery: statistical significance is not the same thing as scientific importance, a group difference is not the same thing as an individual diagnosis, and a summary statistic is not a substitute for looking at the data.
 
@@ -58,11 +58,13 @@ The goal of a diagnostic measurement is to determine the best way to help a part
 
 A group comparison can give a misleading impression of how well a diagnostic measure actually works. Suppose the same population measurement is compared between a control group and a test group of poor readers. Plotted as overlapping histograms, the two distributions are almost entirely overlapping — the measurement, on its own, would not help much with diagnosing an individual. But plotted instead as a group-mean bar chart with error bars, the same data can look like a large, unambiguous difference.
 
-::: {.panel-tabset}
+::: panel-tabset
 ## Overlapping distributions
+
 ![The same measurement compared between a control group and a test group of poor readers, plotted as overlapping histograms (N=1000 per group): the distributions overlap almost completely.](images/ch47/group-comparison-histograms.png){#fig-ch47-group-comparison-histograms fig-alt="Two heavily overlapping histograms, one blue labeled Control and one orange labeled Test, both bell-shaped and centered close together."}
 
 ## Group means and error bars
+
 ![The identical data, now plotted as group means with standard-error bars: the same nearly-complete overlap between individuals now looks like a large, clean difference between the two group means, and the paper reporting it might encourage treating this as a useful biomarker — a mistaken conclusion for the reasons in the previous panel. This gap between what the histogram shows and what the bar chart seems to show grows larger, not smaller, as the sample size N increases.](images/ch47/group-comparison-bar-chart-punchline.png){#fig-ch47-group-comparison-bar-chart-punchline fig-alt="Left panel repeats the overlapping histograms; right panel shows a bar chart with a small negative Control bar and a much larger positive Test bar, each with small error bars, making the group difference look large and clean."}
 :::
 
@@ -116,7 +118,7 @@ Ziliak and McCloskey's book is explicitly a defense of Gosset against the way hi
 >
 > — @ziliak2008-cult, Preface
 
-> For over two decades he [Gosset] quietly tried to educate Fisher. But Fisher, our flawed villain, erased from Gosset's inventions the consciously economic element. We want to bring it back.
+> For over two decades he \[Gosset\] quietly tried to educate Fisher. But Fisher, our flawed villain, erased from Gosset's inventions the consciously economic element. We want to bring it back.
 >
 > — @ziliak2008-cult, Preface
 
@@ -148,4 +150,4 @@ And, in their account, the rule stuck — not because Gosset's economically grou
 
 ### Why this history matters for fMRI
 
-Ziliak and McCloskey's account is itself a historical argument, not a neutral fact, and like any single-narrative history it simplifies a more tangled real story — but the underlying methodological point stands on its own, independent of how fairly it treats Fisher personally. Every chapter in this part of the book has used a "$p < 0.05$," "$d' $ is large," or "the beta weight is significant" style of claim, and that convention traces directly back to the specific historical episode described above, not to any deeper logical necessity. The caution from earlier in this chapter — that statistical significance is not the same as scientific or clinical importance — is not a modern methodological fad; it is, on this account, closer to Gosset's *original* intention than the significance-testing convention that eventually displaced it.
+Ziliak and McCloskey's account is itself a historical argument, not a neutral fact, and like any single-narrative history it simplifies a more tangled real story — but the underlying methodological point stands on its own, independent of how fairly it treats Fisher personally. Every chapter in this part of the book has used a "$p < 0.05$," "\$d' \$ is large," or "the beta weight is significant" style of claim, and that convention traces directly back to the specific historical episode described above, not to any deeper logical necessity. The caution from earlier in this chapter — that statistical significance is not the same as scientific or clinical importance — is not a modern methodological fad; it is, on this account, closer to Gosset's *original* intention than the significance-testing convention that eventually displaced it.
