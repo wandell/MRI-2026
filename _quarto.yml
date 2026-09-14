@@ -96,6 +96,7 @@ book:
       chapters:
        - chapters/resources/joseph-larmor.qmd
        - chapters/resources/drawing-single-nmr-spins.qmd
+       - chapters/resources/nmr-relaxation-summary.qmd
        - chapters/resources/felix-bloch-equations.qmd
        - chapters/resources/erwin-hahn.qmd
        - chapters/resources/lauterbur.qmd
