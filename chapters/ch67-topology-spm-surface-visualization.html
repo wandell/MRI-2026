@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-10-08">
+
+<title>56&nbsp; Topology, Statistical Parameter Mapping, and Surface Visualization – Human Neuroimaging with MRI: A Primer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch68-cortical-flattening-marching-cubes.html" rel="next">
+<link href="../chapters/part10-applications.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/part10-applications.html">MRI Applications</a></li><li class="breadcrumb-item"><a href="../chapters/ch67-topology-spm-surface-visualization.html"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Topology, Statistical Parameter Mapping, and Surface Visualization</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Human Neuroimaging with MRI: A Primer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part1-instrumentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MR Instrumentation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch01-big-iron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">MRI System</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch02-gradient-coils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Main Field and Gradient Coils</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch03-rf-coils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Radiofrequency Coils</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch04-safety.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MRI Safety</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part2-signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MR Signals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch05-mr-signal-fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">MR Signal Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch06-macroscopic-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The MR Macroscopic Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch07-t1-relaxation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">T1 Relaxation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch08-t2-relaxation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">T2 Relaxation and Signal Contrast</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch09-spin-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Spin Echo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch10-inversion-recovery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inversion recovery</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch11-intermediate-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Initial review</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part3-imageformation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Image Formation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch12-image-formation-principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Image Formation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch15-slice-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Slice Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch17-imaging-within-slice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Imaging Within the Slice</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch14-fourier-series-kspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Image formation and Fourier Series (k-space)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch18-kspace-epi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">K-Space and Echo Planar Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch19-pulse-sequences.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">More Pulse Sequences</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch20-image-quality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Image Distortions, Quality, and Parallel Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch21-image-data-formats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Practical Software: Image Data Formats</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part4-brain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brain Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch22-brain-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Brain systems overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch23-brain-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The packaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch24-gross-anatomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Gross anatomy and model brain systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch26-neuronal-types-and-signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Neuronal Types and Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch28-gross-neurovascular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Gross neurovascular anatomy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch29-fine-scale-neurovascular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Fine-scale neurovascular anatomy and the neurovascular unit</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part5-functionalsignals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functional MR Signals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch31-walter-k.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The story of Walter K</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch32-blood-oxygenation-levels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Blood oxygenation levels and the balloon model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch34-functional-mri-signal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Discovery of the functional MRI signal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch37-mathiesen-lauritzen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Mathiesen-Lauritzen experiments</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch38-electrophysiological-signal-definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Electrophysiological signals and the BOLD response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch39-energy-consumption.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Which signals consume the most energy?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch41-nvu-development.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">BOLD and the development of the neurovascular unit</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part6-dataanalysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">fMRI Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch35-preliminary-neurological-measurements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Early neurological observations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch42-general-linear-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">The General Linear Model and Testing Linearity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch44-signal-detection-theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Signal detection theory and diagnostic examples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch46-discriminability-roc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">The discriminability index and the receiver operating characteristic</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch47-statistical-caution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical significance, effect size, and the history of hypothesis testing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part7-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visual Neuroscience with fMRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch49-introduction-to-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Introduction to vision</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch50-history-of-vision-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">History of vision science</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch51-discovery-of-multiple-maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Discovery of multiple maps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch52-organization-of-the-maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Organization of the maps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch53-visual-specializations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Visual specializations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part8-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion MRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch54-white-matter-biology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">White Matter Biology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch55-principles-of-diffusion-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Principles of Diffusion Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch56-diffusion-imaging-of-the-brain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Diffusion Imaging of the Brain</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch57-models-of-voxel-level-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Models of Voxel-Level Diffusion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch58-voxel-level-reliability-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Voxel-Level Reliability Measures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch59-tractography-combining-voxels-into-tracts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">Tractography: Combining Voxels into Tracts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch60-tractography-analyzing-white-matter-tracts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Tractography: Analyzing White Matter Tracts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch61-dki-dsi-wedeen-geometry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">DKI, DSI, and Wedeen Geometry</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part9-qmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quantitative MRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch62-noddi-magnetization-transfer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">NODDI and Magnetization Transfer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch63-asl-qsm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Arterial Spin Labeling and Quantitative Susceptibility Mapping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch64-vaso-multiecho-mrf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">VASO, Multi-echo, and MR Fingerprinting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch65-high-field-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">High Field Imaging Challenges</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch66-mtv-gratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">Macromolecular Tissue Volume and the g-ratio</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part10-applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MRI Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch67-topology-spm-surface-visualization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Topology, Statistical Parameter Mapping, and Surface Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch68-cortical-flattening-marching-cubes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Cortical Flattening and the Marching Cubes Algorithm</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch69-segmentation-visualization-extras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Segmentation and Visualization: Additional Examples</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/joseph-larmor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Joseph Larmor and his frequency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/drawing-single-nmr-spins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Drawing Single NMR Spins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/nmr-relaxation-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why Spins Relax</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/felix-bloch-equations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Felix Bloch and the Bloch Equations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/erwin-hahn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erwin L. Hahn and the Spin Echo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/lauterbur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paul Lauterbur</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/fast-exchange.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fast Exchange Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/jean-baptiste-fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">History of Fourier’s publication</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/mansfeld-epi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mansfeld and EPI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/phineas-gage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phineas Gage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/leukoencephalopathy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leukoencephalopathy and White Matter Adaptability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/developmental-hemispherectomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developmental Hemispherectomy and Plasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/wada-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Wada Test and Its Replacement by fMRI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/ptsd-prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predicting Vulnerability to PTSD from Brain Activity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/T1-T2-ratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The T1w/T2w Ratio for Myelin Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/brain-beats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brain Beats: Pulsatile Motion and Flow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/Reproducibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Achieving Reproducibility: Perspectives and New Tools</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-visualization-matters" id="toc-why-visualization-matters" class="nav-link active" data-scroll-target="#why-visualization-matters"><span class="header-section-number">56.1</span> Why visualization matters</a></li>
+  <li><a href="#topology-and-visualization" id="toc-topology-and-visualization" class="nav-link" data-scroll-target="#topology-and-visualization"><span class="header-section-number">56.2</span> Topology and visualization</a></li>
+  <li><a href="#matching-data-methods-to-what-you-are-studying" id="toc-matching-data-methods-to-what-you-are-studying" class="nav-link" data-scroll-target="#matching-data-methods-to-what-you-are-studying"><span class="header-section-number">56.3</span> Matching data methods to what you are studying</a></li>
+  <li><a href="#statistical-parameter-mapping" id="toc-statistical-parameter-mapping" class="nav-link" data-scroll-target="#statistical-parameter-mapping"><span class="header-section-number">56.4</span> Statistical parameter mapping</a></li>
+  <li><a href="#surface-based-visualization" id="toc-surface-based-visualization" class="nav-link" data-scroll-target="#surface-based-visualization"><span class="header-section-number">56.5</span> Surface-based visualization</a></li>
+  <li><a href="#building-the-cortical-surface" id="toc-building-the-cortical-surface" class="nav-link" data-scroll-target="#building-the-cortical-surface"><span class="header-section-number">56.6</span> Building the cortical surface</a></li>
+  <li><a href="#from-classified-voxels-to-a-mesh" id="toc-from-classified-voxels-to-a-mesh" class="nav-link" data-scroll-target="#from-classified-voxels-to-a-mesh"><span class="header-section-number">56.7</span> From classified voxels to a mesh</a></li>
+  <li><a href="#curvature-and-extreme-smoothing" id="toc-curvature-and-extreme-smoothing" class="nav-link" data-scroll-target="#curvature-and-extreme-smoothing"><span class="header-section-number">56.8</span> Curvature and extreme smoothing</a></li>
+  <li><a href="#flat-maps" id="toc-flat-maps" class="nav-link" data-scroll-target="#flat-maps"><span class="header-section-number">56.9</span> Flat maps</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/part10-applications.html">MRI Applications</a></li><li class="breadcrumb-item"><a href="../chapters/ch67-topology-spm-surface-visualization.html"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Topology, Statistical Parameter Mapping, and Surface Visualization</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Topology, Statistical Parameter Mapping, and Surface Visualization</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="Work in Progress">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Work in Progress
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Suggestions of all kinds for these lecture notes are welcome — whether it’s fixing small errors, raising bigger questions, or offering new perspectives. Please share comments through <a href="https://github.com/wandell/MRI-2026/issues" target="_blank">GitHub Issues</a>. To make feedback easier to address, please point to the section you have in mind — by section number or a short snippet of text.</em></p>
+</div>
+</div>
+<hr>
+<p>This chapter is about how the shape of the brain — its folded, topologically complex surface — shapes the choices we make when we smooth, average, and visualize MRI data. The theme running through the chapter is that summary statistics and generic image-processing operations (smoothing, volume averaging, statistical parameter maps) can silently mix together signals from neighboring but functionally unrelated tissue unless the underlying geometry of cortex is respected.</p>
+<section id="why-visualization-matters" class="level2 page-columns page-full" data-number="56.1">
+<h2 data-number="56.1" class="anchored" data-anchor-id="why-visualization-matters"><span class="header-section-number">56.1</span> Why visualization matters</h2>
+<p>Anscombe’s quartet is a classic illustration of a general danger: four data sets with identical summary statistics (mean, variance, correlation) can look completely different once plotted (<a href="#fig-ch67-anscombes-quartet" class="quarto-xref">Figure&nbsp;<span>56.1</span></a>). The same danger applies to brain data — two very different patterns of activity or tissue structure can share the same summary numbers, so visualizing the data directly, not just its statistics, is an essential check.</p>
+<div id="fig-ch67-anscombes-quartet" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-anscombes-quartet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/anscombes-quartet.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-anscombes-quartet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.1: Anscombe’s quartet: four data sets with the same summary statistics but very different shapes when plotted.
+</figcaption>
+</figure>
+</div>
+<p>Spatial resolution compounds this problem in the brain because of cortical folding. Two points that are close together in physical (Euclidean) space can be far apart along the folded cortical sheet, on opposite banks of a sulcus (<a href="#fig-ch67-spatial-proximity-brain-folds" class="quarto-xref">Figure&nbsp;<span>56.2</span></a>). Any analysis that treats nearby voxels as necessarily related is implicitly assuming a spatial smoothness that the folded anatomy does not actually have.</p>
+<div id="fig-ch67-spatial-proximity-brain-folds" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-spatial-proximity-brain-folds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/spatial-proximity-brain-folds.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-spatial-proximity-brain-folds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.2: Spatial proximity in a volume does not imply proximity along the cortical surface — brain folding brings distant regions of cortex physically close together.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="topology-and-visualization" class="level2 page-columns page-full" data-number="56.2">
+<h2 data-number="56.2" class="anchored" data-anchor-id="topology-and-visualization"><span class="header-section-number">56.2</span> Topology and visualization</h2>
+<p>A single MR slice can cut across a sulcus twice, sampling both banks in the same plane even though they are far apart along the cortical sheet — for example, a coronal slice through the calcarine sulcus includes tissue from both banks of the fold (<a href="#fig-ch67-calcarine-sulcus-mr-slice" class="quarto-xref">Figure&nbsp;<span>56.3</span></a>). This is the concrete anatomical reason topology matters: the natural neighborhood structure of the data is defined by the cortical surface, not by the Euclidean geometry of the acquired volume.</p>
+<div id="fig-ch67-calcarine-sulcus-mr-slice" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-calcarine-sulcus-mr-slice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/calcarine-sulcus-mr-slice.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-calcarine-sulcus-mr-slice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.3: A coronal MR slice through the calcarine sulcus. The dotted line marks the slice plane; an MR slice through the blue line would include parts of opposite banks of the sulcus.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="matching-data-methods-to-what-you-are-studying" class="level2 page-columns page-full" data-number="56.3">
+<h2 data-number="56.3" class="anchored" data-anchor-id="matching-data-methods-to-what-you-are-studying"><span class="header-section-number">56.3</span> Matching data methods to what you are studying</h2>
+<p>Thinking about the natural shape and organization of the problem you are studying is important. Mathematical theorems about smoothing and averaging are very useful, but every problem has its own special features, and being sensitive to them is essential — spatial averaging in the brain is a good example. A smoothing kernel applied in volume space averages together whatever voxels fall within its radius, regardless of whether those voxels belong to the same fold of cortex.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Grid of samples</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Selecting a pair of nodes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">The averaging kernel</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-1-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="fig-ch67-smoothing-kernel-grid-1" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-kernel-grid-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-kernel-grid.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-kernel-grid-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.4: A regular grid of sample locations overlaid on an axial slice.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="fig-ch67-smoothing-kernel-grid-2" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-kernel-grid-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-kernel-node-pair.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-kernel-grid-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.5: Two neighboring grid nodes are selected.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="fig-ch67-smoothing-kernel-grid-3" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-kernel-grid-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-kernel-averaging-circle.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-kernel-grid-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.6: A circular averaging kernel is centered on the selected nodes.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The trouble is visible as soon as the kernel straddles a sulcus. Opposite banks of a sulcus can be very close together in volume space yet functionally distinct — one bank gray matter, the other white matter, or two banks belonging to different functional maps — so opposite sides of sulci can’t be distinguished by a purely volumetric criterion (<a href="#fig-ch67-opposite-sulci-sides-indistinguishable" class="quarto-xref">Figure&nbsp;<span>56.7</span></a>). The figure shown in-plane is only a 2D cross-section; the averaging itself happens in the full 3D volume, which makes the problem worse, not better.</p>
+<div id="fig-ch67-opposite-sulci-sides-indistinguishable" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-opposite-sulci-sides-indistinguishable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/opposite-sulci-sides-indistinguishable.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-opposite-sulci-sides-indistinguishable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.7: Opposite banks of a sulcus can be indistinguishable in volume space: white matter and gray matter from both banks can fall within the same local neighborhood. The averaging kernel operates in the volume even though only an in-plane slice is shown.
+</figcaption>
+</figure>
+</div>
+<p>Smoothing therefore averages together signal from tissue that may not belong together at all (<a href="#fig-ch67-what-is-averaged-by-smoothing" class="quarto-xref">Figure&nbsp;<span>56.8</span></a>) — the same sulcus-crossing problem, now shown as it would appear after a smoothing kernel has been applied at several locations along a fold.</p>
+<div id="fig-ch67-what-is-averaged-by-smoothing" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-what-is-averaged-by-smoothing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/what-is-averaged-by-smoothing.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-what-is-averaged-by-smoothing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.8: What is actually averaged by smoothing: circles mark local regions where the kernel mixes signal across opposite banks of a sulcus.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="statistical-parameter-mapping" class="level2 page-columns page-full" data-number="56.4">
+<h2 data-number="56.4" class="anchored" data-anchor-id="statistical-parameter-mapping"><span class="header-section-number">56.4</span> Statistical parameter mapping</h2>
+<p>Statistical parameter maps (SPMs) render a statistical test (for example, a t- or F-statistic computed at every voxel) as a color overlay on an anatomical image. An older convention in the literature — one that can still be found in some papers — displayed these overlays on a small number of 2D slices, which is a visualization choice worth being alert to when reading older figures, since it can make results look more (or less) spatially extensive than they are.</p>
+<p>Spatial smoothing is applied before statistical testing for several distinct reasons, and it is worth separating them out:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">(i) Matched filter theorem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">(ii) Central limit theorem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">(iii) Gaussian random field theory</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">(iv) Inter-subject averaging</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>By the matched filter theorem, the optimal smoothing kernel size matches the expected spatial size of the effect being tested — smoothing at the wrong scale reduces sensitivity.</p>
+<div id="fig-ch67-smoothing-rationale-1" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-rationale-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-matched-filter.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-rationale-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.9: Motivation (i): the matched filter theorem sets the optimal smoothing kernel size.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>By the central limit theorem, smoothing renders the noise distribution more Gaussian, which helps satisfy the assumptions behind parametric statistical tests.</p>
+<div id="fig-ch67-smoothing-rationale-2" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-rationale-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-central-limit.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-rationale-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.10: Motivation (ii): smoothing makes the error distribution more normal.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>Inferences about regional effects that rely on Gaussian random field theory assume the underlying statistical field is smooth; explicit smoothing helps satisfy that assumption.</p>
+<div id="fig-ch67-smoothing-rationale-3" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-rationale-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-gaussian-random-field.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-rationale-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.11: Motivation (iii): Gaussian random field theory assumes a smooth statistical field.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<p>When averaging across subjects — whose anatomy never aligns perfectly — more aggressive smoothing (e.g., 8 mm in fMRI, 16 mm in PET) is often needed to project individual results onto a common space.</p>
+<div id="fig-ch67-smoothing-rationale-4" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-rationale-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-intersubject-averaging.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-rationale-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.12: Motivation (iv): heavier smoothing compensates for imperfect inter-subject alignment.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Each of these is a legitimate reason to smooth, but each also trades away some spatial specificity — precisely the specificity that the sulcus-crossing problem above shows can matter a great deal in folded cortex.</p>
+</section>
+<section id="surface-based-visualization" class="level2 page-columns page-full" data-number="56.5">
+<h2 data-number="56.5" class="anchored" data-anchor-id="surface-based-visualization"><span class="header-section-number">56.5</span> Surface-based visualization</h2>
+<p>Visualization exists to communicate results clearly, and the choice of surface matters as much as the statistics. The same activation can look very different rendered on a small number of thick axial slices versus rendered on a 3D cortical surface reconstruction (<a href="#fig-ch67-spm-quality-communication" class="quarto-xref">Figure&nbsp;<span>56.13</span></a>).</p>
+<div id="fig-ch67-spm-quality-communication" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-spm-quality-communication-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/spm-quality-communication.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-spm-quality-communication-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.13: The same statistical result shown (a) on thick axial slices and (b) rendered on a 3D cortical surface — the surface rendering communicates the spatial extent of the activation far more clearly.
+</figcaption>
+</figure>
+</div>
+<p>Cortical surface projections are commonly shown from standard viewpoints, such as the lateral surface and the ventral occipital surface, so that results from different studies and subjects can be compared directly (<a href="#fig-ch67-lateral-surface-projection" class="quarto-xref">Figure&nbsp;<span>56.14</span></a>, <a href="#fig-ch67-ventral-lateral-projection" class="quarto-xref">Figure&nbsp;<span>56.15</span></a>).</p>
+<div id="fig-ch67-lateral-surface-projection" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-lateral-surface-projection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/lateral-surface-projection.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-lateral-surface-projection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.14: A lateral surface projection of the cortex (data from Brunswick and Paulesu).
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch67-ventral-lateral-projection" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-ventral-lateral-projection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/ventral-lateral-projection.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-ventral-lateral-projection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.15: A ventral occipital view of the cortical surface.
+</figcaption>
+</figure>
+</div>
+<p>A concrete example of why this matters: interpreting results shown in a conventional multi-slice format is hard, even for an experienced reader (<a href="#fig-ch67-multislice-format-challenge" class="quarto-xref">Figure&nbsp;<span>56.16</span></a>). The same visual word form area data, replotted on a 3D cortical surface reconstruction, is much easier to interpret — the contrast showing an increasing response as a word form becomes more visible is immediately legible as a single, spatially coherent region rather than scattered patches across several slices (<a href="#fig-ch67-word-form-area-3d-surface" class="quarto-xref">Figure&nbsp;<span>56.17</span></a>).</p>
+<div id="fig-ch67-multislice-format-challenge" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-multislice-format-challenge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/multislice-format-challenge.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-multislice-format-challenge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.16: Multi-slice format visualization is a challenge to understand: color indicates stimulus eccentricity, but the spatial pattern is hard to read across slices.
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch67-word-form-area-3d-surface" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-word-form-area-3d-surface-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/word-form-area-3d-surface.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-word-form-area-3d-surface-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.17: The same data shown on a 3D surface reconstruction: the visual word form area is much easier to see than in the multi-slice view.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="building-the-cortical-surface" class="level2 page-columns page-full" data-number="56.6">
+<h2 data-number="56.6" class="anchored" data-anchor-id="building-the-cortical-surface"><span class="header-section-number">56.6</span> Building the cortical surface</h2>
+<p>To build a representation of the cortical surface, the anatomical MRI volume is segmented into gray and white matter, and the boundary between them is identified. A variety of software tools do this segmentation; here the boundary is shown as identified by itkGray, one of several available pipelines (others include FreeSurfer) (<a href="#fig-ch67-itkgray-graywhite-boundary" class="quarto-xref">Figure&nbsp;<span>56.18</span></a>; <span class="citation" data-cites="carman1995-corticalsurface">Carman et al. (<a href="#ref-carman1995-corticalsurface" role="doc-biblioref">1995</a>)</span>; <span class="citation" data-cites="dale1999-corticalsurfacereconstruction">Dale et al. (<a href="#ref-dale1999-corticalsurfacereconstruction" role="doc-biblioref">1999</a>)</span>; <span class="citation" data-cites="fischl1999-corticalsurfacebased">Fischl et al. (<a href="#ref-fischl1999-corticalsurfacebased" role="doc-biblioref">1999</a>)</span>; <span class="citation" data-cites="wandell2000-visualization">Wandell et al. (<a href="#ref-wandell2000-visualization" role="doc-biblioref">2000</a>)</span>).</p>
+<div id="fig-ch67-itkgray-graywhite-boundary" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-itkgray-graywhite-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/itkgray-graywhite-boundary.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-itkgray-graywhite-boundary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.18: Identifying the gray-white boundary in cortex using itkGray.
+</figcaption>
+</figure>
+</div>
+<p>Automatic segmentation is an excellent first approximation and very useful in practice (<a href="#fig-ch67-segmentation-first-approximation" class="quarto-xref">Figure&nbsp;<span>56.19</span></a>), but there are always imperfections that need to be checked and, often, hand-corrected (<a href="#fig-ch67-segmentation-imperfections" class="quarto-xref">Figure&nbsp;<span>56.20</span></a>).</p>
+<div id="fig-ch67-segmentation-first-approximation" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-segmentation-first-approximation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/segmentation-first-approximation.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-segmentation-first-approximation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.19: Automatic gray/white segmentation: an excellent first approximation and very useful on its own.
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch67-segmentation-imperfections" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-segmentation-imperfections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/segmentation-imperfections.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-segmentation-imperfections-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.20: But there are always imperfections that need checking.
+</figcaption>
+</figure>
+</div>
+<p>Once the voxels are classified as gray or white matter, they must be connected into a well-formed graph before a surface mesh can be built. Gray matter nodes are considered connected if they share a common parent voxel or if their parents are connected, and the classification, connectivity, and resulting cortical graph are all closely linked (<a href="#fig-ch67-classification-connectivity" class="quarto-xref">Figure&nbsp;<span>56.21</span></a>).</p>
+<div id="fig-ch67-classification-connectivity" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-classification-connectivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/classification-connectivity.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-classification-connectivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.21: Classification, connectivity, and the resulting graph of gray-matter nodes.
+</figcaption>
+</figure>
+</div>
+<p>A well-formed white-matter classification must also avoid topological defects — cavities (holes enclosed by white matter) and handles (spurious connections that create a loop where none should exist). The Euler number is a standard way of detecting the presence of such defects (<a href="#fig-ch67-euler-number-cavities-handles" class="quarto-xref">Figure&nbsp;<span>56.22</span></a>; <span class="citation" data-cites="toriwaki-eulernumber">Toriwaki &amp; Yonekura (<a href="#ref-toriwaki-eulernumber" role="doc-biblioref">2002</a>)</span>).</p>
+<div id="fig-ch67-euler-number-cavities-handles" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-euler-number-cavities-handles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/euler-number-cavities-handles.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-euler-number-cavities-handles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.22: White matter topology: avoiding cavities and handles. The Euler number detects topological defects in the classified volume.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="from-classified-voxels-to-a-mesh" class="level2 page-columns page-full" data-number="56.7">
+<h2 data-number="56.7" class="anchored" data-anchor-id="from-classified-voxels-to-a-mesh"><span class="header-section-number">56.7</span> From classified voxels to a mesh</h2>
+<p>Graphics programs represent surfaces as meshes: a set of vertices (points) and edges (connections between them). A mesh can be built directly from the boundary of the classified white-matter voxels (<a href="#fig-ch67-mesh-from-classified-voxels" class="quarto-xref">Figure&nbsp;<span>56.23</span></a>).</p>
+<div id="fig-ch67-mesh-from-classified-voxels" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-mesh-from-classified-voxels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/mesh-from-classified-voxels.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-mesh-from-classified-voxels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.23: Creating the surface mesh from classified voxels.
+</figcaption>
+</figure>
+</div>
+<p>Representing the cortex as a mesh matters for more than visualization: the same mesh that renders the surface for viewing (in tools such as MeshLab) also encodes the gray-matter connectivity graph used for measurement, so a properly connected mesh is required both for pictures that look right and for distances and areas that are computed correctly (<a href="#fig-ch67-importance-of-being-a-mesh" class="quarto-xref">Figure&nbsp;<span>56.24</span></a>).</p>
+<div id="fig-ch67-importance-of-being-a-mesh" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-importance-of-being-a-mesh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/importance-of-being-a-mesh.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-importance-of-being-a-mesh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.24: The importance of being a mesh: a single mesh structure supports both visualization and correct gray-node connectivity.
+</figcaption>
+</figure>
+</div>
+<p>A raw mesh built directly from voxel boundaries is jagged; 3D graphical tools (such as VTK, the Visualization Toolkit) can smooth the mesh without destroying the topological neighborhood relations of the surface (<a href="#fig-ch67-smoothing-the-3d-mesh" class="quarto-xref">Figure&nbsp;<span>56.25</span></a>). Modern segmentation and meshing tools such as itkGray increasingly build in this kind of anatomical and topological knowledge automatically, though getting good results still requires practice (<a href="#fig-ch67-itkgray-tissue-classification" class="quarto-xref">Figure&nbsp;<span>56.26</span></a>).</p>
+<div id="fig-ch67-smoothing-the-3d-mesh" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-smoothing-the-3d-mesh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/smoothing-the-3d-mesh.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-smoothing-the-3d-mesh-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.25: Smoothing the 3D mesh with tools such as VTK, preserving the surface’s topological properties.
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch67-itkgray-tissue-classification" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-itkgray-tissue-classification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/itkgray-tissue-classification.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-itkgray-tissue-classification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.26: Tissue classification tools such as itkGray incorporate increasingly sophisticated anatomical knowledge.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="curvature-and-extreme-smoothing" class="level2 page-columns page-full" data-number="56.8">
+<h2 data-number="56.8" class="anchored" data-anchor-id="curvature-and-extreme-smoothing"><span class="header-section-number">56.8</span> Curvature and extreme smoothing</h2>
+<p>Shading a rendered surface by local curvature makes the gyri and sulci easy to read at a glance: curvature is inversely related to the radius of the circle that best fits the local surface (<a href="#fig-ch67-shading-surface-curvature" class="quarto-xref">Figure&nbsp;<span>56.27</span></a>). Even after very heavy smoothing, the mesh’s topology — its neighborhood connectivity — remains unchanged; only the geometry (the shape) is altered, not the underlying graph structure (<a href="#fig-ch67-extreme-smoothing-topology-unchanged" class="quarto-xref">Figure&nbsp;<span>56.28</span></a>).</p>
+<div id="fig-ch67-shading-surface-curvature" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-shading-surface-curvature-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/shading-surface-curvature.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-shading-surface-curvature-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.27: Shading the surface by curvature: high curvature marks tightly folded gyri and sulci, low curvature marks flatter regions.
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch67-extreme-smoothing-topology-unchanged" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-extreme-smoothing-topology-unchanged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/extreme-smoothing-topology-unchanged.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-extreme-smoothing-topology-unchanged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.28: Extreme smoothing changes the surface’s shape but leaves its topology unchanged.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="flat-maps" class="level2 page-columns page-full" data-number="56.9">
+<h2 data-number="56.9" class="anchored" data-anchor-id="flat-maps"><span class="header-section-number">56.9</span> Flat maps</h2>
+<p>Because the cortical sheet is topologically close to a 2D surface, it can be cut and unfolded into a flat map — a representation that preserves neighborhood relations along the cortical surface far better than any single volumetric slice can. Flattened representations are especially useful for displaying data that vary smoothly across the surface, such as eccentricity maps from retinotopic mapping experiments (<a href="#fig-ch67-eccentricity-maps" class="quarto-xref">Figure&nbsp;<span>56.29</span></a>, <a href="#fig-ch67-flat-map-views" class="quarto-xref">Figure&nbsp;<span>56.30</span></a>, <a href="#fig-ch67-eccentricity-map-flattened" class="quarto-xref">Figure&nbsp;<span>56.31</span></a>).</p>
+<div id="fig-ch67-eccentricity-maps" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-eccentricity-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/eccentricity-maps.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-eccentricity-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.29: An eccentricity map shown on the folded cortical surface.
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch67-flat-map-views" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-flat-map-views-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/flat-map-views.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-flat-map-views-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.30: A flat-map view of the brain surface.
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch67-eccentricity-map-flattened" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-eccentricity-map-flattened-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/eccentricity-map-flattened.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-eccentricity-map-flattened-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.31: The same eccentricity map shown on the flattened representation.
+</figcaption>
+</figure>
+</div>
+<p>No flattening is perfect, however. The cortical surface has intrinsic curvature, which limits how well distances measured on the flattened image can match true distances on the folded surface — even a surface that is basically flat, and not strongly curved like a sphere, will not be perfectly representable on a plane without some distortion (<a href="#fig-ch67-intrinsic-curvature-limits" class="quarto-xref">Figure&nbsp;<span>56.32</span></a>). The next chapter takes up the flattening procedure itself in detail.</p>
+<div id="fig-ch67-intrinsic-curvature-limits" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch67-intrinsic-curvature-limits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch67/intrinsic-curvature-limits.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch67-intrinsic-curvature-limits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56.32: Intrinsic curvature limits how well distances on a flattened image can match true distances on the cortical surface.
+</figcaption>
+</figure>
+</div>
+
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-carman1995-corticalsurface" class="csl-entry" role="listitem">
+Carman, G. J., Drury, H. A., &amp; Van Essen, D. C. (1995). Computational methods for reconstructing and unfolding the cerebral cortex. <em>Cerebral Cortex</em>, <em>5</em>(6), 506–517. <a href="https://doi.org/10.1093/cercor/5.6.506">https://doi.org/10.1093/cercor/5.6.506</a>
+</div>
+<div id="ref-dale1999-corticalsurfacereconstruction" class="csl-entry" role="listitem">
+Dale, A. M., Fischl, B., &amp; Sereno, M. I. (1999). Cortical surface-based analysis i: Segmentation and surface reconstruction. <em>NeuroImage</em>, <em>9</em>(2), 179–194. <a href="https://doi.org/10.1006/nimg.1998.0395">https://doi.org/10.1006/nimg.1998.0395</a>
+</div>
+<div id="ref-fischl1999-corticalsurfacebased" class="csl-entry" role="listitem">
+Fischl, B., Sereno, M. I., &amp; Dale, A. M. (1999). Cortical surface-based analysis II: Inflation, flattening, and a surface-based coordinate system. <em>NeuroImage</em>, <em>9</em>(2), 195–207. <a href="https://doi.org/10.1006/nimg.1998.0396">https://doi.org/10.1006/nimg.1998.0396</a>
+</div>
+<div id="ref-toriwaki-eulernumber" class="csl-entry" role="listitem">
+Toriwaki, J., &amp; Yonekura, T. (2002). Euler number and connectivity indexes of a three dimensional digital picture. <em>Forma</em>, <em>17</em>(3), 183–209.
+</div>
+<div id="ref-wandell2000-visualization" class="csl-entry" role="listitem">
+Wandell, B. A., Chial, S., &amp; Backus, B. T. (2000). Visualization and measurement of the cortical surface. <em>Journal of Cognitive Neuroscience</em>, <em>12</em>(5), 739–752. <a href="https://doi.org/10.1162/089892900562561">https://doi.org/10.1162/089892900562561</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/part10-applications.html" class="pagination-link" aria-label="MRI Applications">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">MRI Applications</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch68-cortical-flattening-marching-cubes.html" class="pagination-link" aria-label="Cortical Flattening and the Marching Cubes Algorithm">
+        <span class="nav-page-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Cortical Flattening and the Marching Cubes Algorithm</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

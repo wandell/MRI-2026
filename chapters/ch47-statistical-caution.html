@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-10-08">
+
+<title>37&nbsp; Statistical significance, effect size, and the history of hypothesis testing – Human Neuroimaging with MRI: A Primer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/part7-vision.html" rel="next">
+<link href="../chapters/ch46-discriminability-roc.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/part6-dataanalysis.html">fMRI Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/ch47-statistical-caution.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical significance, effect size, and the history of hypothesis testing</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Human Neuroimaging with MRI: A Primer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part1-instrumentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MR Instrumentation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch01-big-iron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">MRI System</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch02-gradient-coils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Main Field and Gradient Coils</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch03-rf-coils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Radiofrequency Coils</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch04-safety.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MRI Safety</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part2-signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MR Signals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch05-mr-signal-fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">MR Signal Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch06-macroscopic-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The MR Macroscopic Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch07-t1-relaxation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">T1 Relaxation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch08-t2-relaxation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">T2 Relaxation and Signal Contrast</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch09-spin-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Spin Echo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch10-inversion-recovery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inversion recovery</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch11-intermediate-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Initial review</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part3-imageformation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Image Formation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch12-image-formation-principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Image Formation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch15-slice-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Slice Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch17-imaging-within-slice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Imaging Within the Slice</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch14-fourier-series-kspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Image formation and Fourier Series (k-space)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch18-kspace-epi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">K-Space and Echo Planar Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch19-pulse-sequences.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">More Pulse Sequences</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch20-image-quality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Image Distortions, Quality, and Parallel Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch21-image-data-formats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Practical Software: Image Data Formats</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part4-brain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brain Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch22-brain-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Brain systems overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch23-brain-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The packaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch24-gross-anatomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Gross anatomy and model brain systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch26-neuronal-types-and-signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Neuronal Types and Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch28-gross-neurovascular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Gross neurovascular anatomy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch29-fine-scale-neurovascular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Fine-scale neurovascular anatomy and the neurovascular unit</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part5-functionalsignals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functional MR Signals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch31-walter-k.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The story of Walter K</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch32-blood-oxygenation-levels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Blood oxygenation levels and the balloon model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch34-functional-mri-signal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Discovery of the functional MRI signal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch37-mathiesen-lauritzen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Mathiesen-Lauritzen experiments</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch38-electrophysiological-signal-definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Electrophysiological signals and the BOLD response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch39-energy-consumption.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Which signals consume the most energy?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch41-nvu-development.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">BOLD and the development of the neurovascular unit</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part6-dataanalysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">fMRI Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch35-preliminary-neurological-measurements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Early neurological observations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch42-general-linear-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">The General Linear Model and Testing Linearity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch44-signal-detection-theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Signal detection theory and diagnostic examples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch46-discriminability-roc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">The discriminability index and the receiver operating characteristic</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch47-statistical-caution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical significance, effect size, and the history of hypothesis testing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part7-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visual Neuroscience with fMRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch49-introduction-to-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Introduction to vision</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch50-history-of-vision-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">History of vision science</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch51-discovery-of-multiple-maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Discovery of multiple maps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch52-organization-of-the-maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Organization of the maps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch53-visual-specializations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Visual specializations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part8-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion MRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch54-white-matter-biology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">White Matter Biology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch55-principles-of-diffusion-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Principles of Diffusion Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch56-diffusion-imaging-of-the-brain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Diffusion Imaging of the Brain</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch57-models-of-voxel-level-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Models of Voxel-Level Diffusion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch58-voxel-level-reliability-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Voxel-Level Reliability Measures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch59-tractography-combining-voxels-into-tracts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">Tractography: Combining Voxels into Tracts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch60-tractography-analyzing-white-matter-tracts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Tractography: Analyzing White Matter Tracts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch61-dki-dsi-wedeen-geometry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">DKI, DSI, and Wedeen Geometry</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part9-qmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quantitative MRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch62-noddi-magnetization-transfer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">NODDI and Magnetization Transfer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch63-asl-qsm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Arterial Spin Labeling and Quantitative Susceptibility Mapping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch64-vaso-multiecho-mrf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">VASO, Multi-echo, and MR Fingerprinting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch65-high-field-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">High Field Imaging Challenges</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch66-mtv-gratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">Macromolecular Tissue Volume and the g-ratio</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part10-applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MRI Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch67-topology-spm-surface-visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Topology, Statistical Parameter Mapping, and Surface Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch68-cortical-flattening-marching-cubes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Cortical Flattening and the Marching Cubes Algorithm</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch69-segmentation-visualization-extras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Segmentation and Visualization: Additional Examples</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/joseph-larmor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Joseph Larmor and his frequency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/drawing-single-nmr-spins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Drawing Single NMR Spins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/nmr-relaxation-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why Spins Relax</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/felix-bloch-equations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Felix Bloch and the Bloch Equations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/erwin-hahn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erwin L. Hahn and the Spin Echo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/lauterbur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paul Lauterbur</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/fast-exchange.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fast Exchange Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/jean-baptiste-fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">History of Fourier’s publication</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/mansfeld-epi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mansfeld and EPI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/phineas-gage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phineas Gage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/leukoencephalopathy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leukoencephalopathy and White Matter Adaptability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/developmental-hemispherectomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developmental Hemispherectomy and Plasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/wada-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Wada Test and Its Replacement by fMRI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/ptsd-prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predicting Vulnerability to PTSD from Brain Activity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/T1-T2-ratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The T1w/T2w Ratio for Myelin Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/brain-beats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brain Beats: Pulsatile Motion and Flow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/Reproducibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Achieving Reproducibility: Perspectives and New Tools</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#statistical-significance-is-not-scientific-importance" id="toc-statistical-significance-is-not-scientific-importance" class="nav-link active" data-scroll-target="#statistical-significance-is-not-scientific-importance"><span class="header-section-number">37.1</span> Statistical significance is not scientific importance</a></li>
+  <li><a href="#terminology-across-fields" id="toc-terminology-across-fields" class="nav-link" data-scroll-target="#terminology-across-fields"><span class="header-section-number">37.2</span> Terminology across fields</a></li>
+  <li><a href="#group-comparisons-and-single-subjects" id="toc-group-comparisons-and-single-subjects" class="nav-link" data-scroll-target="#group-comparisons-and-single-subjects"><span class="header-section-number">37.3</span> Group comparisons and single subjects</a>
+  <ul class="collapse">
+  <li><a href="#design-for-diagnosis" id="toc-design-for-diagnosis" class="nav-link" data-scroll-target="#design-for-diagnosis"><span class="header-section-number">37.3.1</span> Design for diagnosis</a></li>
+  <li><a href="#the-problem-with-group-comparisons" id="toc-the-problem-with-group-comparisons" class="nav-link" data-scroll-target="#the-problem-with-group-comparisons"><span class="header-section-number">37.3.2</span> The problem with group comparisons</a></li>
+  </ul></li>
+  <li><a href="#the-importance-of-visualization-anscombes-quartet" id="toc-the-importance-of-visualization-anscombes-quartet" class="nav-link" data-scroll-target="#the-importance-of-visualization-anscombes-quartet"><span class="header-section-number">37.4</span> The importance of visualization: Anscombe’s quartet</a></li>
+  <li><a href="#the-history-and-philosophy-of-hypothesis-testing" id="toc-the-history-and-philosophy-of-hypothesis-testing" class="nav-link" data-scroll-target="#the-history-and-philosophy-of-hypothesis-testing"><span class="header-section-number">37.5</span> The history and philosophy of hypothesis testing</a>
+  <ul class="collapse">
+  <li><a href="#science-without-statistical-inference" id="toc-science-without-statistical-inference" class="nav-link" data-scroll-target="#science-without-statistical-inference"><span class="header-section-number">37.5.1</span> Science without statistical inference</a></li>
+  <li><a href="#where-hypothesis-testing-came-from" id="toc-where-hypothesis-testing-came-from" class="nav-link" data-scroll-target="#where-hypothesis-testing-came-from"><span class="header-section-number">37.5.2</span> Where hypothesis testing came from</a></li>
+  <li><a href="#why-this-history-matters-for-fmri" id="toc-why-this-history-matters-for-fmri" class="nav-link" data-scroll-target="#why-this-history-matters-for-fmri"><span class="header-section-number">37.5.3</span> Why this history matters for fMRI</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/part6-dataanalysis.html">fMRI Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/ch47-statistical-caution.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical significance, effect size, and the history of hypothesis testing</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical significance, effect size, and the history of hypothesis testing</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="Work in Progress">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Work in Progress
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Suggestions of all kinds for these lecture notes are welcome — whether it’s fixing small errors, raising bigger questions, or offering new perspectives. Please share comments through <a href="https://github.com/wandell/MRI-2026/issues" target="_blank">GitHub Issues</a>. To make feedback easier to address, please point to the section you have in mind — by section number or a short snippet of text.</em></p>
+</div>
+</div>
+<hr>
+<p>The preceding chapters built up the machinery of the general linear model and signal detection theory. This chapter steps back and asks why caution is required when applying that machinery: statistical significance is not the same thing as scientific importance, a group difference is not the same thing as an individual diagnosis, and a summary statistic is not a substitute for looking at the data.</p>
+<section id="statistical-significance-is-not-scientific-importance" class="level2 page-columns page-full" data-number="37.1">
+<h2 data-number="37.1" class="anchored" data-anchor-id="statistical-significance-is-not-scientific-importance"><span class="header-section-number">37.1</span> Statistical significance is not scientific importance</h2>
+<p>The economist and statistician Deirdre McCloskey, together with Stephen Ziliak, made this case at book length, arguing that a purely qualitative “significant/not significant” rule has displaced the quantitative question of how large an effect actually is, across the life and human sciences <span class="citation" data-cites="ziliak2008-cult">(<a href="#ref-ziliak2008-cult" role="doc-biblioref">Ziliak &amp; McCloskey, 2008</a>)</span>:</p>
+<blockquote class="blockquote">
+<p>In many of the life and human sciences the existence/whether question of the philosophical disciplines has substituted for the size-matters/how-much question of the scientific disciplines. The substitution is causing a loss of jobs, justice, profits, environmental quality, and even life. The substitution we are worrying about here is called “statistical significance” — a qualitative, philosophical rule that has substituted for a quantitative, scientific magnitude and judgment.</p>
+<p>— <span class="citation" data-cites="ziliak2008-cult">Ziliak &amp; McCloskey (<a href="#ref-ziliak2008-cult" role="doc-biblioref">2008</a>)</span></p>
+</blockquote>
+<div id="fig-ch47-ziliak-mccloskey-cult-of-significance" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Slide with a block of text titled A Significant Problem on the left and the book cover The Cult of Statistical Significance by Stephen T. Ziliak and Deirdre N. McCloskey on the right.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-ziliak-mccloskey-cult-of-significance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/ziliak-mccloskey-cult-of-significance.png" class="img-fluid figure-img" alt="Slide with a block of text titled A Significant Problem on the left and the book cover The Cult of Statistical Significance by Stephen T. Ziliak and Deirdre N. McCloskey on the right.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-ziliak-mccloskey-cult-of-significance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.1: Cover of Ziliak and McCloskey’s <em>The Cult of Statistical Significance</em>, alongside the book’s opening statement of the problem.
+</figcaption>
+</figure>
+</div>
+<p>The statistical effect size, <span class="math inline">\(d'\)</span>, is a case in point: it is a ratio (separation over spread), not a measurement in real-world units. Two methods can have very different effect sizes while producing very different real-world outcomes — and the ranking can even reverse. Consider two weight-loss methods, A and B. Method A produces an average weight loss of 10 pounds with a standard deviation of 2 pounds, giving <span class="math inline">\(d' = 10/2 = 5\)</span>. Method B produces an average loss of only 5 pounds, but with a much tighter standard deviation of 0.5 pounds, giving <span class="math inline">\(d' = 5/0.5 = 10\)</span> — twice the effect size of method A, despite producing half the actual weight loss.</p>
+<div id="fig-ch47-effect-size-vs-real-units" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Two overlapping bell-curve distributions over weight loss, labeled Method A (wide, centered near 10) and Method B (narrow, centered near 5), with effect sizes of 5 and 10 respectively listed at left.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-effect-size-vs-real-units-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/effect-size-vs-real-units.png" class="img-fluid figure-img" alt="Two overlapping bell-curve distributions over weight loss, labeled Method A (wide, centered near 10) and Method B (narrow, centered near 5), with effect sizes of 5 and 10 respectively listed at left.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-effect-size-vs-real-units-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.2: Two weight-loss methods illustrating that statistical effect size is not the same as size in real units: method B has double the effect size of method A (<span class="math inline">\(d'=10\)</span> vs.&nbsp;<span class="math inline">\(d'=5\)</span>) despite producing half the actual weight loss (5 lbs vs.&nbsp;10 lbs).
+</figcaption>
+</figure>
+</div>
+<p>Which method would you choose? If the real-world goal is weight lost, method A wins decisively despite its smaller <span class="math inline">\(d'\)</span>. The lesson generalizes directly to fMRI: a large <span class="math inline">\(d'\)</span> or a small <span class="math inline">\(p\)</span>-value tells you a difference is reliably detectable, not that it is large, or that it matters.</p>
+</section>
+<section id="terminology-across-fields" class="level2 page-columns page-full" data-number="37.2">
+<h2 data-number="37.2" class="anchored" data-anchor-id="terminology-across-fields"><span class="header-section-number">37.2</span> Terminology across fields</h2>
+<p>The vocabulary for describing detection performance was introduced in earlier chapters using the language of signal detection theory (hits, false alarms, <span class="math inline">\(d'\)</span>). Several other fields use different names for exactly the same quantities, and it is worth having all of them side by side.</p>
+<p>Statisticians describe <strong>Type I and Type II errors</strong>: a Type I error is a false alarm — rejecting a true null hypothesis — with probability <span class="math inline">\(\alpha\)</span>; a Type II error is a miss — failing to reject a false null hypothesis — with probability <span class="math inline">\(\beta\)</span>.</p>
+<div id="fig-ch47-terminology-type1-type2" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Left: a table of error types with rows Don't reject and Reject and columns Null hypothesis True and False, cells labeled Correct inference, Type II error, Type I error, Correct inference. Right: two overlapping bell curves and an ROC curve, plus a 2x2 TP/FP/FN/TN confusion matrix.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-terminology-type1-type2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/terminology-type1-type2.png" class="img-fluid figure-img" alt="Left: a table of error types with rows Don't reject and Reject and columns Null hypothesis True and False, cells labeled Correct inference, Type II error, Type I error, Correct inference. Right: two overlapping bell curves and an ROC curve, plus a 2x2 TP/FP/FN/TN confusion matrix.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-terminology-type1-type2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.3: The standard statistical table of error types, crossing the truth of the null hypothesis against the decision made, alongside the equivalent signal-detection-theory picture (overlapping distributions and an ROC curve) and confusion-matrix layout (TP/FP/FN/TN).
+</figcaption>
+</figure>
+</div>
+<p>The diagnostic-testing and machine-learning literatures describe <strong>sensitivity and specificity</strong>: sensitivity (the true positive rate) is the probability of a positive test result given that the individual truly is positive — a hit. Specificity (the true negative rate) is the probability of a negative test result given that the individual truly is negative — a correct rejection.</p>
+<div id="fig-ch47-terminology-sensitivity-specificity" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Circle of selected elements overlapping a rectangle of relevant elements, divided into false negatives, true positives, false positives, and true negatives, with formulas for sensitivity and specificity below.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-terminology-sensitivity-specificity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/terminology-sensitivity-specificity.png" class="img-fluid figure-img" alt="Circle of selected elements overlapping a rectangle of relevant elements, divided into false negatives, true positives, false positives, and true negatives, with formulas for sensitivity and specificity below.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-terminology-sensitivity-specificity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.4: Sensitivity and specificity illustrated with a Venn-diagram-style scatter of relevant/selected elements: sensitivity is the fraction of relevant elements that were selected, specificity concerns the negative elements.
+</figcaption>
+</figure>
+</div>
+<p>The information-retrieval literature describes <strong>precision and recall</strong>: precision (also called positive predictive value) is the fraction of relevant instances among the retrieved instances; recall (equivalent to sensitivity) is the fraction of relevant instances that were actually retrieved. Recall is simply the complement of the Type II error rate (one minus the Type II error rate); precision is related to the Type I error rate, but in a more complicated way, since it also depends on the prior probability of encountering a relevant versus an irrelevant item.</p>
+<div id="fig-ch47-terminology-precision-recall" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Same circle-and-rectangle diagram as the sensitivity/specificity figure, now labeled with retrieved elements and relevant elements, with formulas for precision and recall below.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-terminology-precision-recall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/terminology-precision-recall.png" class="img-fluid figure-img" alt="Same circle-and-rectangle diagram as the sensitivity/specificity figure, now labeled with retrieved elements and relevant elements, with formulas for precision and recall below.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-terminology-precision-recall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.5: Precision and recall, defined over the same selected/relevant element diagram: precision asks how many retrieved items are relevant, recall asks how many relevant items were retrieved.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="group-comparisons-and-single-subjects" class="level2 page-columns page-full" data-number="37.3">
+<h2 data-number="37.3" class="anchored" data-anchor-id="group-comparisons-and-single-subjects"><span class="header-section-number">37.3</span> Group comparisons and single subjects</h2>
+<p>Many neuroimagers perform group comparisons: a typical report summarizes a response or structural difference between two groups, and the cover of a well-known handbook of fMRI data analysis is itself built around exactly this kind of group-difference brain map <span class="citation" data-cites="poldrack2011-handbook">(<a href="#ref-poldrack2011-handbook" role="doc-biblioref">Poldrack et al., 2011</a>)</span>. But group comparisons differ greatly from the designs needed for diagnosis of a single participant, and the tools required for the two purposes differ as well.</p>
+<div id="fig-ch47-poldrack-handbook-cover" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Three axial and sagittal brain maps with red-yellow and blue-green statistical overlays, next to the book cover text Handbook of Functional MRI Data Analysis by Poldrack, Mumford, and Nichols.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-poldrack-handbook-cover-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/poldrack-handbook-cover.png" class="img-fluid figure-img" alt="Three axial and sagittal brain maps with red-yellow and blue-green statistical overlays, next to the book cover text Handbook of Functional MRI Data Analysis by Poldrack, Mumford, and Nichols.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-poldrack-handbook-cover-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.6: The cover of the <em>Handbook of Functional MRI Data Analysis</em>, illustrating a typical group-comparison statistical brain map (Poldrack, Mumford, and Nichols, 2011).
+</figcaption>
+</figure>
+</div>
+<section id="design-for-diagnosis" class="level3 page-columns page-full" data-number="37.3.1">
+<h3 data-number="37.3.1" class="anchored" data-anchor-id="design-for-diagnosis"><span class="header-section-number">37.3.1</span> Design for diagnosis</h3>
+<p>The goal of a diagnostic measurement is to determine the best way to help a particular individual — not to characterize a population average. A population distribution of some potentially useful diagnostic measurement might look like the blue histogram below; two individual children’s measurements, marked as filled circles, fall at opposite tails of that distribution, and we would like to use the measurement to decide how to support each child (for example, whether remedial training is likely to help, or whether an electronic reading aid would serve better).</p>
+<div id="fig-ch47-design-for-diagnosis-population" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Histogram of a measurement value for 1000 subjects, bell-shaped and centered near zero, with a green dot near -4 labeled Will learn with remedial training and a red dot near 4 labeled Difficulty learning to read visually, use electronic aids.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-design-for-diagnosis-population-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/design-for-diagnosis-population.png" class="img-fluid figure-img" alt="Histogram of a measurement value for 1000 subjects, bell-shaped and centered near zero, with a green dot near -4 labeled Will learn with remedial training and a red dot near 4 labeled Difficulty learning to read visually, use electronic aids.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-design-for-diagnosis-population-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.7: A population distribution of a diagnostic measurement (N=1000), with two individual children’s measurements marked at the two tails, illustrating the goal of individual diagnosis.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="the-problem-with-group-comparisons" class="level3 page-columns page-full" data-number="37.3.2">
+<h3 data-number="37.3.2" class="anchored" data-anchor-id="the-problem-with-group-comparisons"><span class="header-section-number">37.3.2</span> The problem with group comparisons</h3>
+<p>A group comparison can give a misleading impression of how well a diagnostic measure actually works. Suppose the same population measurement is compared between a control group and a test group of poor readers. Plotted as overlapping histograms, the two distributions are almost entirely overlapping — the measurement, on its own, would not help much with diagnosing an individual. But plotted instead as a group-mean bar chart with error bars, the same data can look like a large, unambiguous difference.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Overlapping distributions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Group means and error bars</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-1-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="fig-ch47-group-comparison-histograms" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Two heavily overlapping histograms, one blue labeled Control and one orange labeled Test, both bell-shaped and centered close together.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-group-comparison-histograms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/group-comparison-histograms.png" class="img-fluid figure-img" alt="Two heavily overlapping histograms, one blue labeled Control and one orange labeled Test, both bell-shaped and centered close together.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-group-comparison-histograms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.8: The same measurement compared between a control group and a test group of poor readers, plotted as overlapping histograms (N=1000 per group): the distributions overlap almost completely.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="fig-ch47-group-comparison-bar-chart-punchline" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Left panel repeats the overlapping histograms; right panel shows a bar chart with a small negative Control bar and a much larger positive Test bar, each with small error bars, making the group difference look large and clean.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-group-comparison-bar-chart-punchline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/group-comparison-bar-chart-punchline.png" class="img-fluid figure-img" alt="Left panel repeats the overlapping histograms; right panel shows a bar chart with a small negative Control bar and a much larger positive Test bar, each with small error bars, making the group difference look large and clean.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-group-comparison-bar-chart-punchline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.9: The identical data, now plotted as group means with standard-error bars: the same nearly-complete overlap between individuals now looks like a large, clean difference between the two group means, and the paper reporting it might encourage treating this as a useful biomarker — a mistaken conclusion for the reasons in the previous panel. This gap between what the histogram shows and what the bar chart seems to show grows larger, not smaller, as the sample size N increases.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The histogram makes clear that the size of the individual-level effect is small; the bar chart makes it look as though the effect size is large, when in fact it is only <em>statistically</em> significant — a distinction that matters enormously for any claim about using a measure diagnostically, and one that becomes more pronounced, not less, as the sample size grows.</p>
+</section>
+</section>
+<section id="the-importance-of-visualization-anscombes-quartet" class="level2 page-columns page-full" data-number="37.4">
+<h2 data-number="37.4" class="anchored" data-anchor-id="the-importance-of-visualization-anscombes-quartet"><span class="header-section-number">37.4</span> The importance of visualization: Anscombe’s quartet</h2>
+<p>Group-level summary statistics can also actively obscure the structure of the underlying data, independent of any question about individual diagnosis or sample size. Anscombe’s quartet is the classic demonstration: four different datasets share an identical mean, variance, correlation, and linear regression line, to several decimal places — yet look completely different when actually plotted <span class="citation" data-cites="anscombe1973-graphs">(<a href="#ref-anscombe1973-graphs" role="doc-biblioref">Anscombe, 1973</a>)</span>.</p>
+<div id="fig-ch47-anscombes-quartet" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Table of summary statistics (mean, variance, correlation, regression line, R-squared) all identical across four datasets, next to four scatter plots labeled y1 vs x1 through y4 vs x4, each showing visibly different data patterns despite sharing the same fitted regression line.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-anscombes-quartet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/anscombes-quartet.png" class="img-fluid figure-img" alt="Table of summary statistics (mean, variance, correlation, regression line, R-squared) all identical across four datasets, next to four scatter plots labeled y1 vs x1 through y4 vs x4, each showing visibly different data patterns despite sharing the same fitted regression line.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-anscombes-quartet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.10: Anscombe’s quartet: four datasets with identical summary statistics (mean, variance, correlation, regression line, and <span class="math inline">\(R^2\)</span>) but strikingly different structure when visualized — a straightforward linear relationship, a clear curve, a linear relationship with one outlier, and a single-point-driven relationship with no other variation in <span class="math inline">\(x\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>The moral for fMRI analysis is direct: a reported beta weight, <span class="math inline">\(d'\)</span>, or <span class="math inline">\(p\)</span>-value is a summary statistic like the ones in Anscombe’s table — useful, but no substitute for looking at the underlying time series, the scatter of individual subjects, or the raw distribution the summary was computed from.</p>
+</section>
+<section id="the-history-and-philosophy-of-hypothesis-testing" class="level2 page-columns page-full" data-number="37.5">
+<h2 data-number="37.5" class="anchored" data-anchor-id="the-history-and-philosophy-of-hypothesis-testing"><span class="header-section-number">37.5</span> The history and philosophy of hypothesis testing</h2>
+<p>The statistical machinery covered in the last several chapters — <span class="math inline">\(p\)</span>-values, significance testing, <span class="math inline">\(d'\)</span> — feels like a permanent, neutral backdrop to quantitative science. It is neither: it is a specific set of tools with a specific history, invented for specific purposes, adopted unevenly across fields, and still argued about today. This closing section steps back from technique to ask where this machinery came from, and whether science actually requires it.</p>
+<section id="science-without-statistical-inference" class="level3 page-columns page-full" data-number="37.5.1">
+<h3 data-number="37.5.1" class="anchored" data-anchor-id="science-without-statistical-inference"><span class="header-section-number">37.5.1</span> Science without statistical inference</h3>
+<p>The psychologist Gerd Gigerenzer has argued that routine inferential statistics — <span class="math inline">\(p\)</span>-values, confidence intervals, and the like — are far less central to the practice of science than is commonly assumed, and that many of the most important discoveries in the history of science were made without them at all:</p>
+<blockquote class="blockquote">
+<p>To understand how deeply the inference revolution changed the social sciences, it is helpful to realize that routine statistical tests, such as calculations of p values or other inferential statistics, are not common in the natural sciences. Moreover, they have played no role in any major discoveries in the social sciences. Consider how Isaac Newton, the father of the first unified system of modern physics, practiced research. In his Opticks, Newton (1704/1952) advanced propositions about the nature of light, such as that white light consists of spectral colors. Then he reported in detail a series of experiments to test these. In other words, for Newton, an experiment meant putting in place a set of conditions, derived from a theory, and then demonstrating the predicted effect. Nowhere in his writings is sampling or statistical inference mentioned.</p>
+<p>— <span class="citation" data-cites="gigerenzer2015-nq">Gigerenzer &amp; Marewski (<a href="#ref-gigerenzer2015-nq" role="doc-biblioref">2015</a>)</span></p>
+</blockquote>
+<div id="fig-ch47-newton-opticks-quote" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Text slide titled Science without statistical inference, quoting Gigerenzer on Isaac Newton's experimental method in Opticks, attributed to Gigerenzer via JW.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-newton-opticks-quote-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/gosset-quote-1908.png" class="img-fluid figure-img" alt="Text slide titled Science without statistical inference, quoting Gigerenzer on Isaac Newton's experimental method in Opticks, attributed to Gigerenzer via JW.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-newton-opticks-quote-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.11: Gigerenzer on Newton’s <em>Opticks</em>: an experiment meant demonstrating a theoretically predicted effect directly, with no role for sampling or statistical inference.
+</figcaption>
+</figure>
+</div>
+<p>Gigerenzer is careful to note that Newton was not opposed to statistical reasoning as such — he simply confined it to a different domain, quality control, rather than to scientific discovery itself:</p>
+<blockquote class="blockquote">
+<p>However, Newton was not hostile to statistical inference. In his role as the master of the London Royal Mint, he had to make sure that the amount of gold in the coins was neither too little nor too large. For that problem, he relied on a sampling scheme named the Trial of the Pyx. The trial consisted of a sample of coins drawn and placed in a box known as the Pyx (derived from the Greek term for box), a null hypothesis to be tested (the standard coin), a two-sided alternative, a test statistic, and a critical region (Stigler, 1999). <em>In Newton’s view, sampling and statistical inference were needed for quality control in a mint but not in science</em>. Similarly, inferential statistics did not contribute to Watson and Crick’s discovery of the double helix or to Einstein’s special relativity theory.</p>
+<p>The same can be said for virtually all of the classical discoveries in psychology. You will not find Jean Piaget calculating a t test. Wolfgang Kohler developed the Gestalt laws of perception, Ivan P. Pavlov the principles of classical conditioning, B. F. Skinner those of operant conditioning, George Miller his magical number seven plus minus two, and Herbert A. Simon his Nobel Prize–winning work in economics — all without calculating p values, confidence intervals, or Bayes factors. This was not because they did not know statistical inference. It was known long ago.</p>
+<p>— <span class="citation" data-cites="gigerenzer2015-nq">Gigerenzer &amp; Marewski (<a href="#ref-gigerenzer2015-nq" role="doc-biblioref">2015</a>)</span></p>
+</blockquote>
+<p>This is a deliberately provocative claim, not a settled consensus — Gigerenzer’s broader argument is that statistical inference is a genuinely useful <em>tool</em>, best suited to specific problems (like Newton’s coinage quality control, or like deciding whether an fMRI beta weight differs from zero), but a poor <em>substitute</em> for the kind of direct theoretical prediction and demonstration that drove discoveries like Newton’s optics, Watson and Crick’s double helix, or Piaget’s developmental stages.</p>
+</section>
+<section id="where-hypothesis-testing-came-from" class="level3 page-columns page-full" data-number="37.5.2">
+<h3 data-number="37.5.2" class="anchored" data-anchor-id="where-hypothesis-testing-came-from"><span class="header-section-number">37.5.2</span> Where hypothesis testing came from</h3>
+<p>If routine significance testing was not how most of the classic discoveries were made, where did it come from, and how did it become so dominant? Ziliak and McCloskey trace the story to the statistician William Sealy Gosset — better known by his pen name “Student” — a brewer at Guinness in Dublin who invented the t-test in 1908 while working on small-sample quality-control problems for the brewery <span class="citation" data-cites="ziliak2008-cult">(<a href="#ref-ziliak2008-cult" role="doc-biblioref">Ziliak &amp; McCloskey, 2008</a>)</span>:</p>
+<blockquote class="blockquote">
+<p>In 1908 “Student,” William Sealy Gosset (1876–1937), invented a statistical instrument that would change the life and social sciences. Now those sciences are being ruined by it in a way that Student himself always warned it could.</p>
+<p>— <span class="citation" data-cites="ziliak2008-cult">Ziliak &amp; McCloskey (<a href="#ref-ziliak2008-cult" role="doc-biblioref">2008</a>)</span></p>
+</blockquote>
+<div id="fig-ch47-gosset-quote-brewer" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Portrait photo of William S. Gosset in a suit and tie, next to a quote about him inventing a statistical instrument in 1908.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-gosset-quote-brewer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/gosset-quote-brewer.png" class="img-fluid figure-img" alt="Portrait photo of William S. Gosset in a suit and tie, next to a quote about him inventing a statistical instrument in 1908.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-gosset-quote-brewer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.12: William Sealy Gosset (“Student”), inventor of the t-test in 1908 (photo courtesy of the Galton Laboratory, University College London, and <em>Annals of Human Genetics</em>).
+</figcaption>
+</figure>
+</div>
+<p>Ziliak and McCloskey’s book is explicitly a defense of Gosset against the way his invention was later used, and a critique of the statistician who they argue was most responsible for that shift, Ronald A. Fisher:</p>
+<blockquote class="blockquote">
+<p>No working scientist today knows much about Gosset, a brewer of Guinness stout and the inventor of a good deal of modern statistics. The scruffy little Gosset, with his tall leather boots and a rucksack on his back, is the heroic underdog in our story. Gosset, we claim, was a great scientist. He took an economic approach to the logic of uncertainty.</p>
+<p>— <span class="citation" data-cites="ziliak2008-cult">Ziliak &amp; McCloskey (<a href="#ref-ziliak2008-cult" role="doc-biblioref">2008</a>)</span>, Preface</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>For over two decades he [Gosset] quietly tried to educate Fisher. But Fisher, our flawed villain, erased from Gosset’s inventions the consciously economic element. We want to bring it back.</p>
+<p>— <span class="citation" data-cites="ziliak2008-cult">Ziliak &amp; McCloskey (<a href="#ref-ziliak2008-cult" role="doc-biblioref">2008</a>)</span>, Preface</p>
+</blockquote>
+<div id="fig-ch47-fisher-quote-villain" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Portrait photo of Ronald A. Fisher in a suit, next to a quote describing him as a flawed villain who erased the economic element from Gosset's statistical test.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-fisher-quote-villain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/fisher-quote-villain.png" class="img-fluid figure-img" alt="Portrait photo of Ronald A. Fisher in a suit, next to a quote describing him as a flawed villain who erased the economic element from Gosset's statistical test.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-fisher-quote-villain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.13: Ronald A. Fisher, cast by Ziliak and McCloskey as the “flawed villain” of their history of statistical significance, for erasing the economic (“how much does it matter”) element from Gosset’s original test.
+</figcaption>
+</figure>
+</div>
+<p>Gosset himself, according to this account, saw his test as a practical tool for a specific brewing problem — not as a universal rule for scientific significance, and not as a substitute for asking how large or economically meaningful an effect actually was:</p>
+<blockquote class="blockquote">
+<p>The most popular test was invented, we’ve noted, by Gosset, better known by his pen name “Student,” a chemist and brewer at Guinness in Dublin. Gosset didn’t think his test was very important to his main goal, which was of course brewing a good beer at a good price. The test, Gosset warned right from the beginning, does not deal with substantive importance. It does not begin to measure what Gosset called “real error” and “pecuniary advantage,” two terms worth reviving in current statistical practice.</p>
+<p>— <span class="citation" data-cites="ziliak2008-cult">Ziliak &amp; McCloskey (<a href="#ref-ziliak2008-cult" role="doc-biblioref">2008</a>)</span></p>
+</blockquote>
+<div id="fig-ch47-gosset-quote-real-error" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Text slide quoting Ziliak and McCloskey on Gosset's modest view of his own test as a practical brewing tool, next to the book cover of The Cult of Statistical Significance.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-gosset-quote-real-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/gosset-quote-real-error.png" class="img-fluid figure-img" alt="Text slide quoting Ziliak and McCloskey on Gosset's modest view of his own test as a practical brewing tool, next to the book cover of The Cult of Statistical Significance.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-gosset-quote-real-error-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.14: Gosset’s own view of his test: a practical brewing tool that, he warned from the start, does not measure substantive importance — not the universal rule for “real error” and “pecuniary advantage” it was later taken to be.
+</figcaption>
+</figure>
+</div>
+<p>Ziliak and McCloskey argue that Fisher, in two influential books written and revised during the 1920s and 1930s, replaced this economically grounded approach with a purely statistical rule of thumb — the “Rule of Two” — and that this rule, more than any single later development, is responsible for equating “significant” with “important” across the life and social sciences ever since:</p>
+<blockquote class="blockquote">
+<p>But Karl Pearson and especially the amazing Ronald Fisher didn’t listen. In two great books written and revised during the 1920s and 1930s, Fisher imposed a Rule of Two: if a result departs from an assumed hypothesis by two or more standard deviations of its own sampling variation, regardless of the size of the prize and the expected cost of going for it, then it is to be called a “significant” scientific finding.</p>
+<p>— <span class="citation" data-cites="ziliak2008-cult">Ziliak &amp; McCloskey (<a href="#ref-ziliak2008-cult" role="doc-biblioref">2008</a>)</span></p>
+</blockquote>
+<div id="fig-ch47-fisher-quote-rule-of-two" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Text slide quoting Ziliak and McCloskey describing Fisher's Rule of Two for statistical significance, next to the book cover of The Cult of Statistical Significance.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-fisher-quote-rule-of-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/fisher-quote-rule-of-two.png" class="img-fluid figure-img" alt="Text slide quoting Ziliak and McCloskey describing Fisher's Rule of Two for statistical significance, next to the book cover of The Cult of Statistical Significance.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-fisher-quote-rule-of-two-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.15: Fisher’s “Rule of Two”: a result departing from the null hypothesis by two or more standard deviations is declared “significant,” regardless of the real-world size of the effect or the cost of acting on it.
+</figcaption>
+</figure>
+</div>
+<p>And, in their account, the rule stuck — not because Gosset’s economically grounded alternative was refuted, but because most of the field simply followed Fisher’s simpler, purely statistical convention instead, a convention that persists essentially unchanged in the routine “<span class="math inline">\(p &lt; 0.05\)</span>” thresholds used throughout neuroimaging and the rest of the life sciences today:</p>
+<blockquote class="blockquote">
+<p>If not, not. Fisher told the subjectivity-phobic scientists that if they wanted to raise their studies “to the rank of sciences” they must employ his rule. He later urged them to ignore the size-matters/how-much approaches of Gosset, Neyman, Egon Pearson, Wald, Jeffreys, Deming, Shewhart, and Savage. Most statistical scientists listened to Fisher.</p>
+<p>— <span class="citation" data-cites="ziliak2008-cult">Ziliak &amp; McCloskey (<a href="#ref-ziliak2008-cult" role="doc-biblioref">2008</a>)</span></p>
+</blockquote>
+<div id="fig-ch47-fisher-quote-legacy" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Text slide quoting Ziliak and McCloskey describing how most statistical scientists adopted Fisher's rule over Gosset's economic approach, next to the book cover of The Cult of Statistical Significance.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch47-fisher-quote-legacy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch47/fisher-quote-legacy.png" class="img-fluid figure-img" alt="Text slide quoting Ziliak and McCloskey describing how most statistical scientists adopted Fisher's rule over Gosset's economic approach, next to the book cover of The Cult of Statistical Significance.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch47-fisher-quote-legacy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;37.16: Ziliak and McCloskey’s account of Fisher urging scientists to adopt his Rule of Two and to set aside the “how much” approaches of Gosset, Neyman, Pearson, Wald, Jeffreys, Deming, Shewhart, and Savage — most of the field, they argue, listened to Fisher.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="why-this-history-matters-for-fmri" class="level3" data-number="37.5.3">
+<h3 data-number="37.5.3" class="anchored" data-anchor-id="why-this-history-matters-for-fmri"><span class="header-section-number">37.5.3</span> Why this history matters for fMRI</h3>
+<p>Ziliak and McCloskey’s account is itself a historical argument, not a neutral fact, and like any single-narrative history it simplifies a more tangled real story — but the underlying methodological point stands on its own, independent of how fairly it treats Fisher personally. Every chapter in this part of the book has used a “<span class="math inline">\(p &lt; 0.05\)</span>,” “$d’ $ is large,” or “the beta weight is significant” style of claim, and that convention traces directly back to the specific historical episode described above, not to any deeper logical necessity. The caution from earlier in this chapter — that statistical significance is not the same as scientific or clinical importance — is not a modern methodological fad; it is, on this account, closer to Gosset’s <em>original</em> intention than the significance-testing convention that eventually displaced it.</p>
+
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-anscombe1973-graphs" class="csl-entry" role="listitem">
+Anscombe, F. J. (1973). Graphs in statistical analysis. <em>The American Statistician</em>, <em>27</em>(1), 17–21. <a href="https://doi.org/10.1080/00031305.1973.10478966">https://doi.org/10.1080/00031305.1973.10478966</a>
+</div>
+<div id="ref-gigerenzer2015-nq" class="csl-entry" role="listitem">
+Gigerenzer, G., &amp; Marewski, J. N. (2015). Surrogate science: <span>The</span> idol of a universal method for scientific inference. <em>Journal of Management</em>, <em>41</em>(2), 421–440.
+</div>
+<div id="ref-poldrack2011-handbook" class="csl-entry" role="listitem">
+Poldrack, R. A., Mumford, J. A., &amp; Nichols, T. E. (2011). <em>Handbook of functional <span>MRI</span> data analysis</em>. Cambridge University Press.
+</div>
+<div id="ref-ziliak2008-cult" class="csl-entry" role="listitem">
+Ziliak, S. T., &amp; McCloskey, D. N. (2008). <em>The cult of statistical significance: How the standard error costs us jobs, justice, and lives</em>. University of Michigan Press.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch46-discriminability-roc.html" class="pagination-link" aria-label="The discriminability index and the receiver operating characteristic">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">The discriminability index and the receiver operating characteristic</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/part7-vision.html" class="pagination-link" aria-label="Visual Neuroscience with fMRI">
+        <span class="nav-page-text">Visual Neuroscience with fMRI</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-10-08">
+
+<title>3&nbsp; Radiofrequency Coils – Human Neuroimaging with MRI: A Primer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch04-safety.html" rel="next">
+<link href="../chapters/ch02-gradient-coils.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/part1-instrumentation.html">MR Instrumentation</a></li><li class="breadcrumb-item"><a href="../chapters/ch03-rf-coils.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Radiofrequency Coils</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Human Neuroimaging with MRI: A Primer</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part1-instrumentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MR Instrumentation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch01-big-iron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">MRI System</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch02-gradient-coils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Main Field and Gradient Coils</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch03-rf-coils.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Radiofrequency Coils</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch04-safety.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MRI Safety</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part2-signals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MR Signals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch05-mr-signal-fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">MR Signal Fundamentals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch06-macroscopic-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The MR Macroscopic Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch07-t1-relaxation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">T1 Relaxation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch08-t2-relaxation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">T2 Relaxation and Signal Contrast</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch09-spin-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Spin Echo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch10-inversion-recovery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inversion recovery</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch11-intermediate-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Initial review</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part3-imageformation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Image Formation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch12-image-formation-principles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Image Formation Principles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch15-slice-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Slice Selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch17-imaging-within-slice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Imaging Within the Slice</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch14-fourier-series-kspace.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Image formation and Fourier Series (k-space)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch18-kspace-epi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">K-Space and Echo Planar Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch19-pulse-sequences.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">More Pulse Sequences</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch20-image-quality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Image Distortions, Quality, and Parallel Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch21-image-data-formats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Practical Software: Image Data Formats</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part4-brain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brain Systems</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch22-brain-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Brain systems overview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch23-brain-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">The packaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch24-gross-anatomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Gross anatomy and model brain systems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch26-neuronal-types-and-signaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Neuronal Types and Signaling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch28-gross-neurovascular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Gross neurovascular anatomy</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch29-fine-scale-neurovascular.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Fine-scale neurovascular anatomy and the neurovascular unit</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part5-functionalsignals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functional MR Signals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch31-walter-k.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">The story of Walter K</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch32-blood-oxygenation-levels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Blood oxygenation levels and the balloon model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch34-functional-mri-signal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Discovery of the functional MRI signal</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch37-mathiesen-lauritzen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">The Mathiesen-Lauritzen experiments</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch38-electrophysiological-signal-definitions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Electrophysiological signals and the BOLD response</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch39-energy-consumption.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Which signals consume the most energy?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch41-nvu-development.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">BOLD and the development of the neurovascular unit</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part6-dataanalysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">fMRI Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch35-preliminary-neurological-measurements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Early neurological observations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch42-general-linear-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">The General Linear Model and Testing Linearity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch44-signal-detection-theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Signal detection theory and diagnostic examples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch46-discriminability-roc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">The discriminability index and the receiver operating characteristic</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch47-statistical-caution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Statistical significance, effect size, and the history of hypothesis testing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part7-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visual Neuroscience with fMRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch49-introduction-to-vision.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Introduction to vision</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch50-history-of-vision-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">History of vision science</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch51-discovery-of-multiple-maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Discovery of multiple maps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch52-organization-of-the-maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Organization of the maps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch53-visual-specializations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">Visual specializations</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part8-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diffusion MRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch54-white-matter-biology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">White Matter Biology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch55-principles-of-diffusion-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Principles of Diffusion Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch56-diffusion-imaging-of-the-brain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Diffusion Imaging of the Brain</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch57-models-of-voxel-level-diffusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Models of Voxel-Level Diffusion</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch58-voxel-level-reliability-measures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Voxel-Level Reliability Measures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch59-tractography-combining-voxels-into-tracts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">Tractography: Combining Voxels into Tracts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch60-tractography-analyzing-white-matter-tracts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Tractography: Analyzing White Matter Tracts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch61-dki-dsi-wedeen-geometry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">DKI, DSI, and Wedeen Geometry</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part9-qmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quantitative MRI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch62-noddi-magnetization-transfer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">NODDI and Magnetization Transfer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch63-asl-qsm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Arterial Spin Labeling and Quantitative Susceptibility Mapping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch64-vaso-multiecho-mrf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">VASO, Multi-echo, and MR Fingerprinting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch65-high-field-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">High Field Imaging Challenges</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch66-mtv-gratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">Macromolecular Tissue Volume and the g-ratio</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../chapters/part10-applications.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MRI Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch67-topology-spm-surface-visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Topology, Statistical Parameter Mapping, and Surface Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch68-cortical-flattening-marching-cubes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Cortical Flattening and the Marching Cubes Algorithm</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch69-segmentation-visualization-extras.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Segmentation and Visualization: Additional Examples</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true">
+ <span class="menu-text">Resources</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/joseph-larmor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Joseph Larmor and his frequency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/drawing-single-nmr-spins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Drawing Single NMR Spins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/nmr-relaxation-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why Spins Relax</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/felix-bloch-equations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Felix Bloch and the Bloch Equations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/erwin-hahn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Erwin L. Hahn and the Spin Echo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/lauterbur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Paul Lauterbur</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/fast-exchange.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fast Exchange Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/jean-baptiste-fourier.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">History of Fourier’s publication</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/mansfeld-epi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mansfeld and EPI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/phineas-gage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Phineas Gage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/leukoencephalopathy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leukoencephalopathy and White Matter Adaptability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/developmental-hemispherectomy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Developmental Hemispherectomy and Plasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/wada-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Wada Test and Its Replacement by fMRI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/ptsd-prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Predicting Vulnerability to PTSD from Brain Activity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/T1-T2-ratio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The T1w/T2w Ratio for Myelin Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/brain-beats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Brain Beats: Pulsatile Motion and Flow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources/Reproducibility.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Achieving Reproducibility: Perspectives and New Tools</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-rf-coils-overview" id="toc-sec-rf-coils-overview" class="nav-link active" data-scroll-target="#sec-rf-coils-overview"><span class="header-section-number">3.1</span> RF Coils Overview</a></li>
+  <li><a href="#surface-coils" id="toc-surface-coils" class="nav-link" data-scroll-target="#surface-coils"><span class="header-section-number">3.2</span> Surface Coils</a></li>
+  <li><a href="#volume-coils-and-the-birdcage-design" id="toc-volume-coils-and-the-birdcage-design" class="nav-link" data-scroll-target="#volume-coils-and-the-birdcage-design"><span class="header-section-number">3.3</span> Volume Coils and the Birdcage Design</a></li>
+  <li><a href="#phased-array-coils" id="toc-phased-array-coils" class="nav-link" data-scroll-target="#phased-array-coils"><span class="header-section-number">3.4</span> Phased-Array Coils</a></li>
+  <li><a href="#head-coils-in-practice" id="toc-head-coils-in-practice" class="nav-link" data-scroll-target="#head-coils-in-practice"><span class="header-section-number">3.5</span> Head Coils in Practice</a></li>
+  <li><a href="#coil-design-and-simulation" id="toc-coil-design-and-simulation" class="nav-link" data-scroll-target="#coil-design-and-simulation"><span class="header-section-number">3.6</span> Coil Design and Simulation</a></li>
+  <li><a href="#commercial-coils" id="toc-commercial-coils" class="nav-link" data-scroll-target="#commercial-coils"><span class="header-section-number">3.7</span> Commercial Coils</a></li>
+  <li><a href="#image-quality-across-coil-types" id="toc-image-quality-across-coil-types" class="nav-link" data-scroll-target="#image-quality-across-coil-types"><span class="header-section-number">3.8</span> Image Quality Across Coil Types</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/part1-instrumentation.html">MR Instrumentation</a></li><li class="breadcrumb-item"><a href="../chapters/ch03-rf-coils.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Radiofrequency Coils</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Radiofrequency Coils</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled" title="Work in Progress">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Work in Progress
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Suggestions of all kinds for these lecture notes are welcome — whether it’s fixing small errors, raising bigger questions, or offering new perspectives. Please share comments through <a href="https://github.com/wandell/MRI-2026/issues" target="_blank">GitHub Issues</a>. To make feedback easier to address, please point to the section you have in mind — by section number or a short snippet of text.</em></p>
+</div>
+</div>
+<hr>
+<section id="sec-rf-coils-overview" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-rf-coils-overview"><span class="header-section-number">3.1</span> RF Coils Overview</h2>
+<div id="fig-ch03-rf-coils-intro" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Title slide for the RF coils section, showing the RF Coils for MRI textbook cover and a photo of Stanford's engineering quad.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-coils-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-coils-intro.png" class="img-fluid figure-img" alt="Title slide for the RF coils section, showing the RF Coils for MRI textbook cover and a photo of Stanford's engineering quad.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-coils-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: RF coils transmit excitation and receive the MR signal.
+</figcaption>
+</figure>
+</div>
+<p>Radiofrequency (RF) coils serve two functions in an MRI system.</p>
+<ul>
+<li>A <strong>transmit</strong> coil produces the RF magnetic field that tips the nuclear spins.</li>
+<li>A <strong>receive</strong> coil detects the weak voltage induced by the precessing transverse magnetization.</li>
+</ul>
+<p>One coil can transmit and receive at different times. In most human MRI systems, however, the built-in body coil transmits and a separate coil array receives. Coil design strongly affects sensitivity, spatial coverage, and the speed of an acquisition. The coils are an extremely important part of MR instrumentation.</p>
+</section>
+<section id="surface-coils" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="surface-coils"><span class="header-section-number">3.2</span> Surface Coils</h2>
+<div id="fig-ch03-rf-surface-coil-description" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Slide describing how the inductor generates an oscillating B1 field and the capacitor forms a resonant circuit tuned to the Larmor frequency.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-surface-coil-description-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-surface-coil-description.png" class="img-fluid figure-img" alt="Slide describing how the inductor generates an oscillating B1 field and the capacitor forms a resonant circuit tuned to the Larmor frequency.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-surface-coil-description-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Surface-coil description: alternating current in the loop generates an oscillating magnetic field that can excite the spins (Huettel et al., <em>Functional Magnetic Resonance Imaging</em>, 2e).
+</figcaption>
+</figure>
+</div>
+<p>A <strong>surface coil</strong> is a conducting loop with capacitors that form a <strong>resonant</strong> circuit. Every real coil also has resistance and other sources of loss. The circuit is tuned to the Larmor frequency; we will return to that frequency when we discuss the free-induction-decay experiment.</p>
+<p>Surface coils provide high local sensitivity but limited spatial coverage — they work best for structures close to the coil surface.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="LC circuits">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+LC circuits
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The loop behaves as an inductor: alternating current in the loop produces an oscillating <span class="math inline">\(B_1\)</span> field. Capacitors tune the circuit to resonance and are also used to match the coil to the transmitter or receiver. Resistance represents unavoidable energy loss; it does not provide the impedance match.</p>
+<p>The idealized behavior of capacitors and inductors can be compared as follows.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Capacitor</th>
+<th>Inductor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Energy storage</td>
+<td>Stores energy in an electric field</td>
+<td>Stores energy in a magnetic field</td>
+</tr>
+<tr class="even">
+<td>Response to change</td>
+<td>Opposes changes in voltage</td>
+<td>Opposes changes in current</td>
+</tr>
+<tr class="odd">
+<td>Ideal impedance</td>
+<td>High at DC; decreases with AC frequency</td>
+<td>Low at DC; increases with AC frequency</td>
+</tr>
+<tr class="even">
+<td>Phase relationship</td>
+<td>Current leads voltage by 90°</td>
+<td>Voltage leads current by 90°</td>
+</tr>
+<tr class="odd">
+<td>Basic construction</td>
+<td>Two conductive plates separated by a dielectric</td>
+<td>A coil of wire, often wound around a core</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="volume-coils-and-the-birdcage-design" class="level2 page-columns page-full" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="volume-coils-and-the-birdcage-design"><span class="header-section-number">3.3</span> Volume Coils and the Birdcage Design</h2>
+<div id="fig-ch03-rf-volume-coil-birdcage" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Diagram of a birdcage volume coil showing the cylindrical geometry and LC circuit elements, alongside a photo of an actual birdcage coil.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-volume-coil-birdcage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-volume-coil-birdcage.png" class="img-fluid figure-img" alt="Diagram of a birdcage volume coil showing the cylindrical geometry and LC circuit elements, alongside a photo of an actual birdcage coil.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-volume-coil-birdcage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Volume coil (birdcage): the LC circuit is repeated around the surface of a cylinder, producing more uniform spatial coverage but lower local sensitivity (Huettel et al., <em>Functional Magnetic Resonance Imaging</em>, 2e).
+</figcaption>
+</figure>
+</div>
+<p>A <strong>volume coil</strong> distributes conductors and capacitors around a cylinder to generate a relatively uniform <span class="math inline">\(B_1\)</span> field over a large volume. The <strong>birdcage</strong> design — multiple conducting rungs connected by end rings — is the standard approach. Its elements form one coupled resonant structure, rather than independent receiver channels whose signals are simply added. The coil in <a href="#fig-ch03-rf-volume-coil-birdcage" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> excites the whole head at once, with far less variation across the volume than a surface coil.</p>
+<div id="fig-ch03-rf-birdcage-transmit" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Photo of a birdcage body coil — a large cylindrical coil with copper rungs and end rings — with text noting it is used as the built-in body coil.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-birdcage-transmit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-birdcage-transmit.png" class="img-fluid figure-img" alt="Photo of a birdcage body coil — a large cylindrical coil with copper rungs and end rings — with text noting it is used as the built-in body coil.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-birdcage-transmit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: The birdcage design is widely used for the body transmit coil, built into the main magnet bore.
+</figcaption>
+</figure>
+</div>
+<p>The most important example is the <strong>body coil</strong>, which is built into the scanner. It is driven in its uniform, circularly polarized mode to provide RF excitation throughout the magnet bore.</p>
+<p>At 3 T, and especially at 7 T and above, the RF wavelength in tissue and coupling between the coil and patient become important. These effects can make the transmit field non-uniform and increase SAR, motivating more complex, multi-transmit driving schemes.</p>
+</section>
+<section id="phased-array-coils" class="level2 page-columns page-full" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="phased-array-coils"><span class="header-section-number">3.4</span> Phased-Array Coils</h2>
+<div id="fig-ch03-rf-phased-array-coil" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Diagram of a phased-array coil showing multiple independent coil elements arranged around the head.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-phased-array-coil-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-phased-array-coil.png" class="img-fluid figure-img" alt="Diagram of a phased-array coil showing multiple independent coil elements arranged around the head.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-phased-array-coil-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5: Phased-array coil: combines multiple independent surface coils to balance sensitivity and spatial coverage (Huettel et al., <em>Functional Magnetic Resonance Imaging</em>, 2e).
+</figcaption>
+</figure>
+</div>
+<p>A phased-array coil combines multiple small, independent surface-coil elements — each with its own receiver channel — arranged to cover a larger region. Unlike a volume coil, each element detects signal from its local neighborhood with high sensitivity. The elements are designed to be decoupled so that they do not substantially interfere with one another.</p>
+<p>The signals are measured separately and combined computationally to produce an image. This arrangement provides broad coverage while retaining good local signal-to-noise ratio (SNR).</p>
+<div id="fig-ch03-rf-phased-array-head-coils" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Diagrams showing the element layouts of a 12-channel and a 32-channel phased-array head coil.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-phased-array-head-coils-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-phased-array-head-coils.png" class="img-fluid figure-img" alt="Diagrams showing the element layouts of a 12-channel and a 32-channel phased-array head coil.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-phased-array-head-coils-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.6: Phased-array head coils: comparing 12-channel and 32-channel configurations (Kaza et al., JMRI, 2011).
+</figcaption>
+</figure>
+</div>
+<p>Phased-array coils enable <strong>parallel imaging</strong> (e.g., SENSE and GRAPPA), which uses the different spatial sensitivity profiles of the elements as additional encoding information. This permits faster acquisitions; we will describe the idea later. More channels can improve SNR and parallel-imaging performance, but only with appropriate element design and greater hardware complexity.</p>
+</section>
+<section id="head-coils-in-practice" class="level2 page-columns page-full" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="head-coils-in-practice"><span class="header-section-number">3.5</span> Head Coils in Practice</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Multiple parallel-receive head coils</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Close-up: 64-channel coil (Stockmann/MGH)</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-1-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="fig-ch03-rf-head-coil-minnesota" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Six-panel figure showing head coil components, element arrays, and the assembled coil being worn by a subject.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-head-coil-minnesota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-head-coil-minnesota.png" class="img-fluid figure-img" alt="Six-panel figure showing head coil components, element arrays, and the assembled coil being worn by a subject.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-head-coil-minnesota-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.7: High-channel-count head coils developed at the University of Minnesota for ultra-high-field imaging.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="fig-ch03-rf-head-coil-stanford-project" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Photo of a partially assembled 64-channel head coil with many small coil elements visible, next to a workbench setup.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-head-coil-stanford-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-head-coil-stanford-project.png" class="img-fluid figure-img" alt="Photo of a partially assembled 64-channel head coil with many small coil elements visible, next to a workbench setup.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-head-coil-stanford-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.8: The 64-channel head coil project at Stanford: assembled by Kawin Setsompop’s group, Adam Kerr, and Jason Stockmann from MGH.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>High-channel-count head coils are still largely hand-assembled, requiring careful placement, tuning, and decoupling of each element. The 64-channel coil shown here was assembled for the CNI in collaboration with Massachusetts General Hospital. Coil construction remains something of an art: small changes in one element can alter the tuning or coupling of its neighbors.</p>
+</section>
+<section id="coil-design-and-simulation" class="level2 page-columns page-full" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="coil-design-and-simulation"><span class="header-section-number">3.6</span> Coil Design and Simulation</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Software for head-coil design</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Simulation of the signal</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="fig-ch03-rf-comsol-simulation" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Screenshot of a COMSOL blog post titled 'Designing and Optimizing MRI Birdcage Coils Using Simulation', showing a head phantom inside a birdcage coil model.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-comsol-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-comsol-simulation.png" class="img-fluid figure-img" alt="Screenshot of a COMSOL blog post titled 'Designing and Optimizing MRI Birdcage Coils Using Simulation', showing a head phantom inside a birdcage coil model.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-comsol-simulation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.9: COMSOL simulation of a birdcage coil: modeling the B1 field distribution inside a human head phantom.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="fig-ch03-rf-birdcage-sensitivity" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Two-panel figure showing the birdcage coil model geometry on the left and a color map of magnetic flux density through the head phantom on the right.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-birdcage-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-birdcage-sensitivity.png" class="img-fluid figure-img" alt="Two-panel figure showing the birdcage coil model geometry on the left and a color map of magnetic flux density through the head phantom on the right.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-birdcage-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.10: Simulated sensitivity (B1 field strength) of a birdcage coil across a human head phantom.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Electromagnetic simulation tools such as COMSOL, CST Studio Suite, and Sim4Life model the transmit and receive RF fields inside the patient, as well as the electric field. They are used to estimate the specific absorption rate (SAR), the RF power absorbed per unit mass of tissue. These simulations are essential for safety evaluation, particularly at high field strengths where transmit-field inhomogeneity and local SAR become more significant.</p>
+</section>
+<section id="commercial-coils" class="level2 page-columns page-full" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="commercial-coils"><span class="header-section-number">3.7</span> Commercial Coils</h2>
+<div id="fig-ch03-rf-nova-medical" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Screenshot of the Nova Medical website with the headline 'Leaders in High Field MRI Coil Engineering'. Text notes that many research sites including the CNI and Lucas Center use Nova coils.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-nova-medical-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-nova-medical.png" class="img-fluid figure-img" alt="Screenshot of the Nova Medical website with the headline 'Leaders in High Field MRI Coil Engineering'. Text notes that many research sites including the CNI and Lucas Center use Nova coils.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-nova-medical-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.11: Nova Medical: a leading commercial manufacturer of high-performance phased-array RF coils for research MRI.
+</figcaption>
+</figure>
+</div>
+<p>Many research sites use coils from specialized manufacturers rather than from the scanner vendor. Nova Medical is a widely used supplier of high-channel-count head coils for Siemens, GE, and Philips scanners. Other specialized manufacturers include RAPID Biomedical, ScanMed, and PulseTeq.</p>
+</section>
+<section id="image-quality-across-coil-types" class="level2 page-columns page-full" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="image-quality-across-coil-types"><span class="header-section-number">3.8</span> Image Quality Across Coil Types</h2>
+<div id="fig-ch03-rf-coil-images-comparison" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" alt="Three brain MR images labeled A (surface coil), B (volume coil), and C (phased-array coil), showing differences in spatial coverage and signal uniformity.">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-ch03-rf-coil-images-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ch03/rf-coil-images-comparison.png" class="img-fluid figure-img" alt="Three brain MR images labeled A (surface coil), B (volume coil), and C (phased-array coil), showing differences in spatial coverage and signal uniformity.">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-ch03-rf-coil-images-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.12: Comparison of brain images acquired with surface, volume (birdcage), and phased-array RF coils (Huettel et al., <em>Functional Magnetic Resonance Imaging</em>, 2e).
+</figcaption>
+</figure>
+</div>
+<p>Surface coils provide high SNR near the coil, but their sensitivity falls rapidly with distance. Volume coils provide more uniform coverage across the whole brain, usually with lower receive sensitivity. Phased-array coils combine the local sensitivity of many elements to provide broad coverage and high SNR. Their raw sensitivity is still spatially non-uniform, so image reconstruction often includes a coil-combination or intensity-correction step. This balance makes phased arrays the standard receive coils for modern neuroimaging.</p>
+
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch02-gradient-coils.html" class="pagination-link" aria-label="Main Field and Gradient Coils">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Main Field and Gradient Coils</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch04-safety.html" class="pagination-link" aria-label="MRI Safety">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">MRI Safety</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
